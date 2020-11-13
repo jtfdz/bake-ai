@@ -1,0 +1,43 @@
+
+@charset "utf-8";
+
+
+// Set your brand colors
+
+$MILKYSTAR: #FF89B5; //rosita
+$COMETTRAIL: #FFDC89; //amarillito
+$VOYAGER1: #90D4F7; //azulito
+$TERRAFORM: #71E096; //verde
+$SUPERGIANT: #ED6D79; //rojo
+
+$primary: $SUPERGIANT;
+$success: $TERRAFORM;
+$link: $MILKYSTAR;
+$warning: $COMETTRAIL;
+$danger: $VOYAGER1;
+
+$text: #000000;
+
+
+
+
+//$purple: #8A4D76;
+//$pink: #FA7C91;
+//$brown: #757763;
+//$beige-light: #D0D1CD;
+//$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+//$grey-dark: $brown;
+//$grey-light: $beige-light;
+//$widescreen-enabled: false;
+//$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+//$body-background-color: $black;
+//$control-border-width: 2px;
+//$input-border-color: transparent;
+//$input-shadow: none;
+
+
+@import "../../node_modules/bulma/bulma.sass";

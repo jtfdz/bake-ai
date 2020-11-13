@@ -1,0 +1,156 @@
+
+*UNINSTALL CAROUSEL
+
+
+
+.page-header {
+  display: grid;
+  grid-column-gap: 30px;
+  grid-template-columns: 1fr 3fr;
+  padding: 40px 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  margin-bottom: 150px;
+}
+ 
+.header-text {
+  font-weight: bold;
+}
+
+
+
+
+
+@charset "utf-8";
+@import "../../node_modules/bulma/bulma.sass";
+
+
+
+
+
+
+
+<button class="button is-primary is-rounded" onclick="nextSlide()">click</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <script src="components/html-head.js"></script>
+  <header-general>
+    <link rel="stylesheet" href="..\node_modules\bulma-carousel\dist\css\bulma-carousel.min.css">
+  </header-general>
+ <body>
+
+    <section class="hero is-fullheight  has-carousel">
+      <div id="carousel-demo" class='hero-carousel'> 
+    <div class='item-1'><first-slide></first-slide></div>
+      <div class='item-2'><second-slide></second-slide></div>
+    </div>
+    </section>
+  </body>
+
+
+
+  <script src="..\node_modules\bulma-carousel\dist\js\bulma-carousel.min.js"></script> 
+  <script src="components/index01.js"></script>
+</html>
+
+
+
+
+/* CAROUSEL */
+
+
+
+const carousel = bulmaCarousel.attach('#carousel-demo', {
+  slidesToScroll: 1,
+  slidesToShow: 1,
+  pagination: false,
+  navigation: false,
+  navigationKeys: false
+  //navigationSwipe: false --> bulma lo trae dañado
+});
+
+
+
+
+
+
+function nextSlide() {
+  carousel[0].next();
+}
+
+function previousSlide() {
+  carousel[0].previous();
+}
+
+/* FIN DEL CAROUSEL */
+
+
+
+
+
+
+
+
+        <div class="container">
+
+
+
+
+          <div class="columns">
+            <div class="column">
+              <img src="media/icons8-geta-96.png" style="width:7%">
+              <img src="media/icons8-sakura-96.png" style="width:7%">
+              <img src="media/icons8-fuji-96.png" style="width:7%">
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="column">
+              <img src="media/icons8-japanese-umbrella-96.png" style="width:7%">
+              <img src="media/icons8-japan-96.png" style="width:7%">
+              <img src="media/icons8-origami-96.png" style="width:7%">
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="column">
+              <img src="media/icons8-torii-96.png" style="width:7%">
+              <img src="media/icons8-kimono-96.png" style="width:7%">
+              <img src="media/icons8-bento-96.png" style="width:7%">
+            </div>
+          </div>
+        </div>
+
+
+          <button class="button is-primary is-rounded" onclick="nextSlide()">click</button>
+       
+          
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
