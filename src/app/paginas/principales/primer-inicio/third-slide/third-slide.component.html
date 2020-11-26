@@ -1,0 +1,169 @@
+<section class="hero is-fullheight is-success has-text-centered">
+
+
+
+
+<div class="hero-body">
+
+
+  <div class="columns is-multiline is-mobile">
+    <div class="column is-12">
+    <h1 class="title">sobre ti</h1>
+    <p class="subtitle">información que será utilizada para brindar un ambiente de estudio con mayor personalización:</p> 
+  </div>
+ 
+<div class="column is-12">
+
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-12">
+
+
+
+    <div class="tile">
+
+      <div class="tile is-4">
+        <div class="tile">
+          <div class="tile is-parent">
+            <article class="tile is-child box is-info">
+              <h1 class="title">usuario</h1>
+              <p class="subtitle">ingresa un usuario y a través de este te haremos referencia dentro de <strong>bake ai:</strong></p> 
+
+              <div class="control has-icons-left has-icons-right">
+              <input class="input is-medium is-success" type="text" placeholder="nombre">
+              <span class="icon is-medium is-left">                        
+                <figure class="image is-24x24">
+                  <img src="{{imagenes}}/avatar-gris.png">
+                </figure>
+              </span>
+              </div> 
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="tile is-8">
+        <div class="tile">
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <h1 class="title">gustos</h1>
+              <p class="subtitle">elige un (1) tema que sea de gusto para impartir lecciones con vocabulario relacionado:</p>  
+
+
+                    
+
+
+
+                <div class="tabs is-toggle is-medium is-toggle-rounded is-fullwidth">
+                  <ul>
+                    <li class="tab is-active" onclick="openTab(event,'animales')">
+                      <a>
+                        <span>
+                        <figure class="image is-32x32" >
+                          <img src="{{imagenes}}/animal.png">
+                        </figure></span>
+
+                        <span>animales</span>
+                      </a>
+                    </li>
+                    <li class="tab" onclick="openTab(event,'comida')">
+                      <a>
+                        <span>
+                        <figure class="image is-32x32" >
+                          <img src="{{imagenes}}/ramen.png">
+                        </figure></span>
+                        <span>comida</span>
+                      </a>
+                    </li>
+                    <li class="tab" onclick="openTab(event,'deportes')">
+                      <a>
+                        <span>
+                        <figure class="image is-32x32" >
+                          <img src="{{imagenes}}/sports.png">
+                        </figure></span>
+                        <span>deportes</span>
+                      </a>
+                    </li>
+                    <li class="tab" onclick="openTab(event,'musica')">
+                      <a>
+                        <span>
+                        <figure class="image is-32x32" >
+                          <img src="{{imagenes}}/music.png">
+                        </figure></span>
+                        <span>música</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="tile">
+      <div class="tile is-12 is-parent">
+        <article class="tile is-child is-success">
+
+          <div class="container has-text-centered">
+            <button [ngxScrollTo]="'slidesection2'" class="button is-rounded is-warning">
+           <span class="icon">↑</span>
+           <span>anterior</span>
+           </button>
+
+
+            <button (click)="activar()" [ngxScrollTo]="'slidesection4'" class="button is-primary is-rounded">
+            <span>siguiente</span>
+            <span class="icon">↓</span>
+            </button>
+          </div>
+
+        </article>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</section>

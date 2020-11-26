@@ -1,0 +1,123 @@
+  	<section class="hero is-fullheight is-warning">
+    <div class="hero-body">
+
+
+      <div class="container has-text-centered">
+      <h1 class="title">información</h1>
+      <p class="subtitle">en relación a los temarios centrales en la aplicación: </p> 
+      <div class="columns is-centered">
+        <div class="column is-4">
+        <!-- card app -->
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-45x45">
+                  <img src="{{imagenes}}/icons8-application-window-50.png" alt="aplicación">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">bake ai</p>
+                <p class="subtitle is-6 is-black">aplicación</p>
+              </div>
+            </div>
+            <div class="content">
+              <p>aplicación destinada a enseñarte los <strong>tres</strong> sistemas de escritura distribuidos en el idioma <strong>japonés:</strong></p>
+              </div>
+          <div class="columns is-mobile is-centered">
+          <div class="column is-narrow">
+              <figure class="image is-30x30">
+                <img src="{{imagenes}}/hiragana.png" alt="Hiragana">
+              </figure>
+              <p class="title is-7">hiragana</p>
+          </div>
+          <div class="column is-narrow">
+              <figure class="image is-30x30">
+                <img src="{{imagenes}}/katakana.png" alt="Katakana">
+              </figure>
+              <p class="subtitle is-7">katakana</p>
+           </div>
+           <div class="column is-narrow">
+              <figure class="image is-30x30">
+                <img src="{{imagenes}}/kanji.png" alt="Kanji">
+              </figure>
+              <p class="title is-7">kanji</p>
+           </div>
+          </div>
+            
+          </div>
+        </div>
+        <!-- fin card app  -->  
+        <br>
+    <!-- fin card hiragana -->            
+     </div>
+
+    <div class="column is-5">
+        <!-- card app -->
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">¿cómo?</p>
+                <p class="subtitle is-6">a través de un sistema inteligente encargado en descubrir e interpretar tu estilo de aprendizaje, el cual será una combinación de retención:</p> 
+                <div class="columns is-mobile is-centered is-variable is-1">
+                  <div class="column is-narrow">
+                <figure class="image is-32x32">
+                  <img src="{{imagenes}}/eye-outline.png">
+                </figure>
+                </div>
+                <div class="column is-narrow">
+                <p class="subtitle is-6">visual</p>
+                </div>
+                <div class="column is-narrow">
+                <figure class="image is-32x32">
+                  <img src="{{imagenes}}/musical-notes-outline.png">
+                 </figure>
+                </div>
+                <div class="column is-narrow">
+                  <p class="subtitle is-6">auditiva</p>
+                 </div>
+                 <div class="column is-narrow">
+                 <figure class="image is-32x32">
+                  <img src="{{imagenes}}/reader-outline.png">
+                </figure>
+                 </div>
+                <div class="column is-narrow">
+                 <p class="subtitle is-6">por la lectura<br>más escritura</p>
+                </div>
+                </div>
+              <p class="subtitle is-6">la evaluación de tu estilo será mediante siete módulos de enseñanza que conocerás más adelante.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- fin card app  --> 
+    </div>
+
+      <div class="column is-2">
+
+      <br><br><br>
+        <div class="columns is-mobile is-centered">
+          <div class="column is-narrow">
+        <button class="button is-rounded is-white" [ngxScrollTo]="'slidesection1'">
+           <span class="icon">↑</span>
+           <span>anterior</span>
+        </button>
+           <br><br><br>
+        <button class="button is-success is-rounded" (click)="activar()" [ngxScrollTo]="'slidesection3'">
+            <span>siguiente</span>
+            <span class="icon">↓</span>
+        </button>
+
+          </div>
+        </div>
+    </div>
+
+
+
+    </div>
+
+    </div>
+
+    </div>
+		</section>
