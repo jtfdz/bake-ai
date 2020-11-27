@@ -4,3 +4,58 @@
 declare const initTabs: any;
 
 
+  ngOnInit(): void {
+  }
+  Component implements OnInit {
+  import { Component, OnInit } from '@angular/core';
+
+  	ngAfterViewInit(): void {
+	}
+
+
+
+
+
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">¿estás segura de tus elecciones?</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal"  id="myModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">¿estás segura de tus elecciones?</p>
+      <button class="delete" aria-label="close" data-bulma-modal="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <button class="button is-success">sí, proceder</button>
+      <button class="button" data-bulma-modal="close">no, volver</button>
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
+inputThirdSlide(): void{
+    this.showBoolean = this.checkersService.checkInput(this.nombrecito);
+  }
+
+  (ngModelChange)="inputThirdSlide()"
+  [disabled]="isInputThirdSlideEnabled"

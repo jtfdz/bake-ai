@@ -1,6 +1,28 @@
 <section class="hero is-fullheight is-success has-text-centered">
 
+<div class="modal"  id="myModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">¿estás segura de tus elecciones?</p>
+    </header>
+    <section class="modal-card-body">
 
+      <p class="subtitle is-5">no te preocupes, podrás cambiarlas dentro de la aplicación</p>
+
+        <div class="columns is-mobile is-centered">
+          <div class="column is-narrow">
+           
+           <button [ngxScrollTo]="'slidesection4'" (click)="proceder()" class="button is-success">sí, proceder</button>
+          </div>
+          <div class="column is-narrow">
+            <button class="button" (click)="volver()">no, volver</button>
+          </div>
+        </div>
+
+    </section>
+  </div>
+</div>
 
 
 <div class="hero-body">
@@ -19,6 +41,7 @@
 
 
 
+
     <div class="tile">
 
       <div class="tile is-4">
@@ -29,7 +52,9 @@
               <p class="subtitle">ingresa un usuario y a través de este te haremos referencia dentro de <strong>bake ai:</strong></p> 
 
               <div class="control has-icons-left has-icons-right">
-              <input class="input is-medium is-success" type="text" placeholder="nombre">
+              <div class="form-group">
+                <input id="inputThirdSlide" [disabled]="isInputThirdSlideDisabled" [(ngModel)]="nombrecito" class="input is-medium is-success" type="text" placeholder="nombre">
+              </div>
               <span class="icon is-medium is-left">                        
                 <figure class="image is-24x24">
                   <img src="{{imagenes}}/avatar-gris.png">
@@ -57,7 +82,7 @@
 
                 <div class="tabs is-toggle is-medium is-toggle-rounded is-fullwidth">
                   <ul>
-                    <li class="tab is-active" onclick="openTab(event,'animales')">
+                    <li class="tab is-active" onclick="openTab(event)">
                       <a>
                         <span>
                         <figure class="image is-32x32" >
@@ -67,7 +92,7 @@
                         <span>animales</span>
                       </a>
                     </li>
-                    <li class="tab" onclick="openTab(event,'comida')">
+                    <li class="tab" onclick="openTab(event)">
                       <a>
                         <span>
                         <figure class="image is-32x32" >
@@ -76,7 +101,7 @@
                         <span>comida</span>
                       </a>
                     </li>
-                    <li class="tab" onclick="openTab(event,'deportes')">
+                    <li class="tab" onclick="openTab(event)">
                       <a>
                         <span>
                         <figure class="image is-32x32" >
@@ -85,7 +110,7 @@
                         <span>deportes</span>
                       </a>
                     </li>
-                    <li class="tab" onclick="openTab(event,'musica')">
+                    <li class="tab" onclick="openTab(event)">
                       <a>
                         <span>
                         <figure class="image is-32x32" >
@@ -122,16 +147,34 @@
         <article class="tile is-child is-success">
 
           <div class="container has-text-centered">
+
+
+
+        <div class="columns is-mobile is-centered">
+          <div class="column is-narrow">
+           
             <button [ngxScrollTo]="'slidesection2'" class="button is-rounded is-warning">
            <span class="icon">↑</span>
            <span>anterior</span>
            </button>
+          
 
-
-            <button (click)="activar()" [ngxScrollTo]="'slidesection4'" class="button is-primary is-rounded">
+          </div>
+          <div class="column is-narrow">
+           
+            <button (click)="activar()" [disabled]="!nombrecito" class="button is-primary is-rounded">
             <span>siguiente</span>
             <span class="icon">↓</span>
             </button>
+            
+          </div>
+        </div>
+
+
+           
+
+
+            
           </div>
 
         </article>
