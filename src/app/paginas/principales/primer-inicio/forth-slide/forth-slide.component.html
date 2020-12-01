@@ -1,29 +1,31 @@
-    <section class="hero is-fullheight is-primary has-text-centered">
-    <div class="hero-body">
+<section class="hero is-fullheight is-primary has-text-centered">
+<div class="hero-body">
 
-      <div class="container has-text-centered">
-        
-        <div class="columns is-mobile is-centered">
-          <div class="columns is-mobile is-centered">
-        <figure class="image is-128x128">
-          <img src="{{imagenes}}/estrellas.gif" alt="confeti">
-        </figure>
-        </div>
-        </div>
-
-        <h1 class="title">¡listo!</h1>
-        <p class="subtitle">¡ahora te invito a aprender!</p> 
-        <div class="columns is-mobile is-centered">
-          <div class="column is-narrow">
-           
-            <button [ngxScrollTo]="'slidesection5'" class="button is-white is-rounded">
-            <span>finalizar</span>
-            <span class="icon">→</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-
+  <div class="container has-text-centered">
+    
+    <div class="columns is-mobile is-centered">
+      <div class="columns is-mobile is-centered">
+    <figure class="image is-128x128">
+      <img src="{{imagenes}}/estrellas.gif" alt="confeti">
+    </figure>
     </div>
-    </section>
+    </div>
+
+    <h1 class="title">¡listo!</h1>
+    <p class="subtitle">¡ahora te invito a aprender!</p> 
+    <div class="columns is-mobile is-centered">
+      <div class="column is-narrow">
+       
+        <a [routerLink]="['/inicio-general']" (click)="finalizar()"><button class="button is-white is-rounded">
+        <span>finalizar</span>
+        <span class="icon">→</span>
+        </button></a>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+</section>
+

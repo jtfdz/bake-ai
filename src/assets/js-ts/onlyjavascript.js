@@ -1,10 +1,21 @@
+const Store = require('electron-store');
+const store = new Store();
+
+
 function getEbI(name){
 	return document.getElementById(name);
 }
 
+function setInStore(propiedad, valor){
+	store.set(propiedad, valor);
+}
+
+function getFromStore(propiedad){
+	return store.get(propiedad)
+}
 
 
-function openTab(evt) {
+function openTab(evt, nombreDelGusto) {
 	if(!getEbI('inputThirdSlide').disabled){
 		  var i, tablinks;
 		  tablinks = document.getElementsByClassName("tab");
@@ -12,6 +23,7 @@ function openTab(evt) {
 		      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
 		  }
 		  evt.currentTarget.className += " is-active";
+		  setInStore('usuario.gusto', nombreDelGusto);
   	}
 }
 

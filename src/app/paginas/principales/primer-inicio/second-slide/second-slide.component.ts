@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import urls from 'src/app/urls.json';
-import { PrimerInicioService } from '../primer-inicio.service';
+import urls from 'src/assets/json/urls.json';
+import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
+declare const setInStore: any;
 
 @Component({
   selector: 'app-second-slide',
@@ -17,6 +18,7 @@ export class SecondSlideComponent implements OnInit {
 
   public activar() {
     this.primerInicioService.setShow3();
+    setInStore('usuario.gusto','animales')
    }
 
 }

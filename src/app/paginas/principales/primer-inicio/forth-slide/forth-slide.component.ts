@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import urls from 'src/app/urls.json';
+import urls from 'src/assets/json/urls.json';
+declare const setInStore: any;
+declare const getFromStore: any;
+
 
 @Component({
   selector: 'app-forth-slide',
@@ -8,11 +11,16 @@ import urls from 'src/app/urls.json';
 })
 export class ForthSlideComponent implements OnInit {
 
-	imagenes: String = urls.forthslide;
+  imagenes: String = urls.forthslide;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  public finalizar(): void{
+    setInStore('usuario.iniciado', true);
   }
 
 }

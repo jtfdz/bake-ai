@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import urls from 'src/app/urls.json';
-import { PrimerInicioService } from '../primer-inicio.service';
+import urls from 'src/assets/json/urls.json';
+import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
 
 
 @Component({

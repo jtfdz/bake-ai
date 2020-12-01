@@ -25,8 +25,9 @@ const createWindow = () => {
     height: height,
     icon: require('path').join('media/manzanita.png'),
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+      enableRemoteModule: true
+    },
   });
 
   // and load the index.html of the app.

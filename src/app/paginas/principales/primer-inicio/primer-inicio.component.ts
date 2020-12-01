@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PrimerInicioService } from './primer-inicio.service';
+import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
 
 
 @Component({

@@ -13,6 +13,7 @@ declare const initTabs: any;
 	}
 
 
+<router-outlet #outlet="outlet"></router-outlet>
 
 
 
@@ -59,3 +60,136 @@ inputThirdSlide(): void{
 
   (ngModelChange)="inputThirdSlide()"
   [disabled]="isInputThirdSlideEnabled"
+
+
+
+
+
+
+
+
+
+
+
+import { LunaRwComponent } from './paginas/modulos/luna-rw/luna-rw.component';
+import { SolAudioComponent } from './paginas/modulos/sol-audio/sol-audio.component';
+
+  { path: 'modulo-luna', component: LunaRwComponent, data: { animation: 'alaDerecha' } },
+  { path: 'modulo-sol', component: SolAudioComponent, data: { animation: 'alaDerecha' } },
+
+
+
+  
+    path: 'origen', component: OrigenComponent,
+    children: [
+    { path: 'modulo-luna', component: LunaRwComponent, data: { animation: 'alaDerecha' } },
+    { path: 'modulo-sol', component: SolAudioComponent, data: { animation: 'alaDerecha' } },
+    ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="hero is-fullheight is-white has-text-black">    
+    <div class="hero-header">
+      <div class="container has-text-centered">
+
+
+                <div class="tile is-ancestor">
+                  <div class="tile is-12 is-vertical is-parent">
+                    <a>
+                        <div class="tile is-child notification box is-success">
+                          algo
+                        </div>
+                    </a>
+
+                    <a>                       
+                        <div class="tile is-child notification box is-info">
+                          algo
+                        </div> 
+                    </a>
+
+                    <a>                       
+                      <div class="tile is-child notification box is-warning">
+                        algo
+                      </div> 
+                    </a>
+
+                  <a>                       
+                    <div class="tile is-child notification box is-danger">
+                      algo
+                    </div> 
+                  </a>
+
+                  </div>
+                </div>
+  
+  
+  
+         
+                <a href="./html/teoria.html">
+                <div class="box">                      
+                  <p class="title">teoría</p>
+                </div>
+                </a> 
+                <br>                   
+              <div class="columns">
+                <div class="column is-4">
+                  <a href="./html/hiragana.html">
+                  <div class="box">
+                    <p class="title">hiragana</p>
+                  </div>
+                  </a>
+                </div>
+                <div class="column is-4">
+                  <a href="./html/katakana.html">
+                  <div class="box">
+                    <p class="title">katakana</p>
+                  </div>
+                  </a>                      
+                </div>
+                <div class="column is-4">
+                  <a href="./html/kanji.html">                    
+                  <div class="box">
+                    <p class="title">kanji</p>
+                  </div>
+                  </a>  
+                </div>
+        
+              </div>
+    
+
+            <!--el medio-->
+
+
+    </div>
+    </div>
+    <!-- FIN hero header -->
+
+    <!-- hero body -->
+    <div class="hero-body">
+
+    </div>       
+    <!-- FIN hero body -->
+
+</div>
+
+
+
+  { path: 'primer-inicio-first-slide', component: FirstSlideComponent },
+  { path: 'primer-inicio-second-slide', component: SecondSlideComponent },
+  { path: 'primer-inicio-third-slide', component: ThirdSlideComponent },
+  { path: 'primer-inicio-forth-slide', component: ForthSlideComponent },
+
+  import { FirstSlideComponent } from './paginas/principales/primer-inicio/first-slide/first-slide.component';
+import { SecondSlideComponent } from './paginas/principales/primer-inicio/second-slide/second-slide.component';
+import { ThirdSlideComponent } from './paginas/principales/primer-inicio/third-slide/third-slide.component';
+import { ForthSlideComponent } from './paginas/principales/primer-inicio/forth-slide/forth-slide.component';

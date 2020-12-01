@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-declare const openTab: any;
-import urls from 'src/app/urls.json';
-import { PrimerInicioService } from '../primer-inicio.service';
-declare const openModal: any;
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
-
-
+import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
+import urls from 'src/assets/json/urls.json';
+declare const openTab: any;
+declare const openModal: any;
+declare const setInStore: any;
 
 @Component({
   selector: 'app-third-slide',
@@ -18,9 +17,6 @@ export class ThirdSlideComponent {
   nombrecito: String = '';
   isInputThirdSlideDisabled: boolean = false;
 
-
-
-
   constructor(private scrollToService: ScrollToService, private primerInicioService: PrimerInicioService) { }
 
   public activar(): void { openModal(1); }
@@ -30,6 +26,7 @@ export class ThirdSlideComponent {
     this.isInputThirdSlideDisabled = true;
     this.primerInicioService.setShow4(); 
     openModal(2);
+    setInStore('usuario.nombre',this.nombrecito)
   }
 
 
