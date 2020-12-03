@@ -14,6 +14,9 @@ import { PrimerInicioModule } from './modules/principales/primer-inicio.module';
 import { ModulosModule } from './modules/modulos/modulos.module';
 import { InicioGeneralComponent } from './paginas/principales/inicio-general/inicio-general.component';
 import { IniciosComponent } from './paginas/principales/inicios/inicios.component';
+import { TeoriaComponent } from './paginas/temas/teoria/teoria.component';
+import { HeaderPrincipalComponent } from './componentes/header-principal/header-principal.component';
+import { TabsteoriaComponent } from './paginas/temas/teoria/tabsteoria/tabsteoria.component';
 
 
 @NgModule({
@@ -21,6 +24,9 @@ import { IniciosComponent } from './paginas/principales/inicios/inicios.componen
     AppComponent,
     InicioGeneralComponent,
     IniciosComponent,
+    TeoriaComponent,
+    HeaderPrincipalComponent,
+    TabsteoriaComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,14 @@ function getEbI(name){
 	return document.getElementById(name);
 }
 
+function getEbCN(name){
+	return document.getElementsByClassName(name);
+}
+
+function getEbQSA(name){
+	return document.querySelectorAll(name);
+}
+
 function setInStore(propiedad, valor){
 	store.set(propiedad, valor);
 }
@@ -13,6 +21,11 @@ function setInStore(propiedad, valor){
 function getFromStore(propiedad){
 	return store.get(propiedad)
 }
+
+function typescriptCantDoIt(sent){
+	sent.parentElement.parentElement.className = sent.parentElement.parentElement.className.replace(" has-background-"+sent.parentElement.id, "");
+}
+
 
 
 function openTab(evt, nombreDelGusto) {
@@ -25,6 +38,21 @@ function openTab(evt, nombreDelGusto) {
 		  evt.currentTarget.className += " is-active";
 		  setInStore('usuario.gusto', nombreDelGusto);
   	}
+}
+
+
+
+function getCount(parent, getChildrensChildren){
+    var relevantChildren = 0;
+    var children = parent.childNodes.length;
+    for(var i=0; i < children; i++){
+        if(parent.childNodes[i].nodeType != 3){
+            if(getChildrensChildren)
+                relevantChildren += getCount(parent.childNodes[i],true);
+            relevantChildren++;
+        }
+    }
+    return relevantChildren;
 }
 
 

@@ -1,7 +1,4 @@
-              "node_modules/bulma/css/bulma.min.css",
-
-
-declare const initTabs: any;
+    <a id="primary"  onclick="openTabTeoria(event)" class="tabteoria has-background-light has-text-black is-active"><strong>general</strong></a>
 
 
   ngOnInit(): void {
@@ -12,8 +9,6 @@ declare const initTabs: any;
   	ngAfterViewInit(): void {
 	}
 
-
-<router-outlet #outlet="outlet"></router-outlet>
 
 
 
@@ -103,66 +98,7 @@ import { SolAudioComponent } from './paginas/modulos/sol-audio/sol-audio.compone
       <div class="container has-text-centered">
 
 
-                <div class="tile is-ancestor">
-                  <div class="tile is-12 is-vertical is-parent">
-                    <a>
-                        <div class="tile is-child notification box is-success">
-                          algo
-                        </div>
-                    </a>
 
-                    <a>                       
-                        <div class="tile is-child notification box is-info">
-                          algo
-                        </div> 
-                    </a>
-
-                    <a>                       
-                      <div class="tile is-child notification box is-warning">
-                        algo
-                      </div> 
-                    </a>
-
-                  <a>                       
-                    <div class="tile is-child notification box is-danger">
-                      algo
-                    </div> 
-                  </a>
-
-                  </div>
-                </div>
-  
-  
-  
-         
-                <a href="./html/teoria.html">
-                <div class="box">                      
-                  <p class="title">teoría</p>
-                </div>
-                </a> 
-                <br>                   
-              <div class="columns">
-                <div class="column is-4">
-                  <a href="./html/hiragana.html">
-                  <div class="box">
-                    <p class="title">hiragana</p>
-                  </div>
-                  </a>
-                </div>
-                <div class="column is-4">
-                  <a href="./html/katakana.html">
-                  <div class="box">
-                    <p class="title">katakana</p>
-                  </div>
-                  </a>                      
-                </div>
-                <div class="column is-4">
-                  <a href="./html/kanji.html">                    
-                  <div class="box">
-                    <p class="title">kanji</p>
-                  </div>
-                  </a>  
-                </div>
         
               </div>
     
@@ -193,3 +129,21 @@ import { SolAudioComponent } from './paginas/modulos/sol-audio/sol-audio.compone
 import { SecondSlideComponent } from './paginas/principales/primer-inicio/second-slide/second-slide.component';
 import { ThirdSlideComponent } from './paginas/principales/primer-inicio/third-slide/third-slide.component';
 import { ForthSlideComponent } from './paginas/principales/primer-inicio/forth-slide/forth-slide.component';
+
+
+
+
+
+
+
+function openTabTeoria(evt, tabNombre) {
+      const result = document.querySelectorAll('.tabteoria');
+
+      for (i = 0; i < result.length; i++) {
+          result[i].className = result[i].className.replace(" has-text-black", " has-text-"+result[i].parentElement.id);
+          result[i].parentElement.parentElement.className = result[i].parentElement.parentElement.className.replace(" has-background-light", "");
+      }
+    
+      evt.currentTarget.className = evt.currentTarget.className.replace(" has-text-"+evt.currentTarget.parentElement.id, " has-text-black");
+      evt.currentTarget.parentElement.parentElement.className += " has-background-light";   
+}

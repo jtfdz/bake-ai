@@ -29,7 +29,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/style/mystyles.css"
+              "src/assets/style/mystyles.css",
+              "node_modules/@creativebulma/bulma-divider/dist/bulma-divider.min.css",
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

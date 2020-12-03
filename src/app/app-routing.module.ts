@@ -12,13 +12,14 @@ import { BaseComponent } from './paginas/modulos/base/base.component';
 // import { SolAudioComponent } from '../paginas/modulos/sol-audio/sol-audio.component';
 
 import { IniciosComponent } from './paginas/principales/inicios/inicios.component';
-
+import { TeoriaComponent } from './paginas/temas/teoria/teoria.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: IniciosComponent },
   { path: 'primer-inicio', component: PrimerInicioComponent },
   { path: 'inicio-general', component: InicioGeneralComponent },
+  { path: 'tema-teoria', component: TeoriaComponent },
   ];
 
 @NgModule({
