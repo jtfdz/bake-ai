@@ -17,6 +17,7 @@ import { IniciosComponent } from './paginas/principales/inicios/inicios.componen
 import { TeoriaComponent } from './paginas/temas/teoria/teoria.component';
 import { HeaderPrincipalComponent } from './componentes/header-principal/header-principal.component';
 import { TabsteoriaComponent } from './paginas/temas/teoria/tabsteoria/tabsteoria.component';
+import { BotonesIconosComponent } from './paginas/principales/inicio-general/botones-iconos/botones-iconos.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TabsteoriaComponent } from './paginas/temas/teoria/tabsteoria/tabsteori
     TeoriaComponent,
     HeaderPrincipalComponent,
     TabsteoriaComponent,
+    BotonesIconosComponent,
   ],
   imports: [
     BrowserModule,

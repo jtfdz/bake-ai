@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+declare const getFromStore: any;
+import urls from 'src/assets/json/urls.json';
 
 @Component({
   selector: 'app-header-principal',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-principal.component.css']
 })
 export class HeaderPrincipalComponent implements OnInit {
+
+  nombreUsuario: String = getFromStore('usuario.nombre');
+  imagenes: String = urls.general;
 
   constructor() { }
 

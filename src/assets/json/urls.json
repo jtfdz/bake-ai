@@ -2,5 +2,7 @@
   "firstslide": "../../../assets/media/first-slide",
   "secondslide": "../../../assets/media/second-slide",
   "thirdslide": "../../../assets/media/third-slide",
-  "forthslide": "../../../assets/media/forth-slide"
+  "forthslide": "../../../assets/media/forth-slide",
+  "iniciogeneral": "../../../assets/media/inicio-general",
+  "general": "../../../assets/media"
 }

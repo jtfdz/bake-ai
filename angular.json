@@ -31,6 +31,8 @@
               "src/styles.css",
               "src/assets/style/mystyles.css",
               "node_modules/@creativebulma/bulma-divider/dist/bulma-divider.min.css",
+              "node_modules/@creativebulma/bulma-badge/dist/bulma-badge.min.css",
+              "node_modules/@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css",
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

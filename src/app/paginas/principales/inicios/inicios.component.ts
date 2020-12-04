@@ -11,8 +11,9 @@ export class IniciosComponent implements OnInit {
   usuarioIniciado: boolean = getFromStore('usuario.iniciado');
   constructor() { }
 
-  ngOnInit(): void {
-  	console.log(this.usuarioIniciado)
-  }
+	ngOnInit(): void {
+		
+
+	}
 
 }
