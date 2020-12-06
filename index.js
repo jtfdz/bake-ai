@@ -23,7 +23,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: width, 
     height: height,
-    icon: require('path').join('media/manzanita.png'),
+    icon: require('path').join('src/assets/media/catlogo-cut.png'),
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true

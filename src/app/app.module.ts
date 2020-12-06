@@ -9,26 +9,18 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-
-import { PrimerInicioModule } from './modules/principales/primer-inicio.module';
+import { IniciosModule } from './modules/principales/inicios.module';
 import { ModulosModule } from './modules/modulos/modulos.module';
-import { InicioGeneralComponent } from './paginas/principales/inicio-general/inicio-general.component';
-import { IniciosComponent } from './paginas/principales/inicios/inicios.component';
+import { ComponentesModule } from './modules/componentes/componentes.module';
 import { TeoriaComponent } from './paginas/temas/teoria/teoria.component';
-import { HeaderPrincipalComponent } from './componentes/header-principal/header-principal.component';
-import { TabsteoriaComponent } from './paginas/temas/teoria/tabsteoria/tabsteoria.component';
-import { BotonesIconosComponent } from './paginas/principales/inicio-general/botones-iconos/botones-iconos.component';
+import { TabsTeoriaContentComponent } from './componentes/tabs-teoria-content/tabs-teoria-content.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioGeneralComponent,
-    IniciosComponent,
     TeoriaComponent,
-    HeaderPrincipalComponent,
-    TabsteoriaComponent,
-    BotonesIconosComponent,
+    TabsTeoriaContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +29,9 @@ import { BotonesIconosComponent } from './paginas/principales/inicio-general/bot
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    PrimerInicioModule,
+    IniciosModule,
     ModulosModule,
+    ComponentesModule,
     AppRoutingModule,
   ],
   providers: [],

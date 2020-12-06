@@ -1,6 +1,8 @@
+<!-- mejorar el cargado de la fotos -->
+
 
 <section class="hero is-fullheight has-text-black has-background-black">   
-<app-header-principal></app-header-principal>
+<app-header-principal [esInicio]="true"></app-header-principal>
 
 <div class="hero-body">
 	
@@ -10,22 +12,23 @@
     <a data-tooltip="Tooltip Text" [routerLink]="['/tema-teoria']">
       <div class="box">    
 
-
-
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-           <img src="{{imagenes}}/teoría2.png">
+           <img src="{{imagenes}}/teoría.png">
          </figure>
         </div>
         <div class="media-content">
           <div class="content">
-         <p class="title is-1">teoría</p>
+         <p class="title is-2">teoría</p>
           </div>
         </div>
         <div class="media-right">
 
-          <img src="{{imagenes}}/teoría.png" width="75" height="75">
+          <figure class="image is-64x64">
+            <img src="{{imagenes}}/teoría.png">
+          </figure>
+
 
         </div>
       </article>
@@ -58,12 +61,14 @@
 
 
 
-
+    <!-- mejorar -->
     <div class="columns">
       <div class="column is-4">
         <a><div class="box">
           <p class="title">hiragana</p>
-          <img src="{{imagenes}}/gatovolteado.png" width="70" height="70">
+          <figure class="image is-48x48">
+          <img src="{{imagenes}}/gatovolteado.png">
+          </figure>
           <p class="subtitle is-5 has-text-link has-text-weight-bold">3%</p>
           <progress class="progress is-link" value="3" max="100"></progress>
         </div></a>
@@ -71,7 +76,9 @@
       <div class="column is-4">
         <a><div class="box">
           <p class="title">katakana</p>
-          <img src="{{imagenes}}/gatovolteado.png" width="70" height="70">
+          <figure class="image is-48x48">
+          <img src="{{imagenes}}/gatovolteado.png">
+          </figure>
           <p class="subtitle is-5 has-text-warning has-text-weight-bold">3%</p>
           <progress class="progress is-warning" value="3" max="100">3%</progress>
         </div></a>                      
@@ -79,7 +86,9 @@
       <div class="column is-4">
         <a><div class="box">
           <p class="title">kanji</p>
-          <img src="{{imagenes}}/gatovolteado.png" width="70" height="70">
+          <figure class="image is-48x48">
+          <img src="{{imagenes}}/gatovolteado.png">
+          </figure>
           <p class="subtitle is-5 has-text-danger has-text-weight-bold">3%</p>
           <progress class="progress is-danger" value="3" max="100">3%</progress>
         </div></a>  

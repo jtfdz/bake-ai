@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,7 @@ export class PrimerInicioService {
 	setShow2() { this.isShow2.next(true); }
 	setShow3() { this.isShow3.next(true); }
  	setShow4() { this.isShow4.next(true); }
+
+
 
 }

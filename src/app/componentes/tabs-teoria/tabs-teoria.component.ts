@@ -5,11 +5,11 @@ declare const getEbI: any;
 declare const typescriptCantDoIt: any;
 
 @Component({
-  selector: 'app-tabsteoria',
-  templateUrl: './tabsteoria.component.html',
-  styleUrls: ['./tabsteoria.component.css']
+  selector: 'app-tabs-teoria',
+  templateUrl: './tabs-teoria.component.html',
+  styleUrls: ['./tabs-teoria.component.css']
 })
-export class TabsteoriaComponent implements OnInit {
+export class TabsTeoriaComponent implements OnInit {
 
 
   @Input() texto: string = '';
@@ -21,6 +21,7 @@ export class TabsteoriaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
    openTheTab(evento: any, tabName: string) {
       let tabpanel: HTMLElement[] = getEbCN('content-tab');
@@ -39,6 +40,10 @@ export class TabsteoriaComponent implements OnInit {
        evento.currentTarget.className = evento.currentTarget?.className.replace(" has-text-"+evento.currentTarget.parentElement!.id, " has-text-black");
        evento.currentTarget.parentElement.parentElement.className += " has-background-"+evento.currentTarget.parentElement!.id;   
     }
+
+
+
+
 
 
 

@@ -1,0 +1,25 @@
+{
+	"general": {
+		"historia": "los tres lenguajes salen de 982138i4124", 
+		"división": "kanas y kanji", 
+		"kanas": "sobre los kanas hiragana y katakana"
+	},
+	"hiragana": {
+		"trazos": "sobre trazos", 
+		"lectura": "lecturaaaaaaa"
+	},
+	"katakana": {
+		"trazos": "sobre trazos", 
+		"lectura": "lecturaaaaaaa"
+	},
+	"kanji": {
+		"trazos": "sobre trazos", 
+		"lecturaskunyomi": "lecturaaaaaaa kun",
+		"lecturasonyomi": "lecturaaaaaaa on on"
+	},
+	"otros": {
+		"notas": "sobre notas"
+	}
+}
+
+

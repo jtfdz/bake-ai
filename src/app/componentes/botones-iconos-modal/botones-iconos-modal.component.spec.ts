@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabsteoriaComponent } from './tabsteoria.component';
+import { BotonesIconosModalComponent } from './botones-iconos-modal.component';
 
-describe('TabsteoriaComponent', () => {
-  let component: TabsteoriaComponent;
-  let fixture: ComponentFixture<TabsteoriaComponent>;
+describe('BotonesIconosModalComponent', () => {
+  let component: BotonesIconosModalComponent;
+  let fixture: ComponentFixture<BotonesIconosModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TabsteoriaComponent ]
+      declarations: [ BotonesIconosModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TabsteoriaComponent);
+    fixture = TestBed.createComponent(BotonesIconosModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

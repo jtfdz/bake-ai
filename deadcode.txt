@@ -151,7 +151,19 @@ function openTabTeoria(evt, tabNombre) {
 
 
 
-
+{
+  "usuario": {
+    "gusto": "animales",
+    "nombre": "jongin",
+    "iniciado": true
+  },
+  "aprender": {
+    "general": {
+      "historia": false,
+      "kanas": false
+    }
+  }
+}
 
 
 
