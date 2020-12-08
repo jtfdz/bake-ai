@@ -5,11 +5,11 @@
 	},
 	"config": {
 		"titulo": "personaliza tu aplicación: configuración", 
-		"color": "primary"
+		"color": "warning"
 	},
 	"stats": {
 		"titulo": "conoce tu rendimiento: estadísticas", 
-		"color": "warning"		
+		"color": "primary"		
 	}
 }
 

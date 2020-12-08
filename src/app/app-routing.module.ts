@@ -13,6 +13,9 @@ import { BaseComponent } from './paginas/modulos/base/base.component';
 
 import { IniciosComponent } from './paginas/principales/inicios/inicios.component';
 import { TeoriaComponent } from './paginas/temas/teoria/teoria.component';
+import { HiraganaComponent } from './paginas/temas/hiragana/hiragana.component';
+import { KatakanaComponent } from './paginas/temas/katakana/katakana.component';
+import { KanjiComponent } from './paginas/temas/kanji/kanji.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -20,6 +23,9 @@ const routes: Routes = [
   { path: 'primer-inicio', component: PrimerInicioComponent },
   { path: 'inicio-general', component: InicioGeneralComponent },
   { path: 'tema-teoria', component: TeoriaComponent },
+  { path: 'tema-hiragana', component: HiraganaComponent },
+  { path: 'tema-katakana', component: KatakanaComponent },
+  { path: 'tema-kanji', component: KanjiComponent },
   ];
 
 @NgModule({

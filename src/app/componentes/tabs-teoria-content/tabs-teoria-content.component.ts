@@ -13,19 +13,22 @@ export class TabsTeoriaContentComponent implements OnInit {
 
   @Input() Contenido: string[] = [];
   @Input() seccionContenido: String = '';
+  @Input() colorContenido: String = '';
 
   constructor(private teoriaService: TeoriaService) { }
 
   ngOnInit(): void {
   }
+  
 
-	openContent(seccionContenido: string, indexNumber: number, tituloContenido: string){
+	openContent(seccionContenido: string, indexNumber: number, tituloContenido: string, colorSeccion: string){
      let tablinks: HTMLElement[] = getEbQSA('.panel-block');
      for (var i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" is-active has-background-light", "");
      }
      getEbI(seccionContenido+'-'+indexNumber).className += " is-active has-background-light";
 	   this.teoriaService.setTeoria(seccionContenido, tituloContenido);
+     getEbI('cardHeader').className = "card-header has-background-"+colorSeccion;
   }
 
 

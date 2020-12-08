@@ -27,7 +27,9 @@
 
               <div class="title is-2 is-spaced"><span class="has-text-warning">bake</span><span class="has-text-black">__</span><span class="has-text-link">ai</span></div>
           
-              <div class="subtitle is-6">¡te doy la bienvenida, <strong>{{nombreUsuario}}</strong>!</div>
+              <div *ngIf="esInicio" class="subtitle is-6">¡te doy la bienvenida, <strong>{{nombreUsuario}}</strong>!</div>
+
+              <div *ngIf="!esInicio" class="subtitle is-6">¡vamos que tú puedes, <strong>{{nombreUsuario}}</strong>!</div>
 
             </section>
           </div>

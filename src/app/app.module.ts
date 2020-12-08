@@ -14,6 +14,9 @@ import { ModulosModule } from './modules/modulos/modulos.module';
 import { ComponentesModule } from './modules/componentes/componentes.module';
 import { TeoriaComponent } from './paginas/temas/teoria/teoria.component';
 import { TabsTeoriaContentComponent } from './componentes/tabs-teoria-content/tabs-teoria-content.component';
+import { HiraganaComponent } from './paginas/temas/hiragana/hiragana.component';
+import { KatakanaComponent } from './paginas/temas/katakana/katakana.component';
+import { KanjiComponent } from './paginas/temas/kanji/kanji.component';
 
 
 @NgModule({
@@ -21,6 +24,9 @@ import { TabsTeoriaContentComponent } from './componentes/tabs-teoria-content/ta
     AppComponent,
     TeoriaComponent,
     TabsTeoriaContentComponent,
+    HiraganaComponent,
+    KatakanaComponent,
+    KanjiComponent,
   ],
   imports: [
     BrowserModule,

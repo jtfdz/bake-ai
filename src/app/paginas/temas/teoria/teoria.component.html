@@ -1,9 +1,9 @@
-<section class="hero is-fullheight has-text-black">   
+<section class="hero is-fullheight has-background-black has-text-black">   
   <app-header-principal [esInicio]="false"></app-header-principal>  
   <div class="hero-body">
 
     <!--panel-->
-    <article class="panel is-primary" id="panelitself">
+    <article class="panel has-background-white is-primary" id="panelitself">
       <p class="panel-heading has-text-white is-size-4">teoría</p>
       <!--tabs del panel-->
       <p class="panel-tabs">
@@ -25,23 +25,23 @@
       <!--menú del panel-->
       <div class="container section">
           <div id="id_tab_1" class="content-tab">
-            <app-tabs-teoria-content [seccionContenido]="'general'" [Contenido]="['historia', 'kanas']"></app-tabs-teoria-content>
+            <app-tabs-teoria-content [colorContenido]="'primary'" [seccionContenido]="'general'" [Contenido]="['historia', 'kanas']"></app-tabs-teoria-content>
           </div>
 
           <div id="id_tab_2" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [seccionContenido]="'hiragana'" [Contenido]="['trazos', 'lectura']"></app-tabs-teoria-content>
+            <app-tabs-teoria-content [colorContenido]="'warning'" [seccionContenido]="'hiragana'" [Contenido]="['trazos', 'lectura']"></app-tabs-teoria-content>
           </div>
 
           <div id="id_tab_3" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [seccionContenido]="'katakana'" [Contenido]="['trazos', 'lectura']"></app-tabs-teoria-content>
+            <app-tabs-teoria-content [colorContenido]="'success'" [seccionContenido]="'katakana'" [Contenido]="['trazos', 'lectura']"></app-tabs-teoria-content>
           </div>
 
           <div id="id_tab_4" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [seccionContenido]="'kanji'" [Contenido]="['trazos', 'lecturas kunyomi', 'lecturas onyomi']"></app-tabs-teoria-content>
+            <app-tabs-teoria-content [colorContenido]="'info'" [seccionContenido]="'kanji'" [Contenido]="['trazos', 'lecturas kunyomi', 'lecturas onyomi']"></app-tabs-teoria-content>
           </div>
 
           <div id="id_tab_5" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [seccionContenido]="'otros'" [Contenido]="['notas']"></app-tabs-teoria-content>
+            <app-tabs-teoria-content [colorContenido]="'link'" [seccionContenido]="'otros'" [Contenido]="['notas']"></app-tabs-teoria-content>
           </div>  
       </div>
       <!--fin del menú del panel-->
@@ -49,15 +49,16 @@
 <!--fin del panel-->
 
 
+
 <!--card-->
     <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">{{tituloTema}}</p>
-        <a href="#" class="card-header-icon" aria-label="more options">
+      <header class="card-header has-background-primary" id="cardHeader">
+        <div class="card-header-icon" aria-label="more options">
           <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            <img src="{{imagenes}}/text.png">
           </span>
-        </a>
+        </div>
+        <p class="card-header-title">{{tituloTema}}</p>
       </header>
       <div class="card-content">
         <div class="content">

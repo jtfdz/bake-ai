@@ -1,0 +1,14 @@
+
+  <a [routerLink]="[urlTema]">
+    <div class="box">
+
+  <div class="container is-flex has-stuff-centered">
+    <figure class="image is-48x48">
+      <img src="{{imagenes}}/gatovolteado.png">
+    </figure>
+  </div>
+    <p class="title">{{nombreTema}}</p>
+    <p [ngClass]="'subtitle is-5 has-text-weight-bold has-text-'+colorTema">3%</p>
+    <progress [ngClass]="'progress is-'+colorTema" value="3" max="100"></progress>
+  </div>
+</a>

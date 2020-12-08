@@ -36,7 +36,7 @@ export class TabsTeoriaComponent implements OnInit {
 
        (getEbI(tabName) as HTMLElement).style.display = "block";
        let panelitself: HTMLElement = getEbI('panelitself');
-       panelitself.className = 'panel is-'+evento.currentTarget.parentElement!.id;
+       panelitself.className = 'panel has-background-white is-'+evento.currentTarget.parentElement!.id;
        evento.currentTarget.className = evento.currentTarget?.className.replace(" has-text-"+evento.currentTarget.parentElement!.id, " has-text-black");
        evento.currentTarget.parentElement.parentElement.className += " has-background-"+evento.currentTarget.parentElement!.id;   
     }

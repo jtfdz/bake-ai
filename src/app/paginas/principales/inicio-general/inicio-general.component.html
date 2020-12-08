@@ -9,13 +9,13 @@
    
   <div class="column is-8 is-offset-2 has-text-centered">
   
-    <a data-tooltip="Tooltip Text" [routerLink]="['/tema-teoria']">
+    <a [routerLink]="['/tema-teoria']">
       <div class="box">    
 
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-           <img src="{{imagenes}}/teoría.png">
+           <img src="{{imagenes}}/teoría2.png">
          </figure>
         </div>
         <div class="media-content">
@@ -24,74 +24,30 @@
           </div>
         </div>
         <div class="media-right">
-
-          <figure class="image is-64x64">
-            <img src="{{imagenes}}/teoría.png">
-          </figure>
-
-
+        <figure class="image is-64x64">
+          <img src="{{imagenes}}/teoría3.png">
+        </figure>
         </div>
       </article>
 
-
-
-
-
-
-
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
     </a> 
+
+    
     <br>     
 
 
-
-
-
-    <!-- mejorar -->
     <div class="columns">
       <div class="column is-4">
-        <a><div class="box">
-          <p class="title">hiragana</p>
-          <figure class="image is-48x48">
-          <img src="{{imagenes}}/gatovolteado.png">
-          </figure>
-          <p class="subtitle is-5 has-text-link has-text-weight-bold">3%</p>
-          <progress class="progress is-link" value="3" max="100"></progress>
-        </div></a>
+        <app-temas-inferiores-inicio [colorTema]="'link'" [urlTema]="'/tema-hiragana'" [nombreTema]="'hiragana'"></app-temas-inferiores-inicio>
       </div>
+
       <div class="column is-4">
-        <a><div class="box">
-          <p class="title">katakana</p>
-          <figure class="image is-48x48">
-          <img src="{{imagenes}}/gatovolteado.png">
-          </figure>
-          <p class="subtitle is-5 has-text-warning has-text-weight-bold">3%</p>
-          <progress class="progress is-warning" value="3" max="100">3%</progress>
-        </div></a>                      
+        <app-temas-inferiores-inicio [colorTema]="'warning'" [urlTema]="'/tema-katakana'" [nombreTema]="'katakana'"></app-temas-inferiores-inicio>
       </div>
+
       <div class="column is-4">
-        <a><div class="box">
-          <p class="title">kanji</p>
-          <figure class="image is-48x48">
-          <img src="{{imagenes}}/gatovolteado.png">
-          </figure>
-          <p class="subtitle is-5 has-text-danger has-text-weight-bold">3%</p>
-          <progress class="progress is-danger" value="3" max="100">3%</progress>
-        </div></a>  
+        <app-temas-inferiores-inicio [colorTema]="'danger'" [urlTema]="'/tema-kanji'" [nombreTema]="'kanji'"></app-temas-inferiores-inicio>
       </div>
     </div>
   </div>

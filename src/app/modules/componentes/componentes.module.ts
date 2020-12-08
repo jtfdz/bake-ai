@@ -6,6 +6,7 @@ import { HeaderPrincipalComponent } from 'src/app/componentes/header-principal/h
 import { BotonesIconosComponent } from 'src/app/componentes/botones-iconos/botones-iconos.component';
 import { TabsTeoriaComponent } from 'src/app/componentes/tabs-teoria/tabs-teoria.component';
 import { BotonesIconosModalComponent } from 'src/app/componentes/botones-iconos-modal/botones-iconos-modal.component';
+import { TemasInferioresInicioComponent } from 'src/app/componentes/temas-inferiores-inicio/temas-inferiores-inicio.component';
 
 
 
@@ -15,6 +16,7 @@ import { BotonesIconosModalComponent } from 'src/app/componentes/botones-iconos-
     BotonesIconosComponent,
     TabsTeoriaComponent,
     BotonesIconosModalComponent,
+    TemasInferioresInicioComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { BotonesIconosModalComponent } from 'src/app/componentes/botones-iconos-
     BotonesIconosComponent,
     TabsTeoriaComponent,
     BotonesIconosModalComponent,
+    TemasInferioresInicioComponent,    
   ]
 })
 export class ComponentesModule { }
