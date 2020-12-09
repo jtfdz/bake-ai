@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import teoria from 'src/assets/json/teoria.json';
+import hiragana from 'src/assets/json/hiragana.json';
 declare const getFromStore: any;
 declare const setInStore: any;
 
@@ -60,5 +61,21 @@ export class TeoriaService {
   getTemaAprendido(): Observable<boolean> {
     return this.temaAprendido.asObservable();
   }
+
+
+
+   hiraganaObj: IndexObj = hiragana;
+
+
+
+  getHiragana(): {} {
+    return this.hiraganaObj;
+  }
+
+
+
+
+
+
 
 }

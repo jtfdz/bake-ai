@@ -1,10 +1,215 @@
 <!-- mejorar el cargado de la fotos -->
 
+<section class="hero is-fullheight has-text-black has-background-light">   
+  <app-header-principal [esInicio]="false"></app-header-principal>
 
-<section class="hero is-fullheight has-text-black has-background-black">   
-<app-header-principal [esInicio]="false"></app-header-principal>
+<div class="hero-body has-stuff-centered">
+  <section class="section">
 
-<div class="hero-body">
+
+  <div class="columns is-5">
+   <div class="column is-3">
+     <div class="box has-text-centered has-text-weight-medium is-size-5">katakana <br> カタカナ</div><button class="button is-fullwidth is-black">instrucciones</button><br>
+
+
+        <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button has-background-white has-text-black is-black is-outlined" aria-haspopup="true" aria-controls="dropdown-menu7">
+              <span>tabla {{tablaActivada}}</span>
+              <span class="icon is-small">
+                ↓
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu7" role="menu">
+            <div class="dropdown-content">
+              <button (click)="activarTabla('pura')" class="button is-link is-outlined dropdown-item">
+                  tabla pura
+              </button>
+              <hr class="dropdown-divider">
+              <button (click)="activarTabla('impura')"  class="button is-info is-outlined dropdown-item">
+                  tabla impura
+              </button >
+              <hr class="dropdown-divider">
+              <button (click)="activarTabla('compuesta')"  class="button is-warning is-outlined dropdown-item">
+                  tabla compuesta
+              </button>
+            </div>   
+        </div>
+      </div>
+
+
+   </div>
+
+
+  <div class="column is-offset-1">
+    <div class="box has-text-centered">
+      <div [ngSwitch]="tablaActivada">
+
+
+
+
+        <ng-container *ngSwitchCase="'pura'">
+
+          <p class="title is-5 has-background-light">tabla pura</p>
+          <table class="table">
+
+            <thead>
+              <tr>
+                <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                <th class="has-text-centered">a</th>
+                <th class="has-text-centered">i</th>
+                <th class="has-text-centered">u</th>
+                <th class="has-text-centered">e</th>
+                <th class="has-text-centered">o</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                <th class="has-text-centered">a</th>
+                <th class="has-text-centered">i</th>
+                <th class="has-text-centered">u</th>
+                <th class="has-text-centered">e</th>
+                <th class="has-text-centered">o</th>
+              </tr>
+            </tfoot>
+
+
+
+            <tbody>
+               <tr *ngFor="let item of katakana">
+                  <th class="has-text-centered">{{item.letra}}</th>
+                  <th><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.a }}</button></th>
+                  <td><button *ngIf="item.i !== ''" class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.i }}</button></td>
+                  <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.u }}</button></td>
+                  <td><button *ngIf="item.e !== ''" class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.e}}</button></td>
+                  <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.o }}</button></td>
+               </tr>
+               <tr>
+                  <th class="has-text-centered">*</th>
+                  <th><button class="button has-background-light is-outlined is-dark-grey is-rounded">ワ</button></th>
+                  <td></td>
+                  <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">ン</button></td>
+                  <td></td>
+                  <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">ヲ</button></td>
+               </tr>
+            
+            </tbody>
+          </table>
+        </ng-container>
+
+
+        <ng-container *ngSwitchCase="'impura'">
+
+          <p class="title is-5 has-background-light">tabla impura</p>
+            <table class="table">
+
+              <thead>
+                <tr>
+                  <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                  <th class="has-text-centered">a</th>
+                  <th class="has-text-centered">i</th>
+                  <th class="has-text-centered">u</th>
+                  <th class="has-text-centered">e</th>
+                  <th class="has-text-centered">o</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                  <th class="has-text-centered">a</th>
+                  <th class="has-text-centered">i</th>
+                  <th class="has-text-centered">u</th>
+                  <th class="has-text-centered">e</th>
+                  <th class="has-text-centered">o</th>
+                </tr>
+              </tfoot>
+
+
+
+              <tbody>
+
+                <tr *ngFor="let item of katakanaImpura">
+                    <th class="has-text-centered">{{item.letra}}</th>
+                    <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.a }}</button></td>
+                    <td><button *ngIf="item.i !== ''" class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.i }}</button></td>
+                    <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.u }}</button></td>
+                    <td><button *ngIf="item.e !== ''" class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.e}}</button></td>
+                    <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.o }}</button></td>
+                 </tr>
+              
+              </tbody>
+          </table>
+        </ng-container>
+
+
+        <ng-container *ngSwitchCase="'compuesta'">
+
+          <p class="title is-5 has-background-light">tabla compuesta</p>
+            <table class="table">
+
+              <thead>
+                <tr>
+                  <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                  <th class="has-text-centered">a</th>
+                  <th></th>
+                  <th class="has-text-centered">u</th>
+                  <th></th>
+                  <th class="has-text-centered">o</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                  <th class="has-text-centered">a</th>
+                  <th></th>
+                  <th class="has-text-centered">u</th>
+                  <th></th>
+                  <th class="has-text-centered">o</th>
+                </tr>
+              </tfoot>
+
+
+
+              <tbody>
+
+                <tr *ngFor="let item of katakanaCompuesta">
+                    <th class="has-text-centered">{{item.letra}}</th>
+                    <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.a }}</button></td>
+                    <th></th>
+                    <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.u }}</button></td>
+                    <th></th>
+                    <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.o }}</button></td>
+                 </tr>
+              
+              </tbody>
+          </table>
+        </ng-container>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<!--   <div class="column">
+   
+
+  </div> -->
 </div>
 
+
+</section>
+
+</div>
 </section>

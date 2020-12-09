@@ -169,6 +169,35 @@ function openTabTeoria(evt, tabNombre) {
 
 
 
+// // interface IndexNum {
+// //   [index: number]: string;
+// // }
+
+
+  //vocales: IndexNum[] = ['a','i','u','e','o']
+
+
+
+  // hiragana: IndexObj[] = [
+  //     k : { a: "か", i: "き", u: "く", e: "け", o: "こ"},
+  //     s : { a: "さ", i: "し", u: "す", e: "せ", o: "そ"},
+  //     t : { a: "た", i: "ち", u: "つ", e: "て", o: "と"},
+  //     n : { a: "な", i: "に", u: "ぬ", e: "ね", o: "の"},
+  //     h : { a: "は", i: "ひ", u: "ふ", e: "へ", o: "ほ"},
+  //     m : { a: "ま", i: "み", u: "む", e: "め", o: "も"},
+  //     y : { a: "や", i: "", u: "ゆ", e: "", o: "よ"},     
+  //     r : { a: "ら", i: "り", u: "る", e: "れ", o: "ろ"},    
+  //     //falta especiales
+  // ];
+
+    // for(var key in this.hiragana) {
+  //     this.allHiragana[key] = this.hiragana[key];
+  // }
+
+
+
+
+
 
 
 
