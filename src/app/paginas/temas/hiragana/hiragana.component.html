@@ -1,57 +1,94 @@
-<!-- mejorar el cargado de la fotos -->
+<!-- mejorar el cargado de la fotos COMPONETIZAR -->
 
 <section class="hero is-fullheight has-text-black has-background-light">   
   <app-header-principal [esInicio]="false"></app-header-principal>
 
-<div class="hero-body has-stuff-centered">
+<div class="hero-body">
   <section class="section">
 
 
-  <div class="columns is-5">
-	 <div class="column is-3">
-	   <div class="box has-text-centered has-text-weight-medium is-size-5">hiragana <br> ひらがな</div><button class="button is-fullwidth is-black">instrucciones</button><br>
+  <div class="columns">
 
 
-        <div class="dropdown is-hoverable">
-          <div class="dropdown-trigger">
-            <button class="button has-background-white has-text-black is-black is-outlined" aria-haspopup="true" aria-controls="dropdown-menu7">
-              <span>tabla {{tablaActivada}}</span>
-              <span class="icon is-small">
-                ↓
-              </span>
-            </button>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu7" role="menu">
-            <div class="dropdown-content">
-              <button (click)="activarTabla('pura')" class="button is-link is-outlined dropdown-item">
-                  tabla pura
-              </button>
-              <hr class="dropdown-divider">
-              <button (click)="activarTabla('impura')"  class="button is-info is-outlined dropdown-item">
-                  tabla impura
-              </button >
-              <hr class="dropdown-divider">
-              <button (click)="activarTabla('compuesta')"  class="button is-warning is-outlined dropdown-item">
-                  tabla compuesta
-              </button>
-            </div>   
+
+
+	 <div class="column is-4 is-offset-1">
+	   <div class="box has-text-centered has-text-weight-medium is-size-4">hiragana <br> ひらがな</div>
+
+      <div class="columns is-gapless">
+
+        <div class="column">
+          <a>
+            <app-botones-iconos-temas [tituloBoton]="'instrucciones'" [imagenBoton]="'/questionmark.png'" [colorBoton]="'black'"></app-botones-iconos-temas>
+          </a>
         </div>
-      </div>
 
+        <div class="column">
+          <a [routerLink]="'/examinacion'">
+            <app-botones-iconos-temas [tituloBoton]="'¡examinación!'" [imagenBoton]="'/test.png'" [colorBoton]="'link'"></app-botones-iconos-temas>
+          </a>
+        </div>
+        
+      </div>
 
    </div>
 
 
-  <div class="column is-offset-1">
+
+
+
+  <div class="column">
     <div class="box has-text-centered">
-      <div [ngSwitch]="tablaActivada">
+
+       <div class="block is-fullwidth">
+
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button has-background-white is-black is-outlined" aria-haspopup="true" aria-controls="dropdown-menu7">
+                  <span><p class="title has-text-black has-text-weight-medium is-4">tabla {{tablaActivada}}</p></span>
+                  <span class="icon">
+                      <figure class="image is-16x16">
+                      <img [src]="imagenes+'/down-arrow.png'">
+                      </figure>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu7" role="menu">
+                <div class="dropdown-content">
+                  <button (click)="activarTabla('pura')" class="dropdown-item button is-link is-outlined">
+                      tabla pura
+                  </button>
+                  <hr class="dropdown-divider">
+                  <button (click)="activarTabla('impura')"  class="button is-info is-outlined dropdown-item">
+                      tabla impura
+                  </button >
+                  <hr class="dropdown-divider">
+                  <button (click)="activarTabla('compuesta')"  class="button is-warning is-outlined dropdown-item">
+                      tabla compuesta
+                  </button>
+                </div>   
+            </div>
+          </div>
 
 
+
+     
+        </div>
+
+
+
+
+
+
+
+
+
+
+      <ng-container [ngSwitch]="tablaActivada">
 
 
         <ng-container *ngSwitchCase="'pura'">
 
-          <p class="title is-5 has-background-light">tabla pura</p>
           <table class="table">
 
             <thead>
@@ -102,7 +139,7 @@
 
         <ng-container *ngSwitchCase="'impura'">
 
-          <p class="title is-5 has-background-light">tabla impura</p>
+
             <table class="table">
 
               <thead>
@@ -146,26 +183,32 @@
 
         <ng-container *ngSwitchCase="'compuesta'">
 
-          <p class="title is-5 has-background-light">tabla compuesta</p>
+
             <table class="table">
 
               <thead>
                 <tr>
                   <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                  <th class="has-text-centered"></th>
                   <th class="has-text-centered">a</th>
-                  <th></th>
+                  <th class="has-text-centered"></th>
+                  <th class="has-text-centered"></th>
                   <th class="has-text-centered">u</th>
-                  <th></th>
+                  <th class="has-text-centered"></th>
+                  <th class="has-text-centered"></th>
                   <th class="has-text-centered">o</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
                   <th class="has-text-centered">c<span class="has-text-link">/</span>v</th>
+                  <th class="has-text-centered"></th>
                   <th class="has-text-centered">a</th>
-                  <th></th>
+                  <th class="has-text-centered"></th>
+                  <th class="has-text-centered"></th>
                   <th class="has-text-centered">u</th>
-                  <th></th>
+                  <th class="has-text-centered"></th>
+                  <th class="has-text-centered"></th>
                   <th class="has-text-centered">o</th>
                 </tr>
               </tfoot>
@@ -176,10 +219,13 @@
 
                 <tr *ngFor="let item of hiraganaCompuesta">
                     <th class="has-text-centered">{{item.letra}}</th>
+                    <td></td>
                     <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.a }}</button></td>
-                    <th></th>
+                    <td></td>
+                    <td></td>
                     <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.u }}</button></td>
-                    <th></th>
+                    <td></td>
+                    <td></td>
                     <td><button class="button has-background-light is-outlined is-dark-grey is-rounded">{{ item.o }}</button></td>
                  </tr>
               
@@ -188,7 +234,7 @@
         </ng-container>
 
 
-      </div>
+      </ng-container>
     </div>
   </div>
 
@@ -202,10 +248,6 @@
 
 
 
-<!--   <div class="column">
-   
-
-  </div> -->
 </div>
 
 

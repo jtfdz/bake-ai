@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { PrimerInicioComponent } from './paginas/principales/primer-inicio/primer-inicio.component';
 import { InicioGeneralComponent } from './paginas/principales/inicio-general/inicio-general.component';
 import { BaseComponent } from './paginas/modulos/base/base.component';
-// import { OrigenComponent } from '../paginas/modulos/origen/origen.component';
+// import { OrigenComponent } from './paginas/modulos/origen/origen.component';
 // import { LunaRwComponent } from '../paginas/modulos/luna-rw/luna-rw.component';
 // import { SolAudioComponent } from '../paginas/modulos/sol-audio/sol-audio.component';
 
@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'tema-hiragana', component: HiraganaComponent },
   { path: 'tema-katakana', component: KatakanaComponent },
   { path: 'tema-kanji', component: KanjiComponent },
+  { path: 'examinacion', component: BaseComponent },
   ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-<!-- mejorar el cargado de la fotos -->
+<!-- mejorar el cargado de la fotos COMPONETIZAR -->
 
 <section class="hero is-fullheight has-text-black has-background-light">   
   <app-header-principal [esInicio]="false"></app-header-principal>
@@ -10,20 +10,28 @@
   <div class="columns is-5">
    <div class="column is-3">
      <div class="box has-text-centered has-text-weight-medium is-size-5">katakana <br> カタカナ</div><button class="button is-fullwidth is-black">instrucciones</button><br>
+   </div>
 
+
+  <div class="column is-offset-1">
+    <div class="box has-text-centered">
+
+
+
+    <div class="block">
 
         <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
             <button class="button has-background-white has-text-black is-black is-outlined" aria-haspopup="true" aria-controls="dropdown-menu7">
-              <span>tabla {{tablaActivada}}</span>
-              <span class="icon is-small">
+              <span><p class="title has-text-weight-medium is-3">tabla {{tablaActivada}}</p></span>
+              <span class="icon is-large">
                 ↓
               </span>
             </button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu7" role="menu">
             <div class="dropdown-content">
-              <button (click)="activarTabla('pura')" class="button is-link is-outlined dropdown-item">
+              <button (click)="activarTabla('pura')" class="dropdown-item button is-link is-outlined">
                   tabla pura
               </button>
               <hr class="dropdown-divider">
@@ -39,19 +47,24 @@
       </div>
 
 
-   </div>
+
+ 
+    </div>
 
 
-  <div class="column is-offset-1">
-    <div class="box has-text-centered">
+
+
+
+
+
+
+
+
       <div [ngSwitch]="tablaActivada">
-
-
-
 
         <ng-container *ngSwitchCase="'pura'">
 
-          <p class="title is-5 has-background-light">tabla pura</p>
+          
           <table class="table">
 
             <thead>
@@ -102,7 +115,7 @@
 
         <ng-container *ngSwitchCase="'impura'">
 
-          <p class="title is-5 has-background-light">tabla impura</p>
+          
             <table class="table">
 
               <thead>
@@ -146,7 +159,7 @@
 
         <ng-container *ngSwitchCase="'compuesta'">
 
-          <p class="title is-5 has-background-light">tabla compuesta</p>
+          
             <table class="table">
 
               <thead>

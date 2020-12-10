@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeoriaService } from 'src/app/servicios/temas/teoria.service';
+import urls from 'src/assets/json/urls.json';
 
 type tipoHiragana = {
     letra: string;
@@ -25,6 +26,7 @@ type tipoCompuesta = {
 export class HiraganaComponent implements OnInit {
 
   tablaActivada: string = 'pura';
+  imagenes: String = urls.iniciogeneral;
 
   constructor(private teoriaService: TeoriaService) { }
   

@@ -7,6 +7,7 @@ import { BaseComponent } from 'src/app/paginas/modulos/base/base.component';
 import { OrigenComponent } from 'src/app/paginas/modulos/origen/origen.component';
 import { LunaRwComponent } from 'src/app/paginas/modulos/luna-rw/luna-rw.component';
 import { SolAudioComponent } from 'src/app/paginas/modulos/sol-audio/sol-audio.component';
+import { ComponentesModule } from 'src/app/modules/componentes/componentes.module';
 
 @NgModule({
   declarations: [    
@@ -16,6 +17,7 @@ import { SolAudioComponent } from 'src/app/paginas/modulos/sol-audio/sol-audio.c
     OrigenComponent,
     ],
   imports: [
+    ComponentesModule,
     BrowserModule,
     CommonModule,
     BrowserAnimationsModule,
