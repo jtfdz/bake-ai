@@ -5,5 +5,7 @@
   "forthslide": "../../../assets/media/forth-slide",
   "iniciogeneral": "../../../assets/media/inicio-general",
   "general": "../../../assets/media",
-  "teoria": "../../../assets/media/teoría"
+  "teoria": "../../../assets/media/teoría",  
+  "trazosHiragana": "../../../assets/media/trazosHiragana",
+  "audio": "../../../assets/audio"
 }

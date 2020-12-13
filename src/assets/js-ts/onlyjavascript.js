@@ -106,5 +106,26 @@ function openModal(value){
 		case 1: mdl.show(); break;
 		case 2: mdl.close(); break;
 	}
+}
+
+
+// let nombreKana = '';
+
+// function setModalCard(value){
+
+// }
+
+
+function openModalCard(value){
+	var mdl = new BulmaModal("#modalCard")
+	switch(value){
+		case 1: mdl.show(); break;
+		case 2: mdl.close(); break;
+	}
 	
+}
+
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
 }

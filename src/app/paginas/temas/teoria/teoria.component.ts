@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeoriaService } from 'src/app/servicios/temas/teoria.service';
+import { TemasService } from 'src/app/servicios/temas/temas.service';
 declare const openTabTeoria: any;
 declare const setInStore: any;
 import urls from 'src/assets/json/urls.json';
@@ -19,24 +19,24 @@ export class TeoriaComponent implements OnInit {
 
 
 
-  constructor(private teoriaService: TeoriaService) { }
+  constructor(private temasService: TemasService) { }
 
 
    ngOnInit(): void {
-  	this.teoriaService.getTituloTema().subscribe(
+  	this.temasService.getTituloTema().subscribe(
          tituloTema => this.tituloTema = tituloTema
       );
-  	this.teoriaService.getTemaContenido().subscribe(
+  	this.temasService.getTemaContenido().subscribe(
          temaContenido => this.temaContenido = temaContenido
       );
-    this.teoriaService.getTemaAprendido().subscribe(
+    this.temasService.getTemaAprendido().subscribe(
          temaAprendido => this.temaAprendido = temaAprendido
       );
    }
 
   setAprendido(aprendido: boolean){
     this.temaAprendido = !this.temaAprendido;
-    this.teoriaService.setAprendido(aprendido)
+    this.temasService.setAprendido(aprendido)
   }
 
 

@@ -1,13 +1,31 @@
-<!-- <div id="cuadro" [@routeAnimations]="prepareRoute(outlet)" class="container">
-  <router-outlet #outlet="outlet"></router-outlet>
-</div> -->
+<ng-container [ngSwitch]="moduloActivado">
 
-<!-- <a class="button" routerLink='/modulo-luna'>luna</a>
-<a class="button" routerLink='/modulo-sol'>sol</a
+	<app-sol-aw *ngSwitchCase="'sol'"></app-sol-aw>
+
+    <app-luna-rw *ngSwitchCase="'luna'">></app-luna-rw>
+
+	<app-fuego-aw *ngSwitchCase="'fuego'"></app-fuego-aw>
+
+    <app-agua-v *ngSwitchCase="'agua'"></app-agua-v>
+
+	<app-arbol-vr *ngSwitchCase="'arbol'"></app-arbol-vr>
+
+	<app-oro-ar *ngSwitchCase="'oro'"></app-oro-ar>
+
+	<app-tierra-v *ngSwitchCase="'tierra'"></app-tierra-v>
+
+  	<ng-container *ngSwitchDefault></ng-container>
+
+</ng-container> 
 
 
 
-    <app-sol-audio *ngIf='sol'></app-sol-audio--> 
 
 
-<app-luna-rw></app-luna-rw>
+
+
+
+
+
+
+

@@ -7,12 +7,12 @@
       <div class="columns">
 
 
-
+<!-- falta arbol, oro. tierra -->
 
 
         <div class="column is-8">
-          <section class="hero is-black has-text-centered">
-            <app-origen></app-origen>
+          <section class="hero is-black">
+            <app-origen [moduloActivado]="'oro'"></app-origen>
           </section>
         </div>
 
@@ -21,23 +21,47 @@
         <div class="column is-4">
 
           <nav class="panel">
-            <p class="panel-heading is-size-5">módulo</p>
+          <p class="panel-heading has-background-primary is-size-5">progreso</p>
           <div class="box">
-           <h1 class="title is-size-5">
-              luna 月: lectura y escritura
+
+
+            <div class="columns">
+            
+              <div class="column">
+                
+                <h1 class="subtitle is-size-6">
+                  <div class="has-text-weight-bold has-text-grey-darker">módulo:</div> luna 月
+                </h1>
+
+              </div>
+
+              <div class="column is-8">
+                
+                <h1 class="subtitle is-size-6">
+                  <div class="has-text-weight-bold has-text-grey-darker">tipo de aprendizaje:</div> lectura y escritura
+                </h1>
+
+              </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+           <h1 class="subtitle is-size-6">
+              <strong>aciertos:</strong> xxbxxbb
             </h1>
+            <button class="button has-background-primary">siguiente</button>
           </div>
           </nav>
 
 
-          <nav class="panel">
-            <p class="panel-heading is-size-5">progreso</p>
-          <div class="box">
-           <h1 class="title is-size-4">
-              1/10 etcétera
-            </h1>
-          </div>
-          </nav>
+
 
 
         </div>

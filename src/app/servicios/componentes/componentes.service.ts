@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import urls from 'src/assets/json/urls.json';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,14 @@ export class ComponentesService {
 	}
 
 	setColorCard(cambio: string) { this.colorCard.next(cambio); }
+
+	reproducirAudio(kana: string) { 
+	  let audio = new Audio();
+	  audio.src = urls.audio + '/' + kana + '.wav';
+	  audio.load();
+	  audio.play();		
+	}
+
+
 
 }

@@ -28,7 +28,7 @@
             <!--titulo--->
             <div class="level-item">
             <section class="section">
-              <div class="title is-3 is-spaced"><span class="has-text-warning">bake</span><span class="has-text-black">__</span><span class="has-text-link">ai</span></div>
+              <div class="title is-3 is-spaced"><span class="has-text-info">bake</span><span class="has-text-black">__</span><span class="has-text-warning">ai</span></div>
             </section>
             </div>
             <!--fin de titulo--->
@@ -43,14 +43,14 @@
       <!--column #2: status bar--->
       <div class="column is-6">
         <p class="has-text-weight-semibold has-text-info">60%</p>
-        <progress class="progress is-large is-info" value="60" max="100"></progress>
+        <progress class="progress is-large is-success" value="60" max="100"></progress>
       </div>
       <!--fin de column #2: status bar--->
 
 
       <!--column #3: boton salir--->
       <div class="column is-offset-1">
-         <a>
+         <a [routerLink]="'/inicio-general'">
           <div class="has-tooltip-bottom has-tooltip-black has-tooltip-arrow" [attr.data-tooltip]="'salir'">
               <figure class="image is-64x64">
               <img [src]="imagenes2+'/largate.png'">

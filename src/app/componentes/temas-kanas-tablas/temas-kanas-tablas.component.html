@@ -1,0 +1,169 @@
+<div class="block is-fullwidth">
+
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button has-background-white is-black is-outlined" aria-haspopup="true" aria-controls="dropdown-menu7">
+          <span><p class="title has-text-black has-text-weight-medium is-4">tabla {{tablaActivada}}</p></span>
+          <span class="icon">
+              <figure class="image is-16x16">
+              <img [src]="imagenes+'/down-arrow.png'">
+              </figure>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu7" role="menu">
+        <div class="dropdown-content">
+          <button (click)="activarTabla('pura')" class="dropdown-item button is-link is-outlined">
+              tabla pura
+          </button>
+          <hr class="dropdown-divider">
+          <button (click)="activarTabla('impura')"  class="button is-info is-outlined dropdown-item">
+              tabla impura
+          </button >
+          <hr class="dropdown-divider">
+          <button (click)="activarTabla('compuesta')"  class="button is-warning is-outlined dropdown-item">
+              tabla compuesta
+          </button>
+        </div>   
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<ng-container [ngSwitch]="tablaActivada">
+
+
+  <ng-container *ngSwitchCase="'pura'">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container>
+       </tr>
+      </thead>
+
+      <tfoot>
+        <tr>
+          <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container>
+       </tr>
+      </tfoot>
+
+
+      <tbody>
+         <tr *ngFor="let item of pura">
+            <td class="has-text-centered has-text-weight-medium">{{item.letra}}</td>
+            <td><app-temas-kanas-botones [letraKana]="item.a"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones *ngIf="item.i !== ''" [letraKana]="item.i"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [letraKana]="item.u"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones *ngIf="item.e !== ''" [letraKana]="item.e"></app-temas-kanas-botones></td>  
+            <td><app-temas-kanas-botones [letraKana]="item.o"></app-temas-kanas-botones></td>                        
+         </tr>
+         <tr *ngIf="tituloKana == 'hiragana'">
+            <th class="has-text-centered">+</th>
+            <td><app-temas-kanas-botones [letraKana]="'わ'"></app-temas-kanas-botones></td>
+            <td></td>
+            <td><app-temas-kanas-botones [letraKana]="'ん'"></app-temas-kanas-botones></td>
+            <td></td>
+            <td><app-temas-kanas-botones [letraKana]="'を'"></app-temas-kanas-botones></td>
+         </tr>
+
+         <tr *ngIf="tituloKana  == 'katakana'">
+            <td class="has-text-centered">+</td>
+            <td><app-temas-kanas-botones [letraKana]="'ワ'"></app-temas-kanas-botones></td>
+            <td></td>
+            <td><app-temas-kanas-botones [letraKana]="'ン'"></app-temas-kanas-botones></td>
+            <td></td>
+            <td><app-temas-kanas-botones [letraKana]="'ヲ'"></app-temas-kanas-botones></td>
+         </tr>
+      
+      </tbody>
+    </table>
+  </ng-container>
+
+
+  <ng-container *ngSwitchCase="'impura'">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container>
+       </tr>
+      </thead>
+
+      <tfoot>
+        <tr>
+          <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container>
+       </tr>
+      </tfoot>
+
+
+      <tbody>
+
+        <tr *ngFor="let item of impura">
+          <th class="has-text-centered has-text-weight-medium">{{item.letra}}</th>
+          <td><app-temas-kanas-botones [letraKana]="item.a"></app-temas-kanas-botones></td>
+          <td><app-temas-kanas-botones *ngIf="item.i !== ''" [letraKana]="item.i"></app-temas-kanas-botones></td>
+          <td><app-temas-kanas-botones [letraKana]="item.u"></app-temas-kanas-botones></td>
+          <td><app-temas-kanas-botones *ngIf="item.e !== ''" [letraKana]="item.e"></app-temas-kanas-botones></td>  
+          <td><app-temas-kanas-botones [letraKana]="item.o"></app-temas-kanas-botones></td>
+        </tr>
+    
+      </tbody>
+    </table>
+  </ng-container>
+
+
+  <ng-container *ngSwitchCase="'compuesta'">
+
+    <table class="table">
+
+    <thead>
+      <tr>
+        <ng-container *ngFor="let letras of HeaderFooterCompuesta">
+          <th class="has-text-centered">{{letras}}</th>
+        </ng-container>
+     </tr>
+    </thead>
+
+    <tfoot>
+      <tr>
+        <ng-container *ngFor="let letras of HeaderFooterCompuesta">
+          <th class="has-text-centered">{{letras}}</th>
+        </ng-container>
+     </tr>
+    </tfoot>
+
+    <tbody>
+
+      <tr *ngFor="let item of compuesta">
+        <td class="has-text-centered has-text-weight-medium">{{item.letra}}</td>
+        <td></td>
+        <td><app-temas-kanas-botones [letraKana]="item.a"></app-temas-kanas-botones></td>
+        <td></td>
+        <td></td>
+        <td><app-temas-kanas-botones [letraKana]="item.u"></app-temas-kanas-botones></td>
+        <td></td>
+        <td></td>
+        <td><app-temas-kanas-botones [letraKana]="item.o"></app-temas-kanas-botones> 
+      </tr>
+    
+    </tbody>
+
+    </table>
+
+  </ng-container>
+
+
+</ng-container>
+   

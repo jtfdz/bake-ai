@@ -8,5 +8,5 @@ import { slider, fader } from 'src/assets/js-ts/route-animation';
   animations: [ slider ]
 })
 export class AppComponent {
-  title = 'bakeai';
+  title = 'bake__ai';
 }

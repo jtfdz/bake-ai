@@ -9,24 +9,14 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { IniciosModule } from './modules/principales/inicios.module';
+import { IniciosModule } from './modules/inicios/inicios.module';
 import { ModulosModule } from './modules/modulos/modulos.module';
+import { TemasModule } from './modules/temas/temas.module';
 import { ComponentesModule } from './modules/componentes/componentes.module';
-import { TeoriaComponent } from './paginas/temas/teoria/teoria.component';
-import { TabsTeoriaContentComponent } from './componentes/tabs-teoria-content/tabs-teoria-content.component';
-import { HiraganaComponent } from './paginas/temas/hiragana/hiragana.component';
-import { KatakanaComponent } from './paginas/temas/katakana/katakana.component';
-import { KanjiComponent } from './paginas/temas/kanji/kanji.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    TeoriaComponent,
-    TabsTeoriaContentComponent,
-    HiraganaComponent,
-    KatakanaComponent,
-    KanjiComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +27,7 @@ import { KanjiComponent } from './paginas/temas/kanji/kanji.component';
     ReactiveFormsModule,
     IniciosModule,
     ModulosModule,
+    TemasModule,
     ComponentesModule,
     AppRoutingModule,
   ],
