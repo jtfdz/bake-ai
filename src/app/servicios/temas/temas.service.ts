@@ -7,6 +7,7 @@ import hiraganaAlfabeto from 'src/assets/json/hiraganaAlfabeto.json';
 declare const getFromStore: any;
 declare const setInStore: any;
 declare const getKeyByValue: any;
+declare const removeObjectProperty: any;
 
 interface IndexObj {
   [index: string]: {};
@@ -63,12 +64,11 @@ export class TemasService {
   	this.teoriaStr = this.teoriaObj[seccionContenido];
 
   	this.temaContenido.next(this.teoriaStr[tituloContenido.replace(/ /g,'')]);
-    this.temaAprendido.next(getFromStore('aprender.'+seccionContenido+'.'+tituloContenido))
+    this.temaAprendido.next(getFromStore('teoria.'+seccionContenido+'.'+tituloContenido))
   }
 
   setAprendido(contenidoBoolean: boolean): void{
-    console.log('aprender.'+this.tituloSeccion+'.'+this.contenidoTitulo)
-    setInStore('aprender.'+this.tituloSeccion+'.'+this.contenidoTitulo, contenidoBoolean)
+    setInStore('teoria.'+this.tituloSeccion+'.'+this.contenidoTitulo, contenidoBoolean)
   }
 
 
@@ -109,17 +109,17 @@ export class TemasService {
   ];
 
   hiraganaCompuesta:  tipoCompuesta[] = [
-      { letra: 'k', a: "きゃ", u: "きゅ", o: "きょ"},
-      { letra: 's', a: "しゃ", u: "しゅ", o: "しょ"},
+      { letra: 'ky', a: "きゃ", u: "きゅ", o: "きょ"},
+      { letra: 'sh', a: "しゃ", u: "しゅ", o: "しょ"},
       { letra: 'ch', a: "ちゃ", u: "ちゅ", o: "ちょ"},
-      { letra: 'n', a: "にゃ", u: "にゅ", o: "にょ"},
-      { letra: 'h', a: "ひゃ", u: "ひゅ", o: "ひょ"}, 
-      { letra: 'm', a: "みゃ", u: "みゅ", o: "みょ"}, 
-      { letra: 'r', a: "りゃ", u: "りゅ", o: "りょ"}, 
-      { letra: 'g', a: "ぎゃ", u: "ぎゅ", o: "ぎょ"}, 
+      { letra: 'ny', a: "にゃ", u: "にゅ", o: "にょ"},
+      { letra: 'hy', a: "ひゃ", u: "ひゅ", o: "ひょ"}, 
+      { letra: 'my', a: "みゃ", u: "みゅ", o: "みょ"}, 
+      { letra: 'ry', a: "りゃ", u: "りゅ", o: "りょ"}, 
+      { letra: 'gy', a: "ぎゃ", u: "ぎゅ", o: "ぎょ"}, 
       { letra: 'j', a: "じゃ", u: "じゅ", o: "じょ"},  
-      { letra: 'b', a: "びゃ", u: "びゅ", o: "びょ"}, 
-      { letra: 'p', a: "ぴゃ", u: "ぴゅ", o: "ぴょ"},         
+      { letra: 'by', a: "びゃ", u: "びゅ", o: "びょ"}, 
+      { letra: 'py', a: "ぴゃ", u: "ぴゅ", o: "ぴょ"},         
   ];
 
 
@@ -144,17 +144,17 @@ export class TemasService {
   ];
 
   katakanaCompuesta:  tipoCompuesta[] = [
-      { letra: 'k', a: "キャ", u: "キュ", o: "キョ"},
-      { letra: 's', a: "シャ", u: "シュ", o: "ショ"},
+      { letra: 'ky', a: "キャ", u: "キュ", o: "キョ"},
+      { letra: 'sh', a: "シャ", u: "シュ", o: "ショ"},
       { letra: 'ch', a: "チャ", u: "チュ", o: "チョ"},
-      { letra: 'n', a: "ニャ", u: "ニュ", o: "ニョ"},
-      { letra: 'h', a: "ヒャ", u: "ヒュ", o: "ヒョ"}, 
-      { letra: 'm', a: "ミャ", u: "ミュ", o: "ミョ"}, 
-      { letra: 'r', a: "リャ", u: "リュ", o: "リョ"}, 
-      { letra: 'g', a: "ギャ", u: "ギュ", o: "ギョ"}, 
+      { letra: 'ny', a: "ニャ", u: "ニュ", o: "ニョ"},
+      { letra: 'hy', a: "ヒャ", u: "ヒュ", o: "ヒョ"}, 
+      { letra: 'my', a: "ミャ", u: "ミュ", o: "ミョ"}, 
+      { letra: 'ry', a: "リャ", u: "リュ", o: "リョ"}, 
+      { letra: 'gy', a: "ギャ", u: "ギュ", o: "ギョ"}, 
       { letra: 'j', a: "ジャ", u: "ジュ", o: "ジョ"},  
-      { letra: 'b', a: "ビャ", u: "ビュ", o: "ビョ"}, 
-      { letra: 'p', a: "ピャ", u: "ピュ", o: "ピョ"},         
+      { letra: 'by', a: "ビャ", u: "ビュ", o: "ビョ"}, 
+      { letra: 'py', a: "ピャ", u: "ピュ", o: "ピョ"},         
   ];
 
 
@@ -180,7 +180,6 @@ export class TemasService {
     cha: "ちゃ", chu: "ちゅ", cho: "ちょ",
     nya: "にゃ", nyu: "にゅ", nyo: "にょ",
     hya: "ひゃ", hyu: "ひゅ", hyo: "ひょ",
-    
     ja: "じゃ", ju: "じゅ", jo: "じょ",
     mya: "みゃ", myu: "みゅ", myo: "みょ",
     rya: "りゃ", ryu: "りゅ", ryo: "りょ",
@@ -223,9 +222,6 @@ export class TemasService {
 
 
 
-
-
-
   getTablaPura(tituloKana: string): tipoCompleta[] {
     if(tituloKana === 'hiragana'){ return this.hiragana; }
     return this.katakana;
@@ -252,5 +248,57 @@ export class TemasService {
       return true;
     return false;
   }
+
+
+
+
+  getTablaExaminacion(tituloKana: string): {} {
+    let HiraganaHiding = [
+      { letra: 'vocales', a: "あ", i: "い", u: "う", e: "え", o: "お"},
+      { letra: 'k', ka: "か", ki: "き", ku: "く", ke: "け", ko: "こ"},
+      { letra: 's', sa: "さ", shi: "し", su: "す", se: "せ", so: "そ"},
+      { letra: 't', ta: "た", chi: "ち", tsu: "つ", te: "て", to: "と"},
+      { letra: 'n', na: "な", ni: "に", nu: "ぬ", ne: "ね", no: "の"},
+      { letra: 'h', ha: "は", hi: "ひ", fu: "ふ", he: "へ", ho: "ほ"},
+      { letra: 'm', ma: "ま", mi: "み", mu: "む", me: "め", mo: "も"},
+      { letra: 'y', ya: "や", yu: "ゆ", yo: "よ"},      
+      { letra: 'r', ra: "ら", ri: "り", ru: "る", re: "れ", ro: "ろ"},
+      { letra: 'especiales', wa: "わ", n: "ん", wo: "を"},
+      { letra: 'g', ga: "が", gi: "ぎ", gu: "ぐ", ge: "げ", go: "ご"},
+      { letra: 'z', za: "ざ", ji: "じ", zu: "ず", ze: "ぜ", zo: "ぞ"},
+      { letra: 'd', da: "だ", ji: "ぢ", dzu: "づ", de: "で", do: "ど"},
+      { letra: 'b', ba: "ば", bi: "び", bu: "ぶ", be: "べ", bo: "ぼ"},
+      { letra: 'p', pa: "ぱ", pi: "ぴ", pu: "ぷ", pe: "ぺ", po: "ぽ"},   
+      { letra: 'ky', kya: "きゃ", kyu: "きゅ", kyo: "きょ"},
+      { letra: 'sh', sha: "しゃ", shu: "しゅ", sho: "しょ"},
+      { letra: 'ch', cha: "ちゃ", chu: "ちゅ", cho: "ちょ"},
+      { letra: 'ny', nya: "にゃ", nyu: "にゅ", nyo: "にょ"},
+      { letra: 'hy', hya: "ひゃ", hyu: "ひゅ", hyo: "ひょ"}, 
+      { letra: 'my', mya: "みゃ", myu: "みゅ", myo: "みょ"}, 
+      { letra: 'ry', rya: "りゃ", ryu: "りゅ", ryo: "りょ"}, 
+      { letra: 'gy', gya: "ぎゃ", gyu: "ぎゅ", gyo: "ぎょ"}, 
+      { letra: 'j', ja: "じゃ", ju: "じゅ", jo: "じょ"},  
+      { letra: 'by', bya: "びゃ", byu: "びゅ", byo: "びょ"}, 
+      { letra: 'py', pya: "ぴゃ", pyu: "ぴゅ", pyo: "ぴょ"},        
+    ]
+
+
+     var filteredHiragana = {};
+    for (var i = 0; i < HiraganaHiding.length; i++) {
+       if( getFromStore('progreso.hiragana.kanaBody.'+HiraganaHiding[i].letra) ){
+        Object.assign(filteredHiragana, removeObjectProperty(HiraganaHiding[i], 'letra'));
+       }
+    }
+   
+    return filteredHiragana;
+
+
+
+  }
+
+
+
+
+
 
 }

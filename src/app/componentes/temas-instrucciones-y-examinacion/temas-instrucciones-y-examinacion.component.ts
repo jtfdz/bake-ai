@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TemasService } from 'src/app/servicios/temas/temas.service';
 import urls from 'src/assets/json/urls.json';
+declare const openModal: any;
 
 @Component({
   selector: 'app-temas-instrucciones-y-examinacion',
@@ -9,8 +11,35 @@ import urls from 'src/assets/json/urls.json';
 export class TemasInstruccionesYExaminacionComponent implements OnInit {
 
   imagenes: String = urls.iniciogeneral;
+  @Input() tipoEscritura: string = '';
+  kanasAPruebaObj: {} = {};
+  tagColorArray: string[] = [
+    'is-primary',
+    'is-link',
+    'is-info',
+    'is-warning',
+    'is-danger',
+    'is-success'
+  ];
+  tagColorRandom: string[] = [];
+  sizeOfkanasAPruebaObj: number = 0;
 
-  constructor() { }
+
+
+  abrirModalExaminacion(){
+   this.kanasAPruebaObj = this.temasService.getTablaExaminacion('hiragana');
+   this.sizeOfkanasAPruebaObj = Object.keys(this.kanasAPruebaObj).length;
+   for (let i =0; i < this.sizeOfkanasAPruebaObj; i++) {
+      this.tagColorRandom.push(this.tagColorArray[Math.floor(Math.random() * this.tagColorArray.length)]);
+   }
+	 openModal(1, '#modalInstExam');
+  }
+
+  cerrar(){
+    openModal(2, '#modalInstExam');
+  }
+
+  constructor(private temasService: TemasService) { }
 
   ngOnInit(): void {
   }

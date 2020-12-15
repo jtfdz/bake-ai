@@ -13,12 +13,23 @@ export class FirstSlideComponent implements OnInit {
 	imagenes: String = urls.firstslide;
 
 
+
   constructor(private primerInicioService: PrimerInicioService) { }
 
   ngOnInit(): void {
   }
 
    public activar() {
+
+
+
+
+
+
+
+
+
+
     this.primerInicioService.setShow2();
    }
 

@@ -1,18 +1,63 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+//const Store = require('electron-store');
 
-//require('electron-reload')(__dirname + '/src/app');
 
+// const kanaBodyPura = {
+//   vocales: true,  k: false,   s: false,   t: false,  n: false,
+//   h: false,  m: false,  y: false,  r: false,  especiales: false
+// }
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-// if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-//   app.quit();
+// const kanaBodyImpura = {
+//   g: false,  z: false,   d: false,   b: false,  p: false,
+// }
+
+// const kanaBodyCompuesta = {
+//   ky: false,  sh: false,   ch: false,   ny: false,  hy: false,
+//   my: false,  ry: false,   gy: false,   j: false,  by: false,  py: false,
 // }
 
 
-// try {
-//   require('electron-reloader')(module)
-// } catch (_) {}
+// const schema = {
+//   usuario: {
+//     type: 'object',
+//     default: {gusto: "", nombre: "", iniciado: ""}
+//   },
+//   //aquí cuando la miércoles de teoría la defina XD
+//   teoria: {
+//     type: 'object',
+//     default: {}
+//   },
+
+
+//   progreso: {
+//     type: 'object',
+//     default: {
+//       hiragana: {
+//         pura: kanaBodyPura ,
+//         impura: kanaBodyImpura ,
+//         compuesta: kanaBodyCompuesta 
+//       },
+//       katakana: {
+//         pura: kanaBodyPura ,
+//         impura: kanaBodyImpura ,
+//         compuesta: kanaBodyCompuesta 
+//       },
+//       kanji: {
+//         n5: false, n4: false, n3: false, n2: false, n1: false
+//       }
+//     }
+//   },
+
+
+  
+// };
+
+
+
+
+// const store = new Store({schema});
+
 
 
 
@@ -65,3 +110,19 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+
+
+
+//require('electron-reload')(__dirname + '/src/app');
+
+
+// Handle creating/removing shortcuts on Windows when installing/uninstalling.
+// if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
+//   app.quit();
+// }
+
+
+// try {
+//   require('electron-reloader')(module)
+// } catch (_) {}

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderPrincipalComponent } from 'src/app/componentes/header-principal/header-principal.component';
 import { BotonesIconosComponent } from 'src/app/componentes/botones-iconos/botones-iconos.component';
@@ -14,7 +16,8 @@ import { TemasTitulosComponent } from 'src/app/componentes/temas-titulos/temas-t
 import { TemasInstruccionesYExaminacionComponent } from 'src/app/componentes/temas-instrucciones-y-examinacion/temas-instrucciones-y-examinacion.component';
 import { TemasKanasTablasComponent } from 'src/app/componentes/temas-kanas-tablas/temas-kanas-tablas.component';
 import { TemasKanasBotonesComponent } from 'src/app/componentes/temas-kanas-tablas/temas-kanas-botones/temas-kanas-botones.component';
-
+import { GustosPickerComponent } from 'src/app/componentes/gustos-picker/gustos-picker.component';
+import { GustosTabsComponent } from 'src/app/componentes/gustos-picker/gustos-tabs/gustos-tabs.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +33,14 @@ import { TemasKanasBotonesComponent } from 'src/app/componentes/temas-kanas-tabl
     TemasInstruccionesYExaminacionComponent,
     TemasKanasTablasComponent,
     TemasKanasBotonesComponent,
+    GustosPickerComponent,
+    GustosTabsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   exports: [
     HeaderPrincipalComponent,
@@ -48,6 +55,8 @@ import { TemasKanasBotonesComponent } from 'src/app/componentes/temas-kanas-tabl
     TemasInstruccionesYExaminacionComponent,
     TemasKanasTablasComponent,
     TemasKanasBotonesComponent,
+    GustosPickerComponent,
+    GustosTabsComponent,
   ]
 })
 export class ComponentesModule { }

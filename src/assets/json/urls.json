@@ -7,5 +7,7 @@
   "general": "../../../assets/media",
   "teoria": "../../../assets/media/teoría",  
   "trazosHiragana": "../../../assets/media/trazosHiragana",
-  "audio": "../../../assets/audio"
+  "trazosKatakana": "../../../assets/media/trazosKatakana",
+  "audio": "../../../assets/audio",
+  "modals": "../../../assets/media/modals"
 }

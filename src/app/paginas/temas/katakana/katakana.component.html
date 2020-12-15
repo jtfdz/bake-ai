@@ -1,4 +1,4 @@
-<!-- mejorar el cargado de la fotos COMPONETIZAR -->
+<!-- mejorar el cargado de la fotos -->
 
 <section class="hero is-fullheight has-text-black has-background-light">   
   <app-header-principal [esInicio]="false"></app-header-principal>
@@ -6,38 +6,24 @@
 <div class="hero-body">
   <section class="section">
 
-
   <div class="columns">
 
-   <div class="column is-4 is-offset-1">
+    <div class="column is-4 is-offset-1">
       <app-temas-titulos [tituloTema]="'katakana'" [tituloNativoTema]="'カタカナ'"></app-temas-titulos>
 
-      <app-temas-instrucciones-y-examinacion></app-temas-instrucciones-y-examinacion>
-   </div>
-
-
-  <div class="column">
-    <div class="box has-text-centered">
-
-      <app-temas-kanas-tablas [tituloKana]="'katakana'"></app-temas-kanas-tablas>
-
+      <app-temas-instrucciones-y-examinacion [tipoEscritura]="'katakana'"></app-temas-instrucciones-y-examinacion>
     </div>
+
+
+    <div class="column">
+      <div class="box has-text-centered">
+        <app-temas-kanas-tablas [tituloKana]="'katakana'"></app-temas-kanas-tablas>
+      </div>
+    </div>
+
   </div>
 
-
-
-
-
-
-
-
-
-
-
+  </section>
 </div>
 
-
-</section>
-
-</div>
 </section>

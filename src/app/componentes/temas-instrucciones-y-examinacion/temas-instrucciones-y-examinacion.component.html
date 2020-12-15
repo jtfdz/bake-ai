@@ -7,9 +7,87 @@
 	</div>
 
 	<div class="column">
-	  <a [routerLink]="'/examinacion'">
+	  <a (click)="abrirModalExaminacion()">
 	    <app-botones-iconos-temas [tituloBoton]="'¡examinación!'" [imagenBoton]="'/test.png'" [colorBoton]="'link'"></app-botones-iconos-temas>
 	  </a>
 	</div>
 
+</div>
+
+
+
+
+
+<div class="modal"  id="modalInstExam">
+<div class="modal-background"></div>
+<div class="modal-content">
+
+
+<div class="box has-text-centered">
+
+
+<h1 class="title">contenido a estudiar:</h1>
+
+
+
+<div class="box has-background-light">
+
+
+<div class="field is-grouped is-grouped-multiline">
+ <ng-container *ngFor="let kanas of kanasAPruebaObj | keyvalue; let i = index">
+   <div class="control">
+    <div class="tags has-addons">
+      <span class="tag is-dark">{{kanas.key}}</span>
+      <span [className]="'tag '+tagColorRandom[i]">{{kanas.value}}</span>
+    </div>
+  </div> 
+  </ng-container>
+</div>
+
+</div>
+
+
+<!-- <h1 class="title">contenido ya estudiado previamente:</h1>
+
+
+
+<div class="box has-background-light">
+
+
+<div class="field is-grouped is-grouped-multiline">
+ <ng-container *ngFor="let kanas of kanasAPruebaObj | keyvalue; let i = index">
+   <div class="control">
+    <div class="tags has-addons">
+      <span class="tag is-dark">{{kanas.key}}</span>
+      <span [className]="'tag '+tagColorRandom[i]">{{kanas.value}}</span>
+    </div>
+  </div> 
+  </ng-container>
+</div>
+
+</div> -->
+
+<h2 class="subtitle is-6 has-text-dark">¡espero hayas leído las instrucciones!</h2>
+
+
+
+    <div class="columns is-mobile is-centered">
+      <div class="column is-narrow">
+       
+       <a class="button is-dark" (click)="cerrar()">volver</a>
+      
+
+      </div>
+      <div class="column is-narrow">
+       
+        <a class="button is-success" [routerLink]="'/examinacion'">seguir</a>
+      </div>
+    </div>
+
+
+
+
+
+</div>
+</div>
 </div>

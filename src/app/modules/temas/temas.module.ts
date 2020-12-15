@@ -20,8 +20,8 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
   ],
 
   imports: [
-    CommonModule,
-    ModulosModule,
+  CommonModule,
+  ModulosModule,
 	ComponentesModule,
 	RouterModule,
   ],

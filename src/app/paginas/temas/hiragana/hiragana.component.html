@@ -6,22 +6,24 @@
 <div class="hero-body">
   <section class="section">
 
-
   <div class="columns">
-  	 <div class="column is-4 is-offset-1">
+
+  	<div class="column is-4 is-offset-1">
       <app-temas-titulos [tituloTema]="'hiragana'" [tituloNativoTema]="'ひらがな'"></app-temas-titulos>
       
-      <app-temas-instrucciones-y-examinacion></app-temas-instrucciones-y-examinacion>
-     </div>
+      <app-temas-instrucciones-y-examinacion [tipoEscritura]="'hiragana'"></app-temas-instrucciones-y-examinacion>
+    </div>
 
 
-      <div class="column">
-        <div class="box has-text-centered">
-          <app-temas-kanas-tablas [tituloKana]="'hiragana'"></app-temas-kanas-tablas>
-        </div>
+    <div class="column">
+      <div class="box has-text-centered">
+        <app-temas-kanas-tablas [tituloKana]="'hiragana'"></app-temas-kanas-tablas>
       </div>
+    </div>
+
   </div>
 
   </section>
 </div>
+
 </section>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-declare const openModalCard: any;
+declare const openModal: any;
 // declare const setModalCard: any;
 declare const getEbI: any;
 import urls from 'src/assets/json/urls.json';
@@ -16,8 +16,8 @@ export class TemasKanasBotonesComponent implements OnInit {
   @Input() letraKana: string = '';
   imagenes: String = urls.iniciogeneral;
   imagenesHiragana: String = urls.trazosHiragana;
-  imagenesKatakana: String = urls.trazosHiragana;
-  
+  imagenesKatakana: String = urls.trazosKatakana;
+  @Input() tablaTipo: string = '';
 
   constructor(private temasService: TemasService, private componentesService: ComponentesService) { }
 
@@ -25,20 +25,21 @@ export class TemasKanasBotonesComponent implements OnInit {
 
   }
 
+
+  //mejorar XD
+
   abrirCard(): void{
     getEbI('tituloKanaCard').innerText = this.letraKana;
-    if(getEbI('tituloKanaCard').innerText[1]) getEbI('tituloKanaCard').style.fontSize = '50px';
+    if(getEbI('tituloKanaCard').innerText[1]) getEbI('tituloKanaCard').style.fontSize = '70px';
     getEbI('romajiKanaCard').innerText = this.temasService.getKanaInformacion(this.letraKana)
     if(this.temasService.getHiraganaOKatakana(this.letraKana)){
      getEbI('imagenTrazo').src = this.imagenesHiragana + '/' + this.temasService.getKanaInformacion(this.letraKana) + '.png'; 
-    }else{
-      getEbI('imagenTrazo').src = this.imagenesKatakana + '/' + this.temasService.getKanaInformacion(this.letraKana) + '.png'
-    }
-    openModalCard(1); 
+    }else{getEbI('imagenTrazo').src = this.imagenesKatakana + '/' + this.temasService.getKanaInformacion(this.letraKana) + '.png'}
+    openModal(1, '#modalCard'); 
   }
 
   cerrarCard(): void{
-    openModalCard(2); 
+    openModal(2, '#modalCard'); 
   }
 
   reproducir(): void{

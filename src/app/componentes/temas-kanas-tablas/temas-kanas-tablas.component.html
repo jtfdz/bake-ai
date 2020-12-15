@@ -59,28 +59,28 @@
       <tbody>
          <tr *ngFor="let item of pura">
             <td class="has-text-centered has-text-weight-medium">{{item.letra}}</td>
-            <td><app-temas-kanas-botones [letraKana]="item.a"></app-temas-kanas-botones></td>
-            <td><app-temas-kanas-botones *ngIf="item.i !== ''" [letraKana]="item.i"></app-temas-kanas-botones></td>
-            <td><app-temas-kanas-botones [letraKana]="item.u"></app-temas-kanas-botones></td>
-            <td><app-temas-kanas-botones *ngIf="item.e !== ''" [letraKana]="item.e"></app-temas-kanas-botones></td>  
-            <td><app-temas-kanas-botones [letraKana]="item.o"></app-temas-kanas-botones></td>                        
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="item.a"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" *ngIf="item.i !== ''" [letraKana]="item.i"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="item.u"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" *ngIf="item.e !== ''" [letraKana]="item.e"></app-temas-kanas-botones></td>  
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="item.o"></app-temas-kanas-botones></td>                        
          </tr>
          <tr *ngIf="tituloKana == 'hiragana'">
             <th class="has-text-centered">+</th>
-            <td><app-temas-kanas-botones [letraKana]="'わ'"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="'わ'"></app-temas-kanas-botones></td>
             <td></td>
-            <td><app-temas-kanas-botones [letraKana]="'ん'"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="'ん'"></app-temas-kanas-botones></td>
             <td></td>
-            <td><app-temas-kanas-botones [letraKana]="'を'"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="'を'"></app-temas-kanas-botones></td>
          </tr>
 
          <tr *ngIf="tituloKana  == 'katakana'">
             <td class="has-text-centered">+</td>
-            <td><app-temas-kanas-botones [letraKana]="'ワ'"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="'ワ'"></app-temas-kanas-botones></td>
             <td></td>
-            <td><app-temas-kanas-botones [letraKana]="'ン'"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="'ン'"></app-temas-kanas-botones></td>
             <td></td>
-            <td><app-temas-kanas-botones [letraKana]="'ヲ'"></app-temas-kanas-botones></td>
+            <td><app-temas-kanas-botones [tablaTipo]="'pura'" [letraKana]="'ヲ'"></app-temas-kanas-botones></td>
          </tr>
       
       </tbody>
@@ -112,11 +112,11 @@
 
         <tr *ngFor="let item of impura">
           <th class="has-text-centered has-text-weight-medium">{{item.letra}}</th>
-          <td><app-temas-kanas-botones [letraKana]="item.a"></app-temas-kanas-botones></td>
-          <td><app-temas-kanas-botones *ngIf="item.i !== ''" [letraKana]="item.i"></app-temas-kanas-botones></td>
-          <td><app-temas-kanas-botones [letraKana]="item.u"></app-temas-kanas-botones></td>
-          <td><app-temas-kanas-botones *ngIf="item.e !== ''" [letraKana]="item.e"></app-temas-kanas-botones></td>  
-          <td><app-temas-kanas-botones [letraKana]="item.o"></app-temas-kanas-botones></td>
+          <td><app-temas-kanas-botones [tablaTipo]="'impura'" [letraKana]="item.a"></app-temas-kanas-botones></td>
+          <td><app-temas-kanas-botones [tablaTipo]="'impura'" *ngIf="item.i !== ''" [letraKana]="item.i"></app-temas-kanas-botones></td>
+          <td><app-temas-kanas-botones [tablaTipo]="'impura'" [letraKana]="item.u"></app-temas-kanas-botones></td>
+          <td><app-temas-kanas-botones [tablaTipo]="'impura'" *ngIf="item.e !== ''" [letraKana]="item.e"></app-temas-kanas-botones></td>  
+          <td><app-temas-kanas-botones [tablaTipo]="'impura'" [letraKana]="item.o"></app-temas-kanas-botones></td>
         </tr>
     
       </tbody>
@@ -149,13 +149,13 @@
       <tr *ngFor="let item of compuesta">
         <td class="has-text-centered has-text-weight-medium">{{item.letra}}</td>
         <td></td>
-        <td><app-temas-kanas-botones [letraKana]="item.a"></app-temas-kanas-botones></td>
+        <td><app-temas-kanas-botones [tablaTipo]="'compuesta'" [letraKana]="item.a"></app-temas-kanas-botones></td>
         <td></td>
         <td></td>
-        <td><app-temas-kanas-botones [letraKana]="item.u"></app-temas-kanas-botones></td>
+        <td><app-temas-kanas-botones [tablaTipo]="'compuesta'" [letraKana]="item.u"></app-temas-kanas-botones></td>
         <td></td>
         <td></td>
-        <td><app-temas-kanas-botones [letraKana]="item.o"></app-temas-kanas-botones> 
+        <td><app-temas-kanas-botones [tablaTipo]="'compuesta'" [letraKana]="item.o"></app-temas-kanas-botones> 
       </tr>
     
     </tbody>

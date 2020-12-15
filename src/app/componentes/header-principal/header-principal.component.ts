@@ -4,6 +4,7 @@ import segmentos from 'src/assets/json/segmentosHeader.json';
 import urls from 'src/assets/json/urls.json';
 declare const getFromStore: any;
 declare const openModal: any;
+declare const openTab: any;
 
 interface IndexObj {
   [index: string]: {};
@@ -12,7 +13,6 @@ interface IndexObj {
 interface IndexStr {
   [index: string]: string;
 }
-
 
 @Component({
   selector: 'app-header-principal',
@@ -27,6 +27,7 @@ export class HeaderPrincipalComponent implements OnInit {
   teoriaObj: IndexObj = segmentos;
   teoriaStr: IndexStr = {};
 
+
   constructor(private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
@@ -36,7 +37,7 @@ export class HeaderPrincipalComponent implements OnInit {
     this.teoriaStr = this.teoriaObj[nombreSegmento];  
     this.componentesService.setTituloCard(this.teoriaStr['titulo'])
     this.componentesService.setColorCard(this.teoriaStr['color'])
-    openModal(1); 
+    openModal(1, '#myModal'); 
   }
 
 
