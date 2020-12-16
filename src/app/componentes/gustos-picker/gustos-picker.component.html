@@ -1,0 +1,16 @@
+<div class="tabs is-toggle is-medium is-toggle-rounded is-fullwidth">
+  <ul [attr.disabled]="accesoGusto" id="gustosPicker">
+    <li id="animales" class="tab" onclick="openTab(event, 'animales')">
+      <app-gustos-tabs [tituloGusto]="'animales'" [imagenUrl]="'animal.png'"></app-gustos-tabs>
+    </li>
+    <li id="comida" class="tab" onclick="openTab(event, 'comida')">
+        <app-gustos-tabs [tituloGusto]="'comida'" [imagenUrl]="'ramen.png'"></app-gustos-tabs>
+    </li>
+    <li id="deportes" class="tab" onclick="openTab(event, 'deportes')">
+        <app-gustos-tabs [tituloGusto]="'deportes'" [imagenUrl]="'sports.png'"></app-gustos-tabs>
+    </li>
+    <li id="música" class="tab" onclick="openTab(event, 'música')">
+        <app-gustos-tabs [tituloGusto]="'música'" [imagenUrl]="'music.png'"></app-gustos-tabs>
+    </li>
+  </ul>
+</div>

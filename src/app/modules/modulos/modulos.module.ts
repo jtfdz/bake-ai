@@ -16,7 +16,6 @@ import { ArbolVrComponent } from 'src/app/paginas/modulos/arbol-vr/arbol-vr.comp
 import { OroArComponent } from 'src/app/paginas/modulos/oro-ar/oro-ar.component';
 import { FuegoAwComponent } from 'src/app/paginas/modulos/fuego-aw/fuego-aw.component';
 
-
 import { ComponentesModule } from 'src/app/modules/componentes/componentes.module';
 
 @NgModule({
