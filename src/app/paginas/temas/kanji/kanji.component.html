@@ -3,25 +3,18 @@
 <section class="hero is-fullheight has-text-black has-background-light">   
   <app-header-principal [esInicio]="false"></app-header-principal>
 
-<div class="hero-body">
+<div class="hero-body has-stuff-centered">
   <section class="section">
 
-  <div class="columns">
 
-   <div class="column is-4 is-offset-1">
       <app-temas-titulos [tituloTema]="'kanji'" [tituloNativoTema]="'漢字'"></app-temas-titulos>
       
-      <app-temas-instrucciones-y-examinacion [tipoEscritura]="'kanji'"></app-temas-instrucciones-y-examinacion>
-   </div>
+  <!--     <app-temas-instrucciones-y-examinacion [tipoEscritura]="'kanji'"></app-temas-instrucciones-y-examinacion> -->
 
-  <div class="column">
      <div class="box has-text-centered">
-       <div class="block is-fullwidth">los kanjisssssssss</div>
+       <app-temas-kanji-tabla></app-temas-kanji-tabla>
     </div>
-  </div>
 
-
-  </div>
 
 
   </section>

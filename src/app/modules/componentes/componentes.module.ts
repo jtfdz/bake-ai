@@ -22,6 +22,7 @@ import { TemasKanasBotonesComponent } from 'src/app/componentes/temas/temas-kana
 import { TemasTitulosComponent } from 'src/app/componentes/temas/temas-titulos/temas-titulos.component';
 import { TemasInstruccionesYExaminacionComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-instrucciones-y-examinacion.component';
 import { BotonesIconosTemasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/botones-iconos-temas/botones-iconos-temas.component';
+import { TemasKanjiTablaComponent } from 'src/app/componentes/temas/temas-kanji-tabla/temas-kanji-tabla.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BotonesIconosTemasComponent } from 'src/app/componentes/temas/temas-ins
     TemasKanasBotonesComponent,
     GustosPickerComponent,
     GustosTabsComponent,
+    TemasKanjiTablaComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +63,7 @@ import { BotonesIconosTemasComponent } from 'src/app/componentes/temas/temas-ins
     TemasKanasBotonesComponent,
     GustosPickerComponent,
     GustosTabsComponent,
+    TemasKanjiTablaComponent,
   ]
 })
 export class ComponentesModule { }

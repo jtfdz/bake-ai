@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import teoria from 'src/assets/json/teoria.json';
-import hiraganaAlfabeto from 'src/assets/json/hiraganaAlfabeto.json';
 
 
 declare const getFromStore: any;
@@ -33,17 +32,219 @@ type tipoCompuesta = {
     o: string;
 }
 
+type lecturasKun = {
+  kana: string, 
+  kanaExtra: string
+}
+
+type lecturasOn = {
+  kana: string
+}
+
+type kanjiType = {
+  kanji: string,
+  lecturaskunyomi: lecturasKun[],
+  lecturasonyomi: lecturasOn[],
+  numeroDeTrazos: number,
+  traduccion: string
+}
+
+type Nnivel = {
+  'n5': kanjiType[],
+  'n4': kanjiType[],
+  'n3': kanjiType[],
+  'n2': kanjiType[],
+  'n1': kanjiType[]
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TemasService {
 
+  kanjiBody: Nnivel = {
+
+
+    'n5': [{ 
+        kanji: '一', 
+        lecturaskunyomi: [{kana: 'ひと', kanaExtra: ''},　{kana: 'ひと', kanaExtra: 'つ'}], 
+        lecturasonyomi: [{kana: 'イチ'},　{kana: 'イツ'}],
+        numeroDeTrazos: 1,
+        traduccion: 'uno'
+      },
+      { 
+        kanji: 'ニ', 
+        lecturaskunyomi: [{kana: 'ふた', kanaExtra: ''},　{kana: 'ふた', kanaExtra: 'つ'}], 
+        lecturasonyomi: [{kana: 'ニ'},　{kana: 'ジ'}],
+        numeroDeTrazos: 2,
+        traduccion: 'dos'
+      },
+      { 
+        kanji: '三', 
+        lecturaskunyomi: [{kana: 'み', kanaExtra: ''},　{kana: 'み', kanaExtra: 'つ'}], 
+        lecturasonyomi: [{kana: 'サン'},　{kana: 'ゾウ'}],
+        numeroDeTrazos: 3,
+        traduccion: 'tres'
+      },
+      { 
+        kanji: '四', 
+        lecturaskunyomi: [{kana: 'よ', kanaExtra: ''},　{kana: 'よん', kanaExtra: ''},　{kana: 'よ', kanaExtra: 'つ'}], 
+        lecturasonyomi: [{kana: 'シ'}],
+        numeroDeTrazos: 5,
+        traduccion: 'cuatro'
+      },
+      { 
+        kanji: '五', 
+        lecturaskunyomi: [{kana: 'いつ', kanaExtra: ''},　{kana: 'いつ', kanaExtra: 'つ'}], 
+        lecturasonyomi: [{kana: 'ゴ'}],
+        numeroDeTrazos: 4,
+        traduccion: 'cinco'
+      },
+      { 
+        kanji: '六', 
+        lecturaskunyomi: [{kana: 'む', kanaExtra: 'っつ'}], 
+        lecturasonyomi: [{kana: 'ロク'},　{kana: 'リク'}],
+        numeroDeTrazos: 4,
+        traduccion: 'seis'
+      },
+      { 
+        kanji: '七', 
+        lecturaskunyomi: [{kana: 'なな', kanaExtra: ''},　{kana: 'なの', kanaExtra: 'か'}], 
+        lecturasonyomi: [{kana: 'シチ'}],
+        numeroDeTrazos: 2,
+        traduccion: 'siete'
+      },
+      { 
+        kanji: '八', 
+        lecturaskunyomi: [{kana: 'や', kanaExtra: 'っつ'},　{kana: 'よう', kanaExtra: 'か'}], 
+        lecturasonyomi: [{kana: 'ハチ'}],
+        numeroDeTrazos: 2,
+        traduccion: 'ocho'
+      },
+      { 
+        kanji: '九', 
+        lecturaskunyomi: [{kana: 'ここの', kanaExtra: 'つ'},　{kana: 'ここの', kanaExtra: 'か'}], 
+        lecturasonyomi: [{kana: 'キュウ'},　{kana: 'ク'}],
+        numeroDeTrazos: 2,
+        traduccion: 'nueve'
+      },
+      { 
+        kanji: '十', 
+        lecturaskunyomi: [{kana: 'とお', kanaExtra: 'か'}], 
+        lecturasonyomi: [{kana: 'ジュウ'}],
+        numeroDeTrazos: 2,
+        traduccion: 'diez'
+      },
+      { 
+        kanji: '百', 
+        lecturaskunyomi: [], 
+        lecturasonyomi: [{kana: 'ヒャク'}],
+        numeroDeTrazos: 6,
+        traduccion: 'cien'
+      },
+      { 
+        kanji: '千', 
+        lecturaskunyomi: [{kana: 'ち', kanaExtra: ''}], 
+        lecturasonyomi: [{kana: 'セン'}],
+        numeroDeTrazos: 3,
+        traduccion: 'mil'
+      },
+      { 
+        kanji: '万', 
+        lecturaskunyomi: [], 
+        lecturasonyomi: [{kana: 'マン'}],
+        numeroDeTrazos: 3,
+        traduccion: 'diez mil'
+      },
+      { 
+        kanji: '日', 
+        lecturaskunyomi: [{kana: 'ひ', kanaExtra: ''},　{kana: 'か', kanaExtra: ''}], 
+        lecturasonyomi: [{kana: 'ニチ'},　{kana: 'ジツ'}],
+        numeroDeTrazos: 4,
+        traduccion: 'sol, día'
+      },
+      { 
+        kanji: '月', 
+        lecturaskunyomi: [{kana: 'つき', kanaExtra: ''}], 
+        lecturasonyomi: [{kana: 'ゲツ'},　{kana: 'カツ'}],
+        numeroDeTrazos: 4,
+        traduccion: 'luna, mes'
+      },
+
+      ], //n5 fin
+
+
+
+    'n4': [{ 
+        kanji: '事', 
+        lecturaskunyomi: [{kana: 'こと', kanaExtra: ''}, {kana: 'つか', kanaExtra: 'える'}, {kana: 'つか', kanaExtra: 'う'}],
+        lecturasonyomi: [{kana: 'ジ'}, {kana: 'ズ'}], 
+        numeroDeTrazos: 8,
+        traduccion: 'materia, cosa, hecho, asunto, razón, posible'
+      }], //n4 fin
+
+
+    'n3': [{ 
+        kanji: '公', 
+        lecturaskunyomi: [{kana: 'おおやけ', kanaExtra: ''}], 
+        lecturasonyomi: [{kana: 'コウ'},{kana: 'ク'}],
+        numeroDeTrazos: 4,
+        traduccion: 'público, príncipe, oficial, gubernamental'
+      }], //n3 fin
+
+    'n2': [{ 
+        kanji: '亡', 
+        lecturaskunyomi: [{kana: 'な', kanaExtra: 'い'},{kana: 'ほろ', kanaExtra: 'ぶ'}], 
+        lecturasonyomi: [{kana: 'ボウ'},{kana: 'モウ'}],
+        numeroDeTrazos: 3,
+        traduccion: 'muerto, el posterior, morir, perecer'
+      }], //n2 fin
+
+    'n1': [{ 
+        kanji: '士', 
+        lecturaskunyomi: [{kana: 'さむらい', kanaExtra: ''}], 
+        lecturasonyomi: [{kana: 'シ'}],
+        numeroDeTrazos: 3,
+        traduccion: 'caballero, samurai'
+      }] //n1 fin
+  };
+
+
+
+
+  getKanjis(): Nnivel {
+    return this.kanjiBody;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	teoriaObj: IndexObj = teoria;
 	teoriaStr: IndexStr = {};
-  hiraganaStr: IndexStr = hiraganaAlfabeto;
 
   tituloSeccion: string = 'general';
   contenidoTitulo: string = 'historia';
@@ -295,6 +496,11 @@ export class TemasService {
 
 
   }
+
+
+
+
+
 
 
 

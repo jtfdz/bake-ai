@@ -1,0 +1,116 @@
+<div class="block is-fullwidth">
+
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button has-background-white is-black is-outlined" aria-haspopup="true" aria-controls="dropdown-menu7">
+          <span><p class="title has-text-black has-text-weight-medium is-4">{{nivelElegido}}</p></span>
+          <span class="icon">
+              <figure class="image is-16x16">
+              <img [src]="imagenes+'/down-arrow.png'">
+              </figure>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu7" role="menu">
+        <div class="dropdown-content">
+          <button (click)="activarTabla('n5')" class="dropdown-item button is-link is-outlined">
+              n5
+          </button>
+
+          <button (click)="activarTabla('n4')"  class="button is-info is-outlined dropdown-item">
+              n4
+          </button >
+   
+          <button (click)="activarTabla('n3')"  class="button is-warning is-outlined dropdown-item">
+              n3
+          </button> 
+          <button (click)="activarTabla('n2')"  class="button is-success is-outlined dropdown-item">
+              n2
+          </button> 
+          <button (click)="activarTabla('n1')"  class="button is-primary is-outlined dropdown-item">
+              n1
+          </button> 
+        </div>   
+    </div>
+  </div>
+
+</div>
+
+
+
+
+    <table class="table is-bordered is-striped　is-fullwidth">
+      <thead>
+        <tr>
+       <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container> 
+                  <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container> 
+       </tr>
+      </thead>
+
+      <tfoot>
+        <tr>
+        <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container> 
+                <ng-container *ngFor="let letras of HeaderFooter">
+            <th class="has-text-centered">{{letras}}</th>
+          </ng-container> 
+       </tr>
+      </tfoot>
+
+
+      <tbody>
+
+
+      <ng-container *ngFor="let item of tablaNivelArray; let i = index">
+        <tr *ngIf="i % 2 == 0">
+          
+      
+  
+          <td class="has-text-centered has-text-weight-medium"><span class="title is-1">{{item.kanji}}</span></td>
+          <td class="has-text-centered has-text-weight-medium">{{item.traduccion}}</td> 
+          <td class="has-text-centered has-text-weight-medium"><div class=" has-text-black" *ngFor="let lectura of item.lecturaskunyomi"><span class="has-text-dark has-text-weight-bold">{{lectura.kana}}</span>{{lectura.kanaExtra}}</div></td>
+          <td class="has-text-centered has-text-weight-medium"><div class=" has-text-black" *ngFor="let lectura of item.lecturasonyomi">{{lectura.kana}}</div></td>
+          <td class="has-text-centered has-text-weight-medium">{{item.numeroDeTrazos}}</td>
+
+
+          <td class="has-text-centered has-text-weight-medium"><span class="title is-1">{{i < tablaNivelArray.length - 1 ? tablaNivelArray[i + 1].kanji : ""}}</span></td>
+
+          <td class="has-text-centered has-text-weight-medium">{{i < tablaNivelArray.length - 1 ? tablaNivelArray[i + 1].traduccion : ""}}</td>
+
+
+
+          <td class="has-text-centered has-text-weight-medium">
+            <ng-container *ngIf="i < tablaNivelArray.length - 1">
+            <div class="has-text-black" *ngFor="let lectura of tablaNivelArray[i + 1].lecturaskunyomi">
+
+            <span class="has-text-dark has-text-weight-bold">
+            {{i < tablaNivelArray.length - 1 ? lectura.kana : ""}}</span>{{i < tablaNivelArray.length - 1 ? lectura.kanaExtra : ""}}
+            </div>
+            </ng-container>
+          </td>
+
+ 
+          <td class="has-text-centered has-text-weight-medium">
+            <ng-container *ngIf="i < tablaNivelArray.length - 1">
+            <div class=" has-text-black" *ngFor="let lectura of tablaNivelArray[i + 1].lecturasonyomi">
+            {{i < tablaNivelArray.length - 1 ? lectura.kana : ""}}
+            </div>
+            </ng-container>
+          </td>
+
+
+          <td class="has-text-centered has-text-weight-medium">{{i < tablaNivelArray.length - 1 ? tablaNivelArray[i + 1].numeroDeTrazos : ""}}</td>
+
+
+  
+       </tr>
+     </ng-container>
+      
+      </tbody>
+    </table>
+

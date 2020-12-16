@@ -10,6 +10,15 @@
 	}
 
 
+      { 
+        kanji: '', 
+        lecturaskunyomi: [{kana: '', kanaExtra: ''},　{kana: '', kanaExtra: ''}], 
+        lecturasonyomi: [{kana: ''},　{kana: ''}],
+        numeroDeTrazos: ,
+        traduccion: ''
+      },
+
+
 
 
 <div class="modal is-active">
