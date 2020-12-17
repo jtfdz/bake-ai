@@ -1,10 +1,10 @@
 {
+  "general": "../../../assets/media",
   "firstslide": "../../../assets/media/first-slide",
   "secondslide": "../../../assets/media/second-slide",
   "thirdslide": "../../../assets/media/third-slide",
   "forthslide": "../../../assets/media/forth-slide",
   "iniciogeneral": "../../../assets/media/inicio-general",
-  "general": "../../../assets/media",
   "teoria": "../../../assets/media/teoría",  
   "trazosHiragana": "../../../assets/media/trazosHiragana",
   "trazosKatakana": "../../../assets/media/trazosKatakana",

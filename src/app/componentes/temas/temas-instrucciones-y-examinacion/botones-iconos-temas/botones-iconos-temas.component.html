@@ -1,8 +1,6 @@
 <div [ngClass]="'tile is-10 is-child notification box is-'+colorBoton">
 	<div class="has-text-centered">
-	  <figure class="image is-64x64">
-		  <img [src]="imagenes+imagenBoton">
-	  </figure>
+	  <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/'+imagenBoton"></app-imagen-figure>
 	  <p class="is-size-7">{{tituloBoton}}</p>
 	</div>
 </div>

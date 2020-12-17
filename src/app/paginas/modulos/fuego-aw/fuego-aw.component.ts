@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
 
 @Component({
   selector: 'app-fuego-aw',
@@ -7,9 +6,6 @@ import urls from 'src/assets/json/urls.json';
   styleUrls: ['./fuego-aw.component.css']
 })
 export class FuegoAwComponent implements OnInit {
-
-
-  imagenes: String = urls.iniciogeneral;
 
   constructor() { }
 

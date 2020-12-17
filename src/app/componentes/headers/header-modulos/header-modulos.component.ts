@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
 declare const getFromStore: any;
 
 
@@ -12,8 +11,6 @@ export class HeaderModulosComponent implements OnInit {
 
 
   nombreUsuario: String = getFromStore('usuario.nombre');
-  imagenes: String = urls.general;
-  imagenes2: String = urls.iniciogeneral;
 
   constructor() { }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
 
 @Component({
   selector: 'app-gustos-tabs',
@@ -8,7 +7,6 @@ import urls from 'src/assets/json/urls.json';
 })
 export class GustosTabsComponent implements OnInit {
 
-  imagenes: String = urls.thirdslide;
   @Input() tituloGusto: string = '';
   @Input() imagenUrl: string = '';
   

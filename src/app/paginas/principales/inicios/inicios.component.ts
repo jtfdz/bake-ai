@@ -9,11 +9,8 @@ declare const getFromStore: any;
 export class IniciosComponent implements OnInit {
   
   usuarioIniciado: boolean = getFromStore('usuario.iniciado');
+
   constructor() { }
-
-	ngOnInit(): void {
-		
-
-	}
+  ngOnInit(): void {}
 
 }

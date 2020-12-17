@@ -1,102 +1,60 @@
-<!--mejorar, componetizar-->
 <section class="hero is-fullheight has-text-black">      
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <section class="section">
+        <div class="container">
 
-        <div class="hero-body">
-        <div class="container has-text-centered">
-            <section class="section">
-              <div class="container">
-
-                <div class="columns">
-                <div class="column is-centered">
-                  <img src="{{imagenes}}/icons8-geta-96.png" style="width:7%">
-                  <img src="{{imagenes}}/icons8-sakura-96.png" style="width:7%">
-                  <img src="{{imagenes}}/icons8-fuji-96.png" style="width:7%">
-                </div>
-              </div>
-              <div class="columns is-centered">
-                <div class="column">
-                  <img src="{{imagenes}}/icons8-japanese-umbrella-96.png" style="width:7%">
-                  <img src="{{imagenes}}/icons8-japan-96.png" style="width:7%">
-                  <img src="{{imagenes}}/icons8-origami-96.png" style="width:7%">
-                </div>
-              </div>
-              <div class="columns is-centered">
-                <div class="column">
-                  <img src="{{imagenes}}/icons8-torii-96.png" style="width:7%">
-                  <img src="{{imagenes}}/icons8-kimono-96.png" style="width:7%">
-                  <img src="{{imagenes}}/icons8-bento-96.png" style="width:7%">
-                </div>
-              </div>
-
-
-              </div>
-            </section>
-
-        <br><h2 class="title">te doy la bienvenida a <b>¡bake ai!</b></h2>
-        
-        <button class="button is-warning is-rounded" (click)="activar()" [ngxScrollTo]="'slidesection2'">
-        <span>siguiente</span>
-        <span class="icon">↓</span>
-        </button>
-        
-
-
-      </div>
-      </div>
-
-    <div class="hero-foot has-text-left ">
-
-        <div class="dropdown is-up is-hoverable is-warning">
-          <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu7">
-              <span>icons</span>
-              <span class="icon is-small">
-                ❤️
-              </span>
-            </button>
+          <div class="columns is-centered">
+            <app-tres-imagenes-primer-inicio [imagenesNombre]="['icons8-geta-96.png','icons8-sakura-96.png', 'icons8-fuji-96.png']"></app-tres-imagenes-primer-inicio>
           </div>
-          <div class="dropdown-menu" id="dropdown-menu7" role="menu">
-     
-          <div class="dropdown-content">
-            <div class="dropdown-item">
-                <a href="https://icons8.com/icon/36982/geta" target="_blank">Geta icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/36887/sakura" target="_blank">Sakura icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/36882/fuji" target="_blank">Fuji icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/36896/japanese-umbrella" target="_blank">Japanese Umbrella icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/22435/japan" target="_blank">Japan icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/15597/origami" target="_blank">Origami icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/15619/torii" target="_blank">Torii icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/20808/kimono" target="_blank">Kimono icon by Icons8</a>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <a href="https://icons8.com/icon/13295/bento" target="_blank">Bento icon by Icons8</a>
-            </div>
+
+          <div class="columns is-centered">
+            <app-tres-imagenes-primer-inicio [imagenesNombre]="['icons8-japanese-umbrella-96.png','icons8-japan-96.png', 'icons8-origami-96.png']"></app-tres-imagenes-primer-inicio>
           </div>
-                  
+          <div class="columns is-centered">
+            <app-tres-imagenes-primer-inicio [imagenesNombre]="['icons8-torii-96.png','icons8-kimono-96.png', 'icons8-bento-96.png']"></app-tres-imagenes-primer-inicio>
+          </div>
+
         </div>
+      </section>
+
+      <br><h2 class="title">te doy la bienvenida a <b>¡bake ai!</b></h2>
+        
+      <app-boton-siguiente-primer-inicio [colorBoton]="'is-warning'" [siguienteSection]="'2'"></app-boton-siguiente-primer-inicio>
+        
+    </div>
+  </div>
+
+  <div class="hero-foot has-text-left ">
+
+    <div class="dropdown is-up is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu7">
+          <span>icons</span><span class="icon is-small">❤️</span>
+        </button>
       </div>
-  
-    </div>      
+      <div class="dropdown-menu" id="dropdown-menu7" role="menu">
+      <div class="dropdown-content">
+        <app-first-slide-dropdown-content [linkTexto]="'Geta icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/36982/geta'"></app-first-slide-dropdown-content>
+
+        <app-first-slide-dropdown-content [linkTexto]="'Sakura icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/36887/sakura'"></app-first-slide-dropdown-content>
+
+        <app-first-slide-dropdown-content [linkTexto]="'Fuji icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/36882/fuji'"></app-first-slide-dropdown-content>
+
+        <app-first-slide-dropdown-content [linkTexto]="'Japanese Umbrella icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/36896/japanese-umbrella'"></app-first-slide-dropdown-content>
+
+        <app-first-slide-dropdown-content [linkTexto]="'Japan icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/22435/japan'"></app-first-slide-dropdown-content>
+
+        <app-first-slide-dropdown-content [linkTexto]="'Origami icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/15597/origami'"></app-first-slide-dropdown-content>
+
+        <app-first-slide-dropdown-content [linkTexto]="'Torii icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/15619/torii'"></app-first-slide-dropdown-content>            
+
+        <app-first-slide-dropdown-content [linkTexto]="'Kimono icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/20808/kimono'"></app-first-slide-dropdown-content>            
+
+        <app-first-slide-dropdown-content [linkTexto]="'Bento icon by Icons8'" [hrefTexto]="'https://icons8.com/icon/13295/bento'"></app-first-slide-dropdown-content>            
+      </div>                 
+      </div>
+      
+    </div>
+  </div>      
 </section>

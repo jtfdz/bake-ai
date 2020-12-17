@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
-import urls from 'src/assets/json/urls.json';
 
 declare const openModal: any;
 declare const setInStore: any;
@@ -13,7 +12,6 @@ declare const setInStore: any;
 })
 export class ThirdSlideComponent {
 
-  imagenes: String = urls.thirdslide;
   nombrecito: String = '';
   isInputThirdSlideDisabled: boolean = false;
 

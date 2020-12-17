@@ -1,7 +1,5 @@
 <!-- mejorar el cargado de la fotos -->
 
-
-
 <section class="hero is-fullheight has-text-black has-background-light">   
 <app-header-principal [esInicio]="true"></app-header-principal>
 
@@ -14,21 +12,21 @@
       <div class="box">    
 
       <article class="media">
+
         <div class="media-left">
-          <figure class="image is-64x64">
-           <img src="{{imagenes}}/teoría2.png">
-         </figure>
+          <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/teoría2.png'"></app-imagen-figure>
         </div>
+
         <div class="media-content">
           <div class="content">
-         <p class="title is-2">teoría</p>
+            <p class="title is-2">teoría</p>
           </div>
         </div>
+
         <div class="media-right">
-        <figure class="image is-64x64">
-          <img src="{{imagenes}}/teoría3.png">
-        </figure>
+          <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/teoría3.png'"></app-imagen-figure>
         </div>
+        
       </article>
 
       </div>

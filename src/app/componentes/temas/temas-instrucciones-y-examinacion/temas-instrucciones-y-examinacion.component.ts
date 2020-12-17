@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
-import urls from 'src/assets/json/urls.json';
 declare const openModal: any;
 
 @Component({
@@ -10,7 +9,6 @@ declare const openModal: any;
 })
 export class TemasInstruccionesYExaminacionComponent implements OnInit {
 
-  imagenes: String = urls.iniciogeneral;
   @Input() tipoEscritura: string = '';
   kanasAPruebaObj: {} = {};
   tagColorArray: string[] = [

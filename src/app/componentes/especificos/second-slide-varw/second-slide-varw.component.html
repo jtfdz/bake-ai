@@ -1,0 +1,6 @@
+<div class="column is-narrow has-stuff-centered">
+	<app-imagen-figure [medida]="'32'" [imgUrl]="'second-slide/'+imgUrl"></app-imagen-figure>  
+
+	<ng-container *ngIf="subTexto != 'por la lectura más escritura'"><p class="subtitle is-6">{{subTexto}}</p></ng-container>
+	<ng-container *ngIf="subTexto == 'por la lectura más escritura'"><p class="subtitle is-6">por la lectura<br>más escritura</p></ng-container>
+</div>

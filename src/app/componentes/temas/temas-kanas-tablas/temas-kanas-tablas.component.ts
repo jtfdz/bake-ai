@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
 
 type tipoCompleta = {
@@ -35,7 +34,6 @@ export class TemasKanasTablasComponent implements OnInit {
   HeaderFooterCompuesta: string[] = ['c/v', '', 'a', '', '', 'u', '', '', 'o']; 
 
   @Input() tituloKana: string = '';
-  imagenes: String = urls.iniciogeneral;
 
   constructor(private temasService: TemasService) { }
 

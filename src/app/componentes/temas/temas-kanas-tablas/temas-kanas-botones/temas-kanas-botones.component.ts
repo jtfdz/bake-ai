@@ -14,7 +14,6 @@ import { ComponentesService } from 'src/app/servicios/componentes/componentes.se
 export class TemasKanasBotonesComponent implements OnInit {
 
   @Input() letraKana: string = '';
-  imagenes: String = urls.iniciogeneral;
   imagenesHiragana: String = urls.trazosHiragana;
   imagenesKatakana: String = urls.trazosKatakana;
   @Input() tablaTipo: string = '';

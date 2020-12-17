@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
 
 type lecturasKun = {
@@ -39,7 +38,6 @@ interface IndexStr {
 })
 export class TemasKanjiTablaComponent implements OnInit {
 
-  imagenes: String = urls.iniciogeneral;
   tablaNivel: Nnivel = {'n5': [], 'n4': [], 'n3': [], 'n2': [], 'n1': []};
   tablaNivelIndex: IndexStr = this.tablaNivel;
   tablaNivelArray: kanjiType[] = [];

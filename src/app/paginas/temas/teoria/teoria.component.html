@@ -53,7 +53,7 @@
       <header class="card-header has-background-primary" id="cardHeader">
         <div class="card-header-icon" aria-label="more options">
           <span class="icon">
-            <img src="{{imagenes}}/text.png">
+            <app-imagen-figure [medida]="'24'" [imgUrl]="'teoría/text.png'"></app-imagen-figure>
           </span>
         </div>
         <p class="card-header-title">{{tituloTema}}</p>
@@ -72,9 +72,10 @@
 
         <!-- mejorar -->
         <div *ngIf="!temaAprendido" class="card-footer-item has-text-primary">
-          <span><figure class="image is-16x16"><img src="{{imagenes}}/rojo.png"></figure></span>por aprender</div>
+          <span>
+            <app-imagen-figure [medida]="'16'" [imgUrl]="'teoría/rojo.png'"></app-imagen-figure></span>por aprender</div>
         <div *ngIf="temaAprendido" class="card-footer-item has-text-success">
-          <span><figure class="image is-16x16"><img src="{{imagenes}}/verde.png"></figure></span>aprendido</div>
+          <span><app-imagen-figure [medida]="'16'" [imgUrl]="'teoría/verde.png'"></app-imagen-figure></span>aprendido</div>
       </footer>
     </div>
 <!--fin de card-->

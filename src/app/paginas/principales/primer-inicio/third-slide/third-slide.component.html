@@ -1,25 +1,27 @@
-    <!-- mejorar-->
-
+<!-- mejorar-->
 <section class="hero is-fullheight is-success has-text-centered">
 
 <div class="modal"  id="myModal">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">¿estás segura de tus elecciones?</p>
+      <p class="modal-card-title">¿aseguras tus elecciones?</p>
     </header>
     <section class="modal-card-body">
 
       <p class="subtitle is-5">no te preocupes, podrás cambiarlas dentro de la aplicación</p>
 
         <div class="columns is-mobile is-centered">
+
           <div class="column is-narrow">
-           
+
            <button [ngxScrollTo]="'slidesection4'" (click)="proceder()" class="button is-success">sí, proceder</button>
           </div>
+
           <div class="column is-narrow">
             <button class="button" (click)="volver()">no, volver</button>
           </div>
+
         </div>
 
     </section>
@@ -41,9 +43,6 @@
 <div class="tile is-ancestor">
   <div class="tile is-vertical is-12">
 
-
-
-
     <div class="tile">
 
       <div class="tile is-4">
@@ -57,10 +56,8 @@
               <div class="form-group">
                 <input id="inputThirdSlide" [disabled]="isInputThirdSlideDisabled" [(ngModel)]="nombrecito" class="input is-medium is-success" type="text" placeholder="nombre">
               </div>
-              <span class="icon is-medium is-left">                        
-                <figure class="image is-24x24">
-                  <img src="{{imagenes}}/avatar-gris.png">
-                </figure>
+              <span class="icon is-medium is-left"> 
+                <app-imagen-figure [medida]="'24'" [imgUrl]="'third-slide/avatar-gris.png'"></app-imagen-figure> 
               </span>
               </div> 
               <span class="tag">(!) para continuar, debes llenar este cuadro.</span>
@@ -83,21 +80,9 @@
             <span class="tag">(!) haz click sobre el tema de tu gusto.</span>
             </article>
           </div>
-
         </div>
-
       </div>
-
-
-
     </div>
-
-
-
-
-
-
-
 
 
 
@@ -106,34 +91,17 @@
         <article class="tile is-child is-success">
 
           <div class="container has-text-centered">
-
-
-
-        <div class="columns is-mobile is-centered">
-          <div class="column is-narrow">
-           
-            <button [ngxScrollTo]="'slidesection2'" class="button is-rounded is-warning">
-           <span class="icon">↑</span>
-           <span>anterior</span>
-           </button>
-          
-
+          <div class="columns is-mobile is-centered">
+            <div class="column is-narrow">
+             <app-boton-anterior-primer-inicio [colorBoton]="'is-warning'" [siguienteSection]="'2'"></app-boton-anterior-primer-inicio>
+            </div>
+            <div class="column is-narrow">
+              <button (click)="activar()" [disabled]="!nombrecito" class="button is-primary is-rounded">
+              <span>siguiente</span>
+              <span class="icon">↓</span>
+              </button>
+            </div>
           </div>
-          <div class="column is-narrow">
-           
-            <button (click)="activar()" [disabled]="!nombrecito" class="button is-primary is-rounded">
-            <span>siguiente</span>
-            <span class="icon">↓</span>
-            </button>
-            
-          </div>
-        </div>
-
-
-           
-
-
-            
           </div>
 
         </article>
@@ -143,28 +111,10 @@
 
 
   </div>
-
 </div>
 
-
 </div>
-
-
-
-
-
- </div>
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 </div>

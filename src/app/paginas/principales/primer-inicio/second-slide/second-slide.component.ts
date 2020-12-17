@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
-import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
-declare const setInStore: any;
 
 @Component({
   selector: 'app-second-slide',
@@ -10,15 +7,8 @@ declare const setInStore: any;
 })
 export class SecondSlideComponent implements OnInit {
 
-  imagenes: String = urls.secondslide;
-
-  constructor(private primerInicioService: PrimerInicioService) { }
+  constructor() { }
 
   ngOnInit(): void {}
-
-  public activar() {
-    this.primerInicioService.setShow3();
-    setInStore('usuario.gusto','animales')
-   }
 
 }

@@ -1,36 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
-import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-first-slide',
   templateUrl: './first-slide.component.html',
   styleUrls: ['./first-slide.component.css']
 })
-export class FirstSlideComponent implements OnInit {
+export class FirstSlideComponent {
 
-	imagenes: String = urls.firstslide;
-
-
-
-  constructor(private primerInicioService: PrimerInicioService) { }
-
-  ngOnInit(): void {
-  }
-
-   public activar() {
-
-
-
-
-
-
-
-
-
-
-    this.primerInicioService.setShow2();
-   }
+  constructor() { }
 
 }

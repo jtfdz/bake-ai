@@ -19,9 +19,7 @@
 
             <!--icon--->
             <div class="level-item">
-            <figure class="image is-64x64">
-              <img src="{{imagenes}}/catlogo.png">
-            </figure>
+              <app-imagen-figure [medida]="'64'" [imgUrl]="'catlogo.png'"></app-imagen-figure>
             </div>
             <!--fin de icon--->
 
@@ -53,9 +51,7 @@
       <div class="column is-offset-1">
          <a [routerLink]="'/inicio-general'">
           <div class="has-tooltip-bottom has-tooltip-black has-tooltip-arrow" [attr.data-tooltip]="'salir'">
-              <figure class="image is-64x64">
-              <img [src]="imagenes2+'/largate.png'">
-              </figure>
+              <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/largate.png'"></app-imagen-figure>
           </div>
         </a>  
       </div>

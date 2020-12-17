@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import urls from 'src/assets/json/urls.json';
 declare const setInStore: any;
 declare const getFromStore: any;
 
@@ -10,8 +9,6 @@ declare const getFromStore: any;
   styleUrls: ['./forth-slide.component.css']
 })
 export class ForthSlideComponent {
-
-  imagenes: String = urls.forthslide;
 
   constructor() { }
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { HeaderPrincipalComponent } from 'src/app/componentes/headers/header-principal/header-principal.component';
 import { HeaderModulosComponent } from 'src/app/componentes/headers/header-modulos/header-modulos.component';
@@ -24,6 +25,18 @@ import { TemasInstruccionesYExaminacionComponent } from 'src/app/componentes/tem
 import { BotonesIconosTemasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/botones-iconos-temas/botones-iconos-temas.component';
 import { TemasKanjiTablaComponent } from 'src/app/componentes/temas/temas-kanji-tabla/temas-kanji-tabla.component';
 
+import { TemasDropdownOptionsComponent } from 'src/app/componentes/temas/temas-dropdown-options/temas-dropdown-options.component';
+import { TresImagenesPrimerInicioComponent } from 'src/app/componentes/imagenes/tres-imagenes-primer-inicio/tres-imagenes-primer-inicio.component';
+import { BaseImagenPrimerInicioComponent } from 'src/app/componentes/imagenes/tres-imagenes-primer-inicio/base-imagen-primer-inicio/base-imagen-primer-inicio.component';
+import { ImagenFigureComponent } from 'src/app/componentes/imagenes/imagen-figure/imagen-figure.component';
+
+import { FirstSlideDropdownContentComponent } from 'src/app/componentes/especificos/first-slide-dropdown-content/first-slide-dropdown-content.component';
+import { SecondSlideVarwComponent } from 'src/app/componentes/especificos/second-slide-varw/second-slide-varw.component';
+
+import { BotonSiguientePrimerInicioComponent } from 'src/app/componentes/botones/boton-siguiente-primer-inicio/boton-siguiente-primer-inicio.component';
+import { BotonAnteriorPrimerInicioComponent } from 'src/app/componentes/botones/boton-anterior-primer-inicio/boton-anterior-primer-inicio.component';
+
+
 @NgModule({
   declarations: [
     HeaderPrincipalComponent,
@@ -41,12 +54,21 @@ import { TemasKanjiTablaComponent } from 'src/app/componentes/temas/temas-kanji-
     GustosPickerComponent,
     GustosTabsComponent,
     TemasKanjiTablaComponent,
+    TemasDropdownOptionsComponent,
+    TresImagenesPrimerInicioComponent,
+    BaseImagenPrimerInicioComponent,
+    FirstSlideDropdownContentComponent,
+    BotonSiguientePrimerInicioComponent,
+    BotonAnteriorPrimerInicioComponent,
+    ImagenFigureComponent,
+    SecondSlideVarwComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollToModule
   ],
   exports: [
     HeaderPrincipalComponent,
@@ -64,6 +86,14 @@ import { TemasKanjiTablaComponent } from 'src/app/componentes/temas/temas-kanji-
     GustosPickerComponent,
     GustosTabsComponent,
     TemasKanjiTablaComponent,
+    TemasDropdownOptionsComponent,
+    TresImagenesPrimerInicioComponent,
+    BaseImagenPrimerInicioComponent,
+    FirstSlideDropdownContentComponent,
+    BotonSiguientePrimerInicioComponent,
+    BotonAnteriorPrimerInicioComponent,
+    ImagenFigureComponent,
+    SecondSlideVarwComponent,
   ]
 })
 export class ComponentesModule { }

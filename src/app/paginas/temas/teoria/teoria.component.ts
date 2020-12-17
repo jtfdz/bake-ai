@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
 declare const openTabTeoria: any;
 declare const setInStore: any;
-import urls from 'src/assets/json/urls.json';
 
 
 @Component({
@@ -15,8 +14,6 @@ export class TeoriaComponent implements OnInit {
   tituloTema: string = 'general >> historia';
   temaContenido: string = 'la historia de los abecedarios';
   temaAprendido: boolean = false;
-  imagenes: String = urls.teoria;
-
 
 
   constructor(private temasService: TemasService) { }

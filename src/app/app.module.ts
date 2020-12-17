@@ -13,12 +13,10 @@ import { IniciosModule } from './modules/inicios/inicios.module';
 import { ModulosModule } from './modules/modulos/modulos.module';
 import { TemasModule } from './modules/temas/temas.module';
 import { ComponentesModule } from './modules/componentes/componentes.module';
-import { TemasDropdownOptionsComponent } from './componentes/temas/temas-dropdown-options/temas-dropdown-options.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemasDropdownOptionsComponent,
   ],
   imports: [
     BrowserModule,
