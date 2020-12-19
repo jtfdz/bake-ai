@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
 declare const openModal: any;
+declare const openTabInstruccion: any;
 
 @Component({
   selector: 'app-temas-instrucciones-y-examinacion',
@@ -21,6 +22,7 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
   ];
   tagColorRandom: string[] = [];
   sizeOfkanasAPruebaObj: number = 0;
+  navTabsInstrucciones: string[] = ['tablas', 'examinación', 'fuego', 'agua', 'árbol', 'oro', 'tierra', 'sol', 'luna'];
 
 
 
@@ -30,12 +32,21 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
    for (let i =0; i < this.sizeOfkanasAPruebaObj; i++) {
       this.tagColorRandom.push(this.tagColorArray[Math.floor(Math.random() * this.tagColorArray.length)]);
    }
-	 openModal(1, '#modalInstExam');
+   this.abrirModales('#modalInstExam')
+
   }
 
-  cerrar(){
-    openModal(2, '#modalInstExam');
+  cerrar(idModal: string){
+    openModal(2, idModal);
   }
+
+  abrirModales(idModal: string){
+   openModal(1, idModal);
+  }
+
+
+
+
 
   constructor(private temasService: TemasService) { }
 

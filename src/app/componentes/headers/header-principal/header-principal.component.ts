@@ -24,6 +24,7 @@ export class HeaderPrincipalComponent implements OnInit {
   nombreUsuario: String = getFromStore('usuario.nombre');
   imagenes: String = urls.general;
   @Input() esInicio: boolean = false;
+  @Input() mensajePersonalizado: string = '';
   teoriaObj: IndexObj = segmentos;
   teoriaStr: IndexStr = {};
 

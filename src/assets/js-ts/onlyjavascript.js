@@ -22,6 +22,7 @@ const Store = require('electron-store');
       default: {}
     },
 
+    //eso de veces estudiao pa estadísticas MEJORAR 
 
     progreso: {
       type: 'object',
@@ -38,9 +39,20 @@ const Store = require('electron-store');
       type: 'object',
       default: {
       	general: {porcentaje: 0, aciertos: 0, desaciertos: 0},
-        visual: {porcentaje: 0, aciertos: 0, desaciertos: 0},
-        auditiva: {porcentaje: 0, aciertos: 0, desaciertos: 0},
-        lye: {porcentaje: 0, aciertos: 0, desaciertos: 0}     
+        visual: {porcentaje: 33.333, aciertos: 0, desaciertos: 0},
+        auditiva: {porcentaje: 33.333, aciertos: 0, desaciertos: 0},
+        escritura: {porcentaje: 33.333, aciertos: 0, desaciertos: 0}     
+      }
+    },
+
+    //In the general population, the distribution of the three learning styles is: 
+    // 65% visual, 30% auditory and 5% kinesthetic.
+    retencion: {
+      type: 'object',
+      default: {
+      	mayor: 'visual',
+        media: 'auditiva',
+        baja: 'escritura'
       }
     },
 
@@ -52,6 +64,7 @@ const Store = require('electron-store');
 const store = new Store({schema});
 
 
+// store.delete('estilo.lye');
 
 function setInStore(propiedad, valor){
 	store.set(propiedad, valor);
@@ -64,19 +77,10 @@ function getFromStore(propiedad){
 
 
 
-
-
-
-
-
 function removeObjectProperty(obj, property){
 	delete obj[property]
 	return obj
 }
-
-
-
-
 
 
 
@@ -95,6 +99,8 @@ function getEbQSA(name){
 	return document.querySelectorAll(name);
 }
 
+
+//mejorar est3e nombnre XDDDDDDDDDDDDDDD
 function typescriptCantDoIt(sent){
 	sent.parentElement.parentElement.className = sent.parentElement.parentElement.className.replace(" has-background-"+sent.parentElement.id, "");
 }
@@ -132,20 +138,29 @@ function openTab(evt, nombreDelGusto) {
 }
 
 
+function openTabInstruccion(evt, item) {
+	var i, x, tablinks;
+	tablinks = document.getElementsByClassName("tab");
 
 
-function getCount(parent, getChildrensChildren){
-    var relevantChildren = 0;
-    var children = parent.childNodes.length;
-    for(var i=0; i < children; i++){
-        if(parent.childNodes[i].nodeType != 3){
-            if(getChildrensChildren)
-                relevantChildren += getCount(parent.childNodes[i],true);
-            relevantChildren++;
-        }
-    }
-    return relevantChildren;
+  x = document.getElementsByClassName("content-tab");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+	
+		for (i = 0; i < tablinks.length; i++) {
+		  tablinks[i].className = tablinks[i].className.replace(" has-background-grey-lighter", " has-background-white");
+	
+		}
+
+ document.getElementById('content-'+evt.currentTarget.id).style.display = "block";
+
+		evt.currentTarget.className += " has-background-grey-lighter";
+
+	
 }
+
+
 
 
 class BulmaModal {
@@ -191,7 +206,7 @@ class BulmaModal {
 }
 
 
-
+//mejorar cambiar este nombre XD
 function openModal(value, idModal){
 	var mdl = new BulmaModal(idModal)
 	switch(value){

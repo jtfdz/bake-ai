@@ -1,10 +1,3 @@
-<div class="modal"  id="myModal">
-  <app-botones-iconos-modal></app-botones-iconos-modal>
-</div>
-
-
-
-
 <!-- HEADER PRINCIPAL -->
 
 <div class="hero-head">
@@ -29,7 +22,7 @@
           
               <div *ngIf="esInicio" class="subtitle is-6">¡te doy la bienvenida, <strong>{{nombreUsuario}}</strong>!</div>
 
-              <div *ngIf="!esInicio" class="subtitle is-6">¡vamos que tú puedes, <strong>{{nombreUsuario}}</strong>!</div>
+              <div *ngIf="!esInicio" class="subtitle is-6">{{mensajePersonalizado}}</div>
 
             </section>
           </div>
@@ -48,15 +41,15 @@
                 <app-botones-iconos *ngIf="!esInicio" [tooltipTexto]="'inicio'"  [imgSource]="'/casa.png'" [botonColor]="'danger'"></app-botones-iconos>
               </a>
                 
-              <a (click)="activar('app')">
+              <a class="modal-button" data-target="myModal" (click)="activar('app')">
                 <app-botones-iconos [tooltipTexto]="'aplicación'"  [imgSource]="'/app-icon.png'" [botonColor]="'success'"></app-botones-iconos>           
               </a>
 
-              <a (click)="activar('stats')">
+              <a class="modal-button" data-target="myModal" (click)="activar('stats')">
                 <app-botones-iconos [tooltipTexto]="'estadísticas'" [imgSource]="'/stats.png'" [botonColor]="'primary'"></app-botones-iconos>
               </a>
                
-              <a (click)="activar('config')">
+              <a class="modal-button" data-target="myModal" (click)="activar('config')">
                 <app-botones-iconos [tooltipTexto]="'configuración'" [imgSource]="'/configuration.png'" [botonColor]="'warning'"></app-botones-iconos>
               </a>
 
@@ -74,4 +67,10 @@
 
     </div>
   </section>
+</div>
+
+
+
+<div class="modal modal-fx-fadeInScale"  id="myModal">
+  <app-botones-iconos-modal></app-botones-iconos-modal>
 </div>

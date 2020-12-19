@@ -7,12 +7,9 @@
       <div class="columns">
 
 
-<!-- falta arbol, oro. tierra -->
-
-
         <div class="column is-8">
           <section class="hero is-black">
-            <app-origen [moduloActivado]="'oro'"></app-origen>
+            <app-origen [moduloActivado]="arrayOfModulos[indexOfModulos]"></app-origen>
           </section>
         </div>
 
@@ -21,7 +18,7 @@
         <div class="column is-4">
 
           <nav class="panel">
-          <p class="panel-heading has-background-primary is-size-5">progreso</p>
+          <p class="panel-heading has-background-{{colorModulo}} is-size-5">progreso</p>
           <div class="box">
 
 
@@ -30,7 +27,7 @@
               <div class="column">
                 
                 <h1 class="subtitle is-size-6">
-                  <div class="has-text-weight-bold has-text-grey-darker">módulo:</div> luna 月
+                  <div class="has-text-weight-bold has-text-grey-darker">módulo:</div> {{tituloModulo}}
                 </h1>
 
               </div>
@@ -38,7 +35,7 @@
               <div class="column is-8">
                 
                 <h1 class="subtitle is-size-6">
-                  <div class="has-text-weight-bold has-text-grey-darker">tipo de aprendizaje:</div> lectura y escritura
+                  <div class="has-text-weight-bold has-text-grey-darker">tipo de aprendizaje:</div> {{tipoModulo}}
                 </h1>
 
               </div>
@@ -49,14 +46,10 @@
 
 
 
-
-
-
-
            <h1 class="subtitle is-size-6">
               <strong>aciertos:</strong> xxbxxbb
             </h1>
-            <button class="button has-background-primary">siguiente</button>
+            <button (click)="avanzarModulo()" class="button has-background-{{colorModulo}}">siguiente</button>
           </div>
           </nav>
 

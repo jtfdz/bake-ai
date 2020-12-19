@@ -1,13 +1,13 @@
 <div class="columns is-gapless">
 
 	<div class="column">
-	  <a>
+	  <a class="modal-button" data-target="modalInstrucciones" (click)="abrirModales('#modalInstrucciones')">
 	    <app-botones-iconos-temas [tituloBoton]="'instrucciones'" [imagenBoton]="'/questionmark.png'" [colorBoton]="'black'"></app-botones-iconos-temas>
 	  </a>
 	</div>
 
 	<div class="column">
-	  <a (click)="abrirModalExaminacion()">
+	  <a class="modal-button" data-target="modalInstExam" (click)="abrirModalExaminacion()">
 	    <app-botones-iconos-temas [tituloBoton]="'¡examinación!'" [imagenBoton]="'/test.png'" [colorBoton]="'link'"></app-botones-iconos-temas>
 	  </a>
 	</div>
@@ -15,9 +15,10 @@
 </div>
 
 
+<!-- examinación -->
 
 
-<div class="modal"  id="modalInstExam">
+<div class="modal modal-fx-fadeInScale"  id="modalInstExam">
 <div class="modal-background"></div>
 <div class="modal-content">
 
@@ -73,7 +74,7 @@
     <div class="columns is-mobile is-centered">
       <div class="column is-narrow">
        
-       <a class="button is-dark" (click)="cerrar()">volver</a>
+       <a class="button is-dark" (click)="cerrar('#modalInstExam')">volver</a>
       
 
       </div>
@@ -89,4 +90,118 @@
 
 </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- instrucciones -->
+
+
+
+
+<div class="modal modal-fx-fadeInScale"  id="modalInstrucciones" >
+<div class="modal-background"></div>
+<div class="modal-content">
+
+<div class="tabs is-toggle is-fullwidth">
+  <ul>
+    <ng-container *ngFor="let item of navTabsInstrucciones; let i = index">
+      <li [ngClass]="(i==navTabsInstrucciones.length-1)?'has-tooltip-black has-tooltip-arrow has-tooltip-left':'has-tooltip-black has-tooltip-arrow has-tooltip-right' " [attr.data-tooltip]="item">
+        <a onclick="openTabInstruccion(event)" [id]="'tab-'+item"  [ngClass]=" (i==0)?'tab has-background-grey-lighter':'tab has-background-white' " >
+          <span><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/'+item+'.png'"></app-imagen-figure></span>
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+
+
+
+<section class="hero is-medium is-fullwidth is-white FixedHeightContainer">
+  <div class="hero-footer has-text-centered Content">
+
+
+
+<div class="container section">
+    <div id="content-tab-tablas" class="content-tab" >
+
+
+
+    <div class="divider"><span class="tag is-light is-large">
+    <h1 class="title is-2 has-text-dark">tablas</h1>
+  </span></div>
+
+
+    <div class="divider"><span class="tag is-light is-large">
+    <h1 class="subtitle is-5 has-text-dark">sobre los tipos de tablas:</h1></span>
+    </div>
+
+    <div class="columns is-gapless is-narrow is-multiline">
+      <div class="column is-6"><img src="../../../assets/media/modulos/tabla01.png"></div>
+      <div class="column is-6"><img src="../../../assets/media/modulos/tabla02.png"></div>
+      <div class="column is-12 is-flex has-stuff-centered">      <div class="has-text-black has-background-info-light"><span class="has-text-weight-bold">TIP: </span>puedes acceder al resto de las tablas colocando el ratón encima del título TABLA PURA y dando click a una de las tres opciones apareciendo debajo.</div></div>
+
+
+
+
+    </div>
+    
+
+    <div class="divider"><span class="tag is-light is-large">
+    <h1 class="subtitle is-5 has-text-dark">sobre los silabarios:</h1></span>
+    </div>
+
+    <div class="columns is-multiline has-text-centered has-stuff-centered is-flex">
+      <div class="column is-10"><img src="../../../assets/media/modulos/tabla03.png"></div>
+      <div class="column is-12"><span class="has-text-black has-background-info-light"><span class="has-text-weight-bold">TIP: </span>dando click a los silabarios dentro de las tablas se abrirá una versión agrandada junto a su romaji, su audio (dando click al icono de la bocina se reproducirá) y a su orden de trazado.</span></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div id="content-tab-sol" class="content-tab" style="display:none">
+        <p>
+          test2<br>
+        Details Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div id="content-tab-tierra" class="content-tab" style="display:none">
+       <p>
+         test3 <br>  
+       Specification Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+    
+
+  </div>
+</section>
+
+<br>
+
+
+</div>
+<button (click)="cerrar('#modalInstrucciones')" class="modal-close is-large" aria-label="close"></button>
 </div>

@@ -29,6 +29,7 @@ import { TemasDropdownOptionsComponent } from 'src/app/componentes/temas/temas-d
 import { TresImagenesPrimerInicioComponent } from 'src/app/componentes/imagenes/tres-imagenes-primer-inicio/tres-imagenes-primer-inicio.component';
 import { BaseImagenPrimerInicioComponent } from 'src/app/componentes/imagenes/tres-imagenes-primer-inicio/base-imagen-primer-inicio/base-imagen-primer-inicio.component';
 import { ImagenFigureComponent } from 'src/app/componentes/imagenes/imagen-figure/imagen-figure.component';
+import { ImagenFotoComponent } from 'src/app/componentes/imagenes/imagen-foto/imagen-foto.component';
 
 import { FirstSlideDropdownContentComponent } from 'src/app/componentes/especificos/first-slide-dropdown-content/first-slide-dropdown-content.component';
 import { SecondSlideVarwComponent } from 'src/app/componentes/especificos/second-slide-varw/second-slide-varw.component';
@@ -62,6 +63,7 @@ import { BotonAnteriorPrimerInicioComponent } from 'src/app/componentes/botones/
     BotonAnteriorPrimerInicioComponent,
     ImagenFigureComponent,
     SecondSlideVarwComponent,
+    ImagenFotoComponent,    
   ],
   imports: [
     CommonModule,
@@ -94,6 +96,7 @@ import { BotonAnteriorPrimerInicioComponent } from 'src/app/componentes/botones/
     BotonAnteriorPrimerInicioComponent,
     ImagenFigureComponent,
     SecondSlideVarwComponent,
+    ImagenFotoComponent,    
   ]
 })
 export class ComponentesModule { }
