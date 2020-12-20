@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare const getFromStore: any;
+declare const openModal: any;
 
 
 @Component({
@@ -9,8 +9,6 @@ declare const getFromStore: any;
 })
 export class HeaderModulosComponent implements OnInit {
 
-
-  nombreUsuario: String = getFromStore('usuario.nombre');
 
   constructor() { }
 

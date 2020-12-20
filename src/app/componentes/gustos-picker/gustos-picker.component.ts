@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 declare const openTab: any;
-declare const getFromStore: any;
 declare const getEbI: any;
 
 @Component({
@@ -11,12 +11,15 @@ declare const getEbI: any;
 export class GustosPickerComponent implements OnInit {
 
   @Input() accesoGusto: boolean = false;
-  gustoElegido: string = getFromStore('usuario.gusto');
+  gustoUsuario: string = '';
   
-  constructor() { }
+  constructor(private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
-  	getEbI(this.gustoElegido).className = 'tab is-active';
+    this.componentesService.getGustoUsuario().subscribe(
+     gustoUsuario => this.gustoUsuario = gustoUsuario
+    ); 
+    getEbI(this.gustoUsuario).className = 'tab is-active';
   }
 
 

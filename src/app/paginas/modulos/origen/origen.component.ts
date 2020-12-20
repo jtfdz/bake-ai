@@ -12,13 +12,20 @@ export class OrigenComponent implements OnInit {
 
   @Input() moduloActivado: string = '';
   kanasAPruebaObj: {} = {};
+  kanasIniciadosObj: {} = {};
+  tipoEscritura: string = 'hiragana';
 
 
   constructor(private modulosService: ModulosService, private temasService: TemasService) { }
 
   ngOnInit(): void {
-  	this.kanasAPruebaObj = this.temasService.getTablaExaminacion('hiragana');
+   this.kanasAPruebaObj = this.temasService.getTablaExaminacion(this.tipoEscritura, false);
+   this.kanasIniciadosObj = this.temasService.getTablaExaminacion(this.tipoEscritura, true);
+   //console.log(this.kanasAPruebaObj)
+   //console.log(this.kanasIniciadosObj)
   }
+
+
 
 
 }

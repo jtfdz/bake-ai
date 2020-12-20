@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare const getFromStore: any;
+import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 
 @Component({
   selector: 'app-inicios',
@@ -8,9 +8,14 @@ declare const getFromStore: any;
 })
 export class IniciosComponent implements OnInit {
   
-  usuarioIniciado: boolean = getFromStore('usuario.iniciado');
+  usuarioIniciado: boolean = false;
 
-  constructor() { }
-  ngOnInit(): void {}
+  constructor(private componentesService: ComponentesService) { }
+
+  ngOnInit(): void {
+    this.componentesService.getUsuarioIniciado().subscribe(
+     usuarioIniciado => this.usuarioIniciado = usuarioIniciado
+    );  	
+  }
 
 }

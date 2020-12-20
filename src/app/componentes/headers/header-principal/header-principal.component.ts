@@ -2,7 +2,6 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 import segmentos from 'src/assets/json/segmentosHeader.json';
 import urls from 'src/assets/json/urls.json';
-declare const getFromStore: any;
 declare const openModal: any;
 declare const openTab: any;
 
@@ -21,7 +20,7 @@ interface IndexStr {
 })
 export class HeaderPrincipalComponent implements OnInit {
 
-  nombreUsuario: String = getFromStore('usuario.nombre');
+  nombreUsuario: String = '';
   imagenes: String = urls.general;
   @Input() esInicio: boolean = false;
   @Input() mensajePersonalizado: string = '';
@@ -32,6 +31,9 @@ export class HeaderPrincipalComponent implements OnInit {
   constructor(private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
+    this.componentesService.getNombreUsuario().subscribe(
+     nombreUsuario => this.nombreUsuario = nombreUsuario
+    ); 
   }
 
   public activar(nombreSegmento: string): void { 

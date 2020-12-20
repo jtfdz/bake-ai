@@ -3,7 +3,7 @@
 
 <div class="modal"  id="myModal">
   <div class="modal-background"></div>
-  <div class="modal-card">
+  <div class="modal-card modal-content is-tiny">
     <header class="modal-card-head">
       <p class="modal-card-title">¿aseguras tus elecciones?</p>
     </header>
@@ -51,10 +51,10 @@
             <article class="tile is-child box is-info">
               <h1 class="title">usuario</h1>
               <p class="subtitle">ingresa un usuario y a través de este te haremos referencia dentro de <strong>bake ai:</strong></p> 
-
+              <!-- mejorar componetiza4r con el config -->
               <div class="control has-icons-left has-icons-right">
               <div class="form-group">
-                <input id="inputThirdSlide" [disabled]="isInputThirdSlideDisabled" [(ngModel)]="nombrecito" class="input is-medium is-success" type="text" placeholder="nombre">
+                <input maxlength="10" id="inputThirdSlide" [disabled]="isInputThirdSlideDisabled" [(ngModel)]="nombreUsuario" class="input is-medium is-success" type="text" placeholder="nombre">
               </div>
               <span class="icon is-medium is-left"> 
                 <app-imagen-figure [medida]="'24'" [imgUrl]="'third-slide/avatar-gris.png'"></app-imagen-figure> 
@@ -96,7 +96,7 @@
              <app-boton-anterior-primer-inicio [colorBoton]="'is-warning'" [siguienteSection]="'2'"></app-boton-anterior-primer-inicio>
             </div>
             <div class="column is-narrow">
-              <button (click)="activar()" [disabled]="!nombrecito" class="button is-primary is-rounded">
+              <button (click)="activar()" [disabled]="!nombreUsuario" class="button is-primary is-rounded">
               <span>siguiente</span>
               <span class="icon">↓</span>
               </button>

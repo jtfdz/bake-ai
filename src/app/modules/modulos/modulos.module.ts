@@ -15,6 +15,7 @@ import { AguaVComponent } from 'src/app/paginas/modulos/agua-v/agua-v.component'
 import { ArbolVrComponent } from 'src/app/paginas/modulos/arbol-vr/arbol-vr.component';
 import { OroArComponent } from 'src/app/paginas/modulos/oro-ar/oro-ar.component';
 import { FuegoAwComponent } from 'src/app/paginas/modulos/fuego-aw/fuego-aw.component';
+import { TeoriaModuloComponent } from 'src/app/paginas/modulos/teoria-modulo/teoria-modulo.component';
 
 import { ComponentesModule } from 'src/app/modules/componentes/componentes.module';
 
@@ -29,6 +30,7 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
     ArbolVrComponent,
     OroArComponent,
     FuegoAwComponent,
+    TeoriaModuloComponent,
     ],
   imports: [
     ComponentesModule,
@@ -47,6 +49,7 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
     ArbolVrComponent,
     OroArComponent,
     FuegoAwComponent,
+    TeoriaModuloComponent,
     ]
 })
 export class ModulosModule { }

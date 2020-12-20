@@ -1,5 +1,7 @@
 <ng-container [ngSwitch]="moduloActivado">
 
+	<app-teoria-modulo *ngSwitchCase="'teoria'"></app-teoria-modulo>
+
 	<app-sol-aw *ngSwitchCase="'sol'"></app-sol-aw>
 
     <app-luna-rw *ngSwitchCase="'luna'">></app-luna-rw>

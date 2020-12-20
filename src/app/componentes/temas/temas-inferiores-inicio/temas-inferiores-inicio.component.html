@@ -1,11 +1,11 @@
 <a [routerLink]="[urlTema]">
   <div class="box">
     <div class="container is-flex has-stuff-centered">
-      <app-imagen-figure [medida]="'48'" [imgUrl]="'inicio-general/gatovolteado.png'"></app-imagen-figure>
+      <app-imagen-figure [medida]="'48'" [imgUrl]="'inicio-general/'+imagenNombre+'.png'"></app-imagen-figure>
     </div>
     <p class="title">{{nombreTema}}</p>
-    <p [ngClass]="'subtitle is-5 has-text-weight-bold has-text-'+colorTema">3%</p>
-    <progress [ngClass]="'progress is-'+colorTema" value="3" max="100"></progress>
+    <p [ngClass]="'subtitle is-5 has-text-weight-bold has-text-'+colorTema">{{progreso}}%</p>
+    <progress [ngClass]="'progress is-'+colorTema" [value]="progreso" max="100"></progress>
   </div>
 </a>
 

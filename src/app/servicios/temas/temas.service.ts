@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import teoria from 'src/assets/json/teoria.json';
 
-
 declare const getFromStore: any;
 declare const setInStore: any;
 declare const getKeyByValue: any;
@@ -288,7 +287,7 @@ export class TemasService {
 
 
 
-
+  //kanas para VISTAS
   hiragana: tipoCompleta[] = [
       { letra: '', a: "あ", i: "い", u: "う", e: "え", o: "お"},
       { letra: 'k', a: "か", i: "き", u: "く", e: "け", o: "こ"},
@@ -359,7 +358,7 @@ export class TemasService {
   ];
 
 
-
+//MEJORAR matar y llevar a hiraganaHiding 
  hiraganaStraightObject: IndexStr = {
     a: "あ", i: "い", u: "う", e: "え", o: "お",
     ka: "か", ki: "き", ku: "く", ke: "け", ko: "こ",
@@ -453,7 +452,7 @@ export class TemasService {
 
 
 
-  getTablaExaminacion(tituloKana: string): {} {
+  getTablaExaminacion(tituloKana: string, iniciados: boolean): {} {
     let HiraganaHiding = [
       { letra: 'vocales', a: "あ", i: "い", u: "う", e: "え", o: "お"},
       { letra: 'k', ka: "か", ki: "き", ku: "く", ke: "け", ko: "こ"},
@@ -484,16 +483,61 @@ export class TemasService {
     ]
 
 
-     var filteredHiragana = {};
-    for (var i = 0; i < HiraganaHiding.length; i++) {
-       if( getFromStore('progreso.hiragana.kanaBody.'+HiraganaHiding[i].letra) ){
-        Object.assign(filteredHiragana, removeObjectProperty(HiraganaHiding[i], 'letra'));
-       }
+    let KatakanaHiding = [
+      { letra: 'vocales', a: "ア", i: "イ", u: "ウ", e: "エ", o: "オ"},
+      { letra: 'k', ka: "カ", ki: "キ", ku: "ク", ke: "ケ", ko: "コ"},
+      { letra: 's', sa: "サ", shi: "シ", su: "ス", se: "セ", so: "ソ"},
+      { letra: 't', ta: "タ", chi: "チ", tsu: "ツ", te: "テ", to: "ト"},
+      { letra: 'n', na: "ナ", ni: "ニ", nu: "ヌ", ne: "ネ", no: "ノ"},
+      { letra: 'h', ha: "ハ", hi: "ヒ", fu: "フ", he: "ヘ", ho: "ホ"},
+      { letra: 'm', ma: "マ", mi: "ミ", mu: "ム", me: "メ", mo: "モ"},
+      { letra: 'y', ya: "ヤ", yu: "ユ", yo: "ヨ"},      
+      { letra: 'r', ra: "ラ", ri: "リ", ru: "ル", re: "レ", ro: "ロ"},
+      { letra: 'especiales', wa: "ワ", n: "ン", wo: "ヲ"},
+      { letra: 'g', ga: "ガ", gi: "ギ", gu: "グ", ge: "ゲ", go: "ゴ"},
+    //mejorar llenar eseto XD
+      { letra: 'z', za: "ざ", ji: "じ", zu: "ず", ze: "ぜ", zo: "ぞ"},
+      { letra: 'd', da: "だ", ji: "ぢ", dzu: "づ", de: "で", do: "ど"},
+      { letra: 'b', ba: "ば", bi: "び", bu: "ぶ", be: "べ", bo: "ぼ"},
+      { letra: 'p', pa: "ぱ", pi: "ぴ", pu: "ぷ", pe: "ぺ", po: "ぽ"},   
+      { letra: 'ky', kya: "きゃ", kyu: "きゅ", kyo: "きょ"},
+      { letra: 'sh', sha: "しゃ", shu: "しゅ", sho: "しょ"},
+      { letra: 'ch', cha: "ちゃ", chu: "ちゅ", cho: "ちょ"},
+      { letra: 'ny', nya: "にゃ", nyu: "にゅ", nyo: "にょ"},
+      { letra: 'hy', hya: "ひゃ", hyu: "ひゅ", hyo: "ひょ"}, 
+      { letra: 'my', mya: "みゃ", myu: "みゅ", myo: "みょ"}, 
+      { letra: 'ry', rya: "りゃ", ryu: "りゅ", ryo: "りょ"}, 
+      { letra: 'gy', gya: "ぎゃ", gyu: "ぎゅ", gyo: "ぎょ"}, 
+      { letra: 'j', ja: "じゃ", ju: "じゅ", jo: "じょ"},  
+      { letra: 'by', bya: "びゃ", byu: "びゅ", byo: "びょ"}, 
+      { letra: 'py', pya: "ぴゃ", pyu: "ぴゅ", pyo: "ぴょ"},        
+    ]
+
+  
+    var filteredKana = {};
+    let kanaBody = getFromStore('progreso.'+tituloKana+'.kanaBody');
+
+    //mejorar
+
+    if(iniciados){
+    for (var i = 0; i < kanaBody.length; i++) {
+         if(kanaBody[i].iniciada){
+          if(tituloKana=='hiragana') Object.assign(filteredKana, removeObjectProperty(HiraganaHiding[i], 'letra'));
+          if(tituloKana=='katakana') Object.assign(filteredKana, removeObjectProperty(KatakanaHiding[i], 'letra'));          
+         }
     }
-   
-    return filteredHiragana;
+    }else{
+    for (var i = 0; i < kanaBody.length; i++) {
+         if(kanaBody[i].desbloqueado && !kanaBody[i].iniciada){
+          
+          if(tituloKana=='hiragana'){ Object.assign(filteredKana, removeObjectProperty(HiraganaHiding[i], 'letra')) };
+          if(tituloKana=='katakana'){ Object.assign(filteredKana, removeObjectProperty(KatakanaHiding[i], 'letra')) };          
+         }
+    }
+    }
 
 
+    return filteredKana;
 
   }
 

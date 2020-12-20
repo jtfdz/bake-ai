@@ -4,21 +4,22 @@
 
 <div class="modal modal-fx-fadeInScale"  id="modalCard">
 <div class="modal-background"></div>
-<div class="modal-content">
+<div class="modal-content is-tiny">
 
 
 <div class="box">
 
+<section class="section">
+
 
 <div class="columns">
-
-
-	<div class="column is-2 is-offset-1">
+	<div class="column is-offset-1">
 	  <p id="tituloKanaCard" class="has-text-dark" style="font-size: 100px; white-space: nowrap;"></p>
 	</div>
 
-	<div class="column is-3">
 
+	<div class="column">
+		
 		<br>
 
 		<div class="is-flex has-stuff-centered">
@@ -29,48 +30,34 @@
 	
 		<p class="subtitle is-5">romaji:</p>
 		<p class="title is-4" id="romajiKanaCard"></p>
-	  	 
-	
-
 
 	</div>
 
+</div>
 
-	<div class="column is-4">
 
-		<ng-container *ngIf="tablaTipo == 'pura'"><br></ng-container>
 
 		<span class="is-flex has-stuff-centered">
 		  <figure *ngIf="tablaTipo != 'compuesta'" class="image is-128x128">
 			  <img id="imagenTrazo">
 		  </figure>
-		  <figure  *ngIf="tablaTipo == 'compuesta'" class="image is-256x256">
+		  <figure  *ngIf="tablaTipo == 'compuesta'" style="width:80%;" class="image is-256x256">
 			  <img id="imagenTrazo">
 		  </figure>
 		</span>
+		<br>
 
 
-	</div>
 
+</section>
 
-	<div class="column is-1 has-stuff-centered">
-
-	<section class="section">
-	  <br><br>
-	  <button (click)="cerrarCard()" class="button is-vcentered is-medium is-dark">salir</button>
-	</section>
-
-	</div>
-
-
-	
-
-</div>
 
 
 
 </div>
 </div>
+
+<button (click)="cerrarCard()" class="modal-close is-large" aria-label="close"></button>
 </div>
 
 

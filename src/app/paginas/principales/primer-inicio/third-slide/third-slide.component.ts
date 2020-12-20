@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
+import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 
 declare const openModal: any;
-declare const setInStore: any;
+
 
 @Component({
   selector: 'app-third-slide',
@@ -12,10 +12,10 @@ declare const setInStore: any;
 })
 export class ThirdSlideComponent {
 
-  nombrecito: String = '';
+  nombreUsuario: string = '';
   isInputThirdSlideDisabled: boolean = false;
 
-  constructor(private scrollToService: ScrollToService, private primerInicioService: PrimerInicioService) { }
+  constructor(private primerInicioService: PrimerInicioService, private componentesService: ComponentesService) { }
 
   public activar(): void { openModal(1, "#myModal"); }
 
@@ -29,7 +29,7 @@ export class ThirdSlideComponent {
     this.isInputThirdSlideDisabled = true;
     this.primerInicioService.setShow4(); 
     this.volver();
-    setInStore('usuario.nombre',this.nombrecito);
+    this.componentesService.setNombreUsuario(this.nombreUsuario)
   }
 
 

@@ -25,47 +25,47 @@
 
 <div class="box has-text-centered">
 
+<ng-container  *ngIf="sizeOfkanasAPruebaObj > 0">
+  <h1 class="title">contenido nuevo a estudiar:</h1>
 
-<h1 class="title">contenido a estudiar:</h1>
+  <div class="box has-background-light">
 
+  <div class="field is-grouped is-grouped-multiline">
+   <ng-container *ngFor="let kanas of kanasAPruebaObj | keyvalue; let i = index">
+     <div class="control">
+      <div class="tags has-addons">
+        <span class="tag is-dark">{{kanas.key}}</span>
+        <span [className]="'tag '+tagColorRandom[i]">{{kanas.value}}</span>
+      </div>
+    </div> 
+    </ng-container>
+  </div>
 
-
-<div class="box has-background-light">
-
-
-<div class="field is-grouped is-grouped-multiline">
- <ng-container *ngFor="let kanas of kanasAPruebaObj | keyvalue; let i = index">
-   <div class="control">
-    <div class="tags has-addons">
-      <span class="tag is-dark">{{kanas.key}}</span>
-      <span [className]="'tag '+tagColorRandom[i]">{{kanas.value}}</span>
-    </div>
-  </div> 
-  </ng-container>
-</div>
-
-</div>
+  </div>
+</ng-container>
 
 
-<!-- <h1 class="title">contenido ya estudiado previamente:</h1>
+<ng-container  *ngIf="sizeOfkanasIniciadosObj > 0">
+
+  <h1 class="title">contenido estudiado previamente:</h1>
+
+  <div class="box has-background-light">
+
+  <div class="field is-grouped is-grouped-multiline">
+   <ng-container *ngFor="let kanas of kanasIniciadosObj | keyvalue; let i = index">
+     <div class="control">
+      <div class="tags has-addons">
+        <span class="tag is-dark">{{kanas.key}}</span>
+        <span [className]="'tag '+tagColorRandomIniciados[i]">{{kanas.value}}</span>
+      </div>
+    </div> 
+    </ng-container>
+  </div>
+
+  </div>
+</ng-container>
 
 
-
-<div class="box has-background-light">
-
-
-<div class="field is-grouped is-grouped-multiline">
- <ng-container *ngFor="let kanas of kanasAPruebaObj | keyvalue; let i = index">
-   <div class="control">
-    <div class="tags has-addons">
-      <span class="tag is-dark">{{kanas.key}}</span>
-      <span [className]="'tag '+tagColorRandom[i]">{{kanas.value}}</span>
-    </div>
-  </div> 
-  </ng-container>
-</div>
-
-</div> -->
 
 <h2 class="subtitle is-6 has-text-dark">¡espero hayas leído las instrucciones!</h2>
 
@@ -159,7 +159,7 @@
 
     <div class="columns is-multiline has-text-centered has-stuff-centered is-flex">
       <div class="column is-10"><img src="../../../assets/media/modulos/tabla03.png"></div>
-      <div class="column is-12"><span class="has-text-black has-background-info-light"><span class="has-text-weight-bold">TIP: </span>dando click a los silabarios dentro de las tablas se abrirá una versión agrandada junto a su romaji, su audio (dando click al icono de la bocina se reproducirá) y a su orden de trazado.</span></div>
+      <div class="column is-12"><span class="has-text-black has-background-info-light"><span class="has-text-weight-bold">TIP: </span>dando click a los silabarios dentro de las tablas se abrirá una versión agrandada junto a su romaji, su audio (dando click al icono de la bocina se reproducirá) y su orden de trazado.</span></div>
     </div>
 
 

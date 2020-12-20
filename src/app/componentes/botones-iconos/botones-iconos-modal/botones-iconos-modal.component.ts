@@ -3,8 +3,6 @@ import { ComponentesService } from 'src/app/servicios/componentes/componentes.se
 import urls from 'src/assets/json/urls.json';
 import segmentos from 'src/assets/json/segmentosHeader.json';
 declare const openModal: any;
-declare const getFromStore: any;
-declare const setInStore: any;
 
 @Component({
   selector: 'app-botones-iconos-modal',
@@ -13,11 +11,11 @@ declare const setInStore: any;
 })
 export class BotonesIconosModalComponent implements OnInit {
 
-  tituloCard: String = 'bake ai: la aplicación';
-  colorCard: String = 'success';
-  imagenes: String = urls.general;
-  imagenesModal: String = urls.modals;
-  nombreUsuario: String = getFromStore('usuario.nombre');
+  tituloCard: string = 'bake ai: la aplicación';
+  colorCard: string = 'success';
+  imagenes: string = urls.general;
+  imagenesModal: string = urls.modals;
+  nombreUsuario: string = '';
 
   constructor(private componentesService: ComponentesService) { }
 
@@ -28,13 +26,15 @@ export class BotonesIconosModalComponent implements OnInit {
     this.componentesService.getColorCard().subscribe(
      colorCard => this.colorCard = colorCard
     ); 
+    this.componentesService.getNombreUsuario().subscribe(
+     nombreUsuario => this.nombreUsuario = nombreUsuario
+    ); 
   }
 
   public desactivar(): void { openModal(2, '#myModal'); }
 
   public guardar(): void {
-    setInStore('usuario.nombre', this.nombreUsuario);
-    openModal(2, '#myModal');
+    this.componentesService.setNombreUsuario(this.nombreUsuario)
   }
 
 }

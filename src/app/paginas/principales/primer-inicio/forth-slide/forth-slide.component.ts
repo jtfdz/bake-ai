@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-declare const setInStore: any;
-declare const getFromStore: any;
-
+import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 
 @Component({
   selector: 'app-forth-slide',
@@ -10,10 +8,10 @@ declare const getFromStore: any;
 })
 export class ForthSlideComponent {
 
-  constructor() { }
+  constructor(private componentesService: ComponentesService) { }
 
   public finalizar(): void{
-    setInStore('usuario.iniciado', true);
+  	this.componentesService.setUsuarioIniciado(true)
   }
 
 }

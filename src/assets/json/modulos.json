@@ -1,4 +1,9 @@
 {
+	"teoria": {
+		"nombre": "teoría", 
+		"tipo": "mayorRetencion",
+		"color": "light"
+	},
 	"luna": {
 		"nombre": "luna 月", 
 		"tipo": "visual y escritura",

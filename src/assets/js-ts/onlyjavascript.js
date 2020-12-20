@@ -1,14 +1,43 @@
 const Store = require('electron-store');
 
 
-  const kanaBodyFull = {
-    vocales: true,  k: false,   s: false,   t: false,  n: false,
-    h: false,  m: false,  y: false,  r: false,  especiales: false,
-    g: false,  z: false,   d: false,   b: false,  p: false,
-    ky: false,  sh: false,   ch: false,   ny: false,  hy: false,
-    my: false,  ry: false,   gy: false,   j: false,  by: false,  py: false
-  }
+  // const kanaBodyFull = {
+  //   vocales: true,  k: false,   s: false,   t: false,  n: false,
+  //   h: false,  m: false,  y: false,  r: false,  especiales: false,
+  //   g: false,  z: false,   d: false,   b: false,  p: false,
+  //   ky: false,  sh: false,   ch: false,   ny: false,  hy: false,
+  //   my: false,  ry: false,   gy: false,   j: false,  by: false,  py: false
+  // }
 
+
+	const  kanaBodyFull = [
+	  {key: 'vocales', desbloqueado: true, iniciada: false},
+	  {key: 'k', desbloqueado: false, iniciada: false},
+	  {key: 's', desbloqueado: false, iniciada: false},
+	  {key: 't', desbloqueado: false, iniciada: false},
+	  {key: 'n', desbloqueado: false, iniciada: false},
+	  {key: 'h', desbloqueado: false, iniciada: false},
+	  {key: 'm', desbloqueado: false, iniciada: false},
+	  {key: 'y', desbloqueado: false, iniciada: false},
+	  {key: 'r', desbloqueado: false, iniciada: false},
+	  {key: 'especiales', desbloqueado: false, iniciada: false},
+	  {key: 'g', desbloqueado: false, iniciada: false},
+	  {key: 'z', desbloqueado: false, iniciada: false},
+	  {key: 'd', desbloqueado: false, iniciada: false},
+	  {key: 'b', desbloqueado: false, iniciada: false},
+	  {key: 'p', desbloqueado: false, iniciada: false},
+	  {key: 'ky', desbloqueado: false, iniciada: false},
+	  {key: 'sh', desbloqueado: false, iniciada: false},
+	  {key: 'ch', desbloqueado: false, iniciada: false},
+	  {key: 'ny', desbloqueado: false, iniciada: false},
+	  {key: 'hy', desbloqueado: false, iniciada: false},
+	  {key: 'my', desbloqueado: false, iniciada: false},
+	  {key: 'ry', desbloqueado: false, iniciada: false},
+	  {key: 'gy', desbloqueado: false, iniciada: false},
+	  {key: 'j', desbloqueado: false, iniciada: false},
+	  {key: 'by', desbloqueado: false, iniciada: false},
+	  {key: 'py', desbloqueado: false, iniciada: false},
+	];
 
 
   const schema = {
@@ -27,10 +56,24 @@ const Store = require('electron-store');
     progreso: {
       type: 'object',
       default: {
-        hiragana: {kanaBody: kanaBodyFull, vecesEstudiado: 0},
-        katakana: {kanaBody: kanaBodyFull, vecesEstudiado: 0},
+        hiragana: {
+        	kanaBody: kanaBodyFull, 
+        	vecesEstudiado: 0, 
+        	aciertos: 0,
+        	fallos: 0,
+        	porcentaje: 3
+        }
+        	,
+        katakana: {
+        	kanaBody: kanaBodyFull, 
+        	vecesEstudiado: 0, 
+        	aciertos: 0,
+        	fallos: 0,
+        	porcentaje: 3
+        },
         kanji: {
-          n5: false, n4: false, n3: false, n2: false, n1: false
+          niveles: {n5: false, n4: false, n3: false, n2: false, n1: false},
+          porcentaje: 3
         }
       }
     },
@@ -38,10 +81,10 @@ const Store = require('electron-store');
     estilo: {
       type: 'object',
       default: {
-      	general: {porcentaje: 0, aciertos: 0, desaciertos: 0},
-        visual: {porcentaje: 33.333, aciertos: 0, desaciertos: 0},
-        auditiva: {porcentaje: 33.333, aciertos: 0, desaciertos: 0},
-        escritura: {porcentaje: 33.333, aciertos: 0, desaciertos: 0}     
+      	general: {porcentaje: 0, aciertos: 0, fallos: 0},
+        visual: {porcentaje: 33.333, aciertos: 0, fallos: 0},
+        auditiva: {porcentaje: 33.333, aciertos: 0, fallos: 0},
+        escritura: {porcentaje: 33.333, aciertos: 0, fallos: 0}     
       }
     },
 
@@ -51,8 +94,8 @@ const Store = require('electron-store');
       type: 'object',
       default: {
       	mayor: 'visual',
-        media: 'auditiva',
-        baja: 'escritura'
+        media: 'auditivo',
+        baja: 'de escritura'
       }
     },
 
@@ -60,8 +103,155 @@ const Store = require('electron-store');
   };
 
 
-
 const store = new Store({schema});
+
+
+function pushArray(arr, arr2) {
+    arr.push.apply(arr, arr2);
+}
+
+
+function modeloDeAprendizaje(){
+	var mayor = getFromStore('retencion.mayor');
+	var media = getFromStore('retencion.media');
+	var baja = getFromStore('retencion.baja');
+	var modelo = [];
+
+	var visuales = ['tierra', 'agua', 'árbol', 'luna'];
+	var auditivos = ['sol', 'fuego'];
+	var escritos = ['oro', 'luna', 'sol', 'fuego'];
+
+	switch(mayor){
+		//visual
+		case 'visual': 
+			switch(media){
+				case 'auditivo': 
+				modelo = arrayUnique(visuales.concat(auditivos));
+				pushArray(modelo, visuales);
+				break;
+				
+				case 'de escritura': 
+				modelo = arrayUnique(visuales.concat(escritura));
+				pushArray(modelo, visuales);
+				break;
+			}
+		break;
+
+		//auditiva
+		case 'auditivo': 
+			switch(media){
+				case 'visual': 
+				modelo = arrayUnique(auditivos.concat(visuales));
+				pushArray(modelo, auditivos);
+				break;
+				case 'de escritura': 
+				modelo = arrayUnique(auditivos.concat(escritura));
+				pushArray(modelo, auditivos);
+				break;
+			}
+		break;
+
+		//escritura
+		case 'de escritura': 
+			switch(media){
+				case 'visual': 
+				modelo = arrayUnique(escritura.concat(visuales));
+				pushArray(modelo, escritura);
+				break;
+
+				case 'auditivo': 
+				modelo = arrayUnique(escritura.concat(auditivos));
+				pushArray(modelo, escritura);
+				break;
+			}
+		break;
+	}
+
+	return modelo;
+
+}
+
+
+console.log(modeloDeAprendizaje());
+
+
+
+function arrayUnique(array) {
+    var a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+
+    return a;
+}
+
+
+
+
+
+function apuebaParaNuevo(kana){
+	var totalAciertos = getFromStore('progreso.'+kana+'.aciertos');
+	var totalFallos = getFromStore('progreso.'+kana+'.fallos');
+	var totalIntentos = totalAciertos + totalFallos;
+	if(totalIntentos){
+		var nivelDeAcertado = ((totalAciertos/totalIntentos) * 100).toFixed(3);
+		var aprueba = (nivelDeAcertado >= 75);
+		return aprueba;
+	}
+	return false;
+}
+
+
+// mejorar: no es usada XD
+function siguienteKey(db, key) {
+  for (var i = 0; i < db.length; i++) {
+    if (db[i].key === key) {
+      return db[i + 1].key && db[i + 1].desbloqueado && db[i + 1].iniciado;
+    }
+  }
+};
+
+function keyBloqueada(kanadb) {
+    if (kanadb.desbloqueado) {
+    	return false;
+    }else{
+    	return kanadb;
+    }
+};
+
+
+//sirve, lo único no probado es apruebaParaNuevo mejorar XD
+function desbloqueaNuevo(kana){
+	if(apuebaParaNuevo(kana)){
+		var bodyKana = getFromStore('progreso.'+kana+'.kanaBody')
+		for (var i = 0; i < bodyKana.length; i++) {
+			var kanaBloqueado = keyBloqueada(bodyKana[i]);
+			if(kanaBloqueado){
+				bodyKana[i].desbloqueado = true;
+				setInStore('progreso.'+kana+'.kanaBody', bodyKana)
+				break;
+			} 
+		}
+
+	}
+}
+
+function aprobarIniciado(kana) {
+var bodyKana = getFromStore('progreso.'+kana+'.kanaBody')
+  for (var i = 0; i < bodyKana.length; i++) {
+    if (bodyKana[i].desbloqueado) {
+      bodyKana[i].iniciado = true;
+      //setInStore(propiedad, valor)
+    }
+  }
+};
+
+
+
+
 
 
 // store.delete('estilo.lye');
