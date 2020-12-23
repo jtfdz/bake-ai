@@ -2,106 +2,85 @@
 	<div class="hero-body has-stuff-centered">
 	<div class="container">
 
-
   <section class="section">
-   
-<div class="columns">
+    <div class="columns">
   
-  <div class="column is-4 is-offset-1">
-    <br>
-    <h1 class="subtitle is-4 has-text-white">¡encuéntrame!</h1>
-    <h1 class="title is-1 has-text-white">mo</h1>
-  </div>
+      <div class="column is-4 is-offset-1">
+        <br>
+        <h1 class="subtitle is-4 has-text-white">¡encuéntrame!</h1>
+        <h1 class="title is-1 has-text-white">{{dataAgua[0]}}</h1>
+      </div>
 
-  <div class="column">
-    
+     <div class="column">
+        
+          <div class="block">
+          <table class="table is-bordered">
+            <tbody *ngFor="let item of elementosTabla; let i = index">
 
+          <!-- mejorar COMPONETIZAR Y METER UN EMITTER DEL ELEGIDO -->
+              <tr *ngIf="i % 5 == 0" class="has-background-info" >
+                <td [attr.disabled]="dioRespuesta? true: null" (click)="aguaColumna($event)" style="width: 20%;" class="button column-button">{{item}}</td>
+                <td [attr.disabled]="dioRespuesta? true: null" (click)="aguaColumna($event)" style="width: 20%;" class="button column-button">{{elementosTabla[i+1]}}</td>
+                <td [attr.disabled]="dioRespuesta? true: null" (click)="aguaColumna($event)" style="width: 20%;" class="button column-button">{{elementosTabla[i+2]}}</td>
+                <td [attr.disabled]="dioRespuesta? true: null" (click)="aguaColumna($event)" style="width: 20%;" class="button column-button">{{elementosTabla[i+3]}}</td>
+                <td [attr.disabled]="dioRespuesta? true: null" (click)="aguaColumna($event)" style="width: 20%;" class="button column-button">{{elementosTabla[i+4]}}</td>
+              </tr>
 
-  <div class="block">
-  <table class="table is-bordered" id="hiraganaTabla">
-    <tbody>
+            </tbody>
+          </table>
+          </div>
 
+      </div>
 
-      <tr>
-        <td>ら</td>
-        <td>ぽ</td>
-        <td>も</td>
-        <td>ぢ</td>
-        <td>じゃ</td>
-      </tr>
-      <tr>
-        <td>ら</td>
-        <td>ぽ</td>
-        <td>も</td>
-        <td>ぢ</td>
-        <td>じゃ</td>
-      </tr>
-      <tr>
-        <td>ら</td>
-        <td>ぽ</td>
-        <td>も</td>
-        <td>ぢ</td>
-        <td>じゃ</td>
-      </tr>
-      <tr>
-        <td>ら</td>
-        <td>ぽ</td>
-        <td>も</td>
-        <td>ぢ</td>
-        <td>じゃ</td>
-      </tr>
-
-    </tbody>
-  </table>
-  </div>
-
-
-
-
-  </div>
-
-
-</div>
+    </div>
 
 
 
 
 
-            <button class="button is-dark">ayuda</button>
+  <section class="section has-stuff-centered is-flex">
+    <div class="field is-grouped">
+      <p class="control">
+        <button [disabled]="!respuesta" (click)="aguaRespuesta()" class="button is-success">✔ listo</button>
+      </p>
+      <p class="control">
+        <button class="button is-dark">ayuda</button>
+      </p>
+    </div>
+  </section>
      
 
 
 
   </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</div>
 	</div>
 </section>
+
+
+
+<div class="modal modal-fx-fadeInScale"  id="aguaResponde">
+<div class="modal-background"></div>
+<div class="modal-content is-tiny">
+
+
+<section class="section has-stuff-centered is-flex">
+  <app-imagen-figure *ngIf="acertado" [medida]="'128'" [imgUrl]="'modulos/correcto.gif'"></app-imagen-figure>
+  <app-imagen-figure *ngIf="!acertado" [medida]="'128'" [imgUrl]="'modulos/incorrecto.gif'"></app-imagen-figure>
+</section>
+
+<div class="box">
+  <h1 *ngIf="acertado" class="title is-3 has-text-weight-bold has-text-success">¡CORRECTO!</h1>
+  <h1 *ngIf="!acertado" class="title is-1 has-text-weight-bold has-text-primary">INCORRECTO</h1>
+
+  <h1 class="title is-1 has-text-weight-bold">{{dataAgua[0]}} = {{dataAgua[1]}}</h1>
+
+    <button (click)="avanzarModulo()" class="button is-warning has-background-warning">siguiente →</button>
+
+</div>
+
+</div>
+<button onclick="modalFunction(2, '#aguaResponde')" class="modal-close is-large" aria-label="close"></button>
+</div>
+
+

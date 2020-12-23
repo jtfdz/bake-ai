@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
+import { ModulosService } from 'src/app/servicios/modulos/modulos.service';
 
 interface IndexObj {
   [index: string]: {};
@@ -19,16 +20,18 @@ export class BaseComponent implements OnInit {
   modulosObj: IndexObj = {}
   modulosStr: IndexStr = {};
 
-  //10 de los nuevos, 5 de los viejos
-  arrayOfModulos: string[] = ['teoria', 'luna', 'sol', 'luna', 'tierra', 'fuego', 'oro']
+  arrayOfModulos: string[] = []
+  sizeOfArrayOfModulos: number = 0;
   indexOfModulos: number = 0;
 
   tituloModulo: string = '';
   tipoModulo: string = '';
   colorModulo: string = '';
   estiloMayorRetencion: string = '';
+  dataParaModulos: any[] = [];
+  progresoArr: number[] = [];
 
-  constructor(private componentesService: ComponentesService) { }
+  constructor(private componentesService: ComponentesService, private modulosService: ModulosService) { }
 
 
    llenarInfo(): void{
@@ -42,6 +45,22 @@ export class BaseComponent implements OnInit {
     this.componentesService.getEstiloMayorRetencion().subscribe(
      estiloMayorRetencion => this.estiloMayorRetencion = estiloMayorRetencion
     ); 
+    this.modulosService.getModulosAprendizaje().subscribe(
+     arrayOfModulos => this.arrayOfModulos = arrayOfModulos
+    ); 
+    this.modulosService.getDataParaModulos().subscribe(
+     dataParaModulos => this.dataParaModulos = dataParaModulos
+    ); 
+
+    this.modulosService.setProgresoAvance(this.indexOfModulos);
+    this.sizeOfArrayOfModulos = this.arrayOfModulos.length;
+
+    for (var i = 0; i <= this.sizeOfArrayOfModulos; i++) {
+      let percentageOfIndex = ((i/this.sizeOfArrayOfModulos) * 100);
+      this.progresoArr.push(Math.trunc(percentageOfIndex))
+    }
+    
+    this.modulosService.setProgresoArray(this.progresoArr);
 
     this.modulosObj = {
     "teoria": {
@@ -86,18 +105,22 @@ export class BaseComponent implements OnInit {
     }
   };
 
-
   	this.modulosStr = this.modulosObj[this.arrayOfModulos[0]];
   	this.llenarInfo();
 
   }
 
+    //mejorar ???
   avanzarModulo(): void{
-  	this.indexOfModulos = this.indexOfModulos+1;
-  	this.modulosStr = this.modulosObj[this.arrayOfModulos[this.indexOfModulos]]
-  	this.llenarInfo();
+    if(this.indexOfModulos+1 <= this.sizeOfArrayOfModulos){
+      this.modulosService.setProgresoAvance(this.indexOfModulos+1);
+    }
+    if(this.indexOfModulos+1 < this.sizeOfArrayOfModulos){
+      this.indexOfModulos = this.indexOfModulos+1;
+      this.modulosStr = this.modulosObj[this.arrayOfModulos[this.indexOfModulos]]
+      this.llenarInfo();
+    }
   }
-
 
 
 

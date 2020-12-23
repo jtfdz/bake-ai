@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 declare const getEbCN: any;
 declare const getEbQSA: any;
 declare const getEbI: any;
-declare const typescriptCantDoIt: any;
+declare const accessParent: any;
 
 @Component({
   selector: 'app-tabs-teoria',
@@ -31,7 +31,7 @@ export class TabsTeoriaComponent implements OnInit {
        }
       for (var i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" has-text-black", " has-text-"+tablinks[i].parentElement!.id);
-        typescriptCantDoIt(tablinks[i]);
+        accessParent(tablinks[i]);
       }
 
        (getEbI(tabName) as HTMLElement).style.display = "block";

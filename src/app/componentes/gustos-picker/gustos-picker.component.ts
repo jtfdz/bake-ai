@@ -22,5 +22,4 @@ export class GustosPickerComponent implements OnInit {
     getEbI(this.gustoUsuario).className = 'tab is-active';
   }
 
-
 }

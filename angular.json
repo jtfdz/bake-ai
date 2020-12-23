@@ -34,11 +34,12 @@
               "node_modules/@creativebulma/bulma-badge/dist/bulma-badge.min.css",
               "node_modules/@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css",
               "node_modules/bulma-modal-fx/dist/css/modal-fx.min.css",
+              "node_modules/bulma-checkradio/dist/css/bulma-checkradio.min.css",
             ],
             "scripts": [
               "node_modules/bulma-modal-fx/dist/js/modal-fx.min.js",
               "src/assets/js-ts/onlyjavascript.js",
-              "src/assets/js-ts/communication.js"
+              "src/assets/js-ts/communication.js",
             ]
           },
           "configurations": {

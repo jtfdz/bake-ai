@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio.service';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 
-declare const openModal: any;
+declare const modalFunction: any;
 
 
 @Component({
@@ -17,12 +17,9 @@ export class ThirdSlideComponent {
 
   constructor(private primerInicioService: PrimerInicioService, private componentesService: ComponentesService) { }
 
-  public activar(): void { openModal(1, "#myModal"); }
+  public activar(): void { modalFunction(1, "#myModal"); }
 
-
-  public volver(): void{
-    openModal(2, "#myModal");
-  }
+  public volver(): void{  modalFunction(2, "#myModal");  }
 
   
   public proceder(): void{

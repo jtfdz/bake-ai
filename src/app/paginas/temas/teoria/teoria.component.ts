@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
 declare const openTabTeoria: any;
-declare const setInStore: any;
-
 
 @Component({
   selector: 'app-teoria',
@@ -11,13 +9,12 @@ declare const setInStore: any;
 })
 export class TeoriaComponent implements OnInit {
 
-  tituloTema: string = 'general >> historia';
-  temaContenido: string = 'la historia de los abecedarios';
+  tituloTema: string = '';
+  temaContenido: string = '';
   temaAprendido: boolean = false;
 
 
   constructor(private temasService: TemasService) { }
-
 
    ngOnInit(): void {
   	this.temasService.getTituloTema().subscribe(

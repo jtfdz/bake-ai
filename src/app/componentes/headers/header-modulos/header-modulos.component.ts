@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-declare const openModal: any;
+import { ModulosService } from 'src/app/servicios/modulos/modulos.service';
+
+declare const modalFunction: any;
+declare const getEbI: any;
 
 
 @Component({
@@ -9,11 +12,27 @@ declare const openModal: any;
 })
 export class HeaderModulosComponent implements OnInit {
 
+	progresoArr: number[] = [];
+	progresoArrIndex: number = 0;
 
-  constructor() { }
+  constructor(private modulosService: ModulosService) { }
 
   ngOnInit(): void {
+  	this.modulosService.getProgresoArray().subscribe(
+     progresoArr => this.progresoArr = progresoArr
+    ); 
+
+	this.modulosService.getProgresoAvance().subscribe(
+     progresoArrIndex => this.progresoArrIndex = progresoArrIndex
+    ); 
+
+  
+
   }
+
+
+
+
 
 
   public activar(): void { 

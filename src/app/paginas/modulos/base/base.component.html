@@ -9,7 +9,7 @@
 
         <div class="column is-8">
           <section class="hero is-black">
-            <app-origen [moduloActivado]="arrayOfModulos[indexOfModulos]"></app-origen>
+            <app-origen [moduloData]="dataParaModulos[indexOfModulos]" [moduloActivado]="arrayOfModulos[indexOfModulos]"></app-origen>
           </section>
         </div>
 
@@ -46,10 +46,27 @@
 
 
 
-           <h1 class="subtitle is-size-6">
-              <strong>aciertos:</strong> xxbxxbb
-            </h1>
-            <button (click)="avanzarModulo()" class="button has-background-{{colorModulo}}">listo</button>
+
+              <span class="subtitle is-size-6 has-text-weight-bold has-text-grey-darker">aciertos:</span>
+       
+
+
+
+
+<table class="table is-bordered is-striped is-narrow" style="display:block">
+  <tbody>
+    <tr>
+      <td class="has-background-warning is-white" style="display: inline-block" *ngFor="let item of arrayOfModulos; let i=index"><span class="has-text-weight-medium">??</span></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- ❎  ✖✔ ✕✓ ❌✅ -->
+
+
+
+            <button (click)="avanzarModulo()" class="button is-{{colorModulo}} has-background-{{colorModulo}}">listo →</button>
           </div>
           </nav>
 

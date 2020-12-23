@@ -40,8 +40,8 @@
 
       <!--column #2: status bar--->
       <div class="column is-6">
-        <p class="has-text-weight-semibold has-text-info">0%</p>
-        <progress class="progress is-large is-success" value="0" max="100"></progress>
+        <span id="barraDeProgreso" class="has-text-weight-semibold has-text-info">0</span><span class="has-text-weight-semibold has-text-info">%</span>
+        <progress class="progress is-large is-success" [value]="progresoArr[progresoArrIndex]" max="100"></progress>
       </div>
       <!--fin de column #2: status bar--->
 
@@ -49,7 +49,7 @@
 
       <!--column #3: boton salir--->
       <div class="column is-offset-1">
-         <a class="modal-button" data-target="modalInstExam" onclick="openModal(1, '#abandonarProgreso')" >
+         <a class="modal-button" data-target="modalInstExam" onclick="modalFunction(1, '#abandonarProgreso')" >
           <div class="has-tooltip-bottom has-tooltip-black has-tooltip-arrow" [attr.data-tooltip]="'salir'">
               <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/largate.png'"></app-imagen-figure>
           </div>
@@ -89,7 +89,7 @@
 
 
             <div class="column is-narrow">
-<button class="button is-success has-text-weight-semibold" onclick="openModal(2, '#abandonarProgreso')">¡no!</button>
+<button class="button is-success has-text-weight-semibold" onclick="modalFunction(2, '#abandonarProgreso')">¡no!</button>
             </div>
             <div class="column is-narrow">
 <button class="button is-primary" [routerLink]="'/tema-hiragana'">pues sí</button>

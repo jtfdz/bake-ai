@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-declare const openModal: any;
-// declare const setModalCard: any;
-declare const getEbI: any;
-import urls from 'src/assets/json/urls.json';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
+import urls from 'src/assets/json/urls.json';
+declare const modalFunction: any;
+declare const getEbI: any;
 
 @Component({
   selector: 'app-temas-kanas-botones',
@@ -14,35 +13,25 @@ import { ComponentesService } from 'src/app/servicios/componentes/componentes.se
 export class TemasKanasBotonesComponent implements OnInit {
 
   @Input() letraKana: string = '';
-  imagenesHiragana: String = urls.trazosHiragana;
-  imagenesKatakana: String = urls.trazosKatakana;
   @Input() tablaTipo: string = '';
+  imagenesHiragana: string = urls.trazosHiragana;
+  imagenesKatakana: string = urls.trazosKatakana;
+  imagenUrl: string = '';
 
   constructor(private temasService: TemasService, private componentesService: ComponentesService) { }
 
-  ngOnInit(): void {
-
-  }
-
-
-  //mejorar XD
+  ngOnInit(): void {}
 
   abrirCard(): void{
     getEbI('tituloKanaCard').innerText = this.letraKana;
-    if(getEbI('tituloKanaCard').innerText[1]) getEbI('tituloKanaCard').style.fontSize = '70px';
-    getEbI('romajiKanaCard').innerText = this.temasService.getKanaInformacion(this.letraKana)
-    if(this.temasService.getHiraganaOKatakana(this.letraKana)){
-     getEbI('imagenTrazo').src = this.imagenesHiragana + '/' + this.temasService.getKanaInformacion(this.letraKana) + '.png'; 
-    }else{getEbI('imagenTrazo').src = this.imagenesKatakana + '/' + this.temasService.getKanaInformacion(this.letraKana) + '.png'}
-    openModal(1, '#modalCard'); 
-  }
-
-  cerrarCard(): void{
-    openModal(2, '#modalCard'); 
+    getEbI('romajiKanaCard').innerText = this.temasService.getRomaji(this.letraKana)
+    this.temasService.esHiragana(this.letraKana)? this.imagenUrl=this.imagenesHiragana: this.imagenUrl=this.imagenesKatakana;
+    getEbI('imagenTrazo').src = this.imagenUrl + '/' + this.temasService.getRomaji(this.letraKana) + '.png'; 
+    modalFunction(1, '#modalCard'); 
   }
 
   reproducir(): void{
-     this.componentesService.reproducirAudio(this.temasService.getKanaInformacion(getEbI('tituloKanaCard').innerText)); 
+     this.componentesService.reproducirAudio(this.temasService.getRomaji(getEbI('tituloKanaCard').innerText)); 
   }
 
 

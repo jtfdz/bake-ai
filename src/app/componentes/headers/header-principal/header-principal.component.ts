@@ -2,7 +2,7 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 import segmentos from 'src/assets/json/segmentosHeader.json';
 import urls from 'src/assets/json/urls.json';
-declare const openModal: any;
+declare const modalFunction: any;
 declare const openTab: any;
 
 interface IndexObj {
@@ -40,7 +40,7 @@ export class HeaderPrincipalComponent implements OnInit {
     this.teoriaStr = this.teoriaObj[nombreSegmento];  
     this.componentesService.setTituloCard(this.teoriaStr['titulo'])
     this.componentesService.setColorCard(this.teoriaStr['color'])
-    openModal(1, '#myModal'); 
+    modalFunction(1, '#myModal'); 
   }
 
 

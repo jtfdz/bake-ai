@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tierra-v',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TierraVComponent implements OnInit {
 
+  @Input() dataTierra: any[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+  	console.log(this.dataTierra)
   }
 
 }

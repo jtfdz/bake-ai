@@ -1,6 +1,6 @@
 {
 	"general": {
-		"historia": "los tres lenguajes salen de 982138i4124", 
+		"historia": "El origen del idioma japonés se encuentra en considerable disputa entre linguistas. Evidencia ha sido ofrecida sobre los posibles origenes: Ural-Altaic, Polinesio y Chino, entre otros más. De estos, existe mayor inclinación a creer que el japonés esta conectado a la familia Ural-Altaic, la cual incluye Turco, Mongolian, Manchu y coreano en su dominio. El japonés tiene un sistema de escritura extremadamente complicado, consistiendo en dos sets de silabarios fonéticos (con aproximadamente 50 silabarios cada uno) and miles de carácteres chinos llamados 'kanji', con aproximadamente 2000 de los cuales el Ministerio de Educación ha designado como requerimiento para la graduación de secundaria.", 
 		"kanas": "sobre los kanas hiragana y katakana"
 	},
 	"hiragana": {
@@ -20,5 +20,3 @@
 		"notas": "sobre notas"
 	}
 }
-
-

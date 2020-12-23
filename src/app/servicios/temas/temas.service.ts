@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { isHiragana, toRomaji } from 'wanakana';
 import teoria from 'src/assets/json/teoria.json';
 
 declare const getFromStore: any;
 declare const setInStore: any;
-declare const getKeyByValue: any;
 declare const removeObjectProperty: any;
+declare const getRandom: any;
+declare const pushArray: any;
+declare const shuffle: any;
 
 interface IndexObj {
   [index: string]: {};
@@ -13,6 +16,10 @@ interface IndexObj {
 
 interface IndexStr {
   [index: string]: string;
+}
+
+interface IndexNum {
+  [index: number]: string;
 }
 
 type tipoCompleta = {
@@ -223,25 +230,6 @@ export class TemasService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	teoriaObj: IndexObj = teoria;
 	teoriaStr: IndexStr = {};
 
@@ -358,66 +346,6 @@ export class TemasService {
   ];
 
 
-//MEJORAR matar y llevar a hiraganaHiding 
- hiraganaStraightObject: IndexStr = {
-    a: "あ", i: "い", u: "う", e: "え", o: "お",
-    ka: "か", ki: "き", ku: "く", ke: "け", ko: "こ",
-    sa: "さ", shi: "し", su: "す", se: "せ", so: "そ",
-    ta: "た", chi: "ち", tsu: "つ", te: "て", to: "と",
-    na: "な", ni: "に", nu: "ぬ", ne: "ね", no: "の",
-    ha: "は", hi: "ひ", fu: "ふ",he: "へ", ho: "ほ",
-    ma: "ま", mi: "み", mu: "む",me: "め", mo: "も",
-    ya: "や", yu: "ゆ", yo: "よ",
-    ra: "ら", ri: "り", ru: "る",re: "れ", ro: "ろ",
-    wa: "わ", wo: "を", n: "ん",
-    ga: "が", gi: "ぎ", gu: "ぐ", ge: "げ", go: "ご", 
-    za: "ざ", ji: "じ", zu: "ず", ze: "ぜ", zo: "ぞ",
-    da: "だ", dzi: "ぢ", dzu: "づ", de: "で", do: "ど",
-    ba: "ば", bi: "び", bu: "ぶ", be: "べ", bo: "ぼ",
-    pa: "ぱ", pi: "ぴ", pu: "ぷ", pe: "ぺ", po: "ぽ",
-    kya: "きゃ", kyu: "きゅ", kyo: "きょ",
-    sha: "しゃ", shu: "しゅ", sho: "しょ",
-    cha: "ちゃ", chu: "ちゅ", cho: "ちょ",
-    nya: "にゃ", nyu: "にゅ", nyo: "にょ",
-    hya: "ひゃ", hyu: "ひゅ", hyo: "ひょ",
-    ja: "じゃ", ju: "じゅ", jo: "じょ",
-    mya: "みゃ", myu: "みゅ", myo: "みょ",
-    rya: "りゃ", ryu: "りゅ", ryo: "りょ",
-    gya: "ぎゃ", gyu: "ぎゅ", gyo: "ぎょ",
-    bya: "びゃ", byu: "びゅ", byo: "びょ",
-    pya: "ぴゃ", pyu: "ぴゅ", pyo: "ぴょ"
-}
-
-
-
- katakanaStraightObject: IndexStr = {
-    a: "ア", i: "イ", u: "ウ", e: "エ", o: "オ",
-    ka: "カ", ki: "キ", ku: "ク", ke: "ケ", ko: "コ",
-    sa: "サ", shi: "シ", su: "ス", se: "セ", so: "ソ",
-    ta: "タ", chi: "チ", tsu: "ツ", te: "テ", to: "ト",
-    na: "ナ", ni: "ニ", nu: "ヌ", ne: "ネ", no: "ノ",
-    ha: "ハ", hi: "ヒ", fu: "フ",he: "ヘ", ho: "ホ",
-    ma: "マ", mi: "ミ", mu: "ム",me: "メ", mo: "モ",
-    ya: "ヤ", yu: "ユ", yo: "ヨ",
-    ra: "ラ", ri: "リ", ru: "ル",re: "レ", ro: "ロ",
-    wa: "ワ", wo: "ヲ", n: "ン",
-    ga: "ガ", gi: "ギ", gu: "グ", ge: "ゲ", go: "ゴ", 
-    za: "ザ", ji: "ジ", zu: "ズ", ze: "ゼ", zo: "ゾ",
-    da: "ダ", dzi: "ヂ", dzu: "ヅ", de: "デ", do: "ド",
-    ba: "バ", bi: "ビ", bu: "ブ", be: "ベ", bo: "ボ",
-    pa: "パ", pi: "ピ", pu: "プ", pe: "ペ", po: "ポ",
-    kya: "キャ", kyu: "キュ", kyo: "キョ",
-    sha: "シャ", shu: "シュ", sho: "ショ",
-    cha: "チャ", chu: "チュ", cho: "チョ",
-    nya: "ニャ", nyu: "ニュ", nyo: "ニョ",
-    hya: "ヒャ", hyu: "ヒュ", hyo: "ヒョ",
-    ja: "ジャ", ju: "ジュ", jo: "ジョ",
-    mya: "ミャ", myu: "ミュ", myo: "ミョ",
-    rya: "リャ", ryu: "リュ", ryo: "リョ",
-    gya: "ギャ", gyu: "ギュ", gyo: "ギョ",
-    bya: "ビャ", byu: "ビュ", byo: "ビョ",
-    pya: "ピャ", pyu: "ピュ", pyo: "ピョ"
-}
 
 
 
@@ -437,14 +365,12 @@ export class TemasService {
     return this.katakanaCompuesta;
   }
 
-  getKanaInformacion(kanaOriginal: string): string {
-    if(getKeyByValue(this.hiraganaStraightObject, kanaOriginal))
-      return getKeyByValue(this.hiraganaStraightObject, kanaOriginal)
-    return getKeyByValue(this.katakanaStraightObject, kanaOriginal)
+  getRomaji(kanaOriginal: string): string {
+    return toRomaji(kanaOriginal);
   }
 
-  getHiraganaOKatakana(kanaOriginal: string): boolean {
-    if(getKeyByValue(this.hiraganaStraightObject, kanaOriginal))
+  esHiragana(kanaOriginal: string): boolean {
+    if(isHiragana(kanaOriginal))
       return true;
     return false;
   }
@@ -452,101 +378,119 @@ export class TemasService {
 
 
 
-  getTablaExaminacion(tituloKana: string, iniciados: boolean): {} {
-    let HiraganaHiding = [
-      { letra: 'vocales', a: "あ", i: "い", u: "う", e: "え", o: "お"},
-      { letra: 'k', ka: "か", ki: "き", ku: "く", ke: "け", ko: "こ"},
-      { letra: 's', sa: "さ", shi: "し", su: "す", se: "せ", so: "そ"},
-      { letra: 't', ta: "た", chi: "ち", tsu: "つ", te: "て", to: "と"},
-      { letra: 'n', na: "な", ni: "に", nu: "ぬ", ne: "ね", no: "の"},
-      { letra: 'h', ha: "は", hi: "ひ", fu: "ふ", he: "へ", ho: "ほ"},
-      { letra: 'm', ma: "ま", mi: "み", mu: "む", me: "め", mo: "も"},
-      { letra: 'y', ya: "や", yu: "ゆ", yo: "よ"},      
-      { letra: 'r', ra: "ら", ri: "り", ru: "る", re: "れ", ro: "ろ"},
-      { letra: 'especiales', wa: "わ", n: "ん", wo: "を"},
-      { letra: 'g', ga: "が", gi: "ぎ", gu: "ぐ", ge: "げ", go: "ご"},
-      { letra: 'z', za: "ざ", ji: "じ", zu: "ず", ze: "ぜ", zo: "ぞ"},
-      { letra: 'd', da: "だ", ji: "ぢ", dzu: "づ", de: "で", do: "ど"},
-      { letra: 'b', ba: "ば", bi: "び", bu: "ぶ", be: "べ", bo: "ぼ"},
-      { letra: 'p', pa: "ぱ", pi: "ぴ", pu: "ぷ", pe: "ぺ", po: "ぽ"},   
-      { letra: 'ky', kya: "きゃ", kyu: "きゅ", kyo: "きょ"},
-      { letra: 'sh', sha: "しゃ", shu: "しゅ", sho: "しょ"},
-      { letra: 'ch', cha: "ちゃ", chu: "ちゅ", cho: "ちょ"},
-      { letra: 'ny', nya: "にゃ", nyu: "にゅ", nyo: "にょ"},
-      { letra: 'hy', hya: "ひゃ", hyu: "ひゅ", hyo: "ひょ"}, 
-      { letra: 'my', mya: "みゃ", myu: "みゅ", myo: "みょ"}, 
-      { letra: 'ry', rya: "りゃ", ryu: "りゅ", ryo: "りょ"}, 
-      { letra: 'gy', gya: "ぎゃ", gyu: "ぎゅ", gyo: "ぎょ"}, 
-      { letra: 'j', ja: "じゃ", ju: "じゅ", jo: "じょ"},  
-      { letra: 'by', bya: "びゃ", byu: "びゅ", byo: "びょ"}, 
-      { letra: 'py', pya: "ぴゃ", pyu: "ぴゅ", pyo: "ぴょ"},        
+      //not for views
+      hiraganaObjArr: Record<string, string>[] = [
+        { letra: 'vocales', a: "あ", i: "い", u: "う", e: "え", o: "お"},
+        { letra: 'k', ka: "か", ki: "き", ku: "く", ke: "け", ko: "こ"},
+        { letra: 's', sa: "さ", shi: "し", su: "す", se: "せ", so: "そ"},
+        { letra: 't', ta: "た", chi: "ち", tsu: "つ", te: "て", to: "と"},
+        { letra: 'n', na: "な", ni: "に", nu: "ぬ", ne: "ね", no: "の"},
+        { letra: 'h', ha: "は", hi: "ひ", fu: "ふ", he: "へ", ho: "ほ"},
+        { letra: 'm', ma: "ま", mi: "み", mu: "む", me: "め", mo: "も"},
+        { letra: 'y', ya: "や", yu: "ゆ", yo: "よ"},      
+        { letra: 'r', ra: "ら", ri: "り", ru: "る", re: "れ", ro: "ろ"},
+        { letra: 'especiales', wa: "わ", n: "ん", wo: "を"},
+        { letra: 'g', ga: "が", gi: "ぎ", gu: "ぐ", ge: "げ", go: "ご"},
+        { letra: 'z', za: "ざ", ji: "じ", zu: "ず", ze: "ぜ", zo: "ぞ"},
+        { letra: 'd', da: "だ", ji: "ぢ", dzu: "づ", de: "で", do: "ど"},
+        { letra: 'b', ba: "ば", bi: "び", bu: "ぶ", be: "べ", bo: "ぼ"},
+        { letra: 'p', pa: "ぱ", pi: "ぴ", pu: "ぷ", pe: "ぺ", po: "ぽ"},   
+        { letra: 'ky', kya: "きゃ", kyu: "きゅ", kyo: "きょ"},
+        { letra: 'sh', sha: "しゃ", shu: "しゅ", sho: "しょ"},
+        { letra: 'ch', cha: "ちゃ", chu: "ちゅ", cho: "ちょ"},
+        { letra: 'ny', nya: "にゃ", nyu: "にゅ", nyo: "にょ"},
+        { letra: 'hy', hya: "ひゃ", hyu: "ひゅ", hyo: "ひょ"}, 
+        { letra: 'my', mya: "みゃ", myu: "みゅ", myo: "みょ"}, 
+        { letra: 'ry', rya: "りゃ", ryu: "りゅ", ryo: "りょ"}, 
+        { letra: 'gy', gya: "ぎゃ", gyu: "ぎゅ", gyo: "ぎょ"}, 
+        { letra: 'j', ja: "じゃ", ju: "じゅ", jo: "じょ"},  
+        { letra: 'by', bya: "びゃ", byu: "びゅ", byo: "びょ"}, 
+        { letra: 'py', pya: "ぴゃ", pyu: "ぴゅ", pyo: "ぴょ"},        
+    ]
+
+    katakanaObjArr: Record<string, string>[] = [
+        { letra: 'vocales', a: "ア", i: "イ", u: "ウ", e: "エ", o: "オ"},
+        { letra: 'k', ka: "カ", ki: "キ", ku: "ク", ke: "ケ", ko: "コ"},
+        { letra: 's', sa: "サ", shi: "シ", su: "ス", se: "セ", so: "ソ"},
+        { letra: 't', ta: "タ", chi: "チ", tsu: "ツ", te: "テ", to: "ト"},
+        { letra: 'n', na: "ナ", ni: "ニ", nu: "ヌ", ne: "ネ", no: "ノ"},
+        { letra: 'h', ha: "ハ", hi: "ヒ", fu: "フ", he: "ヘ", ho: "ホ"},
+        { letra: 'm', ma: "マ", mi: "ミ", mu: "ム", me: "メ", mo: "モ"},
+        { letra: 'y', ya: "ヤ", yu: "ユ", yo: "ヨ"},      
+        { letra: 'r', ra: "ラ", ri: "リ", ru: "ル", re: "レ", ro: "ロ"},
+        { letra: 'especiales', wa: "ワ", n: "ン", wo: "ヲ"},
+        { letra: 'g', ga: "ガ", gi: "ギ", gu: "グ", ge: "ゲ", go: "ゴ"},
+        { letra: 'z', za: "ザ", ji: "ジ", zu: "ズ", ze: "ゼ", zo: "ゾ"},
+        { letra: 'd', da: "ダ", ji: "ヂ", dzu: "ヅ", de: "デ", do: "ド"},
+        { letra: 'b', ba: "バ", bi: "ビ", bu: "ブ", be: "ベ", bo: "ボ"},
+        { letra: 'p', pa: "パ", pi: "ピ", pu: "プ", pe: "ペ", po: "ポ"},   
+        { letra: 'ky', kya: "キャ", kyu: "キュ", kyo: "キョ"},
+        { letra: 'sh', sha: "シャ", shu: "シュ", sho: "ショ"},
+        { letra: 'ch', cha: "チャ", chu: "チュ", cho: "チョ"},
+        { letra: 'ny', nya: "ニャ", nyu: "ニュ", nyo: "ニョ"},
+        { letra: 'hy', hya: "ヒャ", hyu: "ヒュ", hyo: "ヒョ"}, 
+        { letra: 'my', mya: "ミャ", myu: "ミュ", myo: "ミョ"}, 
+        { letra: 'ry', rya: "リャ", ryu: "リュ", ryo: "リョ"}, 
+        { letra: 'gy', gya: "ギャ", gyu: "ギュ", gyo: "ギョ"}, 
+        { letra: 'j', ja: "ジャ", ju: "ジュ", jo: "ジョ"},  
+        { letra: 'by', bya: "ビャ", byu: "ビュ", byo: "ビョ"}, 
+        { letra: 'py', pya: "ピャ", pyu: "ピュ", pyo: "ピョ"},        
     ]
 
 
-    let KatakanaHiding = [
-      { letra: 'vocales', a: "ア", i: "イ", u: "ウ", e: "エ", o: "オ"},
-      { letra: 'k', ka: "カ", ki: "キ", ku: "ク", ke: "ケ", ko: "コ"},
-      { letra: 's', sa: "サ", shi: "シ", su: "ス", se: "セ", so: "ソ"},
-      { letra: 't', ta: "タ", chi: "チ", tsu: "ツ", te: "テ", to: "ト"},
-      { letra: 'n', na: "ナ", ni: "ニ", nu: "ヌ", ne: "ネ", no: "ノ"},
-      { letra: 'h', ha: "ハ", hi: "ヒ", fu: "フ", he: "ヘ", ho: "ホ"},
-      { letra: 'm', ma: "マ", mi: "ミ", mu: "ム", me: "メ", mo: "モ"},
-      { letra: 'y', ya: "ヤ", yu: "ユ", yo: "ヨ"},      
-      { letra: 'r', ra: "ラ", ri: "リ", ru: "ル", re: "レ", ro: "ロ"},
-      { letra: 'especiales', wa: "ワ", n: "ン", wo: "ヲ"},
-      { letra: 'g', ga: "ガ", gi: "ギ", gu: "グ", ge: "ゲ", go: "ゴ"},
-    //mejorar llenar eseto XD
-      { letra: 'z', za: "ざ", ji: "じ", zu: "ず", ze: "ぜ", zo: "ぞ"},
-      { letra: 'd', da: "だ", ji: "ぢ", dzu: "づ", de: "で", do: "ど"},
-      { letra: 'b', ba: "ば", bi: "び", bu: "ぶ", be: "べ", bo: "ぼ"},
-      { letra: 'p', pa: "ぱ", pi: "ぴ", pu: "ぷ", pe: "ぺ", po: "ぽ"},   
-      { letra: 'ky', kya: "きゃ", kyu: "きゅ", kyo: "きょ"},
-      { letra: 'sh', sha: "しゃ", shu: "しゅ", sho: "しょ"},
-      { letra: 'ch', cha: "ちゃ", chu: "ちゅ", cho: "ちょ"},
-      { letra: 'ny', nya: "にゃ", nyu: "にゅ", nyo: "にょ"},
-      { letra: 'hy', hya: "ひゃ", hyu: "ひゅ", hyo: "ひょ"}, 
-      { letra: 'my', mya: "みゃ", myu: "みゅ", myo: "みょ"}, 
-      { letra: 'ry', rya: "りゃ", ryu: "りゅ", ryo: "りょ"}, 
-      { letra: 'gy', gya: "ぎゃ", gyu: "ぎゅ", gyo: "ぎょ"}, 
-      { letra: 'j', ja: "じゃ", ju: "じゅ", jo: "じょ"},  
-      { letra: 'by', bya: "びゃ", byu: "びゅ", byo: "びょ"}, 
-      { letra: 'py', pya: "ぴゃ", pyu: "ぴゅ", pyo: "ぴょ"},        
-    ]
+    getRandomSingleKanas(excepting: string, esHiragana: boolean): any[]{
 
-  
-    var filteredKana = {};
-    let kanaBody = getFromStore('progreso.'+tituloKana+'.kanaBody');
+      var filteredKana = {};
+      var filteredKanaArray: IndexNum[] = [];
 
-    //mejorar
+      for (var i = 0; i < this.hiraganaObjArr.length; i++) {
+        (esHiragana)? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);            
+      }
 
-    if(iniciados){
-    for (var i = 0; i < kanaBody.length; i++) {
-         if(kanaBody[i].iniciada){
-          if(tituloKana=='hiragana') Object.assign(filteredKana, removeObjectProperty(HiraganaHiding[i], 'letra'));
-          if(tituloKana=='katakana') Object.assign(filteredKana, removeObjectProperty(KatakanaHiding[i], 'letra'));          
-         }
-    }
-    }else{
-    for (var i = 0; i < kanaBody.length; i++) {
-         if(kanaBody[i].desbloqueado && !kanaBody[i].iniciada){
-          
-          if(tituloKana=='hiragana'){ Object.assign(filteredKana, removeObjectProperty(HiraganaHiding[i], 'letra')) };
-          if(tituloKana=='katakana'){ Object.assign(filteredKana, removeObjectProperty(KatakanaHiding[i], 'letra')) };          
-         }
-    }
+      pushArray(filteredKanaArray, Object.values(filteredKana))
+      filteredKanaArray = getRandom(filteredKanaArray, 20);
+
+      if(!filteredKanaArray.includes(excepting)){
+        filteredKanaArray[0] = excepting;
+        shuffle(filteredKanaArray)   
+      }
+
+      return filteredKanaArray;
     }
 
 
-    return filteredKana;
-
-  }
 
 
 
+    setFilteredKana(fil:{}, ob:{}){
+      Object.assign(fil, removeObjectProperty(ob, 'letra'))
+    }
+
+    getTablaExaminacion(tituloKana: string, iniciado: boolean): {} {
+
+      var filteredKana = {};
+      var filteredKanaArray: IndexNum[] = [];
+      let kanaBody = getFromStore('progreso.'+tituloKana+'.kanaBody');
 
 
+      for (var i = 0; i < kanaBody.length; i++) {
+        if(iniciado){
+             if(kanaBody[i].iniciada){
+              (tituloKana=='hiragana')? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);          
+              filteredKanaArray.push(Object.values(this.hiraganaObjArr[i]));
+              }
+        }else{
+             if(kanaBody[i].desbloqueado && !kanaBody[i].iniciada){
+              (tituloKana=='hiragana')? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);            
+              filteredKanaArray.push(Object.values(this.hiraganaObjArr[i]));
+             }
+        }
+      }
 
+      (iniciado)?setInStore('modelo.material.iniciado', filteredKanaArray): setInStore('modelo.material.desbloqueado', filteredKanaArray)
 
+      return filteredKana;
+    }
 
 
 

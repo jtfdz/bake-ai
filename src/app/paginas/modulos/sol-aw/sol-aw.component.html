@@ -3,59 +3,66 @@
 	<div class="container">
 
 	<section class="section">
+		<button (click)="activarAudio()" class="button has-background-warning-light is-large is-rounded">
 
-	  <button class="button has-background-warning-light is-large is-rounded">
-
-         <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/audio.png'"></app-imagen-figure>
+    	<app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/audio.png'"></app-imagen-figure>
 
 		</button>
-	</section>
-
-   <br>
+	</section><br>
 
 	<section class="section">
 		<div class="columns">
 			<div class="column is-one-fifth is-offset-two-fifths">
-				
-
-		<div class="field">
-		  <div class="control">
-		    <input class="input is-dark" type="text" placeholder="respuesta">
-		  </div>
-		</div>
-
-
-
-
-
-
+				<div class="field">
+				  <div class="control">
+				    <input [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuesta" id="respuesta-sol" class="input is-dark" type="text" placeholder="respuesta">
+				  </div>
+				</div>
 			</div>
 		</div>
-	</section>
-
-	<br>
-
-	<section class="section">
+	</section><br>
 
 
-
-
-
-           	<button class="button is-dark">ayuda</button>
-    
-
-
-
-
-
-		
-		
+	<section class="section has-stuff-centered is-flex">
+		<div class="field is-grouped">
+		  <p class="control">
+		    <button [disabled]="!respuesta" (click)="solRespuesta()" class="button is-success">✔ listo</button>
+		  </p>
+		  <p class="control">
+		    <button class="button is-dark">ayuda</button>
+		  </p>
+		</div>
 	</section>
 
 	</div>
 	</div>
 </section>
 
+
+
+<div class="modal modal-fx-fadeInScale"  id="solResponde">
+<div class="modal-background"></div>
+<div class="modal-content is-tiny">
+
+
+<section class="section has-stuff-centered is-flex">
+	<app-imagen-figure *ngIf="acertado" [medida]="'128'" [imgUrl]="'modulos/correcto.gif'"></app-imagen-figure>
+	<app-imagen-figure *ngIf="!acertado" [medida]="'128'" [imgUrl]="'modulos/incorrecto.gif'"></app-imagen-figure>
+</section>
+
+<div class="box">
+	<h1 *ngIf="acertado" class="title is-3 has-text-weight-bold has-text-success">¡CORRECTO!</h1>
+	<h1 *ngIf="!acertado" class="title is-1 has-text-weight-bold has-text-primary">INCORRECTO</h1>
+
+	<h1 class="title is-1 has-text-weight-bold">{{this.dataSol[1]}} = {{this.dataSol[0]}}</h1>
+
+    <button (click)="avanzarModulo()" class="button is-warning has-background-warning">siguiente →</button>
+
+</div>
+
+</div>
+<button onclick="modalFunction(2, '#solResponde')" class="modal-close is-large" aria-label="close"></button>
+</div>
 
 
 

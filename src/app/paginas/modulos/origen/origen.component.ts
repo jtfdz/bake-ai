@@ -10,20 +10,20 @@ import { TemasService } from 'src/app/servicios/temas/temas.service';
 export class OrigenComponent implements OnInit {
 
 
-  @Input() moduloActivado: string = '';
-  kanasAPruebaObj: {} = {};
-  kanasIniciadosObj: {} = {};
-  tipoEscritura: string = 'hiragana';
+	@Input() moduloActivado: string = '';
+	@Input() moduloData: any[] = [];
 
+	tipoEscritura: string = 'hiragana';
 
-  constructor(private modulosService: ModulosService, private temasService: TemasService) { }
+	constructor(private modulosService: ModulosService) { }
 
-  ngOnInit(): void {
-   this.kanasAPruebaObj = this.temasService.getTablaExaminacion(this.tipoEscritura, false);
-   this.kanasIniciadosObj = this.temasService.getTablaExaminacion(this.tipoEscritura, true);
-   //console.log(this.kanasAPruebaObj)
-   //console.log(this.kanasIniciadosObj)
-  }
+	ngOnInit(): void {
+	}
+
+	public integrarRespuesta(respuesta: any):void {
+	    //console.log('Picked date: ', date);
+	}
+
 
 
 

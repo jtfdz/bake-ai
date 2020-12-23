@@ -2,19 +2,19 @@
 
 	<app-teoria-modulo *ngSwitchCase="'teoria'"></app-teoria-modulo>
 
-	<app-sol-aw *ngSwitchCase="'sol'"></app-sol-aw>
+    <app-luna-rw [dataLuna]="moduloData" *ngSwitchCase="'luna'">></app-luna-rw>
 
-    <app-luna-rw *ngSwitchCase="'luna'">></app-luna-rw>
+	<app-sol-aw (respuestaSol)="integrarRespuesta($event)" [dataSol]="moduloData" *ngSwitchCase="'sol'"></app-sol-aw>
 
-	<app-fuego-aw *ngSwitchCase="'fuego'"></app-fuego-aw>
+	<app-fuego-aw [dataFuego]="moduloData" *ngSwitchCase="'fuego'"></app-fuego-aw>
 
-    <app-agua-v *ngSwitchCase="'agua'"></app-agua-v>
+    <app-agua-v [dataAgua]="moduloData" *ngSwitchCase="'agua'"></app-agua-v>
 
-	<app-arbol-vr *ngSwitchCase="'arbol'"></app-arbol-vr>
+	<app-arbol-vr [dataArbol]="moduloData" *ngSwitchCase="'arbol'"></app-arbol-vr>
 
-	<app-oro-ar *ngSwitchCase="'oro'"></app-oro-ar>
+	<app-oro-ar [dataOro]="moduloData" *ngSwitchCase="'oro'"></app-oro-ar>
 
-	<app-tierra-v *ngSwitchCase="'tierra'"></app-tierra-v>
+	<app-tierra-v [dataTierra]="moduloData" *ngSwitchCase="'tierra'"></app-tierra-v>
 
   	<ng-container *ngSwitchDefault></ng-container>
 

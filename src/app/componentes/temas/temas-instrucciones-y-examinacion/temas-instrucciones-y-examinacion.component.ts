@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
-declare const openModal: any;
+declare const modalFunction: any;
 declare const openTabInstruccion: any;
 declare const desbloqueaNuevo: any;
+declare const modeloDeAprendizaje: any;
 
 @Component({
   selector: 'app-temas-instrucciones-y-examinacion',
@@ -29,43 +30,35 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
   navTabsInstrucciones: string[] = ['tablas', 'examinación', 'fuego', 'agua', 'árbol', 'oro', 'tierra', 'sol', 'luna'];
 
 
-  //mejorar XD
-  abrirModalExaminacion(){
-   desbloqueaNuevo(this.tipoEscritura)
-   this.kanasAPruebaObj = this.temasService.getTablaExaminacion(this.tipoEscritura, false);
-   this.kanasIniciadosObj = this.temasService.getTablaExaminacion(this.tipoEscritura, true);
-   this.sizeOfkanasAPruebaObj = Object.keys(this.kanasAPruebaObj).length;
-   this.sizeOfkanasIniciadosObj = Object.keys(this.kanasIniciadosObj).length;
-   for (let i =0; i < this.sizeOfkanasAPruebaObj; i++) {
-      this.tagColorRandom.push(this.tagColorArray[Math.floor(Math.random() * this.tagColorArray.length)]);
-   }
-   for (let i =0; i < this.sizeOfkanasIniciadosObj; i++) {
-      this.tagColorRandomIniciados.push(this.tagColorArray[Math.floor(Math.random() * this.tagColorArray.length)]);
-   }
-   this.abrirModales('#modalInstExam')
-
-  }
-
-
-
-
-
-
-  cerrar(idModal: string){
-    openModal(2, idModal);
-  }
-
-  abrirModales(idModal: string){
-   openModal(1, idModal);
-  }
-
-
-
-
   constructor(private temasService: TemasService) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {}
+
+
+  kanaSetObjs(objItself:{}, isIniciado: boolean, arrayOfTagColor: string[]): number{
+    Object.assign(objItself, this.temasService.getTablaExaminacion(this.tipoEscritura, isIniciado));
+    let sizeOfObj = Object.keys(objItself).length;
+    for (let i =0; i < sizeOfObj; i++) {
+      arrayOfTagColor.push(this.tagColorArray[Math.floor(Math.random() * this.tagColorArray.length)]);
+    }
+    return sizeOfObj;
+  }
+
+
+  abrirModalExaminacion(){
+   desbloqueaNuevo(this.tipoEscritura)
+   this.sizeOfkanasAPruebaObj = this.kanaSetObjs(this.kanasAPruebaObj, false, this.tagColorRandom);
+   this.sizeOfkanasIniciadosObj = this.kanaSetObjs(this.kanasIniciadosObj, true, this.tagColorRandomIniciados);
+   this.abrirModales('#modalInstExam')
+   modeloDeAprendizaje();
+  }
+
+  cerrar(idModal: string): void{
+    modalFunction(2, idModal);
+  }
+
+  abrirModales(idModal: string): void{
+   modalFunction(1, idModal);
   }
 
 }

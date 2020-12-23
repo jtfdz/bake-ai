@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-arbol-vr',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArbolVrComponent implements OnInit {
 
+  @Input() dataArbol: any[] = [];
+  randomize: string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+  	console.log(this.dataArbol)
   }
 
 }

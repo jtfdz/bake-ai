@@ -3,6 +3,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import urls from 'src/assets/json/urls.json';
 declare const getFromStore: any;
 declare const setInStore: any;
+declare const animateValue: any;
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class ComponentesService {
 	private usuarioIniciado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('usuario.iniciado'));
 	private gustoUsuario: BehaviorSubject<string> = new BehaviorSubject<string>(getFromStore('usuario.gusto'));
 	private estiloMayorRetencion: BehaviorSubject<string> = new BehaviorSubject<string>(getFromStore('retencion.mayor'));
+
 
 
   constructor() { }
@@ -53,6 +55,7 @@ export class ComponentesService {
 	getEstiloMayorRetencion(): Observable<string> {
 	  return this.estiloMayorRetencion.asObservable();
 	}
+
 
 
 
