@@ -16,7 +16,7 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
   TeoriaComponent, 
   HiraganaComponent, 
   KatakanaComponent, 
-  KanjiComponent
+  KanjiComponent,
   ],
 
   imports: [
@@ -30,7 +30,7 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
   TeoriaComponent, 
   HiraganaComponent, 
   KatakanaComponent, 
-  KanjiComponent
+  KanjiComponent,
   ]
 })
 export class TemasModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModulosService } from 'src/app/servicios/modulos/modulos.service';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
 
@@ -12,16 +12,22 @@ export class OrigenComponent implements OnInit {
 
 	@Input() moduloActivado: string = '';
 	@Input() moduloData: any[] = [];
-
-	tipoEscritura: string = 'hiragana';
+	@Output() respuestaOrigen: EventEmitter<any> = new EventEmitter<any>();
+	@Output() siguienteModulo: EventEmitter<any> = new EventEmitter<any>();
 
 	constructor(private modulosService: ModulosService) { }
 
 	ngOnInit(): void {
 	}
 
-	public integrarRespuesta(respuesta: any):void {
-	    //console.log('Picked date: ', date);
+	public avanzarModulo(respuesta: any): void {
+		this.siguienteModulo.emit(respuesta);
+	}
+
+
+	public integrarRespuesta(respuesta: any): void {
+		//console.log(respuesta)
+		this.respuestaOrigen.emit(respuesta);
 	}
 
 

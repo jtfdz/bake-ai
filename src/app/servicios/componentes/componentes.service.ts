@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { toRomaji } from 'wanakana';
 import urls from 'src/assets/json/urls.json';
 declare const getFromStore: any;
 declare const setInStore: any;
@@ -41,10 +42,12 @@ export class ComponentesService {
 
 	setNombreUsuario(cambio: string) { this.nombreUsuario.next(cambio); setInStore('usuario.nombre', cambio); }
 
-
 	getGustoUsuario(): Observable<string> {
 	  return this.gustoUsuario.asObservable();
 	}
+
+	setGustoUsuario(cambio: string) { this.gustoUsuario.next(cambio); setInStore('usuario.gusto', cambio); }
+
 
 	getUsuarioIniciado(): Observable<boolean> {
 	  return this.usuarioIniciado.asObservable();
@@ -57,7 +60,13 @@ export class ComponentesService {
 	}
 
 
-
+	//mejorar: make this into ONE
+	reproducirPalabras(archivo: string) { 
+	  let audio = new Audio();
+	  audio.src = urls.audio + '/gustos/' +  toRomaji(archivo) + '.wav';
+	  audio.load();
+	  audio.play();		
+	}
 
 
 	reproducirAudio(archivo: string) { 

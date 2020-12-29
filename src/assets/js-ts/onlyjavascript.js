@@ -95,7 +95,10 @@ const schema = {
     modelo: {
       type: 'object',
       default: {
-      	material: {iniciado: [], desbloqueado: []},
+      	material: {
+          hiragana: {iniciado: [], desbloqueado: []},
+          katakana: {iniciado: [], desbloqueado: []},
+        },
         modulos: [],
         dataParaModulos: []
       }
@@ -161,6 +164,19 @@ function shuffle(array) {
     return array;
 }
 
+//dos arrays se unen sin repetir elementos
+function arrayUnique(array) {
+    var a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+
+    return a;
+}
+
 
 //como se dividen los modulos: el doble de mayor, uno y medio del medio, y uno del más bajo
 function asignarModelo(mayor, medio, bajo){
@@ -175,14 +191,18 @@ function asignarModelo(mayor, medio, bajo){
 
 
 //leyendo la configuración de retención se asignan los módulos
-function modeloDeAprendizaje(){
+function modeloDeAprendizaje(kana){
+
+
 	var mayor = getFromStore('retencion.mayor'), media = getFromStore('retencion.media'), baja = getFromStore('retencion.baja');
-  var esHiragana = wanakana.isHiragana(getRandom(getRandom(getFromStore('modelo.material.desbloqueado'), 1)[0], 1)[0]);
+  var esHiragana = (kana==='hiragana');
   var dataGustosArray = getGustoArray(esHiragana);
 
 	var visuales = (dataGustosArray.length>0)? ['agua', 'luna', 'tierra', 'arbol']: ['agua', 'luna'];
 	var auditivos = (dataGustosArray.length>0)? ['sol', 'fuego', 'tierra']: ['sol', 'fuego'];
 	var escritos = ['oro', 'luna', 'sol', 'fuego'];
+
+
 
   var modelo = [];
 
@@ -235,18 +255,17 @@ function modeloDeAprendizaje(){
   for (var i = 0; i < modelo.length; i++) {
 
     if(i>Math.floor(modelo.length*(2/3))){ //para lo iniciado dos tercios del total y se pone al final
-      if(getFromStore('modelo.material.iniciado').length > 0){ 
-        dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.iniciado'), dataGustosArray))
+      if(getFromStore('modelo.material.'+kana+'.iniciado').length > 0){ 
+        dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.iniciado'), dataGustosArray))
       }else{ //kanasDesbloqueadas.length > 0 si no hay iniciado
-        dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.desbloqueado'), dataGustosArray))
+        dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.desbloqueado'), dataGustosArray))
       }
     }else{ //para lo desbloqueado que siempre estará
-        dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.desbloqueado'), dataGustosArray))
+        dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.desbloqueado'), dataGustosArray))
     }
   }
 
   setInStore('modelo.dataParaModulos', dataParaModulo)
-
 
     // var fuckthis = getFromStore('progreso.hiragana.kanaBody');
 
@@ -288,14 +307,18 @@ function porTipoDeModulo(modulo, data, dataGustosArray){
       return dataLuna;
     break;
 
-    case 'arbol': //con gustos y conectará con teoría pq dios
-    var dataArbol = [];
-    var gustosArrayRandom = getRandom(dataGustosArray, 1)[0];
-    dataArbol[0] = gustosArrayRandom.original;
-    dataArbol[1] = wanakana.toRomaji(gustosArrayRandom.original);
-    dataArbol[2] = gustosArrayRandom.gusto;
-    return dataArbol;
+    case 'arbol': //con gustos 
+      var dataArbol = [];
+      var gustosArrayRandom = getRandom(dataGustosArray, 1)[0];
+      var gustosRestantesRandom = getRandom(get4gustos(gustosArrayRandom.original), 3);
+      gustosRestantesRandom.push(gustosArrayRandom.original)
+      dataArbol[0] = gustosArrayRandom.original;
+      dataArbol[1] = wanakana.toRomaji(gustosArrayRandom.original);
+      dataArbol[2] = gustosArrayRandom.gusto;
+      dataArbol[3] = shuffle(gustosRestantesRandom);
+      return dataArbol;
     break;
+
 
     case 'agua': 
       var dataAgua = [];
@@ -304,18 +327,19 @@ function porTipoDeModulo(modulo, data, dataGustosArray){
       var randomKana = getRandom(randomKanaArray, 1)[0];
       dataAgua[0] = wanakana.toRomaji(randomKana);
       dataAgua[1] = randomKana;
-
       return dataAgua;
     break;
 
     case 'tierra': //con gustos
-    var dataTierra = [];
-    var dataTierra = [];
-    var gustosArrayRandom = getRandom(dataGustosArray, 1)[0];
-    dataTierra[0] = gustosArrayRandom.original;
-    dataTierra[1] = wanakana.toRomaji(gustosArrayRandom.original);
-    dataTierra[2] = gustosArrayRandom.gusto;
-    return dataTierra;
+      var dataTierra = [];
+      var gustosArrayRandom = getRandom(dataGustosArray, 1)[0];
+      var gustosRestantesRandom = getRandom(get4gustos(gustosArrayRandom.original), 3);
+      gustosRestantesRandom.push(gustosArrayRandom.original)
+      dataTierra[0] = gustosArrayRandom.original;
+      dataTierra[1] = wanakana.toRomaji(gustosArrayRandom.original);
+      dataTierra[2] = gustosArrayRandom.gusto;
+      dataTierra[3] = shuffle(gustosRestantesRandom);
+      return dataTierra;
     break;
 
 
@@ -350,6 +374,7 @@ function porTipoDeModulo(modulo, data, dataGustosArray){
         arrayOfResto.push(wanakana.toRomaji(randomKanaArray[i]))
       }
       dataFuego[1] = arrayOfResto;
+      dataFuego[2] = wanakana.toRomaji(dataFuego[0]);
       return dataFuego;
     break;
 
@@ -358,20 +383,6 @@ function porTipoDeModulo(modulo, data, dataGustosArray){
 
 }
 
-
-
-//dos arrays se unen sin repetir elementos
-function arrayUnique(array) {
-    var a = array.concat();
-    for(var i=0; i<a.length; ++i) {
-        for(var j=i+1; j<a.length; ++j) {
-            if(a[i] === a[j])
-                a.splice(j--, 1);
-        }
-    }
-
-    return a;
-}
 
 
 function apuebaParaNuevo(kana){
@@ -482,6 +493,8 @@ function animateValue(id, start, end, duration) {
     }, stepTime);
 }
 
+
+//mejorar se usa? borrar
 function openTab(evt, nombreDelGusto) {
 	var i, tablinks;
 	tablinks = document.getElementsByClassName("tab");
@@ -494,24 +507,6 @@ function openTab(evt, nombreDelGusto) {
 		setInStore('usuario.gusto', nombreDelGusto);
 	}
 }
-
-
-function openTabInstruccion(evt, item) {
-	var i, x, tablinks;
-	tablinks = getEbCN("tab");
-	x = getEbCN("content-tab");
-	for (i = 0; i < x.length; i++) {
-	  x[i].style.display = "none";
-	}
-	
-	for (i = 0; i < tablinks.length; i++) {
-	  tablinks[i].className = tablinks[i].className.replace(" has-background-grey-lighter", " has-background-white");
-	}
-
-	document.getElementById('content-'+evt.currentTarget.id).style.display = "block";
-	evt.currentTarget.className += " has-background-grey-lighter";
-}
-
 
 
 
@@ -567,7 +562,7 @@ function modalFunction(value, idModal){
 
 
 //wakanaka
-
+//se podría hacer un servicio digo yo MEJORAR
 function setInputToWaka(idInput, kana){
   if(wanakana.isHiragana(kana)){ 
     wanakana.bind(getEbI(idInput), {IMEMode: 'toHiragana'})  
@@ -609,6 +604,18 @@ function gustosPorKana(esHiragana, dataGustosArray){
   return filteredArrayFinal;
 }
 
+function get4gustos(kana){
+  var arrayOfGustos = [];
+  for (var i = 0; i < gustos.length; i++) {
+    for (var j = 0; j < gustos[i].length; j++) {
+      if(gustos[i][j].original.length == kana.length && gustos[i][j].original != kana){
+        arrayOfGustos.push(gustos[i][j].original)
+      }
+    }
+  }
+  return arrayOfGustos;
+}
+
 
 
 function getGustoArray(esHiragana){
@@ -619,6 +626,7 @@ function getGustoArray(esHiragana){
     case 'deportes': return gustosPorKana(esHiragana, gustos[3]); break;
   }
 }
+
 
 
 const gustoAnimales = [
@@ -652,6 +660,8 @@ const gustoAnimales = [
     {kana: 'katakana', gusto: 'loro', original: 'オウム', desbloquear: ['vocales', 'm']},
 ];
 
+
+
 const gustoComida = [ //vegetales y frutas salvan la patria
     {kana: 'hiragana', nombre: 'comida', original: 'たべもの', desbloquear: ['t', 'b', 'm', 'n']},
     {kana: 'hiragana', nombre: 'fruta', original: 'くだもの', desbloquear: ['k', 'd', 'm', 'n']},  
@@ -665,11 +675,9 @@ const gustoComida = [ //vegetales y frutas salvan la patria
     {kana: 'hiragana', gusto: 'cebolla', original: 'たまねぎ', desbloquear: ['t', 'm', 'n', 'g']},
     {kana: 'hiragana', gusto: 'huevo', original: 'たまご', desbloquear: ['t', 'm', 'g']},
     {kana: 'hiragana', gusto: 'carne', original: 'にく', desbloquear: ['n', 'k']},
-    {kana: 'hiragana', gusto: 'huevo', original: 'たまご', desbloquear: ['t', 'm', 'g']},
-    {kana: 'hiragana', gusto: 'arroz', original: 'にく', desbloquear: ['k', 'm']},
-    {kana: 'hiragana', gusto: 'huevo', original: 'たまご', desbloquear: ['t', 'm', 'g']},
-    {kana: 'hiragana', gusto: 'vegetales', original: 'にく', desbloquear: ['k', 'm']},
-    {kana: 'hiragana', gusto: 'huevo', original: 'やさい', desbloquear: ['y', 's', 'vocales']},
+    {kana: 'hiragana', gusto: 'arroz (crudo)', original: 'こめ', desbloquear: ['k', 'm']},
+    {kana: 'hiragana', gusto: 'arroz (cocinado)', original: 'ごはん', desbloquear: ['k', 'h', 'especiales']},
+    {kana: 'hiragana', gusto: 'vegetales', original: 'やさい', desbloquear: ['y', 's', 'vocales']},
     {kana: 'hiragana', gusto: 'sal', original: 'しお', desbloquear: ['s', 'vocales']},
     {kana: 'hiragana', gusto: 'té verde', original: 'おちゃ', desbloquear: ['vocales', 'ch']},
     {kana: 'hiragana', gusto: 'pescado', original: 'さかな', desbloquear: ['s', 'k', 'n']},
@@ -702,7 +710,7 @@ const gustoMusica = [
     {kana: 'hiragana', gusto: 'cantante', original: 'かしゅ', desbloquear: ['k', 'sh']},
     {kana: 'hiragana', gusto: 'voz', original: 'こえ', desbloquear: ['k', 'vocales']},
     {kana: 'hiragana', gusto: 'cantante', original: 'かしゅ', desbloquear: ['k', 'sh']},
-    {kana: 'hiragana', gusto: 'instrumento', original: 'がっき', desbloquear: ['k']},
+    {kana: 'hiragana', gusto: 'instrumento', original: 'がっき', desbloquear: ['k','g']},
     {kana: 'hiragana', gusto: 'cuerdas (de guitarra)', original: 'げん', desbloquear: ['g', 'especiales']},
     {kana: 'hiragana', gusto: 'acordes', original: 'わおん', desbloquear: ['vocales', 'especiales']},
     {kana: 'hiragana', gusto: 'nota musical', original: 'おんぷ', desbloquear: ['vocales', 'especiales', 'p']},
@@ -718,8 +726,7 @@ const gustoMusica = [
     {kana: 'katakana', gusto: 'ritmo', original: 'リズム', desbloquear: ['r', 'z', 'm']},
     {kana: 'katakana', gusto: 'microfono', original: 'マイク', desbloquear: ['m', 'vocales', 'k']},
     {kana: 'katakana', gusto: 'harpa', original: 'ハープ', desbloquear: ['h', 'p']},
-    {kana: 'katakana', gusto: 'trompeta', original: 'トランペット', desbloquear: ['t', 'r', 'especiales', 'p']},
-    {kana: 'katakana', gusto: 'oboe', original: 'オーボエ', desbloquear: ['vocales', 'b']},
+    // PORQUE SON 6 Y NO HAY PRESUPUESTO. {kana: 'katakana', gusto: 'trompeta', original: 'トランペット', desbloquear: ['t', 'r', 'especiales', 'p']},
     {kana: 'katakana', gusto: 'bajo', original: 'ベース', desbloquear: ['b', 's']},
     {kana: 'katakana', gusto: 'acordes', original: 'コード', desbloquear: ['k', 'd']},
     {kana: 'katakana', gusto: 'soul (género musical)', original: 'ソウル', desbloquear: ['s', 'r', 'vocales']},

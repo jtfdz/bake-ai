@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 import { ModulosService } from 'src/app/servicios/modulos/modulos.service';
+declare const getEbI: any;
 
 interface IndexObj {
   [index: string]: {};
@@ -45,19 +46,20 @@ export class BaseComponent implements OnInit {
     this.componentesService.getEstiloMayorRetencion().subscribe(
      estiloMayorRetencion => this.estiloMayorRetencion = estiloMayorRetencion
     ); 
-    this.modulosService.getModulosAprendizaje().subscribe(
-     arrayOfModulos => this.arrayOfModulos = arrayOfModulos
-    ); 
     this.modulosService.getDataParaModulos().subscribe(
      dataParaModulos => this.dataParaModulos = dataParaModulos
     ); 
+    this.modulosService.getModulosAprendizaje().subscribe(
+     arrayOfModulos => this.arrayOfModulos = arrayOfModulos
+    ); 
 
+   
     this.modulosService.setProgresoAvance(this.indexOfModulos);
     this.sizeOfArrayOfModulos = this.arrayOfModulos.length;
 
     for (var i = 0; i <= this.sizeOfArrayOfModulos; i++) {
       let percentageOfIndex = ((i/this.sizeOfArrayOfModulos) * 100);
-      this.progresoArr.push(Math.trunc(percentageOfIndex))
+      this.progresoArr.push(Math.trunc(percentageOfIndex));
     }
     
     this.modulosService.setProgresoArray(this.progresoArr);
@@ -111,7 +113,7 @@ export class BaseComponent implements OnInit {
   }
 
     //mejorar ???
-  avanzarModulo(): void{
+  avanzarModulo(): void {
     if(this.indexOfModulos+1 <= this.sizeOfArrayOfModulos){
       this.modulosService.setProgresoAvance(this.indexOfModulos+1);
     }
@@ -121,6 +123,16 @@ export class BaseComponent implements OnInit {
       this.llenarInfo();
     }
   }
+
+
+
+  public integrarRespuesta(respuesta: boolean): void {
+    let color = respuesta?' has-background-success':' has-background-primary';
+    getEbI('aciertos-fallos-'+this.indexOfModulos).className = getEbI('aciertos-fallos-'+this.indexOfModulos).className.replace(" has-background-warning", color);
+    getEbI('aciertos-fallos-span-'+this.indexOfModulos).innerText = respuesta? '✅': '❌';
+  }
+
+
 
 
 

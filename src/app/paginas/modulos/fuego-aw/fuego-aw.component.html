@@ -1,4 +1,4 @@
-<section class="hero has-background-primary">
+<section class="hero has-background-primary" style="height: 315px;">
 	<div class="hero-body has-stuff-centered">
 	<div class="container">
 
@@ -34,30 +34,11 @@
 
 	 </div><br>
 
+
+  	<app-botones-modulos-siguiente-ayuda [nombreModulo]="'fuego'" [colorBoton]="'primary'" [textoExplicacion]="dataFuego[0] +' = '+dataFuego[2]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="fuegoRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 	
-	<section class="section has-stuff-centered is-flex">
-		<div class="field is-grouped">
-		  <p class="control">
-		    <button [disabled]="!respuesta" (click)="fuegoRespuesta()" class="button is-success">✔ listo</button>
-		  </p>
-		  <p class="control">
-		    <button class="button is-dark">ayuda</button>
-		  </p>
-		</div>
-	</section>
-       
-
-
-		
 		
 	</section>
-
-
-
-
-
-
-
 
 	</div>
 	</div>
@@ -65,29 +46,6 @@
 
 
 
-<div class="modal modal-fx-fadeInScale"  id="fuegoResponde">
-<div class="modal-background"></div>
-<div class="modal-content is-tiny">
-
-
-<section class="section has-stuff-centered is-flex">
-	<app-imagen-figure *ngIf="acertado" [medida]="'128'" [imgUrl]="'modulos/correcto.gif'"></app-imagen-figure>
-	<app-imagen-figure *ngIf="!acertado" [medida]="'128'" [imgUrl]="'modulos/incorrecto.gif'"></app-imagen-figure>
-</section>
-
-<div class="box">
-	<h1 *ngIf="acertado" class="title is-3 has-text-weight-bold has-text-success">¡CORRECTO!</h1>
-	<h1 *ngIf="!acertado" class="title is-1 has-text-weight-bold has-text-primary">INCORRECTO</h1>
-
-	<h1 class="title is-1 has-text-weight-bold">{{dataFuego[0]}} = {{respuestaCorrecta}}</h1>
-
-    <button (click)="avanzarModulo()" class="button is-warning has-background-warning">siguiente →</button>
-
-</div>
-
-</div>
-<button onclick="modalFunction(2, '#fuegoResponde')" class="modal-close is-large" aria-label="close"></button>
-</div>
 
 
 

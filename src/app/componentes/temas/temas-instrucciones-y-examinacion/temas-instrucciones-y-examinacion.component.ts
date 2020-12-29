@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TemasService } from 'src/app/servicios/temas/temas.service';
+import { ModulosService } from 'src/app/servicios/modulos/modulos.service';
 declare const modalFunction: any;
-declare const openTabInstruccion: any;
+declare const getEbCN: any;
 declare const desbloqueaNuevo: any;
-declare const modeloDeAprendizaje: any;
 
 @Component({
   selector: 'app-temas-instrucciones-y-examinacion',
@@ -28,9 +28,9 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
   tagColorRandomIniciados: string[] = [];
   sizeOfkanasIniciadosObj: number = 0;
   navTabsInstrucciones: string[] = ['tablas', 'examinación', 'fuego', 'agua', 'árbol', 'oro', 'tierra', 'sol', 'luna'];
+  tabActivada: string = 'tablas';
 
-
-  constructor(private temasService: TemasService) { }
+  constructor(private temasService: TemasService, private modulosService: ModulosService) { }
 
   ngOnInit(): void {}
 
@@ -44,13 +44,15 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
     return sizeOfObj;
   }
 
+  examinacionSeguir(){
+   desbloqueaNuevo(this.tipoEscritura);
+   this.modulosService.setDataParaModulos(this.tipoEscritura);
+  }
 
   abrirModalExaminacion(){
-   desbloqueaNuevo(this.tipoEscritura)
    this.sizeOfkanasAPruebaObj = this.kanaSetObjs(this.kanasAPruebaObj, false, this.tagColorRandom);
    this.sizeOfkanasIniciadosObj = this.kanaSetObjs(this.kanasIniciadosObj, true, this.tagColorRandomIniciados);
    this.abrirModales('#modalInstExam')
-   modeloDeAprendizaje();
   }
 
   cerrar(idModal: string): void{
@@ -58,7 +60,17 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
   }
 
   abrirModales(idModal: string): void{
-   modalFunction(1, idModal);
+    modalFunction(1, idModal);
   }
+
+  openTabInstruccion(evt: any, item: string): void{
+    let tablinks = getEbCN("tab");
+    for (var i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" has-background-danger-light", " has-background-white");
+    }
+    evt.currentTarget.className = evt.currentTarget.className.replace(" has-background-white", " has-background-danger-light")
+    this.tabActivada = item;
+  }
+
 
 }

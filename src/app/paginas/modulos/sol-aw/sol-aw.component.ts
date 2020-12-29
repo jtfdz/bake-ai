@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 import { toHiragana, toKatakana, isHiragana  } from 'wanakana';
 declare const setInputToWaka: any;
-declare const modalFunction: any;
 
 @Component({
   selector: 'app-sol-aw',
@@ -13,6 +12,7 @@ export class SolAwComponent implements OnInit {
 
 	@Input() dataSol: any[] = [];
 	@Output() respuestaSol: EventEmitter<any> = new EventEmitter<any>();
+  	@Output() sigueSol: EventEmitter<any> = new EventEmitter<any>();
 
 	respuesta: string = '';
 	respuestaTraducida: string = '';
@@ -33,15 +33,15 @@ export class SolAwComponent implements OnInit {
 		this.respuestaTraducida = isHiragana(this.dataSol[1])? toHiragana(this.respuesta): toKatakana(this.respuesta); 
 		if(this.respuestaTraducida == this.dataSol[1]){
 			this.acertado = true;
-			//this.respuestaSol.emit(true);
+			this.respuestaSol.emit(true);
 		}else{
-			//this.respuestaSol.emit(false);
+			this.respuestaSol.emit(false);
 		}
-		modalFunction(1, '#solResponde');
 	}
 
 
 	avanzarModulo(): void{
+		this.sigueSol.emit(true);
 		this.respuesta = '';
 		this.respuestaTraducida = '';
 		this.acertado = false;

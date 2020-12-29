@@ -1,49 +1,39 @@
-<section class="hero has-background-warning">
+<section class="hero has-background-warning" style="height: 315px;">
 	<div class="hero-body has-stuff-centered">
 	<div class="container">
 
-
-
 	<section class="section">
-	  <h1 class="title is-5">escribe los romajis correspondientes a los silabarios:</h1>
-	  
-	</section>
-
-<br>
+	  <h1 class="title is-5">escribe los romaji correspondientes a los silabarios:</h1>
+	</section><br>
 
 	<div class="block">
 		<div class="columns" >
+			<div class="column" *ngFor="let item of dataOro[0]; let i = index">
 
-			<div class="column" *ngFor="let item of dataOro[0]">
+
 				<div class="field">
 				  <div class="control">
-				    <input class="input is-medium" type="text" placeholder="{{item}}">
+				    <input [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuestas[i]" class="input is-dark" type="text" placeholder="{{item}}">
 				  </div>
-				</div>	
+				</div>
+
 				<h1 class="title is-2 has-text-weight-bold">{{item}}</h1>			
-			</div>
-
-						
+			</div>		
 		</div>
-
 	</div>
 
-	<section class="section">
 
+	<br>
 
-
-
-
-     
-           	<button class="button is-dark">ayuda</button>
-     
-
-
-
-
-
-		
-		
+	<section class="section has-stuff-centered is-flex">
+		<div class="field is-grouped">
+		  <p class="control">
+		    <button [disabled]="isEmptyStringArray()" (click)="oroRespuesta()" class="button is-success">✔ listo</button>
+		  </p>
+		  <p class="control">
+		    <button class="button is-dark">ayuda</button>
+		  </p>
+		</div>
 	</section>
 
 
@@ -51,3 +41,44 @@
 	</div>
 	</div>
 </section>
+
+
+<div class="modal modal-fx-fadeInScale"  id="oroResponde">
+<div class="modal-background"></div>
+<div class="modal-content is-tiny">
+
+
+<section class="section has-stuff-centered is-flex">
+	<app-imagen-figure [medida]="'128'" [imgUrl]="'modulos/vamos.gif'"></app-imagen-figure>
+</section>
+
+<div class="box">
+
+<div class="columns">
+	<div class="column" *ngIf="acertadoBien.length > 0">
+		<h1 class="title is-5 has-text-weight-bold has-text-success">¡CORRECTO!</h1>
+		<span *ngFor="let item of acertadoBien" class="title is-5"> {{item.respuesta}} = {{item.kana}} <br></span>
+	</div>
+
+	<div [ngClass]="'column'" *ngIf="acertadoMal.length > 0">
+		<h1 class="title is-5 has-text-weight-bold has-text-primary">¡INCORRECTO!</h1>
+		<span *ngFor="let item of acertadoMal" class="title is-5"> {{item.correcta}} = {{item.kana}} <span class="title is-7">(respondiste: {{item.respuesta}})</span> <br></span>
+	</div>
+</div>
+
+	<br>
+    <button (click)="avanzarModulo()" class="button is-warning has-background-warning">siguiente →</button>
+
+</div>
+
+
+
+
+
+
+</div>
+<button onclick="modalFunction(2, '#oroResponde')" class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+

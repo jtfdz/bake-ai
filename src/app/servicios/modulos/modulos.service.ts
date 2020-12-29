@@ -3,6 +3,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 declare const animateValue: any;
 declare const getFromStore: any;
 declare const setInStore: any;
+declare const modeloDeAprendizaje: any;
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,6 @@ export class ModulosService {
 
   constructor() { }
 
-	private material: BehaviorSubject<Object> = new BehaviorSubject<Object>(getFromStore('modelo.material'));
 	private arrayOfModulos: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(getFromStore('modelo.modulos'));
 
 	private progresoArr: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
@@ -20,12 +20,11 @@ export class ModulosService {
 	private dataParaModulos: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(getFromStore('modelo.dataParaModulos'));
 
 
-	getMaterialEstudio(): Observable<Object> {
-	  return this.material.asObservable();
-	}
 	getModulosAprendizaje(): Observable<string[]> {
 	  return this.arrayOfModulos.asObservable();
 	}
+
+	setDataParaModulos(kana: string) { modeloDeAprendizaje(kana); this.arrayOfModulos.next(getFromStore('modelo.modulos')); this.dataParaModulos.next(getFromStore('modelo.dataParaModulos')); }
 
 	getDataParaModulos(): Observable<any[]> {
 	  return this.dataParaModulos.asObservable();

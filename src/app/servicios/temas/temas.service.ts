@@ -471,23 +471,32 @@ export class TemasService {
       var filteredKana = {};
       var filteredKanaArray: IndexNum[] = [];
       let kanaBody = getFromStore('progreso.'+tituloKana+'.kanaBody');
+      let esHiragana = (tituloKana=='hiragana');
 
 
       for (var i = 0; i < kanaBody.length; i++) {
         if(iniciado){
-             if(kanaBody[i].iniciada){
-              (tituloKana=='hiragana')? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);          
-              filteredKanaArray.push(Object.values(this.hiraganaObjArr[i]));
-              }
+           if(kanaBody[i].iniciada){
+            (esHiragana)? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);          
+            (esHiragana)? filteredKanaArray.push(Object.values(this.hiraganaObjArr[i])): filteredKanaArray.push(Object.values(this.katakanaObjArr[i]));
+            }
         }else{
-             if(kanaBody[i].desbloqueado && !kanaBody[i].iniciada){
-              (tituloKana=='hiragana')? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);            
-              filteredKanaArray.push(Object.values(this.hiraganaObjArr[i]));
-             }
+           if(kanaBody[i].desbloqueado && !kanaBody[i].iniciada){
+            (esHiragana)? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);            
+            (esHiragana)? filteredKanaArray.push(Object.values(this.hiraganaObjArr[i])): filteredKanaArray.push(Object.values(this.katakanaObjArr[i]));
+            }
         }
       }
 
-      (iniciado)?setInStore('modelo.material.iniciado', filteredKanaArray): setInStore('modelo.material.desbloqueado', filteredKanaArray)
+      //mejorar> innecesario____
+
+      if(iniciado){
+        (esHiragana)?setInStore('modelo.material.hiragana.iniciado', filteredKanaArray): setInStore('modelo.material.katakana.iniciado', filteredKanaArray)
+      }else{
+        (esHiragana)?setInStore('modelo.material.hiragana.desbloqueado', filteredKanaArray): setInStore('modelo.material.katakana.desbloqueado', filteredKanaArray)
+      }
+
+      
 
       return filteredKana;
     }

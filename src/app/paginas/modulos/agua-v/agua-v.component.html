@@ -1,12 +1,11 @@
-<section class="hero has-background-info">
+<section class="hero has-background-info" style="height: 315px;">
 	<div class="hero-body has-stuff-centered">
 	<div class="container">
 
   <section class="section">
     <div class="columns">
   
-      <div class="column is-4 is-offset-1">
-        <br>
+      <div class="column is-4 is-offset-1"><br>
         <h1 class="subtitle is-4 has-text-white">¡encuéntrame!</h1>
         <h1 class="title is-1 has-text-white">{{dataAgua[0]}}</h1>
       </div>
@@ -35,21 +34,7 @@
     </div>
 
 
-
-
-
-  <section class="section has-stuff-centered is-flex">
-    <div class="field is-grouped">
-      <p class="control">
-        <button [disabled]="!respuesta" (click)="aguaRespuesta()" class="button is-success">✔ listo</button>
-      </p>
-      <p class="control">
-        <button class="button is-dark">ayuda</button>
-      </p>
-    </div>
-  </section>
-     
-
+  <app-botones-modulos-siguiente-ayuda [nombreModulo]="'agua'" [colorBoton]="'info'" [textoExplicacion]="dataAgua[0] +' = '+dataAgua[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="aguaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 
   </section>
@@ -59,28 +44,6 @@
 
 
 
-<div class="modal modal-fx-fadeInScale"  id="aguaResponde">
-<div class="modal-background"></div>
-<div class="modal-content is-tiny">
 
-
-<section class="section has-stuff-centered is-flex">
-  <app-imagen-figure *ngIf="acertado" [medida]="'128'" [imgUrl]="'modulos/correcto.gif'"></app-imagen-figure>
-  <app-imagen-figure *ngIf="!acertado" [medida]="'128'" [imgUrl]="'modulos/incorrecto.gif'"></app-imagen-figure>
-</section>
-
-<div class="box">
-  <h1 *ngIf="acertado" class="title is-3 has-text-weight-bold has-text-success">¡CORRECTO!</h1>
-  <h1 *ngIf="!acertado" class="title is-1 has-text-weight-bold has-text-primary">INCORRECTO</h1>
-
-  <h1 class="title is-1 has-text-weight-bold">{{dataAgua[0]}} = {{dataAgua[1]}}</h1>
-
-    <button (click)="avanzarModulo()" class="button is-warning has-background-warning">siguiente →</button>
-
-</div>
-
-</div>
-<button onclick="modalFunction(2, '#aguaResponde')" class="modal-close is-large" aria-label="close"></button>
-</div>
 
 

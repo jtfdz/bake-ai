@@ -6,91 +6,47 @@
       	
       <div class="columns">
 
-
         <div class="column is-8">
           <section class="hero is-black">
-            <app-origen [moduloData]="dataParaModulos[indexOfModulos]" [moduloActivado]="arrayOfModulos[indexOfModulos]"></app-origen>
+            <app-origen (siguienteModulo)="avanzarModulo()" (respuestaOrigen)="integrarRespuesta($event)" [moduloData]="dataParaModulos[indexOfModulos]" [moduloActivado]="arrayOfModulos[indexOfModulos]"></app-origen>
           </section>
         </div>
 
-
-
         <div class="column is-4">
-
           <nav class="panel">
           <p class="panel-heading has-background-{{colorModulo}} is-size-5">progreso</p>
+
           <div class="box">
-
-
             <div class="columns">
-            
               <div class="column">
-                
                 <h1 class="subtitle is-size-6">
                   <div class="has-text-weight-bold has-text-grey-darker">módulo:</div> {{tituloModulo}}
                 </h1>
-
               </div>
-
               <div class="column is-8">
-                
                 <h1 class="subtitle is-size-6">
                   <div class="has-text-weight-bold has-text-grey-darker">tipo de aprendizaje:</div> {{tipoModulo}}
                 </h1>
-
               </div>
-
-
             </div>
-
-
-
-
-
-              <span class="subtitle is-size-6 has-text-weight-bold has-text-grey-darker">aciertos:</span>
-       
-
-
-
-
-<table class="table is-bordered is-striped is-narrow" style="display:block">
-  <tbody>
-    <tr>
-      <td class="has-background-warning is-white" style="display: inline-block" *ngFor="let item of arrayOfModulos; let i=index"><span class="has-text-weight-medium">??</span></td>
-    </tr>
-  </tbody>
-</table>
-
-
-<!-- ❎  ✖✔ ✕✓ ❌✅ -->
-
-
-
-            <button (click)="avanzarModulo()" class="button is-{{colorModulo}} has-background-{{colorModulo}}">listo →</button>
+            <span class="subtitle is-size-6 has-text-weight-bold has-text-grey-darker">aciertos:</span>
+            <table class="table is-bordered is-striped is-narrow" style="display:block">
+              <tbody>
+                <tr>
+                  <ng-container *ngFor="let item of arrayOfModulos; let i=index">
+                  <td [id]="'aciertos-fallos-'+i" class="is-white has-background-warning" style="display: inline-block"><span [id]="'aciertos-fallos-span-'+i" class="has-text-weight-medium">❓</span></td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+<!--             <button (click)="avanzarModulo()" class="button is-{{colorModulo}} has-background-{{colorModulo}}">listo →</button> -->
           </div>
+
           </nav>
-
-
-
-
-
         </div>
 
-
-
     </div>
+
   </div>
 </div>
-
-
 </section>
-
-
-
-
-
-
-
-
-
-

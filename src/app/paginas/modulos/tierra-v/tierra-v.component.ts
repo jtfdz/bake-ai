@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
+declare const getEbCN: any;
 
 @Component({
   selector: 'app-tierra-v',
@@ -8,11 +10,52 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TierraVComponent implements OnInit {
 
   @Input() dataTierra: any[] = [];
+  @Output() respuestaTierra: EventEmitter<any> = new EventEmitter<any>();
+  @Output() sigueTierra: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  gustoUsuario: string = '';
+  respuesta: string = '';
+  acertado: boolean = false;
+  dioRespuesta: boolean = false;
+   
+  constructor(private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
-  	console.log(this.dataTierra)
+    this.componentesService.getGustoUsuario().subscribe(
+     gustoUsuario => this.gustoUsuario = gustoUsuario
+    ); 
+  }
+
+  tierraRespuesta(){
+      this.dioRespuesta = true;
+      if(this.respuesta == this.dataTierra[0]){
+        this.acertado = true;
+        this.respuestaTierra.emit(true);
+      }else{
+        this.respuestaTierra.emit(false);
+      }
+  }
+
+  tierraClick(item: string, event: any){
+    this.componentesService.reproducirPalabras(item);
+    let tierraBoton = getEbCN('button-tierra');
+    for (var i = 0; i < tierraBoton.length; i++) {
+      tierraBoton[i].className = tierraBoton[i].className.replace(" is-dark", " is-light");
+    }
+    event.currentTarget.className = event.currentTarget.className.replace(" is-light", " is-dark");
+    this.respuesta = item;
+  }
+
+
+  avanzarModulo(): void{
+    this.sigueTierra.emit(true);
+    this.respuesta = '';
+    this.acertado = false;
+    this.dioRespuesta = false;
+    let tierraBoton = getEbCN('button-tierra');
+    for (var i = 0; i < tierraBoton.length; i++) {
+      tierraBoton[i].className = tierraBoton[i].className.replace(" is-dark", "is-light");
+    }
   }
 
 }
