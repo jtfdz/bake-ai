@@ -21,14 +21,14 @@ export class BotonesIconosModalComponent implements OnInit {
   constructor(private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
+    this.componentesService.getNombreUsuario().subscribe(
+     nombreUsuario => this.nombreUsuario = nombreUsuario
+    ); 
     this.componentesService.getTituloCard().subscribe(
      tituloCard => this.tituloCard = tituloCard
     );
     this.componentesService.getColorCard().subscribe(
      colorCard => this.colorCard = colorCard
-    ); 
-    this.componentesService.getNombreUsuario().subscribe(
-     nombreUsuario => this.nombreUsuario = nombreUsuario
     ); 
   }
 
@@ -36,6 +36,10 @@ export class BotonesIconosModalComponent implements OnInit {
 
   public guardar(): void {
     this.componentesService.setNombreUsuario(this.nombreUsuario)
+  }
+
+  nombreRecibido(respuesta: any): void {
+    this.nombreUsuario = respuesta;
   }
 
 }

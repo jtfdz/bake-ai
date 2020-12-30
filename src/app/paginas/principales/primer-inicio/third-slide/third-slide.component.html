@@ -51,15 +51,10 @@
             <article class="tile is-child box is-info">
               <h1 class="title">usuario</h1>
               <p class="subtitle">ingresa un usuario y a través de este te haremos referencia dentro de <strong>bake ai:</strong></p> 
-              <!-- mejorar componetiza4r con el config -->
-              <div class="control has-icons-left has-icons-right">
-              <div class="form-group">
-                <input maxlength="10" id="inputThirdSlide" [disabled]="isInputThirdSlideDisabled" [(ngModel)]="nombreUsuario" class="input is-medium is-success" type="text" placeholder="nombre">
-              </div>
-              <span class="icon is-medium is-left"> 
-                <app-imagen-figure [medida]="'24'" [imgUrl]="'third-slide/avatar-gris.png'"></app-imagen-figure> 
-              </span>
-              </div> 
+
+              <app-input-usuario-nombre [valorInicial]="''" (nombreEnviar)="nombreRecibido($event)" [deshabilitarButton]="isInputThirdSlideDisabled"></app-input-usuario-nombre>
+
+
               <span class="tag">(!) para continuar, debes llenar este cuadro.</span>
             </article>
           </div>

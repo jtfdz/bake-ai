@@ -36,10 +36,13 @@ import { ImagenFotoComponent } from 'src/app/componentes/imagenes/imagen-foto/im
 import { FirstSlideDropdownContentComponent } from 'src/app/componentes/especificos/first-slide-dropdown-content/first-slide-dropdown-content.component';
 import { SecondSlideVarwComponent } from 'src/app/componentes/especificos/second-slide-varw/second-slide-varw.component';
 import { InstruccionesSwitchComponent } from 'src/app/componentes/especificos/instrucciones-switch/instrucciones-switch.component';
+import { InputUsuarioNombreComponent } from 'src/app/componentes/especificos/input-usuario-nombre/input-usuario-nombre.component';
 
 import { BotonSiguientePrimerInicioComponent } from 'src/app/componentes/botones/boton-siguiente-primer-inicio/boton-siguiente-primer-inicio.component';
 import { BotonAnteriorPrimerInicioComponent } from 'src/app/componentes/botones/boton-anterior-primer-inicio/boton-anterior-primer-inicio.component';
 import { BotonesModulosSiguienteAyudaComponent } from 'src/app/componentes/botones/botones-modulos-siguiente-ayuda/botones-modulos-siguiente-ayuda.component';
+import { FixedCornerComponent } from 'src/app/componentes/botones/fixed-corner/fixed-corner.component';
+
 
 import { ContenidoInstruccionesTablasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-tablas/contenido-instrucciones-tablas.component';
 import { ContenidoInstruccionesSolComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-sol/contenido-instrucciones-sol.component';
@@ -91,6 +94,8 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     ContenidoInstruccionesExaminacionComponent,
     BotonesModulosSiguienteAyudaComponent,
     InstruccionesSwitchComponent,
+    InputUsuarioNombreComponent,
+    FixedCornerComponent,
   ],
   imports: [
     CommonModule,
@@ -137,6 +142,8 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     ContenidoInstruccionesExaminacionComponent,
     BotonesModulosSiguienteAyudaComponent,
     InstruccionesSwitchComponent,
+    InputUsuarioNombreComponent,
+    FixedCornerComponent,
   ]
 })
 export class ComponentesModule { }

@@ -17,18 +17,22 @@ export class ThirdSlideComponent {
 
   constructor(private primerInicioService: PrimerInicioService, private componentesService: ComponentesService) { }
 
-  public activar(): void { modalFunction(1, "#myModal"); }
+  activar(): void { modalFunction(1, "#myModal"); }
 
-  public volver(): void{  modalFunction(2, "#myModal");  }
+  volver(): void{  modalFunction(2, "#myModal");  }
 
   
-  public proceder(): void{
+  proceder(): void{
     this.isInputThirdSlideDisabled = true;
     this.primerInicioService.setShow4(); 
     this.volver();
     this.componentesService.setNombreUsuario(this.nombreUsuario)
   }
 
+
+  nombreRecibido(respuesta: any): void {
+    this.nombreUsuario = respuesta;
+  }
 
 
 }
