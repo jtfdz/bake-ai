@@ -31,11 +31,15 @@ let kanaBodyFull = [
 ];
 
 
-
 const schema = {
     usuario: {
       type: 'object',
-      default: {gusto: "animales", nombre: "", iniciado: false}
+      default: {
+        gusto: "animales", 
+        nombre: "", 
+        iniciado: false, 
+        toursIniciados: {iniciogeneral: false, modulos: false}
+        }
     },
     //aquí cuando la miércoles de teoría la defina XD
     teoria: {
@@ -91,7 +95,6 @@ const schema = {
       }
     },
 
-    //iniciado y desbloqueado pueden ser hiraana o katakana bro MEJORAR
     modelo: {
       type: 'object',
       default: {
@@ -267,6 +270,7 @@ function modeloDeAprendizaje(kana){
 
   setInStore('modelo.dataParaModulos', dataParaModulo)
 
+  //mejorar ESTO LO BORRAS CHICA
     // var fuckthis = getFromStore('progreso.hiragana.kanaBody');
 
     // fuckthis[0].iniciada = true;
@@ -278,7 +282,6 @@ function modeloDeAprendizaje(kana){
 
     //console.log(getFromStore('progreso.hiragana.kanaBody'))
 }
-
 
 String.prototype.shuffleString = function () {
     var a = this.split(""),
@@ -570,6 +573,7 @@ function setInputToWaka(idInput, kana){
     wanakana.bind(getEbI(idInput), {IMEMode: 'toKatakana'}) 
   }
 }
+
 
 
 //gustos

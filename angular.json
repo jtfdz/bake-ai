@@ -34,10 +34,13 @@
               "node_modules/@creativebulma/bulma-badge/dist/bulma-badge.min.css",
               "node_modules/@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css",
               "node_modules/bulma-modal-fx/dist/css/modal-fx.min.css",
-              "node_modules/bulma-checkradio/dist/css/bulma-checkradio.min.css",
+              "node_modules/bulma-checkradio/dist/css/bulma-checkradio.min.css",  
+              "node_modules/shepherd.js/dist/css/shepherd.css",              
             ],
             "scripts": [
               "node_modules/bulma-modal-fx/dist/js/modal-fx.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/shepherd.js/dist/js/shepherd.min.js",
               "src/assets/js-ts/onlyjavascript.js",
               "src/assets/js-ts/communication.js",
             ]
@@ -101,6 +104,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []

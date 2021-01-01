@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
+import { ShepherdPasosService } from 'src/app/servicios/principales/shepherd-pasos.service';
 declare const modalFunction: any;
 
 @Component({
@@ -13,7 +14,8 @@ export class BotonesModulosSiguienteAyudaComponent implements OnInit {
     @Input() botonHabilitado: boolean = false;
     @Input() textoExplicacion: string = '';
     @Input() colorBoton: string = '';
-    @Input() nombreModulo: string = '';
+    @Input() moduloTitulo: string = '';
+
 	@Output() respuestaModulo: EventEmitter<any> = new EventEmitter<any>();
 	@Output() siguienteModulo: EventEmitter<any> = new EventEmitter<any>();
 
@@ -23,7 +25,7 @@ export class BotonesModulosSiguienteAyudaComponent implements OnInit {
 	elegidoCorrecto: string = '';
 	elegidoIncorrecto: string = '';
 
-	constructor(private componentesService: ComponentesService) { }
+	constructor(private componentesService: ComponentesService, public shepherdPasosService: ShepherdPasosService) { }
 
 	ngOnChanges(): void{
 		this.elegidoCorrecto = this.correctoArray[Math.floor(Math.random() * this.correctoArray.length)]
@@ -48,7 +50,7 @@ export class BotonesModulosSiguienteAyudaComponent implements OnInit {
 	    this.correctoArray.push('¡enséñame tú a mí, '+this.nombreUsuario+'!')
 	    this.correctoArray.push('¡ya lo tienes, '+this.nombreUsuario+'!')
 	    this.correctoArray.push('¡がんばって, '+this.nombreUsuario+'!')
-	    this.correctoArray.push('¡いいな, '+this.nombreUsuario+'さん　!')
+	    this.correctoArray.push('¡いいな, '+this.nombreUsuario+'さん!')
 	    this.correctoArray.push('もうわかられる, '+this.nombreUsuario+'!')
 
 	    this.incorrectoArray.push('¡no te preocupes, '+this.nombreUsuario+'!')
@@ -60,9 +62,9 @@ export class BotonesModulosSiguienteAyudaComponent implements OnInit {
 	    this.incorrectoArray.push('¡y eso es... incorrecto...')
 	    this.incorrectoArray.push('estem... ')
 	    this.incorrectoArray.push('pues no...')
-	    this.correctoArray.push('むずかしそう。。。')
-	    this.correctoArray.push('あれ。。。')
-	    this.correctoArray.push('ちがう :(')
+	    this.incorrectoArray.push('むずかしそう。。。')
+	    this.incorrectoArray.push('あれ。。。')
+	    this.incorrectoArray.push('ちがう :(')
 
 	}
 

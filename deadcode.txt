@@ -826,3 +826,44 @@ function openTabTeoria(evt, tabNombre) {
     ]
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ng-container *ngSwitchCase="'fuego'">
+    <app-contenido-instrucciones-fuego></app-contenido-instrucciones-fuego>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'agua'">
+    <app-contenido-instrucciones-agua></app-contenido-instrucciones-agua>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'árbol'">
+    <app-contenido-instrucciones-arbol></app-contenido-instrucciones-arbol>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'oro'">
+    <app-contenido-instrucciones-oro></app-contenido-instrucciones-oro>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'tierra'">
+    <app-contenido-instrucciones-tierra></app-contenido-instrucciones-tierra>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'sol'">
+    <app-contenido-instrucciones-sol></app-contenido-instrucciones-sol>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'luna'">
+    <app-contenido-instrucciones-luna></app-contenido-instrucciones-luna>
+  </ng-container>

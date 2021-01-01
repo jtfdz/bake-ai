@@ -1,0 +1,53 @@
+<div class="columns is-multiline has-stuff-centered is-flex">
+	
+	<div class="column is-12 ">
+		
+		<div class="columns">
+
+			<div class="column">
+
+	  			<div class="field is-horizontal">
+				  <div class="field-label is-normal has-text-dark">
+				    <label class="label">nombre:</label>
+				  </div>
+				  <div class="field-body">
+				    <div class="field">
+						<app-input-usuario-nombre [valorInicial]="nombreUsuario" (nombreEnviar)="nombreRecibido($event)" [deshabilitarButton]="null"></app-input-usuario-nombre>
+				    </div>
+				  </div>
+				</div>
+
+			</div>
+
+			<div class="column is-1">
+				<app-imagen-figure *ngIf="aceptado" [medida]="'48'" [imgUrl]="'modals/checkmark.gif'"></app-imagen-figure> 
+			</div>
+
+			<div class="column is-5">
+
+				<button [ngClass]="'button is-fullwidth is-success is-medium'" [disabled]="!nombreUsuario" (click)="guardar()">guardar nombre</button>
+			
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="column is-12 has-text-centered">
+		<label class="label">gusto:</label>
+	</div>
+
+	<div class="column is-12 has-text-centered">
+		<app-gustos-picker [accesoGusto]="true"></app-gustos-picker>
+		<span class="tag">(!) tu selección se guarda automáticamente.</span>
+	</div>
+
+
+</div>
+
+
+
+
+
+

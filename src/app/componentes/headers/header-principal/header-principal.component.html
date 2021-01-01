@@ -9,7 +9,7 @@
       <nav class="level">
 
         <!-- Left side -->
-        <div class="level-left">
+        <div class="level-left step1">
 
           <div class="level-item">
             <img src="{{imagenes}}/catlogo.png" width="100" height="100">
@@ -42,15 +42,15 @@
               </a>
                 
               <a class="modal-button" data-target="myModal" (click)="activar('app')">
-                <app-botones-iconos [tooltipTexto]="'aplicación'"  [imgSource]="'/app-icon.png'" [botonColor]="'success'"></app-botones-iconos>           
+                <app-botones-iconos [clasePaso]="'step1-iniciogeneral'" [tooltipTexto]="'aplicación'"  [imgSource]="'/app-icon.png'" [botonColor]="'success'"></app-botones-iconos>           
               </a>
 
               <a class="modal-button" data-target="myModal" (click)="activar('stats')">
-                <app-botones-iconos [tooltipTexto]="'estadísticas'" [imgSource]="'/stats.png'" [botonColor]="'primary'"></app-botones-iconos>
+                <app-botones-iconos [clasePaso]="'step2-iniciogeneral'" [tooltipTexto]="'estadísticas'" [imgSource]="'/stats.png'" [botonColor]="'primary'"></app-botones-iconos>
               </a>
                
               <a class="modal-button" data-target="myModal" (click)="activar('config')">
-                <app-botones-iconos [tooltipTexto]="'configuración'" [imgSource]="'/configuration.png'" [botonColor]="'warning'"></app-botones-iconos>
+                <app-botones-iconos [clasePaso]="'step3-iniciogeneral'" [tooltipTexto]="'configuración'" [imgSource]="'/configuration.png'" [botonColor]="'warning'"></app-botones-iconos>
               </a>
 
             <!--fin de iconos-->

@@ -1,10 +1,10 @@
 <section class="section has-stuff-centered is-flex">
 	<div class="field is-grouped">
-	  <p class="control">
-	    <button class="modal-button" data-target="moduloResponde" [disabled]="botonHabilitado" (click)="moduloRespuesta()" class="button is-success">✔ listo</button>
+	  <p [class]="'control step3-modulo-'+moduloTitulo">
+	    <button [class]="'modal-button button is-success'" data-target="moduloResponde" [disabled]="botonHabilitado" (click)="moduloRespuesta()">✔ listo</button>
 	  </p>
 	  <p class="control">
-	    <button class="modal-button" data-target="moduloAyuda" onclick="modalFunction(1, '#moduloAyuda')" class="button is-dark">ayuda</button>
+	    <button (click)="shepherdPasosService.activarAyuda(moduloTitulo)" class="button is-dark">ayuda</button>
 	  </p>
 	</div>
 </section>
@@ -16,7 +16,8 @@
 <div class="modal-content is-tiny">
 
 <section class="section has-stuff-centered is-flex">
-  <app-imagen-figure [medida]="'128'" [imgUrl]="(acertado)? 'modulos/correcto.gif': 'modulos/incorrecto.gif'"></app-imagen-figure>
+  <app-imagen-figure *ngIf="acertado" [medida]="'128'" [imgUrl]="'modulos/correcto.gif'"></app-imagen-figure>
+  <app-imagen-figure *ngIf="!acertado" [medida]="'128'" [imgUrl]="'modulos/incorrecto.gif'"></app-imagen-figure>
 </section>
 
 <div class="box">
@@ -35,22 +36,3 @@
 
 
 
-<!-- ayuda -->
-
-
-<div class="modal modal-fx-fadeInScale"  id="moduloAyuda">
-<div class="modal-background"></div>
-<div class="modal-content">
-
-
-<section class="section has-stuff-centered is-flex">
-  <app-imagen-figure [medida]="'128'" [imgUrl]="'modulos/ayuda.gif'"></app-imagen-figure>
-</section>
-
-<div class="box">
-	<app-instrucciones-switch [tabActivada]="nombreModulo"></app-instrucciones-switch>
-</div>
-
-</div>
-<button onclick="modalFunction(2, '#moduloAyuda')" class="modal-close is-large" aria-label="close"></button>
-</div>

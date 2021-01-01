@@ -6,13 +6,13 @@
 	<h1 class="title is-5 has-text-dark">escribe el kana escuchado en este audio:</h1>
 
 	<section class="section">
-		<button (click)="activarAudio()" class="button has-background-warning-light is-large is-rounded"><app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/audio.png'"></app-imagen-figure>
+		<button (click)="activarAudio()" class="button has-background-warning-light is-large is-rounded step1-modulo-sol"><app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/audio.png'"></app-imagen-figure>
 		</button>
 	</section><br>
 
 	<section class="section">
 		<div class="columns">
-			<div class="column is-one-fifth is-offset-two-fifths">
+			<div class="column is-one-fifth is-offset-two-fifths step2-modulo-sol">
 				<div class="field">
 				  <div class="control">
 				    <input [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuesta" id="respuesta-sol" class="input is-dark" type="text" placeholder="respuesta">
@@ -23,7 +23,7 @@
 	</section><br>
 	
 
-  <app-botones-modulos-siguiente-ayuda [nombreModulo]="'sol'" [colorBoton]="'warning'" [textoExplicacion]="dataSol[1] +' = '+dataSol[0]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="solRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+  <app-botones-modulos-siguiente-ayuda [moduloTitulo]="'sol'" [colorBoton]="'warning'" [textoExplicacion]="dataSol[1] +' = '+dataSol[0]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="solRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 
 	</div>

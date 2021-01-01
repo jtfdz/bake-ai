@@ -6,23 +6,24 @@
 
 	<section class="section has-stuff-centered is-flex">
 		<app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/'+gustoUsuario+'/'+dataArbol[2]+'.png'"></app-imagen-figure>
-		<h1 class="title is-1 has-text-light has-text-weight-bold">{{dataArbol[1]}}</h1><br>
+		<h1 class="title is-1 has-text-light has-text-weight-bold step1-modulo-arbol">{{dataArbol[1]}}</h1><br>
 		<span class="subtitle is-5 has-text-light has-text-weight-medium"> {{dataArbol[2]}}</span>
 	</section>
 
 	<section class="section">
 
 		<div class="columns is-mobile is-centered">
-	        <div class="column is-narrow" *ngFor="let item of dataArbol[3]">
+	        <div class="column is-narrow step2-modulo-arbol" *ngFor="let item of dataArbol[3]">
 	         <button [disabled]="dioRespuesta? true: null" (click)="arbolClick($event)" class="button is-light is-medium button-respuesta">{{item}}</button>
 	        </div>
 	   	</div>
 
+ 		<app-botones-modulos-siguiente-ayuda [moduloTitulo]="'arbol'" [colorBoton]="'warning-dark'" [textoExplicacion]="dataArbol[1] +' = '+dataArbol[0]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="arbolRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+
 	</section>
 
-	<br>
 
- 	<app-botones-modulos-siguiente-ayuda [nombreModulo]="'árbol'" [colorBoton]="'warning-dark'" [textoExplicacion]="dataArbol[1] +' = '+dataArbol[0]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="arbolRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+
 
 
 	</div>

@@ -1,0 +1,8 @@
+<div class="control has-icons-left has-icons-right">
+	<div class="form-group">
+	<input (input)="nombreEnviar.emit(nombreUsuario)" maxlength="10" id="inputThirdSlide" [disabled]="deshabilitarButton" [(ngModel)]="nombreUsuario" [value]="nombreUsuario" class="input is-medium is-success" type="text" placeholder="¡vacío no!">
+	</div>
+	<span class="icon is-medium is-left"> 
+	<app-imagen-figure [medida]="'24'" [imgUrl]="'third-slide/avatar-gris.png'"></app-imagen-figure> 
+	</span>
+</div> 

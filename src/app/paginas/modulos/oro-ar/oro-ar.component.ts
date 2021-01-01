@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
+import { ShepherdPasosService } from 'src/app/servicios/principales/shepherd-pasos.service';
 import { toHiragana, toKatakana, isHiragana, toRomaji  } from 'wanakana';
 declare const modalFunction: any;
 
@@ -20,7 +21,7 @@ export class OroArComponent implements OnInit {
 	acertadoMal: any[] = []; // mejorar OJO PELUO CON ANY
 
 
-	constructor() { }
+	constructor(public shepherdPasosService: ShepherdPasosService) { }
 
 
 	ngOnInit(): void {

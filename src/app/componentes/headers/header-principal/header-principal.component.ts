@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 import segmentos from 'src/assets/json/segmentosHeader.json';
 import urls from 'src/assets/json/urls.json';
@@ -20,8 +20,10 @@ interface IndexStr {
 })
 export class HeaderPrincipalComponent implements OnInit {
 
-  nombreUsuario: String = '';
-  imagenes: String = urls.general;
+  nombreUsuario: string = '';
+  imagenes: string = urls.general;
+
+
   @Input() esInicio: boolean = false;
   @Input() mensajePersonalizado: string = '';
   teoriaObj: IndexObj = segmentos;
@@ -42,6 +44,7 @@ export class HeaderPrincipalComponent implements OnInit {
     this.componentesService.setColorCard(this.teoriaStr['color'])
     modalFunction(1, '#myModal'); 
   }
+
 
 
 

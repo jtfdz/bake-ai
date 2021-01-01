@@ -12,11 +12,11 @@
 
 	  <div class="columns">
 	  	
-	  	<div class="column is-9">
+	  	<div class="column is-7 is-offset-1">
 	  		
-		<div class="buttons has-addons is-centered">
+		<div class="buttons has-addons is-centered step1-modulo-fuego">
 			<ng-container *ngFor="let item of dataFuego[1]">
-		    <button (click)="activarAudio(item)" class="button is-medium has-background-light">
+		    <button (click)="activarAudio(item)" class="button is-medium has-background-light" style="width:80px">
               <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/audio.png'"></app-imagen-figure>
 		    </button>
 			</ng-container>
@@ -24,7 +24,7 @@
 
 	  	</div>
 
-	  	<div class="column is-3">
+	  	<div class="column is-3 step2-modulo-fuego">
 			<div class="field">
 			  <div class="control">
 			    <input [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuesta" id="respuesta-fuego" class="input is-dark is-medium" type="text" placeholder="respuesta">
@@ -35,7 +35,7 @@
 	 </div><br>
 
 
-  	<app-botones-modulos-siguiente-ayuda [nombreModulo]="'fuego'" [colorBoton]="'primary'" [textoExplicacion]="dataFuego[0] +' = '+dataFuego[2]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="fuegoRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+  	<app-botones-modulos-siguiente-ayuda [moduloTitulo]="'fuego'" [colorBoton]="'primary'" [textoExplicacion]="dataFuego[0] +' = '+dataFuego[2]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="fuegoRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 	
 		
 	</section>

@@ -3,39 +3,36 @@
 	<div class="container">
 
 	<section class="section">
-	  <h1 class="title is-5">escribe los romaji correspondientes a los silabarios:</h1>
-	</section><br>
-
-	<div class="block">
-		<div class="columns" >
-			<div class="column" *ngFor="let item of dataOro[0]; let i = index">
+		<h1 class="title is-5">escribe los romaji correspondientes a los silabarios:</h1>
 
 
-				<div class="field">
-				  <div class="control">
-				    <input [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuestas[i]" class="input is-dark" type="text" placeholder="{{item}}">
-				  </div>
-				</div>
+		<div class="block">
+			<div class="columns" >
+				<div class="column" *ngFor="let item of dataOro[0]; let i = index">
 
-				<h1 class="title is-2 has-text-weight-bold">{{item}}</h1>			
-			</div>		
+					<div class="field step2-modulo-oro">
+					  <div class="control">
+					    <input [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuestas[i]" class="input is-dark" type="text" placeholder="{{item}}">
+					  </div>
+					</div>
+
+					<h1 class="title is-2 has-text-weight-bold step1-modulo-oro">{{item}}</h1>			
+				</div>		
+			</div>
 		</div>
-	</div>
 
+		<section class="section has-stuff-centered is-flex">
+			<div class="field is-grouped">
+			  <p class="control step3-modulo-oro">
+			    <button [disabled]="isEmptyStringArray()" (click)="oroRespuesta()" class="button is-success">✔ listo</button>
+			  </p>
+			  <p class="control">
+			    <button (click)="shepherdPasosService.activarAyuda('oro')" class="button is-dark">ayuda</button>
+			  </p>
+			</div>
+		</section>
 
-	<br>
-
-	<section class="section has-stuff-centered is-flex">
-		<div class="field is-grouped">
-		  <p class="control">
-		    <button [disabled]="isEmptyStringArray()" (click)="oroRespuesta()" class="button is-success">✔ listo</button>
-		  </p>
-		  <p class="control">
-		    <button class="button is-dark">ayuda</button>
-		  </p>
-		</div>
 	</section>
-
 
 
 	</div>
@@ -70,10 +67,6 @@
     <button (click)="avanzarModulo()" class="button is-warning has-background-warning">siguiente →</button>
 
 </div>
-
-
-
-
 
 
 </div>

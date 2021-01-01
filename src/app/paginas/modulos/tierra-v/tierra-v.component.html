@@ -6,20 +6,22 @@
 
 		<section class="section has-stuff-centered is-flex">
 			<app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/'+gustoUsuario+'/'+dataTierra[2]+'.png'"></app-imagen-figure>
-			<h1 class="title is-1 has-text-light has-text-weight-bold">{{dataTierra[0]}}</h1>
+			<h1 class="title is-1 has-text-light has-text-weight-bold step1-modulo-tierra">{{dataTierra[0]}}</h1>
 			<br>
 			<span class="subtitle is-5 has-text-light has-text-weight-medium"> {{dataTierra[2]}}</span>
 		</section>
 
 		<div class="columns is-mobile is-centered">
+		
 	        <div class="column is-narrow" *ngFor="let item of dataTierra[3]">
-	         	<button [disabled]="dioRespuesta? true: null" (click)="tierraClick(item, $event)" class="button button-tierra is-medium is-light" style="width:80px">
+	         	<button [disabled]="dioRespuesta? true: null" (click)="tierraClick(item, $event)" class="button button-tierra is-medium is-light step2-modulo-tierra" style="width:80px">
 	            <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/audio.png'"></app-imagen-figure>
 			    </button>
 	        </div>
+	    
 	   	</div>
 
-	  	<app-botones-modulos-siguiente-ayuda [nombreModulo]="'tierra'" [colorBoton]="'warning-dark'" [textoExplicacion]="dataTierra[0] +' = '+dataTierra[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="tierraRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+	  	<app-botones-modulos-siguiente-ayuda [moduloTitulo]="'tierra'" [colorBoton]="'warning-dark'" [textoExplicacion]="dataTierra[0] +' = '+dataTierra[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="tierraRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 	</div>
 </div>

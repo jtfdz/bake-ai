@@ -7,13 +7,13 @@
   
       <div class="column is-4 is-offset-1"><br>
         <h1 class="subtitle is-4 has-text-white">¡encuéntrame!</h1>
-        <h1 class="title is-1 has-text-white">{{dataAgua[0]}}</h1>
+        <h1 class="title is-1 has-text-white"><span class="step1-modulo-agua">{{dataAgua[0]}}</span></h1>
       </div>
 
      <div class="column">
         
           <div class="block">
-          <table class="table is-bordered">
+          <table class="table is-bordered step2-modulo-agua">
             <tbody *ngFor="let item of elementosTabla; let i = index">
 
           <!-- mejorar COMPONETIZAR Y METER UN EMITTER DEL ELEGIDO -->
@@ -34,7 +34,7 @@
     </div>
 
 
-  <app-botones-modulos-siguiente-ayuda [nombreModulo]="'agua'" [colorBoton]="'info'" [textoExplicacion]="dataAgua[0] +' = '+dataAgua[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="aguaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+  <app-botones-modulos-siguiente-ayuda [moduloTitulo]="'agua'" [colorBoton]="'info'" [textoExplicacion]="dataAgua[0] +' = '+dataAgua[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="aguaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 
   </section>

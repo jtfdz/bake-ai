@@ -13,6 +13,7 @@ import { IniciosModule } from './modules/inicios/inicios.module';
 import { ModulosModule } from './modules/modulos/modulos.module';
 import { TemasModule } from './modules/temas/temas.module';
 import { ComponentesModule } from './modules/componentes/componentes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ComponentesModule } from './modules/componentes/componentes.module';
     TemasModule,
     ComponentesModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

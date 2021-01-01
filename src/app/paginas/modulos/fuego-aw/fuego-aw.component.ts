@@ -22,7 +22,6 @@ export class FuegoAwComponent implements OnInit {
 
 	ngOnInit(): void {
 		setInputToWaka('respuesta-fuego', this.dataFuego[0]) 
-		console.log(this.dataFuego)
 	}
 
 

@@ -8,7 +8,7 @@
    
   <div class="column is-8 is-offset-2 has-text-centered">
   
-    <a [routerLink]="['/tema-teoria']">
+    <a [routerLink]="['/tema-teoria']" class="step4-iniciogeneral">
       <div class="box">    
 
       <article class="media">
@@ -36,20 +36,24 @@
     <br>     
 
 
-    <div class="columns">
-      <div class="column is-4">
-        <app-temas-inferiores-inicio [colorTema]="'link'" [urlTema]="'/tema-hiragana'" [nombreTema]="'hiragana'"></app-temas-inferiores-inicio>
+
+      <div class="columns step5-iniciogeneral">
+        <div class="column is-4">
+          <app-temas-inferiores-inicio [colorTema]="'link'" [urlTema]="'/tema-hiragana'" [nombreTema]="'hiragana'"></app-temas-inferiores-inicio>
+        </div>
+
+        <div class="column is-4">
+          <app-temas-inferiores-inicio [colorTema]="'warning'" [urlTema]="'/tema-katakana'" [nombreTema]="'katakana'"></app-temas-inferiores-inicio>
+        </div>
+
+        <div class="column is-4">
+          <app-temas-inferiores-inicio [colorTema]="'danger'" [urlTema]="'/tema-kanji'" [nombreTema]="'kanji'"></app-temas-inferiores-inicio>
+        </div>
       </div>
 
-      <div class="column is-4">
-        <app-temas-inferiores-inicio [colorTema]="'warning'" [urlTema]="'/tema-katakana'" [nombreTema]="'katakana'"></app-temas-inferiores-inicio>
-      </div>
 
-      <div class="column is-4">
-        <app-temas-inferiores-inicio [colorTema]="'danger'" [urlTema]="'/tema-kanji'" [nombreTema]="'kanji'"></app-temas-inferiores-inicio>
-      </div>
-    </div>
   </div>
 
 </div>
 </section>
+

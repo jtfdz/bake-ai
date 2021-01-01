@@ -7,12 +7,12 @@
 	<h1 class="title is-5 has-text-dark">escribe el romaji de este kana:</h1>
 
 	<section class="section">
-	  <h1 class="title is-1">{{dataLuna[0]}}</h1>
+	  <h1 class="title is-1"><span class="step1-modulo-luna">{{dataLuna[0]}}</span></h1>
 	</section><br>
 
 	<section class="section">
 		<div class="columns">
-			<div class="column is-one-fifth is-offset-two-fifths">	
+			<div class="column is-one-fifth is-offset-two-fifths step2-modulo-luna">	
 				<div class="field">
 				  <div class="control">
 				    <input id="respuesta-luna" [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuesta" class="input is-dark" type="text" placeholder="respuesta">
@@ -23,7 +23,7 @@
 	</section><br>
 
 
-  <app-botones-modulos-siguiente-ayuda [nombreModulo]="'luna'" [colorBoton]="'danger'" [textoExplicacion]="dataLuna[0] +' = '+this.dataLuna[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="lunaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+  <app-botones-modulos-siguiente-ayuda [moduloTitulo]="'luna'" [colorBoton]="'danger'" [textoExplicacion]="dataLuna[0] +' = '+this.dataLuna[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="lunaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 
 

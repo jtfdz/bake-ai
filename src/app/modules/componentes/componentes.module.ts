@@ -8,8 +8,11 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { HeaderPrincipalComponent } from 'src/app/componentes/headers/header-principal/header-principal.component';
 import { HeaderModulosComponent } from 'src/app/componentes/headers/header-modulos/header-modulos.component';
 
-import { BotonesIconosComponent } from 'src/app/componentes/botones-iconos/botones-iconos.component';
-import { BotonesIconosModalComponent } from 'src/app/componentes/botones-iconos/botones-iconos-modal/botones-iconos-modal.component';
+import { BotonesIconosComponent } from 'src/app/componentes/botones/botones-iconos/botones-iconos.component';
+import { BotonesIconosModalComponent } from 'src/app/componentes/botones/botones-iconos/botones-iconos-modal/botones-iconos-modal.component';
+import { ModalContenidoAplicacionComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-aplicacion/modal-contenido-aplicacion.component';
+import { ModalContenidoEstadisticasComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-estadisticas/modal-contenido-estadisticas.component';
+import { ModalContenidoConfiguracionComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-configuracion/modal-contenido-configuracion.component';
 
 import { TabsTeoriaComponent } from 'src/app/componentes/tabs-teoria/tabs-teoria.component';
 import { TabsTeoriaContentComponent } from 'src/app/componentes/tabs-teoria/tabs-teoria-content/tabs-teoria-content.component';
@@ -43,15 +46,7 @@ import { BotonAnteriorPrimerInicioComponent } from 'src/app/componentes/botones/
 import { BotonesModulosSiguienteAyudaComponent } from 'src/app/componentes/botones/botones-modulos-siguiente-ayuda/botones-modulos-siguiente-ayuda.component';
 import { FixedCornerComponent } from 'src/app/componentes/botones/fixed-corner/fixed-corner.component';
 
-
 import { ContenidoInstruccionesTablasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-tablas/contenido-instrucciones-tablas.component';
-import { ContenidoInstruccionesSolComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-sol/contenido-instrucciones-sol.component';
-import { ContenidoInstruccionesAguaComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-agua/contenido-instrucciones-agua.component';
-import { ContenidoInstruccionesTierraComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-tierra/contenido-instrucciones-tierra.component';
-import { ContenidoInstruccionesFuegoComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-fuego/contenido-instrucciones-fuego.component';
-import { ContenidoInstruccionesLunaComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-luna/contenido-instrucciones-luna.component';
-import { ContenidoInstruccionesOroComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-oro/contenido-instrucciones-oro.component';
-import { ContenidoInstruccionesArbolComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-arbol/contenido-instrucciones-arbol.component';
 import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-examinacion/contenido-instrucciones-examinacion.component';
 
 
@@ -84,18 +79,14 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     SecondSlideVarwComponent,
     ImagenFotoComponent,   
     ContenidoInstruccionesTablasComponent,
-    ContenidoInstruccionesSolComponent,
-    ContenidoInstruccionesAguaComponent,
-    ContenidoInstruccionesTierraComponent,
-    ContenidoInstruccionesFuegoComponent,
-    ContenidoInstruccionesLunaComponent,
-    ContenidoInstruccionesOroComponent,
-    ContenidoInstruccionesArbolComponent,
     ContenidoInstruccionesExaminacionComponent,
     BotonesModulosSiguienteAyudaComponent,
     InstruccionesSwitchComponent,
     InputUsuarioNombreComponent,
     FixedCornerComponent,
+    ModalContenidoAplicacionComponent,
+    ModalContenidoEstadisticasComponent,
+    ModalContenidoConfiguracionComponent,
   ],
   imports: [
     CommonModule,
@@ -131,19 +122,15 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     ImagenFigureComponent,
     SecondSlideVarwComponent,
     ImagenFotoComponent,  
-    ContenidoInstruccionesTablasComponent,
-    ContenidoInstruccionesSolComponent,
-    ContenidoInstruccionesAguaComponent,
-    ContenidoInstruccionesTierraComponent,
-    ContenidoInstruccionesFuegoComponent,
-    ContenidoInstruccionesLunaComponent,
-    ContenidoInstruccionesOroComponent,
-    ContenidoInstruccionesArbolComponent,  
+    ContenidoInstruccionesTablasComponent, 
     ContenidoInstruccionesExaminacionComponent,
     BotonesModulosSiguienteAyudaComponent,
     InstruccionesSwitchComponent,
     InputUsuarioNombreComponent,
     FixedCornerComponent,
+    ModalContenidoAplicacionComponent,
+    ModalContenidoEstadisticasComponent,
+    ModalContenidoConfiguracionComponent,
   ]
 })
 export class ComponentesModule { }

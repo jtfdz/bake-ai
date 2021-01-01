@@ -1,0 +1,23 @@
+<a style="position: fixed; bottom: 3px; right: 3px;" (click)="activarSecreto()" class="modal-button" data-target="myModal" >
+	<div class="has-tooltip-black has-tooltip-left has-tooltip-arrow" [attr.data-tooltip]="'¡recomendaciones!'">
+		<app-imagen-figure [medida]="'96'" [imgUrl]="'inicio-general/secretos.png'"></app-imagen-figure>
+	</div>
+</a>
+
+
+<!-- modal tip -->
+
+<div class="modal"  id="secretosModal">
+  <div class="modal-background"></div>
+<div class="modal-content is-tiny">
+
+
+<div [class]="'box has-text-centered has-background-black'">
+  	<h1 class="title is-4 has-text-light has-text-weight-bold is-spaced">actividades recomendadas fuera de la aplicación:</h1>
+  	<h1 [class]="claseTexto">{{randomTextoElegido}}</h1>
+</div>
+
+</div>
+
+<button onclick="modalFunction(2, '#secretosModal')" class="modal-close is-large" aria-label="close"></button>
+</div>

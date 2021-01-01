@@ -1,0 +1,36 @@
+<div class="modal-background"></div>
+<div class="modal-card">
+
+  <header [ngClass]="'modal-card-head has-text-centered has-background-'+colorCard">
+    <p class="modal-card-title">{{tituloCard}}</p>
+  </header>
+
+  <section class="modal-card-body has-text-centered">
+
+	<div [ngSwitch]="colorCard">
+
+		<div *ngSwitchCase="'success'">
+			<app-modal-contenido-aplicacion></app-modal-contenido-aplicacion>
+		</div>
+
+	   <div *ngSwitchCase="'primary'">
+	    <app-modal-contenido-estadisticas></app-modal-contenido-estadisticas>
+	   </div>
+
+
+		<div *ngSwitchCase="'warning'">
+			<app-modal-contenido-configuracion></app-modal-contenido-configuracion>
+		</div>
+
+		  <div *ngSwitchDefault></div>
+	</div> 
+
+  </section>
+
+  <footer class="modal-card-foot has-text-centered">
+    <button [ngClass]="'button is-fullwidth is-'+colorCard" (click)="desactivar()">volver</button>
+  </footer>
+  
+</div>
+
+

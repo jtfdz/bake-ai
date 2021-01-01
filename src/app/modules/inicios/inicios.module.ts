@@ -26,7 +26,7 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
   RouterModule, 
   ScrollToModule, 
   FormsModule, 
-  ReactiveFormsModule
+  ReactiveFormsModule,
   ],
   
   declarations: [
@@ -48,6 +48,8 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
   ThirdSlideComponent, 
   ForthSlideComponent
   ],
+
+
 
 })
 

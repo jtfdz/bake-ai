@@ -27,8 +27,10 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
   sizeOfkanasAPruebaObj: number = 0;
   tagColorRandomIniciados: string[] = [];
   sizeOfkanasIniciadosObj: number = 0;
-  navTabsInstrucciones: string[] = ['tablas', 'examinación', 'fuego', 'agua', 'árbol', 'oro', 'tierra', 'sol', 'luna'];
+  navTabsInstrucciones: string[] = ['tablas', 'examinación'];
   tabActivada: string = 'tablas';
+
+  //, 'fuego', 'agua', 'árbol', 'oro', 'tierra', 'sol', 'luna'
 
   constructor(private temasService: TemasService, private modulosService: ModulosService) { }
 
