@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="moduloActivado">
 
-	<app-teoria-modulo *ngSwitchCase="'teoria'"></app-teoria-modulo>
+	<app-teoria-modulo (sigueTeoria)="avanzarModulo($event)" (respuestaTeoria)="integrarRespuesta($event)" [dataTeoria]="moduloData" *ngSwitchCase="'teoria'"></app-teoria-modulo>
 
     <app-luna-rw (sigueLuna)="avanzarModulo($event)" (respuestaLuna)="integrarRespuesta($event)" [dataLuna]="moduloData" *ngSwitchCase="'luna'">></app-luna-rw>
 

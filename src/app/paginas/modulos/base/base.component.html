@@ -17,6 +17,7 @@
           <p class="panel-heading has-background-{{colorModulo}} is-size-5">progreso</p>
 
           <div class="box">
+            <span class="step3-modulos">
             <div class="columns">
               <div class="column">
                 <h1 class="subtitle is-size-6">
@@ -29,8 +30,12 @@
                 </h1>
               </div>
             </div>
+            </span>
+
+
+            <span class="step4-modulos">
             <span class="subtitle is-size-6 has-text-weight-bold has-text-grey-darker">aciertos:</span>
-            <table class="table is-bordered is-striped is-narrow" style="display:block">
+            <table class="table is-bordered is-striped is-narrow " style="display:block">
               <tbody>
                 <tr>
                   <ng-container *ngFor="let item of arrayOfModulos; let i=index">
@@ -39,7 +44,10 @@
                 </tr>
               </tbody>
             </table>
-<!--             <button (click)="avanzarModulo()" class="button is-{{colorModulo}} has-background-{{colorModulo}}">listo →</button> -->
+          </span>
+
+
+<!--      MEJORAR borrar       <button (click)="avanzarModulo()" class="button is-{{colorModulo}} has-background-{{colorModulo}}">listo →</button> -->
           </div>
 
           </nav>

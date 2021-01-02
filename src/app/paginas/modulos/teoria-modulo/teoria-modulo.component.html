@@ -1,74 +1,48 @@
-<section class="hero has-background-light">
-	<div class="hero-body has-stuff-centered">
+<section class="hero has-background-light" style="height: 315px;">
+
+	<div class="hero-header has-stuff-centered">
 	<div class="container">
 
-		<div [ngSwitch]="estiloMayorRetencion">
+		<div class="columns is-gapless step5-modulos">
+			<div class="column"  *ngFor="let item of dataTeoria; let i = index">
+				<div class="card">
+				  <div class="card-content has-text-centered">
 
-		  <div *ngSwitchCase="'visual'">
-
-			<div class="columns is-gapless">
-				<div class="column"  *ngFor="let item of nuevaTeoria">
-					<div class="card">
-					  <div class="card-content has-text-centered">
-
-					  	<h1 class="subtitle is-2">{{item}}</h1>
-					  	<h1 class="title is-4">{{item}}</h1>
-
-						<div class="field">
-						  <input class="is-checkradio is-large" [id]="item" type="checkbox" [name]="item">
-						  <label [for]="item"><span class="tag">listo</span></label>
-						</div>
+				  	<div class="block step1-modulo-teoria">
+				
+				  	<h1 class="subtitle is-1">{{item}}</h1>
+				  	<h1 class="title is-4">{{dataTeoriaRomaji[i]}}</h1>
+				
+				  	</div>
 
 
+				  	<div class="block">
+				
+				  	<button (click)="activarAudio(dataTeoriaRomaji[i], $event)" class="button is-rounded step2-modulo-teoria"><app-imagen-figure [medida]="'32'" [imgUrl]="'inicio-general/audio.png'"></app-imagen-figure>
+					</button>
+				
+					</div>
+
+					
+					<div class="field step4-modulo-teoria">
+					  <div class="control">
+					    <input [disabled]="completado" (input)="chequearEscrito()" [(ngModel)]="respuestas[i]" maxlength="3" [ngClass]="'input is-dark'" class="respuesta-teoria" type="text" placeholder="{{dataTeoriaRomaji[i]}}">
 					  </div>
-					</div>					
+					</div>
+					
 
-				</div>
+				  </div>
+				</div>					
+
 			</div>
-
-		  </div>
-
-
-
-
-
-		  
-		  <div *ngSwitchCase="'auditivo'">
-
-
-		  </div>
-		  <div *ngSwitchCase="'de escritura'">
-
-		  	
-		  </div>
-
 		</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<app-botones-modulos-siguiente-ayuda [moduloTitulo]="'teoria'" [colorBoton]="'light'" [textoExplicacion]="'¡ahora la práctica!'" [botonHabilitado]="!completado" [acertado]="true" (respuestaModulo)="teoriaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 
 	</div>
 	</div>
+
 </section>
 
 

@@ -1,24 +1,94 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
-import { TemasService } from 'src/app/servicios/temas/temas.service';
+import { ShepherdPasosService } from 'src/app/servicios/principales/shepherd-pasos.service';
+import { toRomaji, toHiragana, isHiragana, toKatakana } from 'wanakana';
+declare const getEbCN: any;
+declare const setInputToWakaByMultiple: any;
 
 @Component({
   selector: 'app-teoria-modulo',
   templateUrl: './teoria-modulo.component.html',
   styleUrls: ['./teoria-modulo.component.css']
 })
-export class TeoriaModuloComponent implements OnInit {
+export class TeoriaModuloComponent implements OnInit, AfterViewInit {
 
-  nuevaTeoria: string[] = ['か','き','く','け','こ'];
-  estiloMayorRetencion: string = '';
+  @Input() dataTeoria: any[] = [];
+  @Output() respuestaTeoria: EventEmitter<any> = new EventEmitter<any>();
+  @Output() sigueTeoria: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private temasService: TemasService, private componentesService: ComponentesService) { }
+  dataTeoriaRomaji: string[] = [];
+  usuarioIniciadoModulos: boolean = false;
+  sonidosAccionados: string[] = [];
+  completadoEscrito: boolean = false;
+  respuestas: string[] = ["","","","",""];
+  progreso: boolean[] = [false,false,false,false,false];
+  respuestasTraducidas: string[] = ["","","","",""];
+  completado: boolean = false;
+
+
+  constructor(private shepherdPasosService: ShepherdPasosService, private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
-    this.componentesService.getEstiloMayorRetencion().subscribe(
-     estiloMayorRetencion => this.estiloMayorRetencion = estiloMayorRetencion
+    for (var j = 0; j < this.dataTeoria.length; j++) {
+      this.dataTeoriaRomaji.push(toRomaji(this.dataTeoria[j]))
+    }
+    this.componentesService.getUsuarioIniciadoModulos().subscribe(
+     usuarioIniciadoModulos => this.usuarioIniciadoModulos = usuarioIniciadoModulos
     ); 
-   
+
+  }
+
+  ngAfterViewInit() {
+    setInputToWakaByMultiple('respuesta-teoria', this.dataTeoria[0])
+    if(!this.usuarioIniciadoModulos){
+      this.shepherdPasosService.iniciarPasosModulos();
+    }
+  }
+
+  activarAudio(kana: string, evento: any): void{
+    //mejorar loading: un spinner mientras carga XD
+    this.componentesService.reproducirAudio(kana)
+    if(evento.currentTarget.className.search(' is-success') == -1){
+      evento.currentTarget.className += ' is-success';
+      this.sonidosAccionados.push(kana)
+    }
+
+  this.completado = (this.sonidosAccionados.length > 4) && ( this.completadoEscrito );
+
+  }
+
+  chequearEscrito() {
+
+    for (var i = 0; i < this.respuestas.length; i++) {
+      this.respuestasTraducidas[i] = isHiragana(this.dataTeoria[0])? toHiragana(this.respuestas[i]): toKatakana(this.respuestas[i]);
+    }
+
+   for(var i=0; i<this.respuestasTraducidas.length; i++){ 
+      if(this.respuestasTraducidas[i] == this.dataTeoria[i]){ 
+        this.progreso[i] = true;   
+      }else{  
+        this.progreso[i] = false; 
+      }
+    }
+
+    if(!this.progreso.includes(false)){
+      this.completadoEscrito = true;
+    }else{
+      this.completadoEscrito = false;
+    }
+    
+    this.completado = (this.sonidosAccionados.length > 4) && ( this.completadoEscrito );
+
+  }
+
+
+
+  teoriaRespuesta(){
+    this.respuestaTeoria.emit(true);
+  }
+
+  avanzarModulo(){
+    this.sigueTeoria.emit(true);
   }
 
 }

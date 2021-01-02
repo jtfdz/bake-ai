@@ -21,7 +21,7 @@ export class InicioGeneralComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     if(!this.usuarioIniciadoInicioGeneral){
-      this.shepherdPasosService.inciarPasosInicioGeneral();
+      this.shepherdPasosService.iniciarPasosInicioGeneral();
     }
   }
 

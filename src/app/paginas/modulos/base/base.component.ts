@@ -66,8 +66,8 @@ export class BaseComponent implements OnInit {
 
     this.modulosObj = {
     "teoria": {
-      "nombre": "teoría para tu estilo", 
-      "tipo": "por ahora, destacas con un estilo de aprendizaje "+this.estiloMayorRetencion+".",
+      "nombre": "teoría", 
+      "tipo": "por ahora, destacas con aprendizaje "+this.estiloMayorRetencion+".",
       "color": "light"
     },
     "luna": {

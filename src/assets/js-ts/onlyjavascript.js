@@ -186,6 +186,7 @@ function asignarModelo(mayor, medio, bajo){
 	var modeloArray = [];
 	pushArray(modeloArray, mayor);
 	pushArray(modeloArray, mayor);
+  pushArray(modeloArray, medio);
 	pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
 	pushArray(modeloArray, bajo);
 	return shuffle(modeloArray);
@@ -204,8 +205,6 @@ function modeloDeAprendizaje(kana){
 	var visuales = (dataGustosArray.length>0)? ['agua', 'luna', 'tierra', 'arbol']: ['agua', 'luna'];
 	var auditivos = (dataGustosArray.length>0)? ['sol', 'fuego', 'tierra']: ['sol', 'fuego'];
 	var escritos = ['oro', 'luna', 'sol', 'fuego'];
-
-
 
   var modelo = [];
 
@@ -249,11 +248,14 @@ function modeloDeAprendizaje(kana){
 		break;
 	}
 
+  if(getFromStore('modelo.material.'+kana+'.desbloqueado').length > 0){ 
+    modelo[modelo.length] = modelo[0];
+    modelo[0] = 'teoria'; 
+  };
+
 	setInStore('modelo.modulos', modelo)
 
   var dataParaModulo = [];
-
-
 
   for (var i = 0; i < modelo.length; i++) {
 
@@ -267,6 +269,7 @@ function modeloDeAprendizaje(kana){
         dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.desbloqueado'), dataGustosArray))
     }
   }
+
 
   setInStore('modelo.dataParaModulos', dataParaModulo)
 
@@ -299,7 +302,13 @@ String.prototype.shuffleString = function () {
 
 function porTipoDeModulo(modulo, data, dataGustosArray){
 
+  //mejorar: viene de un loop y aqui se pide mucho kana random asi que podria iniciarse aqui para el modulo
+
   switch(modulo){
+
+    case 'teoria': //siempre recibirá lo nuevo (desbloqueado pero no iniciado)
+      return data[0];
+    break;
   
     case 'luna': //se envia el kana a adivinar su romaji más la respuesta (el romaji)
       var dataLuna = [];
@@ -500,7 +509,7 @@ function animateValue(id, start, end, duration) {
 //mejorar se usa? borrar
 function openTab(evt, nombreDelGusto) {
 	var i, tablinks;
-	tablinks = document.getElementsByClassName("tab");
+	tablinks = getEbCN("tab");
 	var isTrueSet = (getEbI("gustosPicker").getAttribute("disabled") == 'true');
 	if(isTrueSet){
 		for (i = 0; i < tablinks.length; i++) {
@@ -574,6 +583,15 @@ function setInputToWaka(idInput, kana){
   }
 }
 
+function setInputToWakaByMultiple(elementsClass, kana){
+  for (var i = 0; i < getEbCN(elementsClass).length; i++) {
+    if(wanakana.isHiragana(kana)){ 
+      wanakana.bind(getEbCN(elementsClass)[i], {IMEMode: 'toHiragana'})  
+    }else if(wanakana.isKatakana(kana)){ 
+      wanakana.bind(getEbCN(elementsClass)[i], {IMEMode: 'toKatakana'}) 
+    }
+  }
+}
 
 
 //gustos

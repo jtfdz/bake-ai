@@ -40,8 +40,10 @@
 
       <!--column #2: status bar--->
       <div class="column is-6">
+        <span class="step1-modulos">
         <span id="barraDeProgreso" class="has-text-weight-semibold has-text-info">0</span><span class="has-text-weight-semibold has-text-info">%</span>
         <progress class="progress is-large is-success" [value]="progresoArr[progresoArrIndex]" max="100"></progress>
+        </span>
       </div>
       <!--fin de column #2: status bar--->
 
@@ -51,7 +53,7 @@
       <div class="column is-offset-1">
          <a class="modal-button" data-target="modalInstExam" onclick="modalFunction(1, '#abandonarProgreso')" >
           <div class="has-tooltip-bottom has-tooltip-black has-tooltip-arrow" [attr.data-tooltip]="'salir'">
-              <app-imagen-figure [medida]="'64'" [imgUrl]="'inicio-general/largate.png'"></app-imagen-figure>
+              <app-imagen-figure class="step2-modulos" [medida]="'64'" [imgUrl]="'inicio-general/largate.png'"></app-imagen-figure>
           </div>
         </a>  
       </div>

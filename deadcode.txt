@@ -867,3 +867,26 @@ function openTabTeoria(evt, tabNombre) {
   <ng-container *ngSwitchCase="'luna'">
     <app-contenido-instrucciones-luna></app-contenido-instrucciones-luna>
   </ng-container>
+
+
+    <div [ngSwitch]="estiloMayorRetencion">
+
+      <div *ngSwitchCase="'visual'">
+
+        </div>
+
+
+
+
+
+      
+      <div *ngSwitchCase="'auditivo'">
+
+
+      </div>
+      <div *ngSwitchCase="'de escritura'">
+
+        
+      </div>
+
+    </div>

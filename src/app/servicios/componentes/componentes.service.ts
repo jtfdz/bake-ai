@@ -20,6 +20,7 @@ export class ComponentesService {
 	private estiloMayorRetencion: BehaviorSubject<string> = new BehaviorSubject<string>(getFromStore('retencion.mayor'));
 
 	private usuarioIniciadoInicioGeneral: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('usuario.toursIniciados.iniciogeneral'));
+	private usuarioIniciadoModulos: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('usuario.toursIniciados.modulos'));
 
   constructor() { }
 
@@ -60,6 +61,13 @@ export class ComponentesService {
 	}
 
 	setUsuarioIniciadoInicioGeneral(cambio: boolean) { this.usuarioIniciadoInicioGeneral.next(cambio); setInStore('usuario.toursIniciados.iniciogeneral', cambio); }
+
+	getUsuarioIniciadoModulos(): Observable<boolean> {
+	  return this.usuarioIniciadoModulos.asObservable();
+	}
+
+	setUsuarioIniciadoModulos(cambio: boolean) { this.usuarioIniciadoModulos.next(cambio); setInStore('usuario.toursIniciados.modulos', cambio); }
+
 
 
 	getEstiloMayorRetencion(): Observable<string> {

@@ -56,7 +56,7 @@ export class ShepherdPasosService {
 	];
 
 
-	inciarPasosInicioGeneral() { 
+	iniciarPasosInicioGeneral() { 
 
 		this.componentesService.getNombreUsuario().subscribe(
 	     nombreUsuario => this.nombreUsuario = nombreUsuario
@@ -170,6 +170,10 @@ export class ShepherdPasosService {
 		   } 
 		   case 'fuego': { 
 		      this.inciarPasosFuego();
+		      break; 
+		   } 
+		   case 'teoria': { 
+		      this.inciarPasosTeoria();
 		      break; 
 		   } 
 
@@ -371,7 +375,123 @@ export class ShepherdPasosService {
 		this.shepherdService.start();
 	}
 
+	inciarPasosTeoria() { 
+	    this.shepherdService.addSteps([
+		  {
+		    attachTo: { element: '.step1-modulo-teoria', on: 'right' },
+		    buttons: this.botonesModulos,
+		    title: 'paso 1: visualiza el kana',
+		    text: ['se te presenta el kana junto a su romaji']
+		  },
+		  {
+		    attachTo: { element: '.step2-modulo-teoria', on: 'right' },
+		    buttons: this.botonesConAntes,
+		    title: 'paso 2: escucha la bocina',
+		    text: ['haz click sobre la bocina para escuchar la pronunciación del kana de arriba']
+		},
+		  {
+		    attachTo: { element: '.step4-modulo-teoria', on: 'right' },
+		    buttons: this.botonesConAntes,
+		    title: 'paso 3: escribe en el cuadro',
+		    text: ['rellena el cuadro escribiendo el romaji de arriba para obtener el kana, ¡para tomar la costumbre!']
+		},
+		  {
+		    attachTo: { element: '.step3-modulo-teoria', on: 'top' },
+		    buttons: this.botonesSinSiguiente,
+		    title: 'paso 4: ¡listo!',
+		    text: ['luego de completar los cinco podrás darle click para iniciar la examinación y poner a prueba lo recién aprendido :)']
+		},
 
+		]);
+
+		this.shepherdService.start();
+	}
+
+
+	iniciarPasosModulos() { 
+
+		this.componentesService.getNombreUsuario().subscribe(
+	     nombreUsuario => this.nombreUsuario = nombreUsuario
+	    ); 
+
+	    this.shepherdService.modal = true;
+	    this.shepherdService.confirmCancel = false;
+
+		this.shepherdService.defaultStepOptions = {
+		    id: 'intro',
+			scrollTo: false,
+		    arrow: true,
+		    cancelIcon: { enabled: false },
+		    buttons: this.botonesConAntes,
+		    classes: 'has-text-centered',
+		    highlightClass: 'highlight',
+		};
+
+	    this.shepherdService.addSteps([{
+		    arrow: false,
+		    attachTo: { on: 'auto' },
+		    buttons: this.botones,
+		    title: '¡el momento de la verdad, '+this.nombreUsuario+'!',
+		    text: ['a continuación tendrás una introducción sobre como interactuar con los módulos :)'],
+		  },
+		  {
+		    arrow: false,
+		    attachTo:  { element: '.step1-modulos', on: 'bottom' },
+		    buttons: this.botonesConAntes,
+		    title: 'la barra de progreso (1/6)',
+		    text: ['aquí podrás visualizar tu progreso'],
+		  },
+		 {
+		    arrow: false,
+		    attachTo: { element: '.step2-modulos', on: 'left' },
+		    buttons: this.botonesConAntes,
+		    title: 'botón de salida (2/6)',
+		    text: ['a través del botón podrás volver al inicio pero perdiendo todo progreso (tanto aciertos como fallos)'],
+		  },
+		 {
+		    arrow: false,
+		    attachTo: { element: '.step3-modulos', on: 'left' },
+		    buttons: this.botonesConAntes,
+		    title: 'información sobre módulo (3/6)',
+		    text: ['ya en instrucciones existe una explicación a profundidad de los módulos y su rol en tu aprendizaje (te recomiendo leerlas)'],
+		  },
+		 {
+		    arrow: false,
+		    attachTo: { element: '.step4-modulos', on: 'top' },
+		    buttons: this.botonesConAntes,
+		    title: 'aciertos (4/6)',
+		    text: ['en un inicio todos tus aciertos estarán indefinidos (❓, amarillo) pero habrá un cambio si aciertas (✅, verde) o fallas (❌, rojo) respondiendo el módulo'],
+		  },
+		 {
+		    arrow: false,
+		    attachTo: { element: '.step5-modulos', on: 'top' },
+		    buttons: this.botonesConAntes,
+		    title: 'módulo (5/6)',
+		    text: ['aquí estará el cuerpo del módulo donde tendrás que cumplir ciertos requisitos para avanzar'],
+		  },
+		 {
+		    arrow: false,
+		    attachTo: { element: '.step6-modulos', on: 'top' },
+		    buttons: this.botonesConAntes,
+		    title: 'botón de ayuda (6/6)',
+		    text: ['si necesitas una explicación de como responder al módulo, da click a este botón para recibir un tour parecido al actual :) (¡pero ya va!)'],
+		  },
+		{
+		    arrow: false,
+		    attachTo: { on: 'auto' },
+		    buttons: this.botonFinalizar,
+		    title: '¡y eso es todo, '+this.nombreUsuario+'!',
+		    text: ['aquí termina tu tour de los módulos, ¡éxitos! :)'],
+		    when: {
+		      show: () => {
+		        this.componentesService.setUsuarioIniciadoModulos(true)
+		      }
+		    }
+		  }
+		]);
+
+	    this.shepherdService.start();
+	}
 
 
   
