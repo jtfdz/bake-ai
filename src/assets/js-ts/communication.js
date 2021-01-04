@@ -7,24 +7,47 @@ function estiloPorcentaje(estilo){
 	return getFromStore('estilo.' + estilo + '.porcentaje').toString()
 }
 
+var weights = [];
+
+function setIA(weightsResultado){
+	weights = weightsResultado;
+}
+
+
 function runIA(){
+
+	let body = { 
+	  	arrayOfEstilos: [
+		  	estiloPorcentaje('visual'), 
+		  	estiloPorcentaje('auditiva'), 
+		  	estiloPorcentaje('escritura')
+	  	], 
+	  	weights: weights 
+	  };
 
 	let options = {
 	  mode: 'text',
 	  pythonOptions: ['-u'], // get print results in real-time
-	  args: [ estiloPorcentaje('visual'), estiloPorcentaje('auditiva'), estiloPorcentaje('escritura'), 'v_acierto']
+	  args: [JSON.stringify(body)]
 	};
 
-
-	pyshell.PythonShell.run(pathPython, options, function (err, results) {
-	  if (err) throw err;
-	  // results is an array consisting of messages collected during execution
-	  console.log('results: ', results);
+	return new Promise(resolve => {
+		pyshell.PythonShell.run(pathPython, options, function (err, results) {
+		  if (err) throw err;
+		  var resultado = JSON.parse(results).resultado;
+		  resolve(resultado)
+		});	
 	});
+
+
 
 }
 
 
-// runIA();
+
+		  // setInStore('estilo.visual.porcentaje', resultado[0]) 
+		  // setInStore('estilo.auditiva.porcentaje', resultado[1]) 
+		  // setInStore('estilo.auditiva.porcentaje', resultado[2])
+
 
 

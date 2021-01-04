@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, defer, BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators'
+
 declare const animateValue: any;
 declare const getFromStore: any;
 declare const setInStore: any;
 declare const modeloDeAprendizaje: any;
+declare const runIA: any;
+declare const setIA: any;
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +22,8 @@ export class ModulosService {
 	private progresoArrIndex: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 	private dataParaModulos: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(getFromStore('modelo.dataParaModulos'));
+
+	private weightsArray: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
 
 	getModulosAprendizaje(): Observable<string[]> {
@@ -55,8 +61,29 @@ export class ModulosService {
 		this.progresoArrIndex.next(cambio); 
 	}
 
+	arrayOfWeights: string[] = [];
 
+	getWeightsArray(): Observable<string[]> {
+		return this.weightsArray.asObservable();
+	}
 
+	setWeightsArray(weight_nombre: string) {
+		this.getWeightsArray().subscribe(
+		    weightsArray => this.arrayOfWeights = weightsArray
+		); 
+		this.arrayOfWeights.push(weight_nombre)
+		this.weightsArray.next(this.arrayOfWeights); 
+	}
+
+	resultados: number[] = [];
+
+	calcularEstiloDeAprendizaje(): void {
+		setIA(this.arrayOfWeights)
+		var x;
+		defer(async function() {
+		  return await runIA();
+		}).subscribe(x => console.log(x)) 
+	}
 
 
 

@@ -1,1 +1,131 @@
-las estadisticas mami
+
+<section class="hero is-link-light">
+  <div class="hero-header">
+    <div class="container">
+
+    	<div class="columns is-multiline is-2">
+    		<div class="column is-4">
+    
+
+    			<br><br><br>
+			<div>
+			  <div style="display: block">
+			    <canvas baseChart
+			            [datasets]="barChartDataIntro"
+			            [labels]="barChartLabelsIntro"
+			            [options]="barChartOptionsIntro"
+			            [legend]="barChartLegend"
+			            [chartType]="barChartType">
+			    </canvas>
+			  </div>
+			</div>
+
+
+
+
+    		</div>
+
+
+    		<div class="column is-1">
+			<div style="display: flex;">
+			    <div style="flex: 1;height: 200px; background-color: #f4f5f8"></div>
+			    <div class="divider is-vertical">></div>
+			    <div style="flex: 1;height: 200px; background-color: #f4f5f8"></div>
+			</div>
+    		</div>
+
+    		<div class="column is-7">
+    		<h1 class="title is-4 has-text-grey">tu estilo de <span class="has-text-info">apren</span><span class="has-text-warning">di</span><span class="has-text-link">zaje:</span></h1>
+			<div style="display: block">
+			  <canvas baseChart
+			          [data]="pieChartData"
+			          [labels]="pieChartLabels"
+			          [chartType]="pieChartType"></canvas>
+			</div>
+    		</div>
+
+    		<div class="column is-12">
+				
+				    <div class="divider">^</div>
+				
+    			<h1 class="title is-4 has-text-grey">tu progreso en los sistemas de escritura:</h1>
+    		</div>
+
+
+
+    		<div class="column is-6">
+    			
+	    		<div style="display: block">
+				  <canvas baseChart
+				  			  [colors]="donutColorsHiragana"
+				              [data]="doughnutChartDataHiragana"
+				              [labels]="doughnutChartLabelsHiragana"
+				              [chartType]="doughnutChartType"></canvas>
+				</div>
+
+    		</div>
+
+
+    		<div class="column is-6">
+    			
+    			<div style="display: block">
+				  <canvas baseChart
+				  			  [colors]="donutColorsKatakana"
+				              [data]="doughnutChartDataKatakana"
+				              [labels]="doughnutChartLabelsKatakana"
+				              [chartType]="doughnutChartType"></canvas>
+				</div>
+
+
+    		</div>
+
+
+			<div class="column is-6 is-offset-3 has-text-centered">
+				
+    			<div style="display: block">
+				  <canvas baseChart
+				  			  [colors]="donutColorsKanji"
+				              [data]="doughnutChartDataKanji"
+				              [labels]="doughnutChartLabelsKanji"
+				              [chartType]="doughnutChartType"></canvas>
+				</div>	
+
+
+
+			</div>
+
+
+    		<div class="column is-12">
+				<div class="divider">^</div>
+    			<h1 class="title is-4 has-text-grey">detalles:</h1>
+    		</div>
+
+
+    		<div class="column is-12">
+
+
+				<div>
+				  <div style="display: block">
+				    <canvas baseChart
+				            [datasets]="barChartData"
+				            [labels]="barChartLabels"
+				            [options]="barChartOptions"
+				            [legend]="barChartLegend"
+				            [chartType]="barChartType">
+				    </canvas>
+				  </div>
+				</div>
+
+
+    		</div>
+
+
+
+
+    	</div>
+
+    </div>
+  </div>
+</section>
+
+

@@ -2,7 +2,7 @@
 
 	<app-teoria-modulo (sigueTeoria)="avanzarModulo($event)" (respuestaTeoria)="integrarRespuesta($event)" [dataTeoria]="moduloData" *ngSwitchCase="'teoria'"></app-teoria-modulo>
 
-    <app-luna-rw (sigueLuna)="avanzarModulo($event)" (respuestaLuna)="integrarRespuesta($event)" [dataLuna]="moduloData" *ngSwitchCase="'luna'">></app-luna-rw>
+    <app-luna-vw (sigueLuna)="avanzarModulo($event)" (respuestaLuna)="integrarRespuesta($event)" [dataLuna]="moduloData" *ngSwitchCase="'luna'">></app-luna-vw>
 
 	<app-sol-aw (sigueSol)="avanzarModulo($event)" (respuestaSol)="integrarRespuesta($event)" [dataSol]="moduloData" *ngSwitchCase="'sol'"></app-sol-aw>
 
@@ -10,11 +10,13 @@
 
     <app-agua-v (sigueAgua)="avanzarModulo($event)" (respuestaAgua)="integrarRespuesta($event)" [dataAgua]="moduloData" *ngSwitchCase="'agua'"></app-agua-v>
 
-	<app-arbol-vr (sigueArbol)="avanzarModulo($event)" (respuestaArbol)="integrarRespuesta($event)" [dataArbol]="moduloData" *ngSwitchCase="'arbol'"></app-arbol-vr>
+	<app-arbol-v (sigueArbol)="avanzarModulo($event)" (respuestaArbol)="integrarRespuesta($event)" [dataArbol]="moduloData" *ngSwitchCase="'arbol'"></app-arbol-v>
 
-	<app-oro-ar (sigueOro)="avanzarModulo($event)" (respuestaOro)="integrarRespuesta($event)" [dataOro]="moduloData" *ngSwitchCase="'oro'"></app-oro-ar>
+	<app-oro-w (sigueOro)="avanzarModulo($event)" (respuestaOro)="integrarRespuesta($event)" [dataOro]="moduloData" *ngSwitchCase="'oro'"></app-oro-w>
 
 	<app-tierra-v (sigueTierra)="avanzarModulo($event)" (respuestaTierra)="integrarRespuesta($event)" [dataTierra]="moduloData" *ngSwitchCase="'tierra'"></app-tierra-v>
+
+	<app-modulos-finalizacion *ngSwitchCase="'modulosfinalizados'"></app-modulos-finalizacion>
 
   	<ng-container *ngSwitchDefault></ng-container>
 

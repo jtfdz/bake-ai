@@ -30,9 +30,9 @@ export class TierraVComponent implements OnInit {
       this.dioRespuesta = true;
       if(this.respuesta == this.dataTierra[0]){
         this.acertado = true;
-        this.respuestaTierra.emit(true);
+        this.respuestaTierra.emit({acierto: true, weight: 'v_acierto'});
       }else{
-        this.respuestaTierra.emit(false);
+        this.respuestaTierra.emit({acierto: false, weight: 'v_fallo'});
       }
   }
 

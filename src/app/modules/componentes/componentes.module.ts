@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { ChartsModule } from 'ng2-charts';
 
 import { HeaderPrincipalComponent } from 'src/app/componentes/headers/header-principal/header-principal.component';
 import { HeaderModulosComponent } from 'src/app/componentes/headers/header-modulos/header-modulos.component';
@@ -14,23 +15,9 @@ import { ModalContenidoAplicacionComponent } from 'src/app/componentes/botones/b
 import { ModalContenidoEstadisticasComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-estadisticas/modal-contenido-estadisticas.component';
 import { ModalContenidoConfiguracionComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-configuracion/modal-contenido-configuracion.component';
 
-import { TabsTeoriaComponent } from 'src/app/componentes/tabs-teoria/tabs-teoria.component';
-import { TabsTeoriaContentComponent } from 'src/app/componentes/tabs-teoria/tabs-teoria-content/tabs-teoria-content.component';
+import { GustosPickerComponent } from 'src/app/componentes/especificos/gustos-picker/gustos-picker.component';
+import { GustosTabsComponent } from 'src/app/componentes/especificos/gustos-picker/gustos-tabs/gustos-tabs.component';
 
-import { GustosPickerComponent } from 'src/app/componentes/gustos-picker/gustos-picker.component';
-import { GustosTabsComponent } from 'src/app/componentes/gustos-picker/gustos-tabs/gustos-tabs.component';
-
-import { TemasInferioresInicioComponent } from 'src/app/componentes/temas/temas-inferiores-inicio/temas-inferiores-inicio.component';
-import { TemasKanasTablasComponent } from 'src/app/componentes/temas/temas-kanas-tablas/temas-kanas-tablas.component';
-import { TemasKanasBotonesComponent } from 'src/app/componentes/temas/temas-kanas-tablas/temas-kanas-botones/temas-kanas-botones.component';
-import { TemasTitulosComponent } from 'src/app/componentes/temas/temas-titulos/temas-titulos.component';
-import { TemasInstruccionesYExaminacionComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-instrucciones-y-examinacion.component';
-import { BotonesIconosTemasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/botones-iconos-temas/botones-iconos-temas.component';
-import { TemasKanjiTablaComponent } from 'src/app/componentes/temas/temas-kanji-tabla/temas-kanji-tabla.component';
-import { TemasModulosTitulosComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-modulos-titulos/temas-modulos-titulos.component';
-import { TemasModulosSubtitulosComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-modulos-subtitulos/temas-modulos-subtitulos.component';
-
-import { TemasDropdownOptionsComponent } from 'src/app/componentes/temas/temas-dropdown-options/temas-dropdown-options.component';
 import { TresImagenesPrimerInicioComponent } from 'src/app/componentes/imagenes/tres-imagenes-primer-inicio/tres-imagenes-primer-inicio.component';
 import { BaseImagenPrimerInicioComponent } from 'src/app/componentes/imagenes/tres-imagenes-primer-inicio/base-imagen-primer-inicio/base-imagen-primer-inicio.component';
 import { ImagenFigureComponent } from 'src/app/componentes/imagenes/imagen-figure/imagen-figure.component';
@@ -48,28 +35,19 @@ import { FixedCornerComponent } from 'src/app/componentes/botones/fixed-corner/f
 
 import { ContenidoInstruccionesTablasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-tablas/contenido-instrucciones-tablas.component';
 import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-examinacion/contenido-instrucciones-examinacion.component';
+import { TemasModulosTitulosComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-modulos-titulos/temas-modulos-titulos.component';
+import { TemasModulosSubtitulosComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-modulos-subtitulos/temas-modulos-subtitulos.component';
 
+import { TemasModule } from 'src/app/modules/temas/temas.module';
 
 @NgModule({
   declarations: [
     HeaderPrincipalComponent,
     BotonesIconosComponent,
-    TabsTeoriaComponent,
     BotonesIconosModalComponent,
-    TabsTeoriaContentComponent,
-    TemasInferioresInicioComponent,
-    BotonesIconosTemasComponent,
     HeaderModulosComponent,
-    TemasTitulosComponent,
-    TemasInstruccionesYExaminacionComponent,
-    TemasKanasTablasComponent,
-    TemasKanasBotonesComponent,
-    TemasModulosTitulosComponent,
-    TemasModulosSubtitulosComponent,
     GustosPickerComponent,
     GustosTabsComponent,
-    TemasKanjiTablaComponent,
-    TemasDropdownOptionsComponent,
     TresImagenesPrimerInicioComponent,
     BaseImagenPrimerInicioComponent,
     FirstSlideDropdownContentComponent,
@@ -78,8 +56,6 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     ImagenFigureComponent,
     SecondSlideVarwComponent,
     ImagenFotoComponent,   
-    ContenidoInstruccionesTablasComponent,
-    ContenidoInstruccionesExaminacionComponent,
     BotonesModulosSiguienteAyudaComponent,
     InstruccionesSwitchComponent,
     InputUsuarioNombreComponent,
@@ -87,33 +63,26 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     ModalContenidoAplicacionComponent,
     ModalContenidoEstadisticasComponent,
     ModalContenidoConfiguracionComponent,
+    ContenidoInstruccionesTablasComponent,
+    ContenidoInstruccionesExaminacionComponent,
+    TemasModulosTitulosComponent,
+    TemasModulosSubtitulosComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule, 
     ReactiveFormsModule,
-    ScrollToModule
+    ScrollToModule,
+    ChartsModule
   ],
   exports: [
     HeaderPrincipalComponent,
     BotonesIconosComponent,
-    TabsTeoriaComponent,
     BotonesIconosModalComponent,
-    TabsTeoriaContentComponent,
-    TemasInferioresInicioComponent,
-    BotonesIconosTemasComponent,    
     HeaderModulosComponent,
-    TemasTitulosComponent,
-    TemasInstruccionesYExaminacionComponent,
-    TemasKanasTablasComponent,
-    TemasKanasBotonesComponent,
     GustosPickerComponent,
     GustosTabsComponent,
-    TemasKanjiTablaComponent,
-    TemasDropdownOptionsComponent,
-    TemasModulosTitulosComponent,
-    TemasModulosSubtitulosComponent,
     TresImagenesPrimerInicioComponent,
     BaseImagenPrimerInicioComponent,
     FirstSlideDropdownContentComponent,
@@ -121,9 +90,7 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     BotonAnteriorPrimerInicioComponent,
     ImagenFigureComponent,
     SecondSlideVarwComponent,
-    ImagenFotoComponent,  
-    ContenidoInstruccionesTablasComponent, 
-    ContenidoInstruccionesExaminacionComponent,
+    ImagenFotoComponent,   
     BotonesModulosSiguienteAyudaComponent,
     InstruccionesSwitchComponent,
     InputUsuarioNombreComponent,
@@ -131,6 +98,10 @@ import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/
     ModalContenidoAplicacionComponent,
     ModalContenidoEstadisticasComponent,
     ModalContenidoConfiguracionComponent,
+    ContenidoInstruccionesTablasComponent,
+    ContenidoInstruccionesExaminacionComponent,
+    TemasModulosTitulosComponent,
+    TemasModulosSubtitulosComponent,
   ]
 })
 export class ComponentesModule { }

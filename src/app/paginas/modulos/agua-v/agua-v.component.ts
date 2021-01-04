@@ -27,9 +27,9 @@ export class AguaVComponent {
   }
 
   avanzarModulo(): void{
+    this.dioRespuesta = false;
     this.sigueAgua.emit(true);
     this.respuesta = '';
-    this.dioRespuesta = false;
     this.acertado = false;
     let aguaColumna = getEbCN('column-button');
     for (var i = 0; i < aguaColumna.length; i++) {
@@ -42,9 +42,9 @@ export class AguaVComponent {
     this.dioRespuesta = true;
     if(this.respuesta == this.dataAgua[1]){
       this.acertado = true;
-      this.respuestaAgua.emit(true);
+      this.respuestaAgua.emit({acierto: true, weight: 'v_acierto'});
     }else{
-      this.respuestaAgua.emit(false);
+      this.respuestaAgua.emit({acierto: false, weight: 'v_fallo'});
     }
   }
 

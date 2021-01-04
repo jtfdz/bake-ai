@@ -24,10 +24,10 @@ export class OrigenComponent implements OnInit {
 		this.siguienteModulo.emit(respuesta);
 	}
 
-
+	//mejorar XD algo tendria que hacer teoria respondida con iniciar el kana no iniciado 
 	public integrarRespuesta(respuesta: any): void {
-		//console.log(respuesta)
-		this.respuestaOrigen.emit(respuesta);
+		if(respuesta['weight'] != 'teoria_respondida') this.modulosService.setWeightsArray(respuesta['weight'])
+		this.respuestaOrigen.emit(respuesta['acierto']);
 	}
 
 

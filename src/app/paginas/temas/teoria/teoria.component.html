@@ -8,38 +8,38 @@
       <!--tabs del panel-->
       <p class="panel-tabs">
         <!--tab 1-->
-        <a class=" has-background-primary"><app-tabs-teoria [tabNombre]="'id_tab_1'" id="primary" [classResto]="'black'" [texto]="'general'"></app-tabs-teoria></a>
+        <a class=" has-background-primary"><app-temas-tabs-teoria [tabNombre]="'id_tab_1'" id="primary" [classResto]="'black'" [texto]="'general'"></app-temas-tabs-teoria></a>
         <!--tab 2-->
-      	<a><app-tabs-teoria id="warning" [tabNombre]="'id_tab_2'" [classResto]="'warning'" [texto]="'hiragana'"></app-tabs-teoria></a>
+      	<a><app-temas-tabs-teoria id="warning" [tabNombre]="'id_tab_2'" [classResto]="'warning'" [texto]="'hiragana'"></app-temas-tabs-teoria></a>
         <!--tab 3-->
-      	<a><app-tabs-teoria id="success" [tabNombre]="'id_tab_3'" [classResto]="'success'" [texto]="'katakana'"></app-tabs-teoria></a>
+      	<a><app-temas-tabs-teoria id="success" [tabNombre]="'id_tab_3'" [classResto]="'success'" [texto]="'katakana'"></app-temas-tabs-teoria></a>
         <!--tab 4-->
-      	<a><app-tabs-teoria id="info" [tabNombre]="'id_tab_4'" [classResto]="'info'" [texto]="'kanji'"></app-tabs-teoria></a>
+      	<a><app-temas-tabs-teoria id="info" [tabNombre]="'id_tab_4'" [classResto]="'info'" [texto]="'kanji'"></app-temas-tabs-teoria></a>
         <!--tab 5-->
-      	<a><app-tabs-teoria id="link" [tabNombre]="'id_tab_5'" [classResto]="'link'" [texto]="'otros'"></app-tabs-teoria></a>
+      	<a><app-temas-tabs-teoria id="link" [tabNombre]="'id_tab_5'" [classResto]="'link'" [texto]="'otros'"></app-temas-tabs-teoria></a>
       </p>
       <!--fin de tabs del panel-->
 
       <!--menú del panel-->
       <div class="container section">
           <div id="id_tab_1" class="content-tab">
-            <app-tabs-teoria-content [colorContenido]="'primary'" [seccionContenido]="'general'" [Contenido]="['historia', 'kanas']"></app-tabs-teoria-content>
+            <app-temas-tabs-teoria-contenido [colorContenido]="'primary'" [seccionContenido]="'general'" [Contenido]="['historia', 'kanas']"></app-temas-tabs-teoria-contenido>
           </div>
 
           <div id="id_tab_2" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [colorContenido]="'warning'" [seccionContenido]="'hiragana'" [Contenido]="['trazos', 'lectura']"></app-tabs-teoria-content>
+            <app-temas-tabs-teoria-contenido [colorContenido]="'warning'" [seccionContenido]="'hiragana'" [Contenido]="['trazos', 'lectura']"></app-temas-tabs-teoria-contenido>
           </div>
 
           <div id="id_tab_3" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [colorContenido]="'success'" [seccionContenido]="'katakana'" [Contenido]="['trazos', 'lectura']"></app-tabs-teoria-content>
+            <app-temas-tabs-teoria-contenido [colorContenido]="'success'" [seccionContenido]="'katakana'" [Contenido]="['trazos', 'lectura']"></app-temas-tabs-teoria-contenido>
           </div>
 
           <div id="id_tab_4" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [colorContenido]="'info'" [seccionContenido]="'kanji'" [Contenido]="['trazos', 'lecturas kunyomi', 'lecturas onyomi']"></app-tabs-teoria-content>
+            <app-temas-tabs-teoria-contenido [colorContenido]="'info'" [seccionContenido]="'kanji'" [Contenido]="['trazos', 'lecturas kunyomi', 'lecturas onyomi']"></app-temas-tabs-teoria-contenido>
           </div>
 
           <div id="id_tab_5" class="content-tab" style="display:none">
-            <app-tabs-teoria-content [colorContenido]="'link'" [seccionContenido]="'otros'" [Contenido]="['notas']"></app-tabs-teoria-content>
+            <app-temas-tabs-teoria-contenido [colorContenido]="'link'" [seccionContenido]="'otros'" [Contenido]="['notas']"></app-temas-tabs-teoria-contenido>
           </div>  
       </div>
       <!--fin del menú del panel-->

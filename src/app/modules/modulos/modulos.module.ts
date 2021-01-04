@@ -9,29 +9,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BaseComponent } from 'src/app/paginas/modulos/base/base.component';
 import { OrigenComponent } from 'src/app/paginas/modulos/origen/origen.component';
 
-import { LunaRwComponent } from 'src/app/paginas/modulos/luna-rw/luna-rw.component';
+import { LunaVwComponent } from 'src/app/paginas/modulos/luna-vw/luna-vw.component';
 import { SolAwComponent } from 'src/app/paginas/modulos/sol-aw/sol-aw.component';
 import { TierraVComponent } from 'src/app/paginas/modulos/tierra-v/tierra-v.component';
 import { AguaVComponent } from 'src/app/paginas/modulos/agua-v/agua-v.component';
-import { ArbolVrComponent } from 'src/app/paginas/modulos/arbol-vr/arbol-vr.component';
-import { OroArComponent } from 'src/app/paginas/modulos/oro-ar/oro-ar.component';
+import { ArbolVComponent } from 'src/app/paginas/modulos/arbol-v/arbol-v.component';
+import { OroWComponent } from 'src/app/paginas/modulos/oro-w/oro-w.component';
 import { FuegoAwComponent } from 'src/app/paginas/modulos/fuego-aw/fuego-aw.component';
 import { TeoriaModuloComponent } from 'src/app/paginas/modulos/teoria-modulo/teoria-modulo.component';
+import { ModulosFinalizacionComponent } from 'src/app/paginas/modulos/modulos-finalizacion/modulos-finalizacion.component';
 
 import { ComponentesModule } from 'src/app/modules/componentes/componentes.module';
 
 @NgModule({
   declarations: [    
-  	LunaRwComponent,
+    LunaVwComponent,
     BaseComponent,
     OrigenComponent,
     TierraVComponent,
     SolAwComponent,
     AguaVComponent,
-    ArbolVrComponent,
-    OroArComponent,
+    ArbolVComponent,
+    OroWComponent,
     FuegoAwComponent,
     TeoriaModuloComponent,
+    ModulosFinalizacionComponent,
     ],
   imports: [
     ComponentesModule,
@@ -42,16 +44,17 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
     FormsModule,
   ],
   exports: [    
-  	LunaRwComponent,
+    LunaVwComponent,
     BaseComponent,
     OrigenComponent,
     TierraVComponent,
     SolAwComponent,
     AguaVComponent,
-    ArbolVrComponent,
-    OroArComponent,
+    ArbolVComponent,
+    OroWComponent,
     FuegoAwComponent,
     TeoriaModuloComponent,
+    ModulosFinalizacionComponent,
     ]
 })
 export class ModulosModule { }

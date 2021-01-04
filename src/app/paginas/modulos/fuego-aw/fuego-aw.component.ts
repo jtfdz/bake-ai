@@ -17,6 +17,7 @@ export class FuegoAwComponent implements OnInit {
 	respuesta: string = '';
 	respuestaTraducida: string = '';
 	acertado: boolean = false;
+	dioRespuesta: boolean = false;
 
 	constructor(private componentesService: ComponentesService) { }
 
@@ -31,17 +32,19 @@ export class FuegoAwComponent implements OnInit {
 	}
 
 	fuegoRespuesta(): void{ 
+		this.dioRespuesta = true;
 		this.respuestaTraducida = isHiragana(this.dataFuego[0])? toHiragana(this.respuesta): toKatakana(this.respuesta); 
 		if(this.respuestaTraducida == this.dataFuego[0]){
 			this.acertado = true;
-			this.respuestaFuego.emit(true);
+			this.respuestaFuego.emit({acierto: true, weight: 'aw_acierto'});
 		}else{
-			this.respuestaFuego.emit(false);
+			this.respuestaFuego.emit({acierto: false, weight: 'aw_fallo'});
 		}
 	}
 
 
 	avanzarModulo(): void{
+		this.dioRespuesta = false;
 		this.sigueFuego.emit(true);
 		this.respuesta = '';
 		this.respuestaTraducida = '';

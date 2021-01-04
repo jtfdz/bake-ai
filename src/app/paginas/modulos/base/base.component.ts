@@ -31,6 +31,7 @@ export class BaseComponent implements OnInit {
   estiloMayorRetencion: string = '';
   dataParaModulos: any[] = [];
   progresoArr: number[] = [];
+  aciertos: number[] = [];
 
   constructor(private componentesService: ComponentesService, private modulosService: ModulosService) { }
 
@@ -57,12 +58,14 @@ export class BaseComponent implements OnInit {
     this.modulosService.setProgresoAvance(this.indexOfModulos);
     this.sizeOfArrayOfModulos = this.arrayOfModulos.length;
 
-    for (var i = 0; i <= this.sizeOfArrayOfModulos; i++) {
-      let percentageOfIndex = ((i/this.sizeOfArrayOfModulos) * 100);
+    for (var i = 0; i < this.sizeOfArrayOfModulos; i++) {
+      let percentageOfIndex = ((i/(this.sizeOfArrayOfModulos-1)) * 100);
       this.progresoArr.push(Math.trunc(percentageOfIndex));
     }
-    
+
     this.modulosService.setProgresoArray(this.progresoArr);
+
+    this.aciertos = Array(this.sizeOfArrayOfModulos-1).fill(true);
 
     this.modulosObj = {
     "teoria": {
@@ -104,6 +107,11 @@ export class BaseComponent implements OnInit {
       "nombre": "fuego 火", 
       "tipo": "auditiva y escritura",
       "color": "primary"
+    },
+    "modulosfinalizados": {
+      "nombre": "resultado", 
+      "tipo": "calculando...",
+      "color": "success"
     }
   };
 
@@ -121,6 +129,9 @@ export class BaseComponent implements OnInit {
       this.indexOfModulos = this.indexOfModulos+1;
       this.modulosStr = this.modulosObj[this.arrayOfModulos[this.indexOfModulos]]
       this.llenarInfo();
+    }
+    if(this.indexOfModulos == this.sizeOfArrayOfModulos-1){
+      this.modulosService.calcularEstiloDeAprendizaje();
     }
   }
 

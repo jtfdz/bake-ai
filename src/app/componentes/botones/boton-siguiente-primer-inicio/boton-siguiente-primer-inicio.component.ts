@@ -4,7 +4,6 @@ import { PrimerInicioService } from 'src/app/servicios/principales/primer-inicio
 @Component({
   selector: 'app-boton-siguiente-primer-inicio',
   templateUrl: './boton-siguiente-primer-inicio.component.html',
-  styleUrls: ['./boton-siguiente-primer-inicio.component.css']
 })
 export class BotonSiguientePrimerInicioComponent implements OnInit {
 

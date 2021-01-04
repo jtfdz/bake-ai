@@ -17,6 +17,7 @@ export class SolAwComponent implements OnInit {
 	respuesta: string = '';
 	respuestaTraducida: string = '';
 	acertado: boolean = false;
+	dioRespuesta: boolean = false;
 
 	constructor(private componentesService: ComponentesService) { }
 
@@ -30,17 +31,19 @@ export class SolAwComponent implements OnInit {
 	}
 
 	solRespuesta(): void{ 
+		this.dioRespuesta = true;
 		this.respuestaTraducida = isHiragana(this.dataSol[1])? toHiragana(this.respuesta): toKatakana(this.respuesta); 
 		if(this.respuestaTraducida == this.dataSol[1]){
 			this.acertado = true;
-			this.respuestaSol.emit(true);
+			this.respuestaSol.emit({acierto: true, weight: 'aw_acierto'});
 		}else{
-			this.respuestaSol.emit(false);
+			this.respuestaSol.emit({acierto: false, weight: 'aw_fallo'});
 		}
 	}
 
 
 	avanzarModulo(): void{
+		this.dioRespuesta = false;
 		this.sigueSol.emit(true);
 		this.respuesta = '';
 		this.respuestaTraducida = '';

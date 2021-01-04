@@ -6,7 +6,6 @@ declare const modalFunction: any;
 @Component({
   selector: 'app-botones-modulos-siguiente-ayuda',
   templateUrl: './botones-modulos-siguiente-ayuda.component.html',
-  styleUrls: ['./botones-modulos-siguiente-ayuda.component.css']
 })
 export class BotonesModulosSiguienteAyudaComponent implements OnInit {
 
@@ -15,6 +14,7 @@ export class BotonesModulosSiguienteAyudaComponent implements OnInit {
     @Input() textoExplicacion: string = '';
     @Input() colorBoton: string = '';
     @Input() moduloTitulo: string = '';
+    @Input() mostrarInformacion: boolean = false;
 
 	@Output() respuestaModulo: EventEmitter<any> = new EventEmitter<any>();
 	@Output() siguienteModulo: EventEmitter<any> = new EventEmitter<any>();

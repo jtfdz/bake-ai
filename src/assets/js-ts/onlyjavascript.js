@@ -59,7 +59,7 @@ const schema = {
         	fallos: 0,
         	porcentaje: 3
         }
-        	,
+        ,
         katakana: {
         	kanaBody: kanaBodyFull, 
         	vecesEstudiado: 0, 
@@ -69,6 +69,9 @@ const schema = {
         },
         kanji: {
           niveles: {n5: false, n4: false, n3: false, n2: false, n1: false},
+          vecesEstudiado: 0, 
+          aciertos: 0,
+          fallos: 0,
           porcentaje: 3
         }
       }
@@ -78,7 +81,7 @@ const schema = {
       type: 'object',
       default: {
       	general: {porcentaje: 0, aciertos: 0, fallos: 0},
-        visual: {porcentaje: 33.333, aciertos: 0, fallos: 0},
+        visual: {porcentaje: 33.334, aciertos: 0, fallos: 0},
         auditiva: {porcentaje: 33.333, aciertos: 0, fallos: 0},
         escritura: {porcentaje: 33.333, aciertos: 0, fallos: 0}     
       }
@@ -185,10 +188,10 @@ function arrayUnique(array) {
 function asignarModelo(mayor, medio, bajo){
 	var modeloArray = [];
 	pushArray(modeloArray, mayor);
-	pushArray(modeloArray, mayor);
-  pushArray(modeloArray, medio);
+	//pushArray(modeloArray, mayor);
+  //pushArray(modeloArray, medio);
 	pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
-	pushArray(modeloArray, bajo);
+	//pushArray(modeloArray, bajo);
 	return shuffle(modeloArray);
 }
 
@@ -249,9 +252,10 @@ function modeloDeAprendizaje(kana){
 	}
 
   if(getFromStore('modelo.material.'+kana+'.desbloqueado').length > 0){ 
-    modelo[modelo.length] = modelo[0];
-    modelo[0] = 'teoria'; 
+    //modelo[modelo.length] = modelo[0]; modelo[0] = 'teoria'; 
   };
+
+  modelo.push('modulosfinalizados')
 
 	setInStore('modelo.modulos', modelo)
 
@@ -665,21 +669,22 @@ const gustoAnimales = [
     {kana: 'hiragana', gusto: 'gallina', original: 'にわとり', desbloquear: ['n', 'especiales', 't', 'r']},
     {kana: 'hiragana', gusto: 'venado', original: 'しか', desbloquear: ['s', 'k']},
     {kana: 'hiragana', gusto: 'cerdo', original: 'ぶた', desbloquear: ['b', 't']},
-    {kana: 'hiragana', gusto: 'pez', original: 'さかな', desbloquear: ['s', 'n', 'k']},
     {kana: 'hiragana', gusto: 'lobo', original: 'おおかみ', desbloquear: ['vocales', 'k', 'm']},
     {kana: 'hiragana', gusto: 'zorro', original: 'きつね', desbloquear: ['k', 't', 'n']},
+    {kana: 'hiragana', gusto: 'oveja', original: 'ひつじ', desbloquear: ['h', 't', 'z']},
     {kana: 'hiragana', gusto: 'jirafa', original: 'きりん', desbloquear: ['especiales', 'r', 'k']},
     {kana: 'hiragana', gusto: 'elefante', original: 'ぞう', desbloquear: ['vocales', 'z']},
     {kana: 'hiragana', gusto: 'sapo', original: 'かえる', desbloquear: ['vocales', 'k', 'r']},
     {kana: 'hiragana', gusto: 'serpiente', original: 'へび', desbloquear: ['h', 'b']},
-    {kana: 'hiragana', gusto: 'oveja', original: 'ひつじ', desbloquear: ['h', 't', 'z']},
     {kana: 'hiragana', gusto: 'ardilla', original: 'りす', desbloquear: ['r', 's']},
-    {kana: 'hiragana', gusto: 'cangrejo', original: 'かに', desbloquear: ['n', 'k']},
     {kana: 'hiragana', gusto: 'pulpo', original: 'たこ', desbloquear: ['t', 'k']},
+    {kana: 'hiragana', gusto: 'cangrejo', original: 'かに', desbloquear: ['n', 'k']},
     {kana: 'hiragana', gusto: 'halcón', original: 'たか', desbloquear: ['t', 'k']},
+    {kana: 'hiragana', gusto: 'pez', original: 'さかな', desbloquear: ['s', 'n', 'k']},
 
     {kana: 'katakana', gusto: 'león', original: 'ライオン', desbloquear: ['r', 'vocales', 'especiales']},
     {kana: 'katakana', gusto: 'loro', original: 'オウム', desbloquear: ['vocales', 'm']},
+    {kana: 'hiragana', gusto: 'jirafa', original: 'キリン', desbloquear: ['especiales', 'r', 'k']},
 ];
 
 
@@ -731,13 +736,13 @@ const gustoMusica = [
     {kana: 'hiragana', gusto: 'letra (de canción)', original: 'かし', desbloquear: ['k', 's']},
     {kana: 'hiragana', gusto: 'cantante', original: 'かしゅ', desbloquear: ['k', 'sh']},
     {kana: 'hiragana', gusto: 'voz', original: 'こえ', desbloquear: ['k', 'vocales']},
-    {kana: 'hiragana', gusto: 'cantante', original: 'かしゅ', desbloquear: ['k', 'sh']},
     {kana: 'hiragana', gusto: 'instrumento', original: 'がっき', desbloquear: ['k','g']},
     {kana: 'hiragana', gusto: 'cuerdas (de guitarra)', original: 'げん', desbloquear: ['g', 'especiales']},
     {kana: 'hiragana', gusto: 'acordes', original: 'わおん', desbloquear: ['vocales', 'especiales']},
     {kana: 'hiragana', gusto: 'nota musical', original: 'おんぷ', desbloquear: ['vocales', 'especiales', 'p']},
 
     {kana: 'katakana', gusto: 'banda', original: 'バンド', desbloquear: ['b', 'especiales', 'd']},
+    {kana: 'katakana', gusto: 'jazz', original: 'ジャズ', desbloquear: ['j', 'z']},
     {kana: 'katakana', gusto: 'guitarra', original: 'ギター', desbloquear: ['g', 't']},
     {kana: 'katakana', gusto: 'batería', original: 'ドラム', desbloquear: ['d', 'r', 'm']},
     {kana: 'katakana', gusto: 'piano', original: 'ピアノ', desbloquear: ['p', 'vocales', 'n']},
@@ -746,13 +751,11 @@ const gustoMusica = [
     {kana: 'katakana', gusto: 'música clásica', original: 'クラシック', desbloquear: ['k', 'r', 's']},
     {kana: 'katakana', gusto: 'flamenco', original: 'フラメンコ', desbloquear: ['f', 'r', 'm', 'especiales', 'k']},
     {kana: 'katakana', gusto: 'ritmo', original: 'リズム', desbloquear: ['r', 'z', 'm']},
-    {kana: 'katakana', gusto: 'microfono', original: 'マイク', desbloquear: ['m', 'vocales', 'k']},
+    {kana: 'katakana', gusto: 'micrófono', original: 'マイク', desbloquear: ['m', 'vocales', 'k']},
     {kana: 'katakana', gusto: 'harpa', original: 'ハープ', desbloquear: ['h', 'p']},
-    // PORQUE SON 6 Y NO HAY PRESUPUESTO. {kana: 'katakana', gusto: 'trompeta', original: 'トランペット', desbloquear: ['t', 'r', 'especiales', 'p']},
     {kana: 'katakana', gusto: 'bajo', original: 'ベース', desbloquear: ['b', 's']},
     {kana: 'katakana', gusto: 'acordes', original: 'コード', desbloquear: ['k', 'd']},
     {kana: 'katakana', gusto: 'soul (género musical)', original: 'ソウル', desbloquear: ['s', 'r', 'vocales']},
-    {kana: 'katakana', gusto: 'jazz', original: 'ジャズ', desbloquear: ['j', 'z']},
     {kana: 'katakana', gusto: 'blues (género musical)', original: 'ブルース', desbloquear: ['b', 'r', 's']},
     {kana: 'katakana', gusto: 'country (género musical)', original: 'カントリー', desbloquear: ['k', 'especiales', 't', 'r']},
     {kana: 'katakana', gusto: 'rap (género musical)', original: 'ラップ', desbloquear: ['p', 'r']},
@@ -761,7 +764,36 @@ const gustoMusica = [
 ];
 
 const gustoDeportes = [
+    {kana: 'hiragana', gusto: 'béisbol', original: 'やきゅう', desbloquear: ['y', 'ky', 'vocales']},
+    {kana: 'hiragana', gusto: 'ejercicio', original: 'うんどう', desbloquear: ['vocales', 'especiales', 'd']},
+    {kana: 'hiragana', gusto: 'sumo', original: 'すもー', desbloquear: ['s', 'm', 'vocales']},
+    {kana: 'hiragana', gusto: 'judo', original: 'じゅうどう', desbloquear: ['j', 'vocales', 'd']},
+    {kana: 'hiragana', gusto: 'kendo (esgrima japonesa)', original: 'けんどう', desbloquear: ['k', 'especiales', 'd', 'vocales']},
+    {kana: 'hiragana', gusto: 'karate', original: 'からて', desbloquear: ['k', 'r', 't']},
+    {kana: 'hiragana', gusto: 'natación', original: 'すいえい', desbloquear: ['s', 'vocales']},
+    {kana: 'hiragana', gusto: 'gimnasia', original: 'たいそう', desbloquear: ['t', 'vocales', 's']},
+    {kana: 'hiragana', gusto: 'pescar', original: 'つり', desbloquear: ['t', 'r']},
+    {kana: 'hiragana', gusto: 'ping-pong', original: 'たっきゅう', desbloquear: ['t', 'ky', 'vocales']},
+    {kana: 'hiragana', gusto: 'partido', original: 'しあい', desbloquear: ['s', 'vocales']},
+    {kana: 'hiragana', gusto: 'jugadora', original: 'せんしゅ', desbloquear: ['s', 'especiales', 'sh']},
+    {kana: 'hiragana', gusto: 'victoria', original: 'かち', desbloquear: ['k', 't']},
+    {kana: 'hiragana', gusto: 'derrota', original: 'まけ', desbloquear: ['m', 'k']},
+    {kana: 'hiragana', gusto: 'empate', original: 'ひかわけ', desbloquear: ['h', 'k', 'especiales']},
 
+    {kana: 'katakana', gusto: 'skate', original: 'スケート', desbloquear: ['s', 'k', 't']},
+    {kana: 'katakana', gusto: 'deportes', original: 'スポッツ', desbloquear: ['s', 'p', 't']},
+    {kana: 'katakana', gusto: 'fútbol', original: 'サッカー', desbloquear: ['s', 'k']},
+    {kana: 'katakana', gusto: 'yoga', original: 'ヨガ', desbloquear: ['y', 'g']},
+    {kana: 'katakana', gusto: 'lucha', original: 'レスリング', desbloquear: ['r', 's', 'especiales', 'g']},
+    {kana: 'katakana', gusto: 'tenis', original: 'テニス', desbloquear: ['t', 'n', 's']},
+    {kana: 'katakana', gusto: 'boxeo', original: 'ボクシング', desbloquear: ['b', 'k', 's', 'especiales', 'g']},
+    {kana: 'katakana', gusto: 'equipos', original: 'チーム', desbloquear: ['t', 'm']},
+    {kana: 'katakana', gusto: 'ping-pong', original: 'ピンポン', desbloquear: ['p', 'especiales']},
+    {kana: 'katakana', gusto: 'rugby', original: 'ラグビー', desbloquear: ['r', 'g', 'b']},
+    {kana: 'katakana', gusto: 'hockey', original: 'ホッケー', desbloquear: ['h', 'k']},
+    {kana: 'katakana', gusto: 'bowling', original: 'ボーリング', desbloquear: ['b', 'r', 'especiales', 'g']},
+    {kana: 'katakana', gusto: 'maratón', original: 'マラソン', desbloquear: ['m', 'r', 's', 'especiales']},
+    {kana: 'katakana', gusto: 'juego', original: 'ゲーム', desbloquear: ['g', 'm']},
 ];
 
 

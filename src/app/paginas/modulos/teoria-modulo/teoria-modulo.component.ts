@@ -84,7 +84,7 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
 
 
   teoriaRespuesta(){
-    this.respuestaTeoria.emit(true);
+    this.respuestaTeoria.emit({acierto: true, weight: 'teoria_respondida'});
   }
 
   avanzarModulo(){

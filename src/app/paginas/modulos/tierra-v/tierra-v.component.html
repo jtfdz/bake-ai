@@ -21,7 +21,7 @@
 	    
 	   	</div>
 
-	  	<app-botones-modulos-siguiente-ayuda [moduloTitulo]="'tierra'" [colorBoton]="'warning-dark'" [textoExplicacion]="dataTierra[0] +' = '+dataTierra[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="tierraRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+	  	<app-botones-modulos-siguiente-ayuda [mostrarInformacion]="dioRespuesta"  [moduloTitulo]="'tierra'" [colorBoton]="'warning-dark'" [textoExplicacion]="dataTierra[0] +' = '+dataTierra[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="tierraRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 	</div>
 </div>

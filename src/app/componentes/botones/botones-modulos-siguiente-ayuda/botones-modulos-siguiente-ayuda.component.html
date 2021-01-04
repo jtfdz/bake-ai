@@ -13,7 +13,7 @@
 
 <div class="modal modal-fx-fadeInScale"  id="moduloResponde">
 <div class="modal-background"></div>
-<div class="modal-content is-tiny">
+<div class="modal-content is-tiny" *ngIf="mostrarInformacion">
 
 <section class="section has-stuff-centered is-flex">
   <app-imagen-figure *ngIf="acertado" [medida]="'128'" [imgUrl]="'modulos/correcto.gif'"></app-imagen-figure>

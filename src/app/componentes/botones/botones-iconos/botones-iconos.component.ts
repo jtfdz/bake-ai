@@ -3,7 +3,6 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-botones-iconos',
   templateUrl: './botones-iconos.component.html',
-  styleUrls: ['./botones-iconos.component.css']
 })
 export class BotonesIconosComponent implements OnInit {
 

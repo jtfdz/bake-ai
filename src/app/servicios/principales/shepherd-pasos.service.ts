@@ -399,7 +399,7 @@ export class ShepherdPasosService {
 		    attachTo: { element: '.step3-modulo-teoria', on: 'top' },
 		    buttons: this.botonesSinSiguiente,
 		    title: 'paso 4: ¡listo!',
-		    text: ['luego de completar los cinco podrás darle click para iniciar la examinación y poner a prueba lo recién aprendido :)']
+		    text: ['luego de completar los cinco podrás darle click a este botón para iniciar la examinación y poner a prueba lo recién aprendido :)']
 		},
 
 		]);

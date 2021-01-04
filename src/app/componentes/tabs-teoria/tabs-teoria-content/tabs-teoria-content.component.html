@@ -1,3 +1,0 @@
-<a *ngFor="let titulo of Contenido; let i = index" (click)="openContent(seccionContenido, i, titulo, colorContenido)">
-	<p [id]="seccionContenido+'-'+i" [ngClass]=" (i==0)?'panel-block is-active has-background-light':'panel-block' ">{{titulo}}</p>
-</a>

@@ -34,7 +34,7 @@
     </div>
 
 
-  <app-botones-modulos-siguiente-ayuda [moduloTitulo]="'agua'" [colorBoton]="'info'" [textoExplicacion]="dataAgua[0] +' = '+dataAgua[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="aguaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+  <app-botones-modulos-siguiente-ayuda [mostrarInformacion]="dioRespuesta" [moduloTitulo]="'agua'" [colorBoton]="'info'" [textoExplicacion]="dataAgua[0] +' = '+dataAgua[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="aguaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
 
 
   </section>
