@@ -43,6 +43,7 @@
               "node_modules/shepherd.js/dist/js/shepherd.min.js",
               "src/assets/js-ts/onlyjavascript.js",
               "src/assets/js-ts/communication.js",
+              "node_modules/chart.js/dist/chart.js"
             ]
           },
           "configurations": {
