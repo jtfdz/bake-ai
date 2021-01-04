@@ -1,0 +1,32 @@
+<section class="hero has-background-warning-dark" style="height: 315px;">
+	<div class="hero-body has-stuff-centered">
+	<div class="container">
+
+	<h1 class="title is-5 has-text-light">¿cuál es el kana correcto para este romaji?</h1>
+
+	<section class="section has-stuff-centered is-flex">
+		<app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/'+gustoUsuario+'/'+dataArbol[2]+'.png'"></app-imagen-figure>
+		<h1 class="title is-1 has-text-light has-text-weight-bold step1-modulo-arbol">{{dataArbol[1]}}</h1><br>
+		<span class="subtitle is-5 has-text-light has-text-weight-medium"> {{dataArbol[2]}}</span>
+	</section>
+
+	<section class="section">
+
+		<div class="columns is-mobile is-centered">
+	        <div class="column is-narrow" *ngFor="let item of dataArbol[3]">
+	         <button [disabled]="dioRespuesta? true: null" (click)="arbolClick($event)" class="button is-light is-medium button-respuesta"><span class="step2-modulo-arbol">{{item}}</span></button>
+	        </div>
+	   	</div>
+
+ 		<app-botones-modulos-siguiente-ayuda [mostrarInformacion]="dioRespuesta" [moduloTitulo]="'arbol'" [colorBoton]="'warning-dark'" [textoExplicacion]="dataArbol[1] +' = '+dataArbol[0]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="arbolRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+
+	</section>
+
+
+
+
+
+	</div>
+	</div>
+</section>
+

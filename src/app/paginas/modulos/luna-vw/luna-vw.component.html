@@ -1,0 +1,36 @@
+<section class="hero has-background-danger" style="height: 315px;">
+	<div class="hero-body has-stuff-centered">
+	<div class="container">
+
+
+
+	<h1 class="title is-5 has-text-dark">escribe el romaji de este kana:</h1>
+
+	<section class="section">
+	  <h1 class="title is-1"><span class="step1-modulo-luna">{{dataLuna[0]}}</span></h1>
+	</section><br>
+
+	<section class="section">
+		<div class="columns">
+			<div class="column is-one-fifth is-offset-two-fifths step2-modulo-luna">	
+				<div class="field">
+				  <div class="control">
+				    <input id="respuesta-luna" [attr.disabled]="respuestaTraducida? true: null" maxlength="3" [(ngModel)]="respuesta" class="input is-dark" type="text" placeholder="respuesta">
+				  </div>
+				</div>
+			</div>
+		</div>
+	</section><br>
+
+
+  <app-botones-modulos-siguiente-ayuda [mostrarInformacion]="dioRespuesta" [moduloTitulo]="'luna'" [colorBoton]="'danger'" [textoExplicacion]="dataLuna[0] +' = '+this.dataLuna[1]" [botonHabilitado]="!respuesta" [acertado]="acertado" (respuestaModulo)="lunaRespuesta()" (siguienteModulo)="avanzarModulo()"></app-botones-modulos-siguiente-ayuda>
+
+
+
+	</div>
+	</div>
+</section>
+
+
+
+
