@@ -4,7 +4,6 @@ import { ComponentesService } from 'src/app/servicios/componentes/componentes.se
 @Component({
   selector: 'app-inicios',
   templateUrl: './inicios.component.html',
-  styleUrls: ['./inicios.component.css']
 })
 export class IniciosComponent implements OnInit {
   

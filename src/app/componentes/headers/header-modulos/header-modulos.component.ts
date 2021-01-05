@@ -9,7 +9,6 @@ declare const getEbI: any;
 @Component({
   selector: 'app-header-modulos',
   templateUrl: './header-modulos.component.html',
-  styleUrls: ['./header-modulos.component.css']
 })
 export class HeaderModulosComponent implements OnInit {
 

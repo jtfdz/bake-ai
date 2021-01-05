@@ -8,7 +8,7 @@ import urls from 'src/assets/json/urls.json';
 })
 export class BaseImagenPrimerInicioComponent {
 
-  imagenes: String = urls.firstslide;
+  imagenes: String = urls.slides;
   @Input() nombreImagen: string = '';
 
   constructor() { }

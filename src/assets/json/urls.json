@@ -1,6 +1,6 @@
 {
   "general": "../../../assets/media",
-  "firstslide": "../../../assets/media/first-slide",
+  "slides": "../../../assets/media/slides",
   "secondslide": "../../../assets/media/second-slide",
   "thirdslide": "../../../assets/media/third-slide",
   "forthslide": "../../../assets/media/forth-slide",

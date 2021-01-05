@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 import { ShepherdPasosService } from 'src/app/servicios/principales/shepherd-pasos.service';
 
+
 @Component({
   selector: 'app-inicio-general',
   templateUrl: './inicio-general.component.html',
@@ -11,9 +12,12 @@ export class InicioGeneralComponent implements OnInit, AfterViewInit {
 
   usuarioIniciadoInicioGeneral: boolean = false;
 
-  constructor(private componentesService: ComponentesService, private shepherdPasosService: ShepherdPasosService) { }
+  constructor(private componentesService: ComponentesService, private shepherdPasosService: ShepherdPasosService) 
+  {
 
-  ngOnInit(): void {
+  }
+
+  ngOnInit(): void {{}
     this.componentesService.getUsuarioIniciadoInicioGeneral().subscribe(
      usuarioIniciadoInicioGeneral => this.usuarioIniciadoInicioGeneral = usuarioIniciadoInicioGeneral
     ); 
@@ -25,5 +29,11 @@ export class InicioGeneralComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+
+
+
+
+    
 
 }

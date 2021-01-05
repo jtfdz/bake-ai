@@ -890,3 +890,435 @@ function openTabTeoria(evt, tabNombre) {
       </div>
 
     </div>
+
+
+
+
+
+
+
+
+
+
+{
+  "usuario": {
+    "gusto": "música",
+    "nombre": "julis",
+    "iniciado": true,
+    "toursIniciados": {
+      "iniciogeneral": true,
+      "modulos": true
+    }
+  },
+  "teoria": {},
+  "progreso": {
+    "hiragana": {
+      "kanaBody": [
+        {
+          "key": "vocales",
+          "desbloqueado": true,
+          "iniciada": true
+        },
+        {
+          "key": "k",
+          "desbloqueado": true,
+          "iniciada": true
+        },
+        {
+          "key": "s",
+          "desbloqueado": true,
+          "iniciada": false
+        },
+        {
+          "key": "t",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "n",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "h",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "m",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "y",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "r",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "especiales",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "g",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "z",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "d",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "b",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "p",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ky",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "sh",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ch",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ny",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "hy",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "my",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ry",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "gy",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "j",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "by",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "py",
+          "desbloqueado": false,
+          "iniciada": false
+        }
+      ],
+      "vecesEstudiado": 0,
+      "aciertos": 0,
+      "fallos": 0,
+      "porcentaje": 3
+    },
+    "katakana": {
+      "kanaBody": [
+        {
+          "key": "vocales",
+          "desbloqueado": true,
+          "iniciada": false
+        },
+        {
+          "key": "k",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "s",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "t",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "n",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "h",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "m",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "y",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "r",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "especiales",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "g",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "z",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "d",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "b",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "p",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ky",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "sh",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ch",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ny",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "hy",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "my",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "ry",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "gy",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "j",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "by",
+          "desbloqueado": false,
+          "iniciada": false
+        },
+        {
+          "key": "py",
+          "desbloqueado": false,
+          "iniciada": false
+        }
+      ],
+      "vecesEstudiado": 0,
+      "aciertos": 0,
+      "fallos": 0,
+      "porcentaje": 3
+    },
+    "kanji": {
+      "niveles": {
+        "n5": false,
+        "n4": false,
+        "n3": false,
+        "n2": false,
+        "n1": false
+      },
+      "porcentaje": 3
+    }
+  },
+  "estilo": {
+    "general": {
+      "porcentaje": 0,
+      "aciertos": 0,
+      "fallos": 0
+    },
+    "visual": {
+      "porcentaje": 33.333,
+      "aciertos": 0,
+      "fallos": 0
+    },
+    "auditiva": {
+      "porcentaje": 33.333,
+      "aciertos": 0,
+      "fallos": 0
+    },
+    "escritura": {
+      "porcentaje": 33.333,
+      "aciertos": 0,
+      "fallos": 0
+    }
+  },
+  "retencion": {
+    "mayor": "visual",
+    "media": "auditivo",
+    "baja": "de escritura"
+  },
+  "modelo": {
+    "material": {
+      "hiragana": {
+        "iniciado": [
+          [
+            "あ",
+            "い",
+            "う",
+            "え",
+            "お"
+          ],
+          [
+            "か",
+            "き",
+            "く",
+            "け",
+            "こ"
+          ]
+        ],
+        "desbloqueado": [
+          [
+            "さ",
+            "し",
+            "す",
+            "せ",
+            "そ"
+          ]
+        ]
+      },
+      "katakana": {
+        "iniciado": [],
+        "desbloqueado": [
+          [
+            "ア",
+            "イ",
+            "ウ",
+            "エ",
+            "オ"
+          ]
+        ]
+      }
+    },
+    "modulos": [
+      "agua",
+      "luna",
+      "tierra",
+      "arbol",
+      "tierra",
+      "modulosfinalizados"
+    ],
+    "dataParaModulos": [
+      [
+        "su",
+        "す"
+      ],
+      [
+        "す",
+        "su"
+      ],
+      [
+        "こえ",
+        "koe",
+        "voz",
+        [
+          "なし",
+          "ねこ",
+          "さる",
+          "こえ"
+        ]
+      ],
+      [
+        "こえ",
+        "koe",
+        "voz",
+        [
+          "こえ",
+          "へび",
+          "つり",
+          "なし"
+        ]
+      ],
+      [
+        "かし",
+        "kashi",
+        "letra (de canción)",
+        [
+          "さる",
+          "かし",
+          "かち",
+          "たこ"
+        ]
+      ],
+      null
+    ]
+  }
+}

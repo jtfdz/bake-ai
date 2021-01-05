@@ -32,11 +32,16 @@ import { BotonSiguientePrimerInicioComponent } from 'src/app/componentes/botones
 import { BotonAnteriorPrimerInicioComponent } from 'src/app/componentes/botones/boton-anterior-primer-inicio/boton-anterior-primer-inicio.component';
 import { BotonesModulosSiguienteAyudaComponent } from 'src/app/componentes/botones/botones-modulos-siguiente-ayuda/botones-modulos-siguiente-ayuda.component';
 import { FixedCornerComponent } from 'src/app/componentes/botones/fixed-corner/fixed-corner.component';
+import { BotonConSpinnerComponent } from 'src/app/componentes/botones/boton-con-spinner/boton-con-spinner.component';
 
 import { ContenidoInstruccionesTablasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-tablas/contenido-instrucciones-tablas.component';
 import { ContenidoInstruccionesExaminacionComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/contenido/contenido-instrucciones-examinacion/contenido-instrucciones-examinacion.component';
 import { TemasModulosTitulosComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-modulos-titulos/temas-modulos-titulos.component';
 import { TemasModulosSubtitulosComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/temas-modulos-subtitulos/temas-modulos-subtitulos.component';
+
+import { SpinnerPulsoRojoComponent } from 'src/app/componentes/spinners/spinner-pulso-rojo/spinner-pulso-rojo.component';
+import { AvisoAudioCargandoComponent } from 'src/app/componentes/spinners/aviso-audio-cargando/aviso-audio-cargando.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { TemasModule } from 'src/app/modules/temas/temas.module';
 
@@ -67,6 +72,9 @@ import { TemasModule } from 'src/app/modules/temas/temas.module';
     ContenidoInstruccionesExaminacionComponent,
     TemasModulosTitulosComponent,
     TemasModulosSubtitulosComponent,
+    SpinnerPulsoRojoComponent,
+    BotonConSpinnerComponent,
+    AvisoAudioCargandoComponent,
   ],
   imports: [
     CommonModule,
@@ -74,7 +82,8 @@ import { TemasModule } from 'src/app/modules/temas/temas.module';
     FormsModule, 
     ReactiveFormsModule,
     ScrollToModule,
-    ChartsModule
+    ChartsModule,
+    NgxSpinnerModule,
   ],
   exports: [
     HeaderPrincipalComponent,
@@ -102,6 +111,9 @@ import { TemasModule } from 'src/app/modules/temas/temas.module';
     ContenidoInstruccionesExaminacionComponent,
     TemasModulosTitulosComponent,
     TemasModulosSubtitulosComponent,
+    SpinnerPulsoRojoComponent,
+    BotonConSpinnerComponent,
+    AvisoAudioCargandoComponent,
   ]
 })
 export class ComponentesModule { }

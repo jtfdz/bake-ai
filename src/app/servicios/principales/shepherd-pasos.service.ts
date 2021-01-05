@@ -68,7 +68,6 @@ export class ShepherdPasosService {
 		this.shepherdService.defaultStepOptions = {
 		    id: 'intro',
 			scrollTo: false,
-		    arrow: true,
 		    cancelIcon: { enabled: false },
 		    buttons: this.botonesConAntes,
 		    classes: 'has-text-centered',
@@ -84,26 +83,31 @@ export class ShepherdPasosService {
 		    text: ['a continuación tendrás una introducción sobre el inicio :)'],
 		  },
 		  {
+		  	buttons: this.botones,
 		    attachTo: { element: '.step1-iniciogeneral', on: 'bottom' },
 		    title: 'la aplicación (1/5)',
 		    text: ['aquí podrás leer información sobre la aplicación: ¿qué hace? ¿qué ofrece? ¿por qué el nombre?'],
 		  },
 		  {
+		  	buttons: this.botones,
 		    attachTo: { element: '.step2-iniciogeneral', on: 'bottom' },
 		    title: 'las estadísticas (2/5)',
 		    text: ['aquí podrás informarte sobre tu rendimiento y lo que has logrado en la aplicación'],
 		  },
 		  {
+		  	buttons: this.botones,
 		    attachTo: { element: '.step3-iniciogeneral', on: 'bottom' },
 		    title: 'la configuración (3/5)',
 		    text: ['aquí podrás cambiar el nombre y el gusto que elegiste en la introducción'],
 		  },
 		  {
+		  	buttons: this.botones,
 		    attachTo: { element: '.step4-iniciogeneral', on: 'bottom' },
 		    title: 'la teoría (4/5)',
 		    text: ['aquí accedes a contenido teórico del lenguaje: la historia, conocer mejor los sistemas de escritura y mucho más (¡además de un widget secreto!)'],
 		  },
 		  {
+		  	buttons: this.botones,
 		    attachTo: { element: '.step5-iniciogeneral', on: 'top' },
 		    title: 'los tres sistemas de escritura (5/5)',
 		    text: ['aquí accederás al material de cada uno de los tres sistemas de escritura que aprenderás en esta aplicación :)'],

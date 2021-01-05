@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { share } from "rxjs/operators";
 import { toRomaji } from 'wanakana';
 import urls from 'src/assets/json/urls.json';
 declare const getFromStore: any;
@@ -21,6 +22,10 @@ export class ComponentesService {
 
 	private usuarioIniciadoInicioGeneral: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('usuario.toursIniciados.iniciogeneral'));
 	private usuarioIniciadoModulos: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('usuario.toursIniciados.modulos'));
+
+	// private spinnerActivado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+	private audioCargando: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
 
   constructor() { }
 
@@ -75,21 +80,42 @@ export class ComponentesService {
 	}
 
 
+	getAudioCargando(): Observable<boolean> {
+	  return this.audioCargando.asObservable();
+	}
+
+	setAudioCargando(cambio: boolean) { this.audioCargando.next(cambio); }
+
+
 	//mejorar: make this into ONE
+	//un boolean de si es palabra o kana pelao y de ahi actuar con su tertiary ?
 	reproducirPalabras(archivo: string) { 
+	  this.setAudioCargando(true)
 	  let audio = new Audio();
 	  audio.src = urls.audio + '/gustos/' +  toRomaji(archivo) + '.wav';
 	  audio.load();
 	  audio.play();		
+	  this.setAudioCargando(false)
 	}
 
 
 	reproducirAudio(archivo: string) { 
+	  this.setAudioCargando(true)
 	  let audio = new Audio();
 	  audio.src = urls.audio + '/' + archivo + '.wav';
 	  audio.load();
 	  audio.play();		
+	  this.setAudioCargando(false)
 	}
+
+	// setActivarSpinnerPrincipal(cambio: boolean) { this.spinnerActivado.next(cambio); }
+
+	// getActivarSpinnerPrincipal(): Observable<boolean> {
+	//   this.spinnerActivado.complete();
+	//   return this.spinnerActivado.pipe(share());
+	// }
+
+
 
 
 

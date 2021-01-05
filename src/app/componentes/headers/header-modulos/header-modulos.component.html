@@ -53,7 +53,7 @@
       <div class="column is-offset-1">
          <a class="modal-button" data-target="modalInstExam" onclick="modalFunction(1, '#abandonarProgreso')" >
           <div class="has-tooltip-bottom has-tooltip-black has-tooltip-arrow" [attr.data-tooltip]="'salir'">
-              <app-imagen-figure class="step2-modulos" [medida]="'64'" [imgUrl]="'inicio-general/largate.png'"></app-imagen-figure>
+              <app-imagen-figure class="step2-modulos" [medida]="'64'" [imgUrl]="'inicio-general/abandonar.png'"></app-imagen-figure>
           </div>
         </a>  
       </div>
@@ -87,7 +87,7 @@
       <button class="button is-success has-text-weight-semibold" onclick="modalFunction(2, '#abandonarProgreso')">¡no!</button>
     </div>
     <div class="column is-narrow">
-      <button class="button is-primary" (click)="volver()">pues sí</button>
+      <app-boton-con-spinner (botonPresionado)="volver()" [textoInterior]="'pues sí'" [nombreClase]="'button is-primary'"></app-boton-con-spinner>
     </div>
   </div>
 </div>
