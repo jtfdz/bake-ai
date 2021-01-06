@@ -9,14 +9,14 @@ weightsUsuario = jsonBody['weights']
 
 # weights (VAW) 
 weights = {
-	"v_acierto": [1.10, 0.95, 0.95], 
-	"v_fallo": [0.90, 1.05, 1.05], 
-	"vw_acierto": [1.05, 0.90, 1.05],
-	"vw_fallo": [0.95, 1.1, 0.95],
-	"aw_acierto": [0.90, 1.05, 1.05],
-	"aw_fallo": [1.1, 0.95, 0.95],
-	"w_acierto": [0.95, 0.95, 1.1],
-	"w_fallo": [1.05, 1.05, 0.90]
+	"v_acierto": [1.05, 0.975, 0.975], # +5V%
+	"v_fallo": [0.95, 1.025, 1.025], # -5V%
+	"vw_acierto": [1.025, 0.95, 1.025], # -5A%
+	"vw_fallo": [0.975, 1.05, 0.975], # +5A%
+	"aw_acierto": [0.95, 1.025, 1.025], # -5V%
+	"aw_fallo": [1.05, 0.975, 0.975], # +5V% 
+	"w_acierto": [0.975, 0.975, 1.05], # +5w%
+	"w_fallo": [1.025, 1.025, 0.95] # -5w%
 }
 
 # recibe los tres porcentajes de lo estilos de aprendizaje
@@ -48,6 +48,7 @@ def ann():
 	output = [None] * 3
 	for element in range(len(inputsPorcentajes)):
 		output[element] = inputsPorcentajes[element]
+
 
 	for weightsIndex in weightsUsuario:
 		for element in range(len(output)):

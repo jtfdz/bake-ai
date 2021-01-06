@@ -79,7 +79,6 @@ export class ModalContenidoEstadisticasComponent implements OnInit {
 
 
 
-
 	ngOnInit(): void {
 
 	}

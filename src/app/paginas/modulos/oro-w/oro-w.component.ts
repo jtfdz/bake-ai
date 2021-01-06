@@ -4,6 +4,10 @@ import { ShepherdPasosService } from 'src/app/servicios/principales/shepherd-pas
 import { toHiragana, toKatakana, isHiragana, toRomaji  } from 'wanakana';
 declare const modalFunction: any;
 
+interface Array<T> {
+	fill(value: T): Array<T>;
+}
+
 @Component({
   selector: 'app-oro-w',
   templateUrl: './oro-w.component.html',
@@ -15,8 +19,8 @@ export class OroWComponent implements OnInit {
   	@Output() respuestaOro: EventEmitter<any> = new EventEmitter<any>();
   	@Output() sigueOro: EventEmitter<any> = new EventEmitter<any>();
 
-	respuestas: string[] = ["","","","",""];
-	respuestasTraducidas: string[] = ["","","","",""];
+	respuestas: string[] = [];
+	respuestasTraducidas: string[] = [];
 	acertadoBien: any[] = [];
 	acertadoMal: any[] = []; // mejorar OJO PELUO CON ANY
 	dioRespuesta: boolean = false;
@@ -26,7 +30,8 @@ export class OroWComponent implements OnInit {
 
 
 	ngOnInit(): void {
-		//console.log(this.dataOro)
+		this.respuestas = Array<string>(this.dataOro[0].length).fill("")
+		this.respuestasTraducidas = Array<string>(this.dataOro[0].length).fill("")
 	}
 
 	isEmptyStringArray(){

@@ -189,8 +189,10 @@ function asignarModelo(mayor, medio, bajo){
 	var modeloArray = [];
 	pushArray(modeloArray, mayor);
 	pushArray(modeloArray, mayor);
+  pushArray(modeloArray, mayor);
   pushArray(modeloArray, medio);
-	pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
+  pushArray(modeloArray, medio);
+	//pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
 	pushArray(modeloArray, bajo);
 	return shuffle(modeloArray);
 }
@@ -286,14 +288,14 @@ function modeloDeAprendizaje(kana){
   setInStore('modelo.dataParaModulos', dataParaModulo)
 
   //mejorar ESTO LO BORRAS CHICA
-    // var fuckthis = getFromStore('progreso.hiragana.kanaBody');
+    var fuckthis = getFromStore('progreso.hiragana.kanaBody');
 
-    // fuckthis[0].iniciada = true;
-    // fuckthis[1].iniciada = true;
-    // fuckthis[1].desbloqueado = true;
-    // fuckthis[2].desbloqueado = true;
+    fuckthis[9].iniciada = true;
+    fuckthis[15].iniciada = true;
+    fuckthis[9].desbloqueado = true;
+    fuckthis[15].desbloqueado = true;
 
-    // setInStore('progreso.hiragana.kanaBody', fuckthis)
+    setInStore('progreso.hiragana.kanaBody', fuckthis)
 
     //console.log(getFromStore('progreso.hiragana.kanaBody'))
 }
@@ -417,7 +419,7 @@ function apuebaParaNuevo(kana){
 	var totalIntentos = totalAciertos + totalFallos;
 	if(totalIntentos){
 		var nivelDeAcertado = ((totalAciertos/totalIntentos) * 100).toFixed(3);
-		var aprueba = (nivelDeAcertado >= 85);
+		var aprueba = (nivelDeAcertado >= 75);
 		return aprueba;
 	}
 	return false;
@@ -468,7 +470,7 @@ var contarPorcentaje = 0;
       }
     }
   }
-  var porcentajeTotal = (contarPorcentaje/26) * 100;
+  var porcentajeTotal = (contarPorcentaje/26) * 78;
   setInStore('progreso.'+kana+'.porcentaje', porcentajeTotal)
 };
 

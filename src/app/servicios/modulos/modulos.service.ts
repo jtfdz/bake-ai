@@ -164,8 +164,10 @@ export class ModulosService {
 		this.getActualTemaActivado().subscribe(
 		    actualTemaActivado => {
 		    	kanaNombre = actualTemaActivado;
-		    	actualValorVecesEstudiado = getFromStore('progreso.'+kanaNombre+'.vecesEstudiado')
-		    	setInStore('progreso.'+kanaNombre+'.vecesEstudiado', actualValorVecesEstudiado+1);
+		    	
+		    	actualValorVecesEstudiado = getFromStore('progreso.'+kanaNombre+'.vecesEstudiado') + 1;
+		    	setInStore('progreso.'+kanaNombre+'.vecesEstudiado', actualValorVecesEstudiado);
+
 				actualValorAciertos = getFromStore('progreso.'+kanaNombre+'.aciertos')
 				actualValorFallos = getFromStore('progreso.'+kanaNombre+'.fallos')
 				
