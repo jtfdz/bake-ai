@@ -1,7 +1,7 @@
 const wanakana = require('wanakana');
 const Store = require('electron-store');
 
-let kanaBodyFull = [
+let kanaBodyFull = [ //26 TOTAL
   {key: 'vocales', desbloqueado: true, iniciada: false},
   {key: 'k', desbloqueado: false, iniciada: false},
   {key: 's', desbloqueado: false, iniciada: false},
@@ -47,8 +47,9 @@ const schema = {
       default: {}
     },
 
-    //eso de veces estudiao pa estadísticas MEJORAR 
-
+    // 78% los kanas - cada letra equivale a 3% (1.5 bloqueado y 1.5 iniciado)
+    // 22% la teoria
+  
     progreso: {
       type: 'object',
       default: {
@@ -57,22 +58,21 @@ const schema = {
         	vecesEstudiado: 0, 
         	aciertos: 0,
         	fallos: 0,
-        	porcentaje: 3
-        }
-        ,
+        	porcentaje: 1.5
+        },
         katakana: {
         	kanaBody: kanaBodyFull, 
         	vecesEstudiado: 0, 
         	aciertos: 0,
         	fallos: 0,
-        	porcentaje: 3
+        	porcentaje: 1.5
         },
         kanji: {
           niveles: {n5: false, n4: false, n3: false, n2: false, n1: false},
           vecesEstudiado: 0, 
           aciertos: 0,
           fallos: 0,
-          porcentaje: 3
+          porcentaje: 1.5
         }
       }
     },
@@ -80,10 +80,10 @@ const schema = {
     estilo: {
       type: 'object',
       default: {
-      	general: {porcentaje: 0, aciertos: 0, fallos: 0},
-        visual: {porcentaje: 33.334, aciertos: 0, fallos: 0},
-        auditiva: {porcentaje: 33.333, aciertos: 0, fallos: 0},
-        escritura: {porcentaje: 33.333, aciertos: 0, fallos: 0}     
+      	//general: {porcentaje: 0, aciertos: 0, fallos: 0},
+        visual: {porcentaje: 33.334}, //, aciertos: 0, fallos: 0},
+        auditiva: {porcentaje: 33.333}, //, aciertos: 0, fallos: 0},
+        escritura: {porcentaje: 33.333}, //, aciertos: 0, fallos: 0}     
       }
     },
 
@@ -93,7 +93,7 @@ const schema = {
       type: 'object',
       default: {
       	mayor: 'visual',
-        media: 'auditivo',
+        media: 'auditiva',
         baja: 'de escritura'
       }
     },
@@ -188,10 +188,10 @@ function arrayUnique(array) {
 function asignarModelo(mayor, medio, bajo){
 	var modeloArray = [];
 	pushArray(modeloArray, mayor);
-	//pushArray(modeloArray, mayor);
-  //pushArray(modeloArray, medio);
+	pushArray(modeloArray, mayor);
+  pushArray(modeloArray, medio);
 	pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
-	//pushArray(modeloArray, bajo);
+	pushArray(modeloArray, bajo);
 	return shuffle(modeloArray);
 }
 
@@ -215,7 +215,7 @@ function modeloDeAprendizaje(kana){
 		//visual
 		case 'visual': 
 			switch(media){
-				case 'auditivo': 
+				case 'auditiva': 
 				modelo = asignarModelo(visuales, auditivos, escritos);
 				break;
 				
@@ -226,7 +226,7 @@ function modeloDeAprendizaje(kana){
 		break;
 
 		//auditiva
-		case 'auditivo': 
+		case 'auditiva': 
 			switch(media){
 				case 'visual': 
 				modelo = asignarModelo(auditivos, visuales, escritos);
@@ -244,7 +244,7 @@ function modeloDeAprendizaje(kana){
 				modelo = asignarModelo(escritos,  visuales, auditivos);
 				break;
 
-				case 'auditivo': 
+				case 'auditiva': 
 				modelo = asignarModelo(escritos, auditivos,  visuales);
 				break;
 			}
@@ -252,7 +252,7 @@ function modeloDeAprendizaje(kana){
 	}
 
   if(getFromStore('modelo.material.'+kana+'.desbloqueado').length > 0){ 
-    //modelo[modelo.length] = modelo[0]; modelo[0] = 'teoria'; 
+    modelo[modelo.length] = modelo[0]; modelo[0] = 'teoria'; 
   };
 
   modelo.push('modulosfinalizados')
@@ -261,16 +261,24 @@ function modeloDeAprendizaje(kana){
 
   var dataParaModulo = [];
 
+
   for (var i = 0; i < modelo.length; i++) {
 
     if(i>Math.floor(modelo.length*(2/3))){ //para lo iniciado dos tercios del total y se pone al final
+
       if(getFromStore('modelo.material.'+kana+'.iniciado').length > 0){ 
         dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.iniciado'), dataGustosArray))
       }else{ //kanasDesbloqueadas.length > 0 si no hay iniciado
         dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.desbloqueado'), dataGustosArray))
       }
-    }else{ //para lo desbloqueado que siempre estará
+    }else{ 
+
+      if(getFromStore('modelo.material.'+kana+'.desbloqueado').length > 0){ 
         dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.desbloqueado'), dataGustosArray))
+      }else{ 
+        dataParaModulo.push(porTipoDeModulo(modelo[i], getFromStore('modelo.material.'+kana+'.iniciado'), dataGustosArray))   
+      }
+
     }
   }
 
@@ -305,6 +313,8 @@ String.prototype.shuffleString = function () {
 
 
 function porTipoDeModulo(modulo, data, dataGustosArray){
+
+
 
   //mejorar: viene de un loop y aqui se pide mucho kana random asi que podria iniciarse aqui para el modulo
 
@@ -407,7 +417,7 @@ function apuebaParaNuevo(kana){
 	var totalIntentos = totalAciertos + totalFallos;
 	if(totalIntentos){
 		var nivelDeAcertado = ((totalAciertos/totalIntentos) * 100).toFixed(3);
-		var aprueba = (nivelDeAcertado >= 75);
+		var aprueba = (nivelDeAcertado >= 85);
 		return aprueba;
 	}
 	return false;
@@ -423,15 +433,16 @@ function keyBloqueada(kanadb) {
 };
 
 
+
+
 //sirve, lo único no probado es apruebaParaNuevo mejorar XD
 function desbloqueaNuevo(kana){
-	if(apuebaParaNuevo(kana)){
+	if(apuebaParaNuevo(kana)){ 
 		var bodyKana = getFromStore('progreso.'+kana+'.kanaBody')
 		for (var i = 0; i < bodyKana.length; i++) {
-			var kanaBloqueado = keyBloqueada(bodyKana[i]);
-			if(kanaBloqueado){
+			if(keyBloqueada(bodyKana[i])){
 				bodyKana[i].desbloqueado = true;
-				//setInStore('progreso.'+kana+'.kanaBody', bodyKana)
+				setInStore('progreso.'+kana+'.kanaBody', bodyKana)
 				break;
 			} 
 		}
@@ -441,15 +452,24 @@ function desbloqueaNuevo(kana){
 
 
 
+
+
 //cuando la evaluación se acaba, lo desbloqueado no iniciado pasa a iniciado también
 function aprobarIniciado(kana) {
-var bodyKana = getFromStore('progreso.'+kana+'.kanaBody')
+var bodyKana = getFromStore('progreso.'+kana+'.kanaBody');
+var contarPorcentaje = 0;
   for (var i = 0; i < bodyKana.length; i++) {
-    if (bodyKana[i].desbloqueado) {
-      bodyKana[i].iniciado = true;
-      //setInStore(propiedad, valor)
+    if(bodyKana[i].desbloqueado){
+      contarPorcentaje += 1;
+      if (!bodyKana[i].iniciada) {
+        bodyKana[i].iniciada = true;
+        setInStore('progreso.'+kana+'.kanaBody', bodyKana)
+        break;
+      }
     }
   }
+  var porcentajeTotal = (contarPorcentaje/26) * 100;
+  setInStore('progreso.'+kana+'.porcentaje', porcentajeTotal)
 };
 
 

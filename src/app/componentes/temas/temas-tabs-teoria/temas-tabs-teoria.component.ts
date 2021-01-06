@@ -7,7 +7,6 @@ declare const accessParent: any;
 @Component({
   selector: 'app-temas-tabs-teoria',
   templateUrl: './temas-tabs-teoria.component.html',
-  styleUrls: ['./temas-tabs-teoria.component.css']
 })
 export class TemasTabsTeoriaComponent implements OnInit {
 

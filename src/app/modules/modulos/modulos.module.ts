@@ -20,6 +20,7 @@ import { TeoriaModuloComponent } from 'src/app/paginas/modulos/teoria-modulo/teo
 import { ModulosFinalizacionComponent } from 'src/app/paginas/modulos/modulos-finalizacion/modulos-finalizacion.component';
 
 import { ComponentesModule } from 'src/app/modules/componentes/componentes.module';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [    
@@ -42,6 +43,7 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
     BrowserAnimationsModule,
     RouterModule,
     FormsModule,
+    NgxSpinnerModule,
   ],
   exports: [    
     LunaVwComponent,

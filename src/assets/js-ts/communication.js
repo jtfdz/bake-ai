@@ -45,9 +45,7 @@ function runIA(){
 
 
 
-		  // setInStore('estilo.visual.porcentaje', resultado[0]) 
-		  // setInStore('estilo.auditiva.porcentaje', resultado[1]) 
-		  // setInStore('estilo.auditiva.porcentaje', resultado[2])
+
 
 
 

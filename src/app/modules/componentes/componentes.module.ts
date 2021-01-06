@@ -14,6 +14,7 @@ import { BotonesIconosModalComponent } from 'src/app/componentes/botones/botones
 import { ModalContenidoAplicacionComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-aplicacion/modal-contenido-aplicacion.component';
 import { ModalContenidoEstadisticasComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-estadisticas/modal-contenido-estadisticas.component';
 import { ModalContenidoConfiguracionComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-configuracion/modal-contenido-configuracion.component';
+import { PieChartEstilosComponent } from 'src/app/componentes/botones/botones-iconos/modal-contenido-estadisticas/pie-chart-estilos/pie-chart-estilos.component';
 
 import { GustosPickerComponent } from 'src/app/componentes/especificos/gustos-picker/gustos-picker.component';
 import { GustosTabsComponent } from 'src/app/componentes/especificos/gustos-picker/gustos-tabs/gustos-tabs.component';
@@ -75,6 +76,7 @@ import { TemasModule } from 'src/app/modules/temas/temas.module';
     SpinnerPulsoRojoComponent,
     BotonConSpinnerComponent,
     AvisoAudioCargandoComponent,
+    PieChartEstilosComponent,
   ],
   imports: [
     CommonModule,
@@ -114,6 +116,7 @@ import { TemasModule } from 'src/app/modules/temas/temas.module';
     SpinnerPulsoRojoComponent,
     BotonConSpinnerComponent,
     AvisoAudioCargandoComponent,
+    PieChartEstilosComponent,
   ]
 })
 export class ComponentesModule { }

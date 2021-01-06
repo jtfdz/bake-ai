@@ -7,7 +7,6 @@ declare const getEbI: any;
 @Component({
   selector: 'app-temas-tabs-teoria-contenido',
   templateUrl: './temas-tabs-teoria-contenido.component.html',
-  styleUrls: ['./temas-tabs-teoria-contenido.component.css']
 })
 export class TemasTabsTeoriaContenidoComponent implements OnInit {
 

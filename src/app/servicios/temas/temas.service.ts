@@ -236,8 +236,8 @@ export class TemasService {
   tituloSeccion: string = 'general';
   contenidoTitulo: string = 'historia';
 
-  private tituloTema: BehaviorSubject<string> = new BehaviorSubject<string>('general >> historia');
-  private temaContenido: BehaviorSubject<string> = new BehaviorSubject<string>('la historia de los abecedarios');
+  private tituloTema: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private temaContenido: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private temaAprendido: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('aprender.'+this.tituloSeccion+'.'+this.contenidoTitulo));
 
 
@@ -460,35 +460,99 @@ export class TemasService {
 
 
 
+  temporalKanaBloqueado: string[] = [];
+  temporalKanaDesbloqueado: string[]  = [];
+
+  private kanaEstudiando: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  private kanaBloqueado: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+
+  getKanaEstudiando(): Observable<string[]> {
+    return this.kanaEstudiando.asObservable();
+  }
+
+  getKanaBloqueado(): Observable<string[]> {
+    return this.kanaBloqueado.asObservable();
+  }
+
+  setKanaTo0() { 
+    this.kanaEstudiando.next([]); 
+    this.kanaBloqueado.next([]); 
+  }
+
+  setKanaEstudiando(cambio: string) { 
+    this.temporalKanaDesbloqueado = [];
+    this.getKanaEstudiando().subscribe(
+     kanaEstudiando => this.temporalKanaDesbloqueado = kanaEstudiando
+    ); 
+    this.temporalKanaDesbloqueado.push(cambio)
+    this.kanaEstudiando.next(this.temporalKanaDesbloqueado); 
+  }
+
+  setKanaBloqueado(cambio: string) { 
+    this.temporalKanaBloqueado = [];
+    this.getKanaBloqueado().subscribe(
+     kanaBloqueado => this.temporalKanaBloqueado = kanaBloqueado
+    ); 
+    this.temporalKanaBloqueado.push(cambio)
+    this.kanaBloqueado.next(this.temporalKanaBloqueado); 
+  }
 
 
-    setFilteredKana(fil:{}, ob:{}){
-      Object.assign(fil, removeObjectProperty(ob, 'letra'))
+
+    target: string[] = [];
+
+
+
+      omitObjKey(obj: Record<string, string>): Record<string, string>{
+        const { ['letra']: omitted, ...rest} = obj;
+        return rest;
+      }
+
+
+
+
+    setFilteredKana(fil:{}, ob:Record<string, string>){
+      Object.assign(fil, this.omitObjKey(ob))
     }
 
-    getTablaExaminacion(tituloKana: string, iniciado: boolean): {} {
 
+    getTablaExaminacion(tituloKana: string, iniciado: boolean): {} {
+    
       var filteredKana = {};
       var filteredKanaArray: IndexNum[] = [];
       let kanaBody = getFromStore('progreso.'+tituloKana+'.kanaBody');
       let esHiragana = (tituloKana=='hiragana');
+      this.setKanaTo0();
+
+
+
+
+
 
 
       for (var i = 0; i < kanaBody.length; i++) {
-        if(iniciado){
-           if(kanaBody[i].iniciada){
-            (esHiragana)? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);          
-            (esHiragana)? filteredKanaArray.push(Object.values(this.hiraganaObjArr[i])): filteredKanaArray.push(Object.values(this.katakanaObjArr[i]));
+        if(iniciado){ //ejemplo: a
+           if(kanaBody[i].iniciada){ //iniciada necesita primero bloqueada
+
+              (esHiragana)? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);          
+              (esHiragana)? filteredKanaArray.push(Object.values(this.omitObjKey(this.hiraganaObjArr[i]))):  filteredKanaArray.push(Object.values(this.omitObjKey(this.katakanaObjArr[i])));
+              (esHiragana)? this.setKanaEstudiando(this.hiraganaObjArr[i].letra): this.setKanaEstudiando(this.katakanaObjArr[i].letra); 
+            
+            }else if(kanaBody[i].desbloqueado){
+              (esHiragana)? this.setKanaEstudiando(this.hiraganaObjArr[i].letra): this.setKanaEstudiando(this.katakanaObjArr[i].letra); 
+            }else if(!kanaBody[i].iniciada && !kanaBody[i].desbloqueado){
+              (esHiragana)? this.setKanaBloqueado(this.hiraganaObjArr[i].letra): this.setKanaBloqueado(this.katakanaObjArr[i].letra); 
             }
-        }else{
+        }else{ //ejemplo: s (siguiente iniciada)
            if(kanaBody[i].desbloqueado && !kanaBody[i].iniciada){
-            (esHiragana)? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);            
-            (esHiragana)? filteredKanaArray.push(Object.values(this.hiraganaObjArr[i])): filteredKanaArray.push(Object.values(this.katakanaObjArr[i]));
+              (esHiragana)? this.setFilteredKana(filteredKana, this.hiraganaObjArr[i]): this.setFilteredKana(filteredKana, this.katakanaObjArr[i]);            
+              (esHiragana)?filteredKanaArray.push(Object.values(this.omitObjKey(this.hiraganaObjArr[i]))):  filteredKanaArray.push(Object.values(this.omitObjKey(this.katakanaObjArr[i])));
             }
         }
       }
 
       //mejorar> innecesario____
+
 
       if(iniciado){
         (esHiragana)?setInStore('modelo.material.hiragana.iniciado', filteredKanaArray): setInStore('modelo.material.katakana.iniciado', filteredKanaArray)

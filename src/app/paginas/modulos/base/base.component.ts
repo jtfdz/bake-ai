@@ -95,7 +95,7 @@ export class BaseComponent implements OnInit {
     },
     "tierra": {
       "nombre": "tierra　土", 
-      "tipo": "visual",
+      "tipo": "auditiva y visual",
       "color": "warning-dark"
     },
     "agua": {

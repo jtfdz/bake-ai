@@ -20,7 +20,6 @@ type tipoCompuesta = {
 @Component({
   selector: 'app-temas-kanas-tablas',
   templateUrl: './temas-kanas-tablas.component.html',
-  styleUrls: ['./temas-kanas-tablas.component.css']
 })
 export class TemasKanasTablasComponent implements OnInit {
 

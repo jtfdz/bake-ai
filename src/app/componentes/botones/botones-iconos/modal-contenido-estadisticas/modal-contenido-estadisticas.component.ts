@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-declare const estiloPorcentaje: any;
 declare const getFromStore: any;
 
 @Component({
@@ -43,9 +42,7 @@ export class ModalContenidoEstadisticasComponent implements OnInit {
 	];
 
 
-	public pieChartLabels = ['visual', 'auditivo', 'por escritura'];
-	public pieChartData = [estiloPorcentaje('visual'), estiloPorcentaje('auditiva'), estiloPorcentaje('escritura')];
-	public pieChartType = 'pie';
+
 
 	public doughnutChartType = 'doughnut';
 

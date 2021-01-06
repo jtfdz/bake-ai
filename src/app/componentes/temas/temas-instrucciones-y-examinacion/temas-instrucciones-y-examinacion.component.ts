@@ -47,7 +47,6 @@ export class TemasInstruccionesYExaminacionComponent implements OnInit {
   }
 
   examinacionSeguir(){
-   desbloqueaNuevo(this.tipoEscritura);
    this.modulosService.setDataParaModulos(this.tipoEscritura);
   }
 

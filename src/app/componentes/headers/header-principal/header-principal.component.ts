@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
-import segmentos from 'src/assets/json/segmentosHeader.json';
 import urls from 'src/assets/json/urls.json';
 declare const modalFunction: any;
 declare const openTab: any;
@@ -16,7 +15,6 @@ interface IndexStr {
 @Component({
   selector: 'app-header-principal',
   templateUrl: './header-principal.component.html',
-  styleUrls: ['./header-principal.component.css']
 })
 export class HeaderPrincipalComponent implements OnInit {
 
@@ -26,8 +24,9 @@ export class HeaderPrincipalComponent implements OnInit {
 
   @Input() esInicio: boolean = false;
   @Input() mensajePersonalizado: string = '';
-  teoriaObj: IndexObj = segmentos;
+  teoriaObj: IndexObj = {};
   teoriaStr: IndexStr = {};
+
 
 
   constructor(private componentesService: ComponentesService) { }
@@ -38,7 +37,24 @@ export class HeaderPrincipalComponent implements OnInit {
     ); 
   }
 
+
   public activar(nombreSegmento: string): void { 
+
+    this.teoriaObj = {
+    "app": {
+      "titulo": "bake ai: la aplicación",  
+      "color": "success"
+    },
+    "config": {
+      "titulo": "personaliza tu aplicación: configuración", 
+      "color": "warning"
+    },
+    "stats": {
+      "titulo": "conoce tu rendimiento: estadísticas", 
+      "color": "primary"    
+    }
+  };
+
     this.teoriaStr = this.teoriaObj[nombreSegmento];  
     this.componentesService.setTituloCard(this.teoriaStr['titulo'])
     this.componentesService.setColorCard(this.teoriaStr['color'])

@@ -1322,3 +1322,69 @@ function openTabTeoria(evt, tabNombre) {
     ]
   }
 }
+
+
+
+
+<!--          <div class="control">
+              <span class="tag is-small is-dark">tu estilo de aprendizaje:</span>
+          </div>
+
+          <div class="control">
+            <div class="tags has-addons">
+              <span class="tag is-small is-dark">mayor retención:</span>
+              <span class="tag is-small is-success">visual</span>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="tags has-addons">
+              <span class="tag is-small is-dark">retención media:</span>
+              <span class="tag is-small is-warning">auditiva</span>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="tags has-addons">
+              <span class="tag is-small is-dark">menor retención:</span>
+              <span class="tag is-small is-primary">por escritura</span>
+            </div>
+          </div> -->
+
+
+          
+    //MEJORAR: UNA FUNCIÓN RETURNER? O INCLUSO UNA FUNCIÓN DE LECTURA DONDE 
+    //ENVIO LOS TRES VALORES Y UN ARRAY CON INDICES RESPECTIVOS EN STRINGS (NOMBRES DE LOS ESTILOS)
+
+    // MAYOR: VISUAL_TIENE PRIORIDAD SOBRE AMBAS
+    if(cambio[0]>=cambio[1] && cambio[0]>=cambio[2]){
+      setInStore('retencion.mayor', 'visual') 
+      if(cambio[1]>=cambio[2]){
+        setInStore('retencion.media', 'auditiva') 
+        setInStore('retencion.baja', 'de escritura') 
+      }else if(cambio[2]>cambio[1]){
+        setInStore('retencion.media', 'de escritura') 
+        setInStore('retencion.baja', 'auditiva') 
+      }
+    // MAYOR: AUDITIVA_TIENE PRIORIDAD SOBRE ESCRITURA
+    }else if(cambio[1]>cambio[0] && cambio[1]>=cambio[2]){
+      setInStore('retencion.mayor', 'auditiva')
+      if(cambio[0]>=cambio[2]){
+        setInStore('retencion.media', 'visual')
+        setInStore('retencion.baja', 'de escritura')  
+      }else if(cambio[2]>cambio[0]){
+        setInStore('retencion.media', 'de escritura')
+        setInStore('retencion.baja', 'visual')  
+      }
+    // MAYOR: ESCRITURA_ SIN PRIORIDAD
+    }else if(cambio[2]>cambio[0] && cambio[2]>cambio[1]){
+      setInStore('retencion.mayor', 'de escritura')
+      if(cambio[0]>=cambio[1]){
+        setInStore('retencion.media', 'visual')
+        setInStore('retencion.baja', 'auditiva') 
+      }else if(cambio[1]>cambio[0]){
+        setInStore('retencion.media', 'auditiva') 
+        setInStore('retencion.baja', 'visual') 
+        
+      }
+    }

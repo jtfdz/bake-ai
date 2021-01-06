@@ -34,7 +34,6 @@ interface IndexStr {
 @Component({
   selector: 'app-temas-kanji-tabla',
   templateUrl: './temas-kanji-tabla.component.html',
-  styleUrls: ['./temas-kanji-tabla.component.css']
 })
 export class TemasKanjiTablaComponent implements OnInit {
 

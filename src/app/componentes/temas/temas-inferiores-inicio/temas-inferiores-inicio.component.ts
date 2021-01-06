@@ -6,7 +6,6 @@ declare const getFromStore: any;
 @Component({
   selector: 'app-temas-inferiores-inicio',
   templateUrl: './temas-inferiores-inicio.component.html',
-  styleUrls: ['./temas-inferiores-inicio.component.css']
 })
 export class TemasInferioresInicioComponent implements OnInit {
 
@@ -20,7 +19,7 @@ export class TemasInferioresInicioComponent implements OnInit {
   constructor(private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
-  	this.progreso = getFromStore('progreso.'+this.nombreTema+'.porcentaje');
+  	this.progreso = getFromStore('progreso.'+this.nombreTema+'.porcentaje').toFixed(2);
     //¿esto podría mejorar?
   	if(this.progreso>=0 && this.progreso<25){ 
   		this.imagenNombre = 'gato015';

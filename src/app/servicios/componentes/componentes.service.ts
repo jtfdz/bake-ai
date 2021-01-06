@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { share } from "rxjs/operators";
+import { Observable, BehaviorSubject, from } from 'rxjs';
+import { distinctUntilChanged } from "rxjs/operators";
 import { toRomaji } from 'wanakana';
 import urls from 'src/assets/json/urls.json';
 declare const getFromStore: any;
@@ -87,6 +87,8 @@ export class ComponentesService {
 	setAudioCargando(cambio: boolean) { this.audioCargando.next(cambio); }
 
 
+
+
 	//mejorar: make this into ONE
 	//un boolean de si es palabra o kana pelao y de ahi actuar con su tertiary ?
 	reproducirPalabras(archivo: string) { 
@@ -98,22 +100,15 @@ export class ComponentesService {
 	  this.setAudioCargando(false)
 	}
 
-
-	reproducirAudio(archivo: string) { 
-	  this.setAudioCargando(true)
+	reproducirAudio(archivo: string) {
+	  this.setAudioCargando(true) 
 	  let audio = new Audio();
 	  audio.src = urls.audio + '/' + archivo + '.wav';
 	  audio.load();
-	  audio.play();		
-	  this.setAudioCargando(false)
+	  audio.play();	
+	  audio.onended = () => { this.setAudioCargando(false) }
 	}
 
-	// setActivarSpinnerPrincipal(cambio: boolean) { this.spinnerActivado.next(cambio); }
-
-	// getActivarSpinnerPrincipal(): Observable<boolean> {
-	//   this.spinnerActivado.complete();
-	//   return this.spinnerActivado.pipe(share());
-	// }
 
 
 

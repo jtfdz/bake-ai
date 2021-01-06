@@ -4,7 +4,6 @@ declare const modalFunction: any;
 @Component({
   selector: 'app-fixed-corner',
   templateUrl: './fixed-corner.component.html',
-  styleUrls: ['./fixed-corner.component.css']
 })
 export class FixedCornerComponent implements OnInit {
 

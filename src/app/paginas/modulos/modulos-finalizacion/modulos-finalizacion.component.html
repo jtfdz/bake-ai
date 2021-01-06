@@ -1,12 +1,14 @@
+
+
+
 <section class="hero has-background-light" style="height: 315px;">
-	<div class="hero-header">
+	<div class="hero-header" *ngIf="!loading">
 	<div class="container has-stuff-centered is-flex">
 
 
 
-
 	<div class="columns">
-		<div class="column is-4 has-stuff-centered is-flex">
+		<div class="column is-3">
 
 			<section class="section">
 
@@ -14,7 +16,9 @@
 
 			<div class="box has-text-justified has-background-link">
 			    <p class="subtitle is-7">
-					vocales, s, k, 
+					<span *ngFor="let item of kanasDesbloqueadas; let i=index">
+					    <span>{{item}}</span><span class="list-format" *ngIf="i!=kanasDesbloqueadas.length-1">,</span>
+					</span>
 			    </p>
 			</div>
 
@@ -22,7 +26,9 @@
 
 			<div class="box has-text-justified has-background-danger">
 			    <p class="subtitle is-7">
-					vocales, especiales, n, h, m 
+					<span *ngFor="let item of kanasBloqueados; let i=index">
+					    <span> {{item}}</span><span class="list-format" *ngIf="i!=kanasBloqueados.length-1">, </span>
+					</span>
 			    </p>
 			</div>
 
@@ -30,64 +36,42 @@
 
 		</div>	
 
-		<div class="column is-offset-1 is-2">
-			<br><br>
-			<section class="section has-stuff-centered is-flex">
-				<app-imagen-figure [medida]="'128'" [imgUrl]="'modulos/correcto3.gif'"></app-imagen-figure>
-			</section>
+		<div class="column is-1">
+			<br>
+			<section class="section">
+			<app-imagen-figure [medida]="'128'" [imgUrl]="'modulos/correcto3.gif'"></app-imagen-figure>
 			<span class="tag is-medium is-warning">¡bien, {{nombreUsuario}}!</span>
+			</section>
+			
+			
 		</div>		
 
-		<div class="column is-offset-1 is-4">
+		<div class="column is-offset-2 is-5">
 			
-        <br>
-        	<div class="block">
+        	<div class="block has-text-centered">
 
-				<div class="field is-grouped is-grouped-multiline">
+				<div class="field has-text-centered">
 
-				  <div class="control">
+				  <div class="control full-width">
 				    <div class="tags has-addons">
-				      <span class="tag is-small is-dark">acertado:</span>
-				      <span class="tag is-small is-info">50 / 100%</span>
+				      <span class="tag is-medium is-dark">acertado:</span>
+				      <span class="tag is-medium is-primary">{{porcentajeDeAciertos().toFixed(2)}}% de 100%</span>
 				    </div>
 				  </div>
 
 
-				  <div class="control">
-				      <span class="tag is-small is-dark">tu estilo de aprendizaje:</span>
-				  </div>
-
-				  <div class="control">
-				    <div class="tags has-addons">
-				      <span class="tag is-small is-dark">mayor retención:</span>
-				      <span class="tag is-small is-success">visual</span>
-				    </div>
-				  </div>
-
-				  <div class="control">
-				    <div class="tags has-addons">
-				      <span class="tag is-small is-dark">retención media:</span>
-				      <span class="tag is-small is-warning">auditiva</span>
-				    </div>
-				  </div>
-
-				  <div class="control">
-				    <div class="tags has-addons">
-				      <span class="tag is-small is-dark">menor retención:</span>
-				      <span class="tag is-small is-primary">por escritura</span>
-				    </div>
-				  </div>
 				</div>
 
+				<app-pie-chart-estilos></app-pie-chart-estilos>
 
 
 
         	</div>
 
 
-        	<br>
+        
         	<div class="block">
-        	<a (click)="location.back()" class="button is-success is-fullwidth">¡listo!</a>
+        	<a (click)="location.back()" class="button is-success is-fullwidth">¡listo! ¡guardar resultados!</a>
         	</div>
 
         
@@ -105,24 +89,14 @@
 
 
 
-        
 
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-           
-
+	</div>
+	</div>
+	<div class="hero-body" *ngIf="loading">
+	<div class="container">
+		<section class="section">
+			<ngx-spinner bdColor = "rgba(0,0,0,0)" size = "medium" color = "#71e096" type = "square-loader" [fullScreen] = "false"></ngx-spinner>
+		</section>
 	</div>
 	</div>
 </section>
