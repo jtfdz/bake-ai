@@ -287,17 +287,6 @@ function modeloDeAprendizaje(kana){
 
   setInStore('modelo.dataParaModulos', dataParaModulo)
 
-  //mejorar ESTO LO BORRAS CHICA
-    var fuckthis = getFromStore('progreso.hiragana.kanaBody');
-
-    fuckthis[9].iniciada = true;
-    fuckthis[15].iniciada = true;
-    fuckthis[9].desbloqueado = true;
-    fuckthis[15].desbloqueado = true;
-
-    setInStore('progreso.hiragana.kanaBody', fuckthis)
-
-    //console.log(getFromStore('progreso.hiragana.kanaBody'))
 }
 
 String.prototype.shuffleString = function () {

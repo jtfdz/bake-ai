@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentesModule } from 'src/app/modules/componentes/componentes.module';
 import { PrimerInicioComponent } from './primer-inicio.component';
 
 describe('PrimerInicioComponent', () => {
@@ -8,6 +8,7 @@ describe('PrimerInicioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ ComponentesModule ]
       declarations: [ PrimerInicioComponent ]
     })
     .compileComponents();

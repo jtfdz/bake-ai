@@ -32,9 +32,9 @@ function runIA(){
 	};
 
 	return new Promise(resolve => {
-		pyshell.PythonShell.run(pathPython, options, function (err, results) {
+		pyshell.PythonShell.run(pathPython, options, function (err, respuesta) {
 		  if (err) throw err;
-		  var resultado = JSON.parse(results).resultado;
+		  var resultado = JSON.parse(respuesta).resultado;
 		  resolve(resultado)
 		});	
 	});
