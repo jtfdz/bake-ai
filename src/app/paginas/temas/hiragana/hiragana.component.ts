@@ -6,12 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HiraganaComponent implements OnInit {
 
-  tablaActivada: string = 'pura';
-
   constructor() { }
   
-
-
   ngOnInit(): void {
   }
 

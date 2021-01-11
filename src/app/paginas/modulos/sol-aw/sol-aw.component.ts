@@ -26,8 +26,7 @@ export class SolAwComponent implements OnInit {
 	}
 
 	activarAudio(): void{
-		//mejorar loading: un spinner mientras carga XD
-		this.componentesService.reproducirAudio(this.dataSol[0])
+		this.componentesService.reproducirAudio(this.dataSol[0], true)
 	}
 
 	solRespuesta(): void{ 

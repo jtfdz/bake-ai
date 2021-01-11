@@ -16,7 +16,7 @@ export class ComponentesService {
 	private colorCard: BehaviorSubject<string> = new BehaviorSubject<string>('success');
 
 	private nombreUsuario: BehaviorSubject<string> = new BehaviorSubject<string>(getFromStore('usuario.nombre'));
-	private usuarioIniciado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('usuario.iniciado'));
+	private usuarioIniciado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('usuario.toursIniciados.primerinicio'));
 	private gustoUsuario: BehaviorSubject<string> = new BehaviorSubject<string>(getFromStore('usuario.gusto'));
 	private estiloMayorRetencion: BehaviorSubject<string> = new BehaviorSubject<string>(getFromStore('retencion.mayor'));
 
@@ -59,7 +59,7 @@ export class ComponentesService {
 	  return this.usuarioIniciado.asObservable();
 	}
 
-	setUsuarioIniciado(cambio: boolean) { this.usuarioIniciado.next(cambio); setInStore('usuario.iniciado', cambio); }
+	setUsuarioIniciado(cambio: boolean) { this.usuarioIniciado.next(cambio); setInStore('usuario.toursIniciados.primerinicio', cambio); }
 
 	getUsuarioIniciadoInicioGeneral(): Observable<boolean> {
 	  return this.usuarioIniciadoInicioGeneral.asObservable();
@@ -89,23 +89,15 @@ export class ComponentesService {
 
 
 
-	//mejorar: make this into ONE
-	//un boolean de si es palabra o kana pelao y de ahi actuar con su tertiary ?
-	reproducirPalabras(archivo: string) { 
-	  this.setAudioCargando(true)
+	reproducirAudio(archivo: string, kana: boolean) {
+	  this.setAudioCargando(true); //mejorar: ¿borrar?
+	  let kanaRuta = urls.audio + '/' + archivo + '.wav';
+	  let palabraRuta = urls.audio + '/gustos/' +  toRomaji(archivo) + '.wav';
 	  let audio = new Audio();
-	  audio.src = urls.audio + '/gustos/' +  toRomaji(archivo) + '.wav';
-	  audio.load();
-	  audio.play();		
-	  this.setAudioCargando(false)
-	}
-
-	reproducirAudio(archivo: string) {
-	  this.setAudioCargando(true) 
-	  let audio = new Audio();
-	  audio.src = urls.audio + '/' + archivo + '.wav';
+	  audio.src = kana? kanaRuta: palabraRuta;
 	  audio.load();
 	  audio.play();	
+
 	  audio.onended = () => { this.setAudioCargando(false) }
 	}
 

@@ -71,7 +71,7 @@
 
         
         	<div class="block">
-        	<a (click)="location.back()" class="button is-success is-fullwidth">¡listo! ¡guardar resultados!</a>
+        	<app-boton-con-spinner (botonPresionado)="location.back()" [textoInterior]="'¡listo! ¡listo!'" [nombreClase]="'button is-success is-fullwidth'"></app-boton-con-spinner>
         	</div>
 
         

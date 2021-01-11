@@ -3,7 +3,6 @@ import { TemasService } from 'src/app/servicios/temas/temas.service';
 import { ModulosService } from 'src/app/servicios/modulos/modulos.service';
 declare const modalFunction: any;
 declare const getEbCN: any;
-declare const desbloqueaNuevo: any;
 
 @Component({
   selector: 'app-temas-instrucciones-y-examinacion',

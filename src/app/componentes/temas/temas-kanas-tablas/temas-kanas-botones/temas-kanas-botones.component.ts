@@ -35,7 +35,7 @@ export class TemasKanasBotonesComponent implements OnInit {
     this.componentesService.getAudioCargando().subscribe(
      audioCargando =>  this.audioCargando = audioCargando
      ); 
-    this.componentesService.reproducirAudio(this.temasService.getRomaji(getEbI('tituloKanaCard').innerText)); 
+    this.componentesService.reproducirAudio(this.temasService.getRomaji(getEbI('tituloKanaCard').innerText), true); 
   }
 
 

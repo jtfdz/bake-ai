@@ -20,9 +20,9 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
   usuarioIniciadoModulos: boolean = false;
   sonidosAccionados: string[] = [];
   completadoEscrito: boolean = false;
-  respuestas: string[] = ["","","","",""];
-  progreso: boolean[] = [false,false,false,false,false];
-  respuestasTraducidas: string[] = ["","","","",""];
+  respuestas: string[] = [];
+  progreso: boolean[] = [];
+  respuestasTraducidas: string[] = [];
   completado: boolean = false;
 
 
@@ -35,6 +35,9 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
     this.componentesService.getUsuarioIniciadoModulos().subscribe(
      usuarioIniciadoModulos => this.usuarioIniciadoModulos = usuarioIniciadoModulos
     ); 
+    this.respuestas = Array<string>(this.dataTeoria.length).fill("")
+    this.respuestasTraducidas = Array<string>(this.dataTeoria.length).fill("")
+    this.progreso = Array<boolean>(this.dataTeoria.length).fill(false)
 
   }
 
@@ -46,14 +49,13 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
   }
 
   activarAudio(kana: string, evento: any): void{
-    //mejorar loading: un spinner mientras carga XD
-    this.componentesService.reproducirAudio(kana)
+    this.componentesService.reproducirAudio(kana, true)
     if(evento.currentTarget.className.search(' is-success') == -1){
       evento.currentTarget.className += ' is-success';
       this.sonidosAccionados.push(kana)
     }
 
-  this.completado = (this.sonidosAccionados.length > 4) && ( this.completadoEscrito );
+  this.completado = (this.sonidosAccionados.length > this.dataTeoria.length-1) && ( this.completadoEscrito );
 
   }
 
@@ -77,7 +79,7 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
       this.completadoEscrito = false;
     }
     
-    this.completado = (this.sonidosAccionados.length > 4) && ( this.completadoEscrito );
+    this.completado = (this.sonidosAccionados.length > this.dataTeoria.length-1) && ( this.completadoEscrito );
 
   }
 

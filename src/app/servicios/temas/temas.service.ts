@@ -236,8 +236,8 @@ export class TemasService {
   tituloSeccion: string = 'general';
   contenidoTitulo: string = 'historia';
 
-  private tituloTema: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  private temaContenido: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private tituloTema: BehaviorSubject<string> = new BehaviorSubject<string>('general > historia');
+  private temaContenido: BehaviorSubject<string> = new BehaviorSubject<string>(teoria.general.historia);
   private temaAprendido: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('aprender.'+this.tituloSeccion+'.'+this.contenidoTitulo));
 
 
@@ -498,8 +498,6 @@ export class TemasService {
   }
 
 
-
-    target: string[] = [];
 
 
 

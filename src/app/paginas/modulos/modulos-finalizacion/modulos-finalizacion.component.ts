@@ -13,7 +13,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class ModulosFinalizacionComponent implements OnInit {
 
 	nombreUsuario: string = '';
-	loading: boolean = false;
+	loading: boolean = true;
 	kanasDesbloqueadas: string[] = [];
 	kanasBloqueados: string[] = [];
 	valorAciertos: number = 0;
@@ -23,6 +23,12 @@ export class ModulosFinalizacionComponent implements OnInit {
 	constructor(private modulosService: ModulosService, private temasService: TemasService, private spinnerModulos: NgxSpinnerService, public location: Location, private componentesService: ComponentesService) { }
 
 	ngOnInit(): void {
+		this.modulosService.getResultadosCargando().subscribe(
+			resultadosCargando => {
+				this.loading = resultadosCargando
+			}
+		); 
+
 		this.componentesService.getNombreUsuario().subscribe(
 		 nombreUsuario => this.nombreUsuario = nombreUsuario
 		); 

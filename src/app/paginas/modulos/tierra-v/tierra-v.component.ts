@@ -37,7 +37,7 @@ export class TierraVComponent implements OnInit {
   }
 
   tierraClick(item: string, event: any){
-    this.componentesService.reproducirPalabras(item);
+    this.componentesService.reproducirAudio(item, false);
     let tierraBoton = getEbCN('button-tierra');
     for (var i = 0; i < tierraBoton.length; i++) {
       tierraBoton[i].className = tierraBoton[i].className.replace(" is-dark", " is-light");

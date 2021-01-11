@@ -31,7 +31,7 @@ export class OrigenComponent implements OnInit {
 		if(respuesta['weight'] != 'teoria_respondida'){
 			this.modulosService.setWeightsArray(respuesta['weight'])
 		}
-		(respuesta['acierto'])? this.modulosService.setAciertosValor(): this.modulosService.setFallosValor();
+		this.modulosService.setAciertoOFallo(respuesta['acierto'])
 		this.respuestaOrigen.emit(respuesta['acierto']);
 	}
 

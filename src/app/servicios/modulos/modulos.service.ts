@@ -18,113 +18,83 @@ export class ModulosService {
 
   constructor() { }
 
-	private arrayOfModulos: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(getFromStore('modelo.modulos'));
+  	//loading los resultados para módulo finalización
+	private resultadosCargando: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+	getResultadosCargando(): Observable<boolean> { return this.resultadosCargando.asObservable(); }
+	setResultadosCargando(cambio:boolean) { this.resultadosCargando.next(cambio); }
 
+	//para la barra de progreso del header para módulos
 	private progresoArr: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
+	getProgresoArray(): Observable<number[]> { return this.progresoArr.asObservable(); }
+	setProgresoArray(cambio: number[]) { this.progresoArr.next(cambio); }
+
+	progresoAnimacionArray: number[] = [];
 	private progresoArrIndex: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-
-	private dataParaModulos: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(getFromStore('modelo.dataParaModulos'));
-
-	private weightsArray: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-	private resultadosArray: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
-
-  	private actualTemaActivado: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
-	getModulosAprendizaje(): Observable<string[]> {
-	  return this.arrayOfModulos.asObservable();
+	getProgresoAvance(): Observable<number> { return this.progresoArrIndex.asObservable(); }
+	setProgresoAvance(cambio: number) { 
+		this.getProgresoArray().subscribe(
+	     progresoArr => this.progresoAnimacionArray = progresoArr
+	    ); 
+		animateValue('barraDeProgreso', this.progresoAnimacionArray[this.progresoArrIndex.value], this.progresoAnimacionArray[cambio], 1000); 
+		this.progresoArrIndex.next(cambio); 
 	}
 
-	setDataParaModulos(kana: string) { this.actualTemaActivado.next(kana); modeloDeAprendizaje(kana); this.arrayOfModulos.next(getFromStore('modelo.modulos')); this.dataParaModulos.next(getFromStore('modelo.dataParaModulos')); }
+	//tema en curso
+	private actualTemaActivado: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
+	//datos para los módulos
+	private arrayOfModulos: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(getFromStore('modelo.modulos'));
+	private dataParaModulos: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(getFromStore('modelo.dataParaModulos'));
+	getModulosAprendizaje(): Observable<string[]> { return this.arrayOfModulos.asObservable(); }
+	setDataParaModulos(kana: string) { 
+		this.actualTemaActivado.next(kana); 
+		modeloDeAprendizaje(kana); 
+		this.arrayOfModulos.next(getFromStore('modelo.modulos')); 
+		this.dataParaModulos.next(getFromStore('modelo.dataParaModulos'));
+		this.aciertosSuma.next(0); 
+		this.fallosSuma.next(0);  
+		this.weightsArray.next([]); 
+	}
 	getDataParaModulos(): Observable<any[]> {
 	  return this.dataParaModulos.asObservable();
 	}
 
-	getProgresoArray(): Observable<number[]> {
-	  return this.progresoArr.asObservable();
-	}
 
-	setProgresoArray(cambio: number[]) { this.progresoArr.next(cambio); }
-
-
-	getProgresoAvance(): Observable<number> {
-	  return this.progresoArrIndex.asObservable();
-	}
-
-	progresoAnimacion: number = 0;
-	progresoAnimacionArray: number[] = [];
-
-	setProgresoAvance(cambio: number) { 
-		this.getProgresoAvance().subscribe(
-	     progresoArrIndex => this.progresoAnimacion = progresoArrIndex
-	    ); 
-		this.getProgresoArray().subscribe(
-	     progresoArr => this.progresoAnimacionArray = progresoArr
-	    ); 
-		animateValue('barraDeProgreso', this.progresoAnimacionArray[this.progresoAnimacion], this.progresoAnimacionArray[cambio], 1000); 
-		this.progresoArrIndex.next(cambio); 
-	}
-
-	getActualTemaActivado(): Observable<string> {
-		return this.actualTemaActivado.asObservable();
-	}
-
+	//arreglo[] de weights
 	arrayOfWeights: string[] = [];
-
-	getWeightsArray(): Observable<string[]> {
-		return this.weightsArray.asObservable();
-	}
-
+	private weightsArray: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+	getWeightsArray(): Observable<string[]> { return this.weightsArray.asObservable(); }
 	setWeightsArray(weight_nombre: string) {
-		this.getWeightsArray().subscribe(
-		    weightsArray => this.arrayOfWeights = weightsArray
-		); 
-		this.arrayOfWeights.push(weight_nombre)
+		this.getWeightsArray().subscribe( weightsArray => this.arrayOfWeights = weightsArray ); 
+		this.arrayOfWeights.push(weight_nombre);
 		this.weightsArray.next(this.arrayOfWeights); 
 	}
 
 
-	getResultadosArray(): Observable<number[]> {
-	  return this.resultadosArray.asObservable();
-	}
-
-
-
+	//aciertos de la actual examinación
 	private aciertosSuma: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 	private fallosSuma: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-	
-
-	getAciertosValor(): Observable<number> {
-		return this.aciertosSuma.asObservable();
-	}
-
-	setAciertosValor() {
-		var temporalAciertosValor = 0;
-		this.getAciertosValor().subscribe(
-		    aciertosSuma => {
-		    	temporalAciertosValor = aciertosSuma+1
-		    }
-		); 
-		this.aciertosSuma.next(temporalAciertosValor); 
-	}
-
-
-
-	getFallosValor(): Observable<number> {
-		return this.fallosSuma.asObservable();
-	}
-
-	setFallosValor() {
-		var temporalFallosValor = 0;
-		this.getFallosValor().subscribe(
-		    fallosSuma => {
-		    	temporalFallosValor = fallosSuma+1
-		    }
-		); 
-		this.fallosSuma.next(temporalFallosValor); 
+	getAciertosValor(): Observable<number> { return this.aciertosSuma.asObservable(); }
+	getFallosValor(): Observable<number> { return this.fallosSuma.asObservable(); }
+	setAciertoOFallo(acierto: boolean){
+		var temporalValor = 0;
+		if(acierto){
+			this.getAciertosValor().subscribe(
+		    	aciertosSuma => { temporalValor = aciertosSuma+1 }
+			); 
+			this.aciertosSuma.next(temporalValor); 
+		}else{
+			this.getFallosValor().subscribe(
+		    	fallosSuma => { temporalValor = fallosSuma+1 }
+			); 
+			this.fallosSuma.next(temporalValor);
+		}
 	}
 
 
+	//métodos para los resultados
+	private resultadosArray: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
+	getResultadosArray(): Observable<number[]> { return this.resultadosArray.asObservable(); }
 
 	devolverRetenciones(arrayOfPorcentajes: number[]){
 		//arrayOfPorcentajes siempre vendrá en orden v/a/e
@@ -148,7 +118,6 @@ export class ModulosService {
 	}
 
 
-	//falta sumar al porcentaje del kana + ir desbloqueando
 	setResultadosArray(cambio: number[]) { 
 		this.resultadosArray.next(cambio);
 		setInStore('estilo.visual.porcentaje', cambio[0]) 
@@ -156,37 +125,26 @@ export class ModulosService {
 		setInStore('estilo.escritura.porcentaje', cambio[2])
 		this.devolverRetenciones(cambio);
 		
-
-		var kanaNombre = '';
+		var kanaNombre = this.actualTemaActivado.value;
 		var actualValorVecesEstudiado = 0;
 		var actualValorAciertos = 0;
 		var actualValorFallos = 0;
-		this.getActualTemaActivado().subscribe(
-		    actualTemaActivado => {
-		    	kanaNombre = actualTemaActivado;
-		    	
-		    	actualValorVecesEstudiado = getFromStore('progreso.'+kanaNombre+'.vecesEstudiado') + 1;
-		    	setInStore('progreso.'+kanaNombre+'.vecesEstudiado', actualValorVecesEstudiado);
 
-				actualValorAciertos = getFromStore('progreso.'+kanaNombre+'.aciertos')
-				actualValorFallos = getFromStore('progreso.'+kanaNombre+'.fallos')
-				
-				this.getAciertosValor().subscribe(
-				    aciertosSuma => setInStore('progreso.'+kanaNombre+'.aciertos', actualValorAciertos+aciertosSuma)
-				); 
+    	actualValorVecesEstudiado = getFromStore('progreso.'+kanaNombre+'.vecesEstudiado') + 1;
+    	setInStore('progreso.'+kanaNombre+'.vecesEstudiado', actualValorVecesEstudiado);
 
-				this.getFallosValor().subscribe(
-				   	fallosSuma => setInStore('progreso.'+kanaNombre+'.fallos', actualValorFallos+fallosSuma)
-				); 
-				aprobarIniciado(kanaNombre);
-				desbloqueaNuevo(kanaNombre);
-		    }
-		); 
+		actualValorAciertos = getFromStore('progreso.'+kanaNombre+'.aciertos')
+		actualValorFallos = getFromStore('progreso.'+kanaNombre+'.fallos')
+		setInStore('progreso.'+kanaNombre+'.aciertos', actualValorAciertos+this.aciertosSuma.value)
+		setInStore('progreso.'+kanaNombre+'.fallos', actualValorFallos+this.fallosSuma.value)
 
+		aprobarIniciado(kanaNombre);
+		this.setResultadosCargando(false)
 	}
 
-
+	//el usuario responde el último módulo
 	calcularEstiloDeAprendizaje(): void {
+		this.setResultadosCargando(true)
 		setIA(this.arrayOfWeights)
 		var x;
 		defer(async function() {

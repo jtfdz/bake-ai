@@ -37,8 +37,7 @@ const schema = {
       default: {
         gusto: "animales", 
         nombre: "", 
-        iniciado: false, 
-        toursIniciados: {iniciogeneral: false, modulos: false}
+        toursIniciados: {primerinicio: false, iniciogeneral: false, modulos: false}
         }
     },
     //aquí cuando la miércoles de teoría la defina XD
@@ -187,11 +186,11 @@ function arrayUnique(array) {
 //como se dividen los modulos: el doble de mayor, uno y medio del medio, y uno del más bajo
 function asignarModelo(mayor, medio, bajo){
 	var modeloArray = [];
-	pushArray(modeloArray, mayor);
-	pushArray(modeloArray, mayor);
-  pushArray(modeloArray, mayor);
-  pushArray(modeloArray, medio);
-  pushArray(modeloArray, medio);
+	// pushArray(modeloArray, mayor);
+	// pushArray(modeloArray, mayor);
+ //  pushArray(modeloArray, mayor);
+ //  pushArray(modeloArray, medio);
+ //  pushArray(modeloArray, medio);
 	//pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
 	pushArray(modeloArray, bajo);
 	return shuffle(modeloArray);
@@ -426,7 +425,6 @@ function keyBloqueada(kanadb) {
 
 
 
-//sirve, lo único no probado es apruebaParaNuevo mejorar XD
 function desbloqueaNuevo(kana){
 	if(apuebaParaNuevo(kana)){ 
 		var bodyKana = getFromStore('progreso.'+kana+'.kanaBody')
@@ -440,9 +438,6 @@ function desbloqueaNuevo(kana){
 
 	}
 }
-
-
-
 
 
 //cuando la evaluación se acaba, lo desbloqueado no iniciado pasa a iniciado también
@@ -461,6 +456,7 @@ var contarPorcentaje = 0;
   }
   var porcentajeTotal = (contarPorcentaje/26) * 78;
   setInStore('progreso.'+kana+'.porcentaje', porcentajeTotal)
+  desbloqueaNuevo(kana);
 };
 
 

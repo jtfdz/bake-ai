@@ -27,8 +27,7 @@ export class FuegoAwComponent implements OnInit {
 
 
 	activarAudio(kana: string): void{
-		//mejorar loading: un spinner mientras carga XD
-		this.componentesService.reproducirAudio(kana)
+		this.componentesService.reproducirAudio(kana, true)
 	}
 
 	fuegoRespuesta(): void{ 
