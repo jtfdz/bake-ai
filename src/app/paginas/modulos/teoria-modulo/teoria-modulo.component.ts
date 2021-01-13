@@ -8,7 +8,6 @@ declare const setInputToWakaByMultiple: any;
 @Component({
   selector: 'app-teoria-modulo',
   templateUrl: './teoria-modulo.component.html',
-  styleUrls: ['./teoria-modulo.component.css']
 })
 export class TeoriaModuloComponent implements OnInit, AfterViewInit {
 
@@ -29,14 +28,11 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
   constructor(private shepherdPasosService: ShepherdPasosService, private componentesService: ComponentesService) { }
 
   ngOnInit(): void {
-    for (var j = 0; j < this.dataTeoria.length; j++) {
-      this.dataTeoriaRomaji.push(toRomaji(this.dataTeoria[j]))
-    }
+    for(var kana of this.dataTeoria) { this.dataTeoriaRomaji.push(toRomaji(kana)) }
     this.componentesService.getUsuarioIniciadoModulos().subscribe(
      usuarioIniciadoModulos => this.usuarioIniciadoModulos = usuarioIniciadoModulos
     ); 
     this.respuestas = Array<string>(this.dataTeoria.length).fill("")
-    this.respuestasTraducidas = Array<string>(this.dataTeoria.length).fill("")
     this.progreso = Array<boolean>(this.dataTeoria.length).fill(false)
 
   }
@@ -54,35 +50,18 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
       evento.currentTarget.className += ' is-success';
       this.sonidosAccionados.push(kana)
     }
-
-  this.completado = (this.sonidosAccionados.length > this.dataTeoria.length-1) && ( this.completadoEscrito );
-
+    this.completado = (this.sonidosAccionados.length > this.dataTeoria.length-1) && ( this.completadoEscrito );
   }
 
   chequearEscrito() {
 
-    for (var i = 0; i < this.respuestas.length; i++) {
-      this.respuestasTraducidas[i] = isHiragana(this.dataTeoria[0])? toHiragana(this.respuestas[i]): toKatakana(this.respuestas[i]);
+   for(var i=0; i<this.respuestas.length; i++){ 
+      this.progreso[i] = (this.respuestas[i]== this.dataTeoriaRomaji[i])? true: false;
     }
-
-   for(var i=0; i<this.respuestasTraducidas.length; i++){ 
-      if(this.respuestasTraducidas[i] == this.dataTeoria[i]){ 
-        this.progreso[i] = true;   
-      }else{  
-        this.progreso[i] = false; 
-      }
-    }
-
-    if(!this.progreso.includes(false)){
-      this.completadoEscrito = true;
-    }else{
-      this.completadoEscrito = false;
-    }
-    
+    this.completadoEscrito = (!this.progreso.includes(false))? true: false;  
     this.completado = (this.sonidosAccionados.length > this.dataTeoria.length-1) && ( this.completadoEscrito );
 
   }
-
 
 
   teoriaRespuesta(){

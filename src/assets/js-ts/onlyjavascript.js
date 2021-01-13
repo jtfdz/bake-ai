@@ -79,10 +79,9 @@ const schema = {
     estilo: {
       type: 'object',
       default: {
-      	//general: {porcentaje: 0, aciertos: 0, fallos: 0},
-        visual: {porcentaje: 33.334}, //, aciertos: 0, fallos: 0},
-        auditiva: {porcentaje: 33.333}, //, aciertos: 0, fallos: 0},
-        escritura: {porcentaje: 33.333}, //, aciertos: 0, fallos: 0}     
+        visual: {porcentaje: 33.334},
+        auditiva: {porcentaje: 33.333}, 
+        escritura: {porcentaje: 33.333},     
       }
     },
 
@@ -109,9 +108,7 @@ const schema = {
       }
     },
 
-
 };
-
 
 
 const store = new Store({schema});
@@ -189,8 +186,8 @@ function asignarModelo(mayor, medio, bajo){
 	// pushArray(modeloArray, mayor);
 	// pushArray(modeloArray, mayor);
  //  pushArray(modeloArray, mayor);
- //  pushArray(modeloArray, medio);
- //  pushArray(modeloArray, medio);
+  // pushArray(modeloArray, medio);
+  // pushArray(modeloArray, medio);
 	//pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
 	pushArray(modeloArray, bajo);
 	return shuffle(modeloArray);
@@ -200,7 +197,6 @@ function asignarModelo(mayor, medio, bajo){
 
 //leyendo la configuración de retención se asignan los módulos
 function modeloDeAprendizaje(kana){
-
 
 	var mayor = getFromStore('retencion.mayor'), media = getFromStore('retencion.media'), baja = getFromStore('retencion.baja');
   var esHiragana = (kana==='hiragana');
@@ -288,25 +284,23 @@ function modeloDeAprendizaje(kana){
 
 }
 
-String.prototype.shuffleString = function () {
-    var a = this.split(""),
-        n = a.length;
 
-    for(var i = n - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
-    return a.join("");
-}
 
 
 function porTipoDeModulo(modulo, data, dataGustosArray){
 
+  
+  if(modulo!='teoria'){
+    var randomKanaArrayRandom = getRandom(data, 1)[0];
+    var randomKanaRandom = getRandom(randomKanaArrayRandom, 1)[0];
+    if(dataGustosArray.length > 0){
+      var gustosArrayRandom = getRandom(dataGustosArray, 1)[0];
+      var gustosRestantesRandom = getRandom(get4gustos(gustosArrayRandom.original), 3);
+      gustosRestantesRandom.push(gustosArrayRandom.original)
+    }
+    var randomKanaArrayShuffled = shuffle(randomKanaArrayRandom);
+  }
 
-
-  //mejorar: viene de un loop y aqui se pide mucho kana random asi que podria iniciarse aqui para el modulo
 
   switch(modulo){
 
@@ -316,18 +310,13 @@ function porTipoDeModulo(modulo, data, dataGustosArray){
   
     case 'luna': //se envia el kana a adivinar su romaji más la respuesta (el romaji)
       var dataLuna = [];
-      var randomKanaArray = getRandom(data, 1)[0];
-      var randomKana = getRandom(randomKanaArray, 1)[0];
-      dataLuna[0] = randomKana;
-      dataLuna[1] = wanakana.toRomaji(randomKana);      
+      dataLuna[0] = randomKanaRandom;
+      dataLuna[1] = wanakana.toRomaji(randomKanaRandom);      
       return dataLuna;
     break;
 
     case 'arbol': //con gustos 
       var dataArbol = [];
-      var gustosArrayRandom = getRandom(dataGustosArray, 1)[0];
-      var gustosRestantesRandom = getRandom(get4gustos(gustosArrayRandom.original), 3);
-      gustosRestantesRandom.push(gustosArrayRandom.original)
       dataArbol[0] = gustosArrayRandom.original;
       dataArbol[1] = wanakana.toRomaji(gustosArrayRandom.original);
       dataArbol[2] = gustosArrayRandom.gusto;
@@ -335,22 +324,8 @@ function porTipoDeModulo(modulo, data, dataGustosArray){
       return dataArbol;
     break;
 
-
-    case 'agua': 
-      var dataAgua = [];
-      var straightArray = data;
-      var randomKanaArray = getRandom(data, 1)[0];
-      var randomKana = getRandom(randomKanaArray, 1)[0];
-      dataAgua[0] = wanakana.toRomaji(randomKana);
-      dataAgua[1] = randomKana;
-      return dataAgua;
-    break;
-
     case 'tierra': //con gustos
       var dataTierra = [];
-      var gustosArrayRandom = getRandom(dataGustosArray, 1)[0];
-      var gustosRestantesRandom = getRandom(get4gustos(gustosArrayRandom.original), 3);
-      gustosRestantesRandom.push(gustosArrayRandom.original)
       dataTierra[0] = gustosArrayRandom.original;
       dataTierra[1] = wanakana.toRomaji(gustosArrayRandom.original);
       dataTierra[2] = gustosArrayRandom.gusto;
@@ -358,36 +333,38 @@ function porTipoDeModulo(modulo, data, dataGustosArray){
       return dataTierra;
     break;
 
+    case 'agua': 
+      var dataAgua = [];
+      dataAgua[0] = wanakana.toRomaji(randomKanaRandom);
+      dataAgua[1] = randomKanaRandom;
+      return dataAgua;
+    break;
 
     case 'oro': 
       var dataOro = [];
-      var randomKanaArray = shuffle(getRandom(data, 1)[0]);
       var randomRomajiArray = [];
-      for (var i = 0; i < randomKanaArray.length; i++) {
-        randomRomajiArray.push( wanakana.toRomaji(randomKanaArray[i]) )
+      for (var items of randomKanaArrayShuffled) {
+        randomRomajiArray.push( wanakana.toRomaji(items) )
       }
-      dataOro[0] = randomKanaArray;
+      dataOro[0] = randomKanaArrayShuffled;
       dataOro[1] = randomRomajiArray;      
       return dataOro;
     break;
 
     case 'sol': 
       var dataSol = [];
-      var randomKanaArray = getRandom(data, 1)[0];
-      var randomKana = getRandom(randomKanaArray, 1)[0];
-      dataSol[0] = wanakana.toRomaji(randomKana);
-      dataSol[1] = randomKana;      
+      dataSol[0] = wanakana.toRomaji(randomKanaRandom);
+      dataSol[1] = randomKanaRandom;      
       return dataSol;
     break;
 
     case 'fuego': 
       var dataFuego = [];
-      var randomKanaArray = shuffle(getRandom(data, 1)[0]);
-      dataFuego[0] = randomKanaArray[0];
-      randomKanaArray.splice(0, 1);
+      dataFuego[0] = randomKanaArrayShuffled[0];
+      randomKanaArrayShuffled.splice(0, 1);
       var arrayOfResto = [];
-      for (var i = 0; i < randomKanaArray.length; i++) {
-        arrayOfResto.push(wanakana.toRomaji(randomKanaArray[i]))
+      for (var items of randomKanaArrayShuffled) {
+        arrayOfResto.push(wanakana.toRomaji(items))
       }
       dataFuego[1] = arrayOfResto;
       dataFuego[2] = wanakana.toRomaji(dataFuego[0]);
@@ -462,27 +439,6 @@ var contarPorcentaje = 0;
 
 
 
-//OBJS
-function removeObjectProperty(obj, property){
-	delete obj[property]
-	return obj
-}
-
-function getKeyByValue(object, value) {
-  return Object.keys(object).find(key => object[key] === value);
-}
-
-// mejorar: no es usada XD
-function siguienteKey(db, key) {
-  for (var i = 0; i < db.length; i++) {
-    if (db[i].key === key) {
-      return db[i + 1].key && db[i + 1].desbloqueado && db[i + 1].iniciado;
-    }
-  }
-};
-
-
-
 //DOM 
 function getEbI(name){
 	return document.getElementById(name);
@@ -514,21 +470,6 @@ function animateValue(id, start, end, duration) {
             clearInterval(timer);
         }
     }, stepTime);
-}
-
-
-//mejorar se usa? borrar
-function openTab(evt, nombreDelGusto) {
-	var i, tablinks;
-	tablinks = getEbCN("tab");
-	var isTrueSet = (getEbI("gustosPicker").getAttribute("disabled") == 'true');
-	if(isTrueSet){
-		for (i = 0; i < tablinks.length; i++) {
-		  tablinks[i].className = tablinks[i].className.replace(" is-active", "");
-		}
-		evt.currentTarget.className += " is-active";
-		setInStore('usuario.gusto', nombreDelGusto);
-	}
 }
 
 
@@ -621,9 +562,9 @@ function gustosPorKana(esHiragana, dataGustosArray){
     }
   }
 
-  for (var p = 0; p < kanaArrayDesbloqueo.length; p++) {
-    if(kanaArrayDesbloqueo[p].desbloqueado){
-      kanaDesbloqueoTrue.push(kanaArrayDesbloqueo[p].key)
+  for (var item of kanaArrayDesbloqueo) {
+    if(item.desbloqueado){
+      kanaDesbloqueoTrue.push(item.key)
     }
   }
 

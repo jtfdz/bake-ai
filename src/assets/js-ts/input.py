@@ -1,4 +1,4 @@
-import sys, json
+import sys, os, json
 
 # argumentos enviados
 lines = sys.argv[1]
@@ -37,12 +37,11 @@ def round_to_100_percent(number_set, digit_after_decimal=3):
     return [int(x) / float(10 ** digit_after_decimal) for x in unround_numbers]
 
 
-# la red neural 
+# la red neuronal 
 def ann():
 	output = [None] * 3
 	for element in range(len(inputsPorcentajes)):
 		output[element] = inputsPorcentajes[element]
-
 
 	for weightsIndex in weightsUsuario:
 		for element in range(len(output)):

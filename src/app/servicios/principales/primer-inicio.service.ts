@@ -24,6 +24,9 @@ export class PrimerInicioService {
 	  return this.isShow4.asObservable();
 	}
 
+
+
+
 	setShow2() { this.isShow2.next(true); }
 	setShow3() { this.isShow3.next(true); }
  	setShow4() { this.isShow4.next(true); }

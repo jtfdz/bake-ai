@@ -8,7 +8,6 @@ declare const setInStore: any;
 declare const modeloDeAprendizaje: any;
 declare const runIA: any;
 declare const setIA: any;
-declare const desbloqueaNuevo: any;
 declare const aprobarIniciado: any;
 
 @Injectable({

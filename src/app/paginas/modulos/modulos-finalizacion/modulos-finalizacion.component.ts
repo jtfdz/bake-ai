@@ -8,7 +8,6 @@ import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-modulos-finalizacion',
   templateUrl: './modulos-finalizacion.component.html',
-  styleUrls: ['./modulos-finalizacion.component.css']
 })
 export class ModulosFinalizacionComponent implements OnInit {
 

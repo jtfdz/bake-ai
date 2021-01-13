@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ComponentesService } from 'src/app/servicios/componentes/componentes.service';
 import urls from 'src/assets/json/urls.json';
 declare const modalFunction: any;
-declare const openTab: any;
 
 interface IndexObj {
   [index: string]: {};

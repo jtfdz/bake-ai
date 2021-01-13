@@ -5,7 +5,6 @@ import { TemasService } from 'src/app/servicios/temas/temas.service';
 @Component({
   selector: 'app-origen',
   templateUrl: './origen.component.html',
-  styleUrls: ['./origen.component.css'],
 })
 export class OrigenComponent implements OnInit {
 

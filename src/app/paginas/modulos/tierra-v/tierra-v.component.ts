@@ -5,7 +5,6 @@ declare const getEbCN: any;
 @Component({
   selector: 'app-tierra-v',
   templateUrl: './tierra-v.component.html',
-  styleUrls: ['./tierra-v.component.css']
 })
 export class TierraVComponent implements OnInit {
 

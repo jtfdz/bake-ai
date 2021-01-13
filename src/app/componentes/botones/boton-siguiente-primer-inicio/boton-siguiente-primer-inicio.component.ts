@@ -15,24 +15,22 @@ export class BotonSiguientePrimerInicioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public activar() { 
+  	public activar() { 
 
-	switch(this.siguienteSection) { 
-	   case '2': { 
-	      this.primerInicioService.setShow2();
-	      break; 
-	   }
-	   case '3': { 
-	      this.primerInicioService.setShow3(); 
-	      break; 
-	   } 
-	   case '4': { 
-	      this.primerInicioService.setShow4(); 
-	      break; 
-	   } 
-
-	} 
-
+		switch(this.siguienteSection) { 
+		   case '2': { 
+		      this.primerInicioService.setShow2();
+		      break; 
+		   }
+		   case '3': { 
+		      this.primerInicioService.setShow3(); 
+		      break; 
+		   } 
+		   case '4': { 
+		      this.primerInicioService.setShow4(); 
+		      break; 
+		   } 
+		} 
  	}
 
 }

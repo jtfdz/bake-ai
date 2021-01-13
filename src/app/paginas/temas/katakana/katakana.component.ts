@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KatakanaComponent implements OnInit {
 
-  tablaActivada: string = 'pura';
-
   constructor() { }
 
   ngOnInit(): void {

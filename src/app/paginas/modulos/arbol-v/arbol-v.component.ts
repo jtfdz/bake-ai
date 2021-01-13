@@ -5,7 +5,6 @@ declare const getEbCN: any;
 @Component({
   selector: 'app-arbol-v',
   templateUrl: './arbol-v.component.html',
-  styleUrls: ['./arbol-v.component.css']
 })
 export class ArbolVComponent implements OnInit {
 

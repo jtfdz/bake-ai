@@ -16,7 +16,6 @@ import { TemasInstruccionesYExaminacionComponent } from 'src/app/componentes/tem
 import { TemasKanjiTablaComponent } from 'src/app/componentes/temas/temas-kanji-tabla/temas-kanji-tabla.component';
 import { TemasTabsTeoriaComponent } from 'src/app/componentes/temas/temas-tabs-teoria/temas-tabs-teoria.component';
 import { TemasTabsTeoriaContenidoComponent } from 'src/app/componentes/temas/temas-tabs-teoria/temas-tabs-teoria-contenido/temas-tabs-teoria-contenido.component';
-import { TemasDropdownOptionsComponent } from 'src/app/componentes/temas/temas-dropdown-options/temas-dropdown-options.component';
 import { BotonesIconosTemasComponent } from 'src/app/componentes/temas/temas-instrucciones-y-examinacion/botones-iconos-temas/botones-iconos-temas.component';
 
 import { ModulosModule } from 'src/app/modules/modulos/modulos.module';
@@ -35,7 +34,6 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
   TemasKanasTablasComponent,
   TemasKanasBotonesComponent,
   BotonesIconosTemasComponent,
-  TemasDropdownOptionsComponent,
   TemasInferioresInicioComponent,
   TemasTabsTeoriaContenidoComponent,
   TemasInstruccionesYExaminacionComponent,
@@ -60,7 +58,6 @@ import { ComponentesModule } from 'src/app/modules/componentes/componentes.modul
   TemasKanasTablasComponent,
   TemasKanasBotonesComponent,
   BotonesIconosTemasComponent,
-  TemasDropdownOptionsComponent,
   TemasInferioresInicioComponent,
   TemasTabsTeoriaContenidoComponent,
   TemasInstruccionesYExaminacionComponent,

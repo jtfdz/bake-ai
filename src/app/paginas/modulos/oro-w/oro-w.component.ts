@@ -11,7 +11,6 @@ interface Array<T> {
 @Component({
   selector: 'app-oro-w',
   templateUrl: './oro-w.component.html',
-  styleUrls: ['./oro-w.component.css']
 })
 export class OroWComponent implements OnInit {
 

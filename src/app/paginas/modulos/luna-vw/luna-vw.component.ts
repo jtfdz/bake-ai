@@ -6,7 +6,6 @@ declare const setInputToWaka: any;
 @Component({
   selector: 'app-luna-vw',
   templateUrl: './luna-vw.component.html',
-  styleUrls: ['./luna-vw.component.css']
 })
 export class LunaVwComponent implements OnInit {
 
