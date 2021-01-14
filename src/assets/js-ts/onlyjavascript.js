@@ -183,12 +183,12 @@ function arrayUnique(array) {
 //como se dividen los modulos: el doble de mayor, uno y medio del medio, y uno del más bajo
 function asignarModelo(mayor, medio, bajo){
 	var modeloArray = [];
-	// pushArray(modeloArray, mayor);
-	// pushArray(modeloArray, mayor);
- //  pushArray(modeloArray, mayor);
-  // pushArray(modeloArray, medio);
-  // pushArray(modeloArray, medio);
-	//pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
+	pushArray(modeloArray, mayor);
+	pushArray(modeloArray, mayor);
+  pushArray(modeloArray, mayor);
+  pushArray(modeloArray, medio);
+  pushArray(modeloArray, medio);
+	pushArray(modeloArray, getRandom(medio, Math.floor(medio.length/2) ));
 	pushArray(modeloArray, bajo);
 	return shuffle(modeloArray);
 }
