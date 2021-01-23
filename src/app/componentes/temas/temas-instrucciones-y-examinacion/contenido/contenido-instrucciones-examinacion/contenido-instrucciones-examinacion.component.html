@@ -1,2 +1,119 @@
 <app-temas-modulos-titulos [temaTitulo]="'examinación'"></app-temas-modulos-titulos> 
 
+<app-temas-modulos-subtitulos [colorFondo]="'success'" [textoSubtitulo]="'los tipos de módulos'"></app-temas-modulos-subtitulos>
+
+<div class="notification has-text-justified is-success is-light">
+  cada módulo de examinación (accesibles a través del botón rosado de ¡examinación!) pertenecerá a uno o a varios pero no a todos los siguientes tipos de retención del aprendizaje:
+</div>
+
+<table class="table is-bordered is-striped　is-fullwidth">
+  <thead>
+        <tr>
+        	<th class="has-text-centered has-background-success-light">tipo</th>
+        	<th class="has-text-centered has-background-success-light">deberes</th>
+        </tr>
+  </thead>
+
+  <tbody>
+   <tr>
+      <td>visual</td>
+      <td>la información será presentada en pantalla y tu deber es identificar visualmente los requerimientos del módulo para luego cumplir sus objetivos</td>
+   </tr>
+   <tr>
+      <td>auditivo</td>
+      <td>los audios serán presentados en botones con forma de bocina y tu deber es dar click sobre ellas para reproducir su contenido, luego deberás procesar auditivamente la información para cumplir los objetivos del módulo</td>
+   </tr>
+   <tr>
+      <td>escrito</td>
+      <td>cuadros de texto serán presentados dentro de los módulos y tu deber es escibir dentro de ellos el contenido requerido por el módulo y así cumplir sus objetivos</td>
+   </tr>
+  </tbody>
+</table>
+
+
+
+
+<app-temas-modulos-subtitulos [colorFondo]="'success'" [textoSubtitulo]="'los módulos'"></app-temas-modulos-subtitulos>
+
+<table class="table is-bordered is-striped　is-fullwidth">
+  <thead>
+        <tr>
+        	<th class="has-text-centered">módulo</th>
+        	<th class="has-text-centered">tipo</th>
+        	<th class="has-text-centered">funcionamiento</th>
+        	<th class="has-text-centered">objetivo</th>
+        </tr>
+  </thead>
+
+  <tbody>
+
+   <tr>
+      <td class="title has-text-weight-bold is-5"><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/sol.png'"></app-imagen-figure>sol</td>
+      <th class="has-text-centered">auditivo y escritura</th>
+      <td class="has-text-centered">debes selecionar el botón con la imagen de una bocina para la reproducción de una silaba aleatoria (reservadamente: か) y acto siguiente debes escribir en el cuadro de texto ubicado debajo el romaji que escuchaste (que automáticamente se translitera a kana, ka => か).</td>
+      <td class="has-text-centered">el texto introducido en la entrada translitera a la silaba del audio, la cual la aplicación desde el principio conoce y compara con la entrada de texto.</td>
+   </tr>
+
+   <tr>
+      <td class="title has-text-weight-bold is-5"><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/luna.png'"></app-imagen-figure>luna</td>
+      <th class="has-text-centered">visual y escritura</th>
+      <td class="has-text-centered">recibirás un kana aleatorio (か) y acto siguiente debes escribir en el cuadro de texto ubicado debajo su romaji (que automáticamente se translitera a kana, ka => か).</td>
+      <td class="has-text-centered">el texto introducido en la entrada translitera a la silaba mostrada, la cual la aplicación desde el principio conoce y compara con la entrada de texto.</td>
+   </tr>
+
+   <tr>
+      <td class="title has-text-weight-bold is-5"><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/fuego.png'"></app-imagen-figure>fuego</td>
+      <th class="has-text-centered">auditivo y escritura</th>
+      <td class="has-text-centered">debes seleccionar a los dos (reservadamente: きゅ, きゃ) o cuatro (reservadamente: け, く, こ, か) botones con imágenes de bocinas, ello para reproducir el audio de una silaba perteneciente a una consonante (o solo la vocal). 
+
+      las silabas se ordenan aleatoriamente y son únicas; al final de esta fila de bocinas está una entrada de texto donde debes introducir la quinta silaba faltante (きょ, き).
+	</td>
+      <td class="has-text-centered">el texto introducido en la entrada translitera a la silaba faltante, la cual la aplicación desde el principio conoce y compara con la entrada.</td>
+   </tr>
+
+   <tr>
+      <td class="title has-text-weight-bold is-5"><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/agua.png'"></app-imagen-figure>agua</td>
+      <th class="has-text-centered">visual</th>
+      <td class="has-text-centered">debes buscar un kana en una sopa de letras 5x4 con un romaji como indicación.</td>
+      <td class="has-text-centered">cuando el kana seleccionado translitera al romaji indicado desde el principio.</td>
+   </tr>
+
+   <tr>
+      <td class="title has-text-weight-bold is-5"><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/árbol.png'"></app-imagen-figure>árbol</td>
+      <th class="has-text-centered">visual</th>
+      <td class="has-text-centered">recibirás una palabra (su lectura romaji y su traducción al español) (inu, perro) relacionada a tu gusto seleccionado (sea el caso de animales). 
+
+      las silabas que componen la palabra son aquellas con consonantes o vocales ya estudiadas o por estudiar (vocales, n) -- debes seleccionar uno de los cuatro cuadrados generados automáticamente debajo, los cuales leen palabras (con kana) elegidas aleatoriamente pero con la misma cantidad de caracteres que la correcta (いぬ).
+
+   	  *nota: las palabras al principio tenderán a ser repetitivas pero una vez hayas desbloqueados bastantes consonantes, tendrás acceso a una mayor cantidad de palabras :)</td>
+      <td class="has-text-centered">cuando el cuadro que translitera correctamente a la palabra expuesta es seleccionado.</td>
+   </tr>
+
+   <tr>
+      <td class="title has-text-weight-bold is-5"><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/oro.png'"></app-imagen-figure>oro</td>
+      <th class="has-text-centered">escritura</th>
+      <td class="has-text-centered">dentro del módulo se genera una cantidad de entradas de texto sobre tantos kana tenga la consonante (tres, じゃ, じゅ, じょ o cinco, さ, し, す, せ, そ). 
+
+      son acomodados al azar y debes escribir el romaji respectivo en cada caja de texto (ja, ju, jo, o sa, shi, su, se, so).</td>
+      <td class="has-text-centered">cuando todas las entradas de texto transliteren correctamente; la aplicación desde el principio las conoce y compara una vez las confirmas.</td>
+   </tr>
+
+   <tr>
+      <td class="title has-text-weight-bold is-5"><app-imagen-figure [medida]="'64'" [imgUrl]="'modulos/tierra.png'"></app-imagen-figure>tierra</td>
+      <th class="has-text-centered">auditivo y visual</th>
+      <td class="has-text-centered">recibirás una palabra (su kana y su traducción al español) (いぬ, perro) relacionada a tu gusto seleccionado (sea el caso de animales). 
+
+      las silabas que componen la palabra son aquellas con consonantes o vocales ya estudiadas o por estudiar (vocales, n) -- debes seleccionar uno de los cuatro cuadrados generados automáticamente debajo, los cuales exhiben bocinas que reproducen palabras aleatorias pero con la misma cantidad de caracteres que la correcta (inu).
+
+   	  *nota: las palabras al principio tenderán a ser repetitivas pero una vez hayas desbloqueados bastantes consonantes, tendrás acceso a una mayor cantidad de palabras :)</td>
+      <td class="has-text-centered">seleccionas el cuadro que translitera correctamente a la palabra expuesta.</td>
+   </tr>
+
+
+  </tbody>
+</table>
+
+<div class="notification has-text-justified is-success is-light">
+  dentro de los módulos, existirá siempre un botón de ayuda al cual podrás click y recibir un paso a paso ¡:-)!
+</div>
+

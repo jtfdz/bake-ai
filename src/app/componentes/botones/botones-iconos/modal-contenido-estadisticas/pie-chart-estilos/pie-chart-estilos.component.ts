@@ -11,10 +11,15 @@ export class PieChartEstilosComponent implements OnInit {
 	constructor() { }
 
 	public pieChartLabels = ['visual', 'auditivo', 'por escritura'];
-	public pieChartData = [estiloPorcentaje('visual'), estiloPorcentaje('auditiva'), estiloPorcentaje('escritura')];
+	public pieChartData = [{
+			data: [estiloPorcentaje('visual'), estiloPorcentaje('auditiva'), estiloPorcentaje('escritura')],
+			backgroundColor: ["#ED6D79", "#FFDC89", "#71E096"]
+		}]
 	public pieChartType = 'pie';
 
 	ngOnInit(): void {
 	}
 
 }
+
+

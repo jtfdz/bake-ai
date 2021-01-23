@@ -38,6 +38,7 @@
     "lodash._basematches": "^3.2.0",
     "ng2-charts": "^2.4.2",
     "ngx-spinner": "^10.0.1",
+    "path": "^0.12.7",
     "python-shell": "^2.0.3",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",

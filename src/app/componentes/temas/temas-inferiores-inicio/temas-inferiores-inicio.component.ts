@@ -18,6 +18,8 @@ export class TemasInferioresInicioComponent implements OnInit {
   
   constructor(private componentesService: ComponentesService) { }
 
+  //mejorar
+
   ngOnInit(): void {
   	this.progreso = getFromStore('progreso.'+this.nombreTema+'.porcentaje').toFixed(2);
     //¿esto podría mejorar?

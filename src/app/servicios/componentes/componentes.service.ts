@@ -90,14 +90,13 @@ export class ComponentesService {
 
 
 	reproducirAudio(archivo: string, kana: boolean) {
-	  this.setAudioCargando(true); //mejorar: ¿borrar?
+	  this.setAudioCargando(true); 
 	  let kanaRuta = urls.audio + '/' + archivo + '.wav';
 	  let palabraRuta = urls.audio + '/gustos/' +  toRomaji(archivo) + '.wav';
 	  let audio = new Audio();
 	  audio.src = kana? kanaRuta: palabraRuta;
 	  audio.load();
 	  audio.play();	
-
 	  audio.onended = () => { this.setAudioCargando(false) }
 	}
 

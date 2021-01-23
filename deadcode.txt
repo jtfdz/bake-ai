@@ -5,3 +5,52 @@
   # [1.05, 0.975, 0.975],  
   # [0.975, 0.975, 1.05], 
   # [1.025, 1.025, 0.95] 
+
+
+
+   //mejorar ESTO LO BORRAS CHICA
+    // var fuckthis = getFromStore('progreso.hiragana.kanaBody');
+
+    // fuckthis[9].iniciada = true;
+    // fuckthis[15].iniciada = true;
+    // fuckthis[9].desbloqueado = true;
+    // fuckthis[15].desbloqueado = true;
+    // setInStore('progreso.hiragana.kanaBody', fuckthis)
+    //console.log(getFromStore('progreso.hiragana.kanaBody'))
+    """
+        This function take a list of number and return a list of percentage, which represents the portion of each number in sum of all numbers
+        Moreover, those percentages are adding up to 100%!!!
+        Notice: the algorithm we are using here is 'Largest Remainder'
+        The down-side is that the results won't be accurate, but they are never accurate anyway:)
+    """
+
+String.prototype.shuffleString = function () {
+    var a = this.split(""),
+        n = a.length;
+
+    for(var i = n - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    return a.join("");
+}
+
+function removeObjectProperty(obj, property){
+	delete obj[property]
+	return obj
+}
+
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+
+function siguienteKey(db, key) {
+  for (var i = 0; i < db.length; i++) {
+    if (db[i].key === key) {
+      return db[i + 1].key && db[i + 1].desbloqueado && db[i + 1].iniciado;
+    }
+  }
+};

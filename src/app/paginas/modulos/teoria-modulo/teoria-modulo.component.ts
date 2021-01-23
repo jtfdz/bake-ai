@@ -54,7 +54,6 @@ export class TeoriaModuloComponent implements OnInit, AfterViewInit {
   }
 
   chequearEscrito() {
-
    for(var i=0; i<this.respuestas.length; i++){ 
       this.progreso[i] = (this.respuestas[i]== this.dataTeoriaRomaji[i])? true: false;
     }

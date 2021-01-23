@@ -34,15 +34,12 @@ export class ModalContenidoEstadisticasComponent implements OnInit {
 	        display: false
 	    },
 	};
-	public barChartLabelsIntro = ['tus estadísticas'];
-	public barChartDataIntro = [
-	{minBarLength: 2, data: [4], label: 'x'},
-	{data: [5], label: 'y'},
-	{data: [6], label: 'z'},
-	];
-
-
-
+	public barChartLabelsIntro = ['x', 'y', 'z'];
+	public barChartDataIntro = [{
+			label: 'tus estadísticas',
+			data: [4, 5, 6],
+			backgroundColor: ["#ED6D79", "#FFDC89", "#71E096"]
+		}]
 
 	public doughnutChartType = 'doughnut';
 

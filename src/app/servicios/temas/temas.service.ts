@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { isHiragana, toRomaji } from 'wanakana';
-import teoria from 'src/assets/json/teoria.json';
 
 declare const getFromStore: any;
 declare const setInStore: any;
@@ -223,20 +222,35 @@ export class TemasService {
   }
 
 
-
-
-
-
-
-
-	teoriaObj: IndexObj = teoria;
+	teoriaObj: IndexObj = {
+    "general": {
+      "historia": "El origen del idioma japonés se encuentra en considerable disputa entre linguistas. Evidencia ha sido ofrecida sobre los posibles origenes: Ural-Altaic, Polinesio y Chino, entre otros más. De estos, existe mayor inclinación a creer que el japonés esta conectado a la familia Ural-Altaic, la cual incluye Turco, Mongolian, Manchu y coreano en su dominio. El japonés tiene un sistema de escritura extremadamente complicado, consistiendo en dos sets de silabarios fonéticos (con aproximadamente 50 silabarios cada uno) and miles de carácteres chinos llamados 'kanji', con aproximadamente 2000 de los cuales el Ministerio de Educación ha designado como requerimiento para la graduación de secundaria.", 
+      "kanas": "sobre los kanas hiragana y katakana"
+    },
+    "hiragana": {
+      "trazos": "sobre trazos", 
+      "lectura": "lecturaaaaaaa"
+    },
+    "katakana": {
+      "trazos": "sobre trazos", 
+      "lectura": "lecturaaaaaaa"
+    },
+    "kanji": {
+      "trazos": "sobre trazos", 
+      "lecturaskunyomi": "lecturaaaaaaa kun",
+      "lecturasonyomi": "lecturaaaaaaa on on"
+    },
+    "otros": {
+      "notas": "sobre notas"
+    }
+  };
 	teoriaStr: IndexStr = {};
 
   tituloSeccion: string = 'general';
   contenidoTitulo: string = 'historia';
 
   private tituloTema: BehaviorSubject<string> = new BehaviorSubject<string>('general > historia');
-  private temaContenido: BehaviorSubject<string> = new BehaviorSubject<string>(teoria.general.historia);
+  private temaContenido: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private temaAprendido: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(getFromStore('aprender.'+this.tituloSeccion+'.'+this.contenidoTitulo));
 
 
